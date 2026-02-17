@@ -4,6 +4,7 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import { casinoReviewJsonLd } from "@/lib/json-ld";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
@@ -105,6 +106,12 @@ export default async function CasinoReviewPage({ params }: Props) {
           </div>
         </div>
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(casinoReviewJsonLd(casino)),
+        }}
+      />
     </div>
   );
 }
