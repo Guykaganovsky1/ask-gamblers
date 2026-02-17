@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0F;
+  --color-card: #1A1A2E;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F0D060;
+  --color-emerald-neon: #00E676;
+  --color-text-primary: #F5F5F5;
+  --color-text-muted: #9CA3AF;
+  --color-border-glass: rgba(255, 255, 255, 0.08);
+
+  --font-heading: var(--font-heebo);
+  --font-body: var(--font-assistant);
+  --font-mono: var(--font-inter);
+}
