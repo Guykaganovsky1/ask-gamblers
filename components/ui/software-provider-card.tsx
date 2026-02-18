@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
 import type { Image as SanityImage } from "sanity";
 
@@ -32,9 +31,8 @@ export function SoftwareProviderCard({
       {/* Gradient Border */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
 
-      <Link
-        href={`/providers/${slug.current}`}
-        className="group relative flex h-full flex-col items-center justify-center gap-6 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
+      <div
+        className="group relative flex h-full flex-col items-center justify-center gap-6 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)] cursor-default"
       >
         {/* Logo Section */}
         <div className="relative h-24 w-32">
@@ -70,7 +68,7 @@ export function SoftwareProviderCard({
         >
           צפו בגיימס
         </motion.button>
-      </Link>
+      </div>
     </motion.div>
   );
 }
