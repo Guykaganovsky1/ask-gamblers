@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { FloatingParticles } from "@/components/ui/floating-particles";
+import { LightRays } from "@/components/ui/light-rays";
 import Image from "next/image";
 
 export function Hero() {
@@ -16,6 +18,15 @@ export function Hero() {
           className="object-cover object-center"
           priority
         />
+        {/* Animation Layer 1: Floating Particles */}
+        <FloatingParticles particleCount={50} particleSize={3} />
+
+        {/* Animation Layer 2: Light Rays */}
+        <LightRays />
+
+        {/* Animation Layer 3: Animated Gradient (optional, subtle) */}
+        {/* Uncomment to enable: <AnimatedGradientBackground /> */}
+
         {/* Gradient overlay — dark on right for text readability */}
         <div className="absolute inset-0 bg-gradient-to-l from-background/95 via-background/70 to-transparent" />
       </div>
