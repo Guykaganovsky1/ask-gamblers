@@ -16,7 +16,7 @@ export function SectionHeading({ children, className = "" }: SectionHeadingProps
       className={`font-heading text-3xl font-bold text-text-primary md:text-4xl ${className}`}
     >
       {children}
-      <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-l from-gold to-gold-light" />
+      <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-l from-accent to-accent-light" />
     </motion.h2>
   );
 }

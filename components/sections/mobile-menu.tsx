@@ -41,7 +41,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="block py-3 font-heading text-lg font-bold text-text-primary transition-colors hover:text-gold"
+                  className="block py-3 font-heading text-lg font-bold text-text-primary transition-colors hover:text-accent"
                 >
                   {link.label}
                 </Link>

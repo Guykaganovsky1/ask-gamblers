@@ -19,7 +19,7 @@ export function StarRating({ rating, size = "md" }: StarRatingProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: star * 0.1 }}
           viewport={{ once: true }}
-          className={`${sizes[size]} ${star <= rating ? "text-gold" : "text-text-muted/30"}`}
+          className={`${sizes[size]} ${star <= rating ? "text-accent" : "text-text-muted/30"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >

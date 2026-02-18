@@ -32,10 +32,10 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
     >
       <Link
         href={`/categories/${slug.current}`}
-        className="group flex flex-col items-center gap-3 rounded-2xl border border-border-glass bg-card/60 p-6 text-center backdrop-blur-md transition-all hover:border-gold/30 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]"
+        className="group flex flex-col items-center gap-3 rounded-2xl border border-border-glass bg-card/60 p-6 text-center backdrop-blur-md transition-all hover:border-accent/30 hover:shadow-[0_0_20px_rgba(155,81,224,0.1)]"
       >
         <span className="text-4xl">{icon ? CATEGORY_ICONS[icon] || "🎲" : "🎲"}</span>
-        <h3 className="font-heading text-lg font-bold group-hover:text-gold transition-colors">{name}</h3>
+        <h3 className="font-heading text-lg font-bold group-hover:text-accent transition-colors">{name}</h3>
         {description && <p className="text-sm text-text-muted line-clamp-2">{description}</p>}
         <div className="flex gap-4 text-xs text-text-muted">
           {casinoCount !== undefined && <span>{casinoCount} קזינו</span>}

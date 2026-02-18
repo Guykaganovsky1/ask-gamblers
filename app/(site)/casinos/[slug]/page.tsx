@@ -46,9 +46,9 @@ export default async function CasinoReviewPage({ params }: Props) {
       </div>
 
       {casino.bonusAmount && (
-        <div className="mx-auto mt-10 max-w-md rounded-2xl border border-gold/20 bg-gold/5 p-8 text-center">
+        <div className="mx-auto mt-10 max-w-md rounded-2xl border border-accent/20 bg-accent/5 p-8 text-center">
           <p className="text-sm text-text-muted">{casino.bonusTitle}</p>
-          <p className="mt-2 font-heading text-3xl font-black text-gold">
+          <p className="mt-2 font-heading text-3xl font-black text-accent">
             <AnimatedCounter value={casino.bonusAmount} />
           </p>
           {casino.wageringRequirement && (

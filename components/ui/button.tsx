@@ -12,10 +12,10 @@ interface ButtonProps {
 }
 
 export function Button({ href, children, variant = "primary", rel, className = "" }: ButtonProps) {
-  const base = "inline-flex items-center justify-center rounded-xl px-6 py-3 font-heading font-bold text-sm transition-all duration-300";
+  const base = "inline-flex items-center justify-center rounded-lg px-6 py-3 font-heading font-bold text-sm transition-all duration-300";
   const variants = {
-    primary: "bg-gradient-to-l from-gold to-gold-light text-background hover:shadow-[0_0_24px_rgba(212,175,55,0.4)]",
-    outline: "border border-gold/40 text-gold hover:bg-gold/10",
+    primary: "bg-accent text-white hover:bg-accent-light hover:shadow-[0_0_24px_rgba(155,81,224,0.4)]",
+    outline: "border border-text-muted/30 text-text-primary hover:border-accent hover:text-accent",
   };
 
   return (

@@ -23,7 +23,7 @@ export function BlogCard({ title, slug, featuredImage, publishedAt, author, inde
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
     >
-      <Link href={`/blog/${slug.current}`} className="group block overflow-hidden rounded-2xl border border-border-glass bg-card/60 backdrop-blur-md transition-all hover:border-gold/20">
+      <Link href={`/blog/${slug.current}`} className="group block overflow-hidden rounded-2xl border border-border-glass bg-card/60 backdrop-blur-md transition-all hover:border-accent/20">
         {featuredImage && (
           <div className="relative aspect-video overflow-hidden">
             <Image
@@ -35,7 +35,7 @@ export function BlogCard({ title, slug, featuredImage, publishedAt, author, inde
           </div>
         )}
         <div className="p-5">
-          <h3 className="font-heading text-lg font-bold leading-tight group-hover:text-gold transition-colors">
+          <h3 className="font-heading text-lg font-bold leading-tight group-hover:text-accent transition-colors">
             {title}
           </h3>
           <div className="mt-3 flex items-center gap-2 text-xs text-text-muted">

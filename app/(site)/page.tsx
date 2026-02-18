@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY } from "@/sanity/lib/queries";
 import { Hero } from "@/components/sections/hero";
+import { StatsBar } from "@/components/sections/stats-bar";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { BlogCard } from "@/components/ui/blog-card";
 import { CategoryCard } from "@/components/ui/category-card";
@@ -28,11 +29,12 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <StatsBar />
 
       {casinos.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-20">
           <SectionHeading>קזינו מומלצים</SectionHeading>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4">
             {casinos.map((casino: any, i: number) => (
               <CasinoCard key={casino._id} {...casino} index={i} />
             ))}

@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: Props) {
               ))}
             </div>
           )}
-          <div className="prose prose-invert mt-8 max-w-none prose-headings:font-heading prose-headings:text-text-primary prose-p:text-text-muted prose-a:text-gold">
+          <div className="prose prose-invert mt-8 max-w-none prose-headings:font-heading prose-headings:text-text-primary prose-p:text-text-muted prose-a:text-accent">
             {post.body && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
         </article>

@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0A0A0F;
-  --color-card: #1A1A2E;
-  --color-gold: #D4AF37;
-  --color-gold-light: #F0D060;
+  --color-background: #0B0E14;
+  --color-card: #131825;
+  --color-card-light: #1A2030;
+  --color-accent: #9B51E0;
+  --color-accent-light: #B36FFF;
+  --color-gold: #9B51E0;
+  --color-gold-light: #B36FFF;
   --color-emerald-neon: #00E676;
   --color-text-primary: #F5F5F5;
-  --color-text-muted: #9CA3AF;
-  --color-border-glass: rgba(255, 255, 255, 0.08);
+  --color-text-muted: #7A8599;
+  --color-border-glass: rgba(255, 255, 255, 0.06);
+  --color-border-card: rgba(100, 120, 180, 0.15);
 
   --font-heading: var(--font-heebo);
   --font-body: var(--font-assistant);
