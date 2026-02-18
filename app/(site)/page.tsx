@@ -43,7 +43,7 @@ export default async function HomePage() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Button href="/casinos" variant="outline">{CTA_COPY.navigation.allCasinos}</Button>
+            <Button href="/casinos" variant="outline">גלו כל {casinos.length} הקזינו</Button>
           </div>
         </section>
       )}
@@ -79,7 +79,7 @@ export default async function HomePage() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Button href="/blog" variant="outline">{CTA_COPY.navigation.allPosts}</Button>
+            <Button href="/blog" variant="outline">קראו {posts.length}+ מאמרים</Button>
           </div>
         </section>
       )}
