@@ -51,8 +51,8 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 flex flex-col sm:flex-row gap-4"
           >
-            <Button href="/casinos" className="sm:flex-1">בחרו קזינו בטוח היום</Button>
-            <Button href="/blog" variant="outline" className="sm:flex-1">גלו טיפים שמנצחים</Button>
+            <Button href="/casinos" className="w-full sm:flex-1">בחרו קזינו בטוח היום</Button>
+            <Button href="/blog" variant="outline" className="w-full sm:flex-1">גלו טיפים שמנצחים</Button>
           </motion.div>
         </div>
       </div>
