@@ -55,7 +55,7 @@ export default async function HomePage() {
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.categories.heading}</SectionHeading>
           <div className="mt-12 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {categories.map((cat, i) => (
+            {categories.slice(0, 6).map((cat, i) => (
               <CategoryCard key={cat._id} name={cat.name} slug={cat.slug} description={cat.description} casinoCount={cat.casinoCount} postCount={cat.postCount} index={i} />
             ))}
           </div>
