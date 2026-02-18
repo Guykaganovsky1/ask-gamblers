@@ -31,7 +31,7 @@ export function Hero() {
           >
             קזינו אונליין
             <br />
-            בטוח ורווחי — הבחירה המושכלת
+            בטוח ורווחי — <span className="whitespace-nowrap">הבחירה המושכלת</span>
             <br />
             של אלפי שחקנים
           </motion.h1>
