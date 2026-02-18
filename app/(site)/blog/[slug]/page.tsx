@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { PortableTextComponents } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const portableTextComponents = {
+const portableTextComponents: PortableTextComponents = {
   types: {
     image: ({ value }: { value: SanityImage }) => (
       <div className="my-10 overflow-hidden rounded-xl">
@@ -46,7 +47,7 @@ const portableTextComponents = {
       </blockquote>
     ),
   },
-} as any;
+};
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;

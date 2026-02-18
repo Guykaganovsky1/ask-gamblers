@@ -15,7 +15,6 @@ interface SoftwareProviderCardProps {
 
 export function SoftwareProviderCard({
   name,
-  slug,
   logo,
   description,
   index = 0,
