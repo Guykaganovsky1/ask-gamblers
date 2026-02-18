@@ -62,19 +62,6 @@ export default async function HomePage() {
         </section>
       )}
 
-      {posts.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
-          <SectionHeading>{SECTION_COPY.blog.heading}</SectionHeading>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, i) => (
-              <BlogCard key={post._id} {...post} index={i} />
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Button href="/blog" variant="outline">קראו {posts.length}+ מאמרים</Button>
-          </div>
-        </section>
-      )}
 
 
       {/* Slots Bonuses Section */}
@@ -101,6 +88,20 @@ export default async function HomePage() {
             {softwareProviders.map((provider, i) => (
               <SoftwareProviderCard key={provider._id} {...provider} index={i} />
             ))}
+          </div>
+        </section>
+      )}
+
+      {posts.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-24">
+          <SectionHeading>{SECTION_COPY.blog.heading}</SectionHeading>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post, i) => (
+              <BlogCard key={post._id} {...post} index={i} />
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button href="/blog" variant="outline">קראו {posts.length}+ מאמרים</Button>
           </div>
         </section>
       )}
