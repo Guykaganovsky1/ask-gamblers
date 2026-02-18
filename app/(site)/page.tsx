@@ -61,16 +61,6 @@ export default async function HomePage() {
           </div>
         </section>
       )}
-      {softwareProviders.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
-          <SectionHeading>{SECTION_COPY.softwareProviders.heading}</SectionHeading>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {softwareProviders.map((provider, i) => (
-              <SoftwareProviderCard key={provider._id} {...provider} index={i} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {posts.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
@@ -104,6 +94,16 @@ export default async function HomePage() {
           <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-red-500 rounded mb-4 flex items-center justify-center text-4xl">👑</div><p className="font-bold">Pharaoh</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
         </div>
       </section>
+      {softwareProviders.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-24">
+          <SectionHeading>{SECTION_COPY.softwareProviders.heading}</SectionHeading>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {softwareProviders.map((provider, i) => (
+              <SoftwareProviderCard key={provider._id} {...provider} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
