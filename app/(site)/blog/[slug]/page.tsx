@@ -4,8 +4,8 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
 import { POST_BY_SLUG_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
+import { BlogPost, Casino, SanityImage } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
-import { CasinoCard } from "@/components/ui/casino-card";
 import { StarRating } from "@/components/ui/star-rating";
 
 export const revalidate = 60;
@@ -16,7 +16,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await client.fetch(POST_BY_SLUG_QUERY, { slug });
+  const post = await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug });
   if (!post) return {};
   return {
     title: post.seoTitle || `${post.title} | קזינו רז`,
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const portableTextComponents = {
   types: {
-    image: ({ value }: any) => (
+    image: ({ value }: { value: SanityImage }) => (
       <div className="my-10 overflow-hidden rounded-xl">
         <Image
           src={urlFor(value).width(800).url()}
@@ -39,8 +39,8 @@ const portableTextComponents = {
     ),
   },
   block: {
-    h2: ({ children }: any) => <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>,
-    blockquote: ({ children }: any) => (
+    h2: ({ children }: { children: React.ReactNode }) => <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>,
+    blockquote: ({ children }: { children: React.ReactNode }) => (
       <blockquote className="border-l-4 border-accent pl-6 py-2 my-8 italic text-text-secondary">
         {children}
       </blockquote>
@@ -51,8 +51,8 @@ const portableTextComponents = {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const [post, topCasinos] = await Promise.all([
-    client.fetch(POST_BY_SLUG_QUERY, { slug }),
-    client.fetch(FEATURED_CASINOS_QUERY),
+    client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug }),
+    client.fetch<Casino[]>(FEATURED_CASINOS_QUERY),
   ]);
 
   if (!post) notFound();
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
 
                 <div className="space-y-4">
-                  {topCasinos.slice(0, 4).map((casino: any) => (
+                  {topCasinos.slice(0, 4).map((casino) => (
                     <div key={casino._id} className="group rounded-lg border border-border-card bg-card-light/50 p-4 hover:bg-card-light transition-colors">
                       <div className="flex gap-3">
                         {/* Casino Logo */}

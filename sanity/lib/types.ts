@@ -1,0 +1,151 @@
+/**
+ * Sanity Document Types
+ * Comprehensive TypeScript interfaces for all Sanity documents
+ */
+
+// Common image type from Sanity
+export interface SanityImage {
+  _type: "image";
+  asset: {
+    _ref: string;
+    _type: "reference";
+  };
+  alt?: string;
+  crop?: {
+    _type: "crop";
+    bottom: number;
+    left: number;
+    right: number;
+    top: number;
+  };
+  hotspot?: {
+    _type: "hotspot";
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+  };
+}
+
+// Common slug type from Sanity
+export interface SanitySlug {
+  _type: "slug";
+  current: string;
+}
+
+// Portable Text block
+export interface PortableTextBlock {
+  _type: "block";
+  _key: string;
+  style: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+  children: Array<{
+    _type: "span";
+    _key: string;
+    text: string;
+    marks: string[];
+  }>;
+  markDefs: Array<{
+    _type: string;
+    _key: string;
+    [key: string]: unknown;
+  }>;
+}
+
+// Author document
+export interface Author {
+  _id: string;
+  _type: "author";
+  name: string;
+  avatar?: SanityImage;
+  bio?: string;
+}
+
+// Category document
+export interface Category {
+  _id: string;
+  _type: "category";
+  name: string;
+  slug: SanitySlug;
+  description?: string;
+  icon?: SanityImage;
+  casinoCount?: number;
+  postCount?: number;
+}
+
+// Casino document
+export interface Casino {
+  _id: string;
+  _type: "casino";
+  name: string;
+  slug: SanitySlug;
+  logo?: SanityImage;
+  rating: number;
+  description: string;
+  bonusTitle?: string;
+  bonusAmount?: string;
+  wageringRequirement?: string;
+  pros?: string[];
+  cons?: string[];
+  affiliateLink?: string;
+  featured?: boolean;
+  clicks?: number;
+  categories?: Array<{
+    _id: string;
+    name: string;
+    slug: SanitySlug;
+  }>;
+}
+
+// Blog post document
+export interface BlogPost {
+  _id: string;
+  _type: "post";
+  title: string;
+  slug: SanitySlug;
+  featuredImage?: SanityImage;
+  body?: PortableTextBlock[];
+  excerpt?: string;
+  publishedAt: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  author?: Author;
+  categories?: Array<{
+    _id: string;
+    name: string;
+    slug: SanitySlug;
+  }>;
+}
+
+// Software Provider document
+export interface SoftwareProvider {
+  _id: string;
+  _type: "softwareProvider";
+  name: string;
+  slug: SanitySlug;
+  logo?: SanityImage;
+  description?: string;
+  featured?: boolean;
+}
+
+// Query response types
+export type CasinoQueryResult = Omit<Casino, "slug"> & {
+  slug: SanitySlug;
+};
+
+export type BlogPostQueryResult = Omit<BlogPost, "slug"> & {
+  slug: SanitySlug;
+};
+
+export type CategoryQueryResult = Omit<Category, "slug"> & {
+  slug: SanitySlug;
+};
+
+export type SoftwareProviderQueryResult = Omit<SoftwareProvider, "slug"> & {
+  slug: SanitySlug;
+};
+
+// Array types for queries returning multiple documents
+export type CasinoList = Casino[];
+export type BlogPostList = BlogPost[];
+export type CategoryList = Category[];
+export type SoftwareProviderList = SoftwareProvider[];

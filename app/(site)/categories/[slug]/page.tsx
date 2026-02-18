@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { client } from "@/sanity/lib/client";
 import { CATEGORY_BY_SLUG_QUERY } from "@/sanity/lib/queries";
+import { Category } from "@/sanity/lib/types";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { BlogCard } from "@/components/ui/blog-card";
 
@@ -13,7 +14,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const category = await client.fetch(CATEGORY_BY_SLUG_QUERY, { slug });
+  const category = await client.fetch<Category>(CATEGORY_BY_SLUG_QUERY, { slug });
   if (!category) return {};
   return {
     title: `${category.name} | קזינו רז`,
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
-  const category = await client.fetch(CATEGORY_BY_SLUG_QUERY, { slug });
+  const category = await client.fetch<Category>(CATEGORY_BY_SLUG_QUERY, { slug });
   if (!category) notFound();
 
   return (
@@ -82,7 +83,7 @@ export default async function CategoryPage({ params }: Props) {
               <div className="w-16 h-1 bg-accent rounded-full" />
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {category.casinos.map((casino: any, i: number) => (
+              {category.casinos.map((casino, i) => (
                 <CasinoCard key={casino._id} {...casino} index={i} />
               ))}
             </div>
@@ -99,7 +100,7 @@ export default async function CategoryPage({ params }: Props) {
               <div className="w-16 h-1 bg-accent rounded-full" />
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {category.posts.map((post: any, i: number) => (
+              {category.posts.map((post, i) => (
                 <BlogCard key={post._id} {...post} index={i} />
               ))}
             </div>

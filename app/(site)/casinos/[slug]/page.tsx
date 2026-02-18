@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
+import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { casinoReviewJsonLd } from "@/lib/json-ld";
 import { StarRating } from "@/components/ui/star-rating";
@@ -17,7 +18,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const casino = await client.fetch(CASINO_BY_SLUG_QUERY, { slug });
+  const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
   if (!casino) return {};
   return {
     title: `${casino.name} - ביקורת | קזינו רז`,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CasinoReviewPage({ params }: Props) {
   const { slug } = await params;
-  const casino = await client.fetch(CASINO_BY_SLUG_QUERY, { slug });
+  const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
   if (!casino) notFound();
 
   return (
@@ -98,7 +99,7 @@ export default async function CasinoReviewPage({ params }: Props) {
         <div className="mt-12">
           <h3 className="font-heading text-lg font-bold">קטגוריות</h3>
           <div className="mt-4 flex flex-wrap gap-2">
-            {casino.categories.map((cat: any) => (
+            {casino.categories.map((cat) => (
               <span key={cat._id} className="rounded-full border border-border-glass bg-card px-4 py-1 text-sm text-text-muted">
                 {cat.name}
               </span>

@@ -14,6 +14,8 @@ const client = createClient({
 });
 
 // Upload an image from local file or URL
+// Note: Currently not used in seed(), but kept for future image seeding needs
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function uploadImage(filePath) {
   const fullPath = resolve(__dirname, "..", filePath);
   const buffer = readFileSync(fullPath);
