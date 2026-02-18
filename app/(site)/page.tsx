@@ -83,12 +83,54 @@ export default async function HomePage() {
           <div className="w-16 h-1 bg-accent rounded-full" />
         </div>
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-slate-700 rounded mb-4 flex items-center justify-center text-4xl">💎</div><p className="font-bold">Diamond</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-yellow-400 rounded mb-4 flex items-center justify-center text-4xl">🏆</div><p className="font-bold">Golden</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-black rounded mb-4 flex items-center justify-center text-4xl">⚡</div><p className="font-bold">Lucky</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-purple-900 rounded mb-4 flex items-center justify-center text-4xl">🎰</div><p className="font-bold">Monte</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-slate-800 rounded mb-4 flex items-center justify-center text-4xl">🎯</div><p className="font-bold">Play</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
-          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-red-500 rounded mb-4 flex items-center justify-center text-4xl">👑</div><p className="font-bold">Pharaoh</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-slate-700 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">💎</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Diamond</h3><p className="text-xs text-text-muted">100% bonus</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-yellow-400 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🏆</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Golden</h3><p className="text-xs text-text-muted">+50 spins</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-black rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">⚡</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Lucky</h3><p className="text-xs text-text-muted">Up to $500</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-purple-900 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🎰</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Monte</h3><p className="text-xs text-text-muted">+200 spins</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-slate-800 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🎯</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Play</h3><p className="text-xs text-text-muted">+100% bonus</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
+          <div className="group relative h-full">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className="h-24 w-32 bg-red-500 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">👑</div>
+              <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Pharaoh</h3><p className="text-xs text-text-muted">+free spins</p></div>
+              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+            </div>
+          </div>
         </div>
       </section>
 
