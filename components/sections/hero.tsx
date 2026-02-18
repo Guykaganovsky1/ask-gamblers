@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[75vh] flex items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -21,8 +21,8 @@ export function Hero() {
       </div>
 
       {/* Content — aligned right (RTL) */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20">
-        <div className="max-w-2xl mr-0 ml-auto text-right">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-14">
+        <div className="max-w-xl mr-0 ml-auto text-right">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-8 flex justify-end gap-4"
+            className="mt-8 flex gap-4"
           >
             <Button href="/blog" variant="outline">קראו מדריכי אסטרטגיה</Button>
             <Button href="/casinos">צרו קשר</Button>
