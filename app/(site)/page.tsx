@@ -50,16 +50,6 @@ export default async function HomePage() {
         </section>
       )}
 
-      {softwareProviders.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
-          <SectionHeading>{SECTION_COPY.softwareProviders.heading}</SectionHeading>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {softwareProviders.map((provider, i) => (
-              <SoftwareProviderCard key={provider._id} {...provider} index={i} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {categories.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
@@ -67,6 +57,16 @@ export default async function HomePage() {
           <div className="mt-12 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat, i) => (
               <CategoryCard key={cat._id} name={cat.name} slug={cat.slug} description={cat.description} casinoCount={cat.casinoCount} postCount={cat.postCount} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
+      {softwareProviders.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-24">
+          <SectionHeading>{SECTION_COPY.softwareProviders.heading}</SectionHeading>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {softwareProviders.map((provider, i) => (
+              <SoftwareProviderCard key={provider._id} {...provider} index={i} />
             ))}
           </div>
         </section>
