@@ -38,7 +38,7 @@ export default async function HomePage() {
       {casinos.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.casinos.heading}</SectionHeading>
-          <div className="mt-12 grid gap-5">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {casinos.map((casino, i) => (
               <CasinoCard key={casino._id} {...casino} index={i} />
             ))}
@@ -52,7 +52,7 @@ export default async function HomePage() {
       {softwareProviders.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.softwareProviders.heading}</SectionHeading>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {softwareProviders.map((provider, i) => (
               <SoftwareProviderCard key={provider._id} {...provider} index={i} />
             ))}
@@ -63,7 +63,7 @@ export default async function HomePage() {
       {categories.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.categories.heading}</SectionHeading>
-          <div className="mt-12 grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((cat, i) => (
               <CategoryCard key={cat._id} name={cat.name} slug={cat.slug} description={cat.description} casinoCount={cat.casinoCount} postCount={cat.postCount} index={i} />
             ))}
@@ -74,7 +74,7 @@ export default async function HomePage() {
       {posts.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.blog.heading}</SectionHeading>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
               <BlogCard key={post._id} {...post} index={i} />
             ))}
