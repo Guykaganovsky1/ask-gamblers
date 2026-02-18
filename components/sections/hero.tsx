@@ -21,7 +21,7 @@ export function Hero() {
       </div>
 
       {/* Content — aligned right (RTL) */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-14">
+      <div className="relative z-10 w-full px-4 py-14">
         <div className="max-w-xl mr-0 ml-auto text-right">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
