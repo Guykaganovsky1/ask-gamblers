@@ -29,9 +29,9 @@ export function Hero() {
             transition={{ duration: 0.7 }}
             className="font-heading text-4xl font-black leading-tight md:text-6xl"
           >
-            קזינו אונליין בטוח ורווחי
+            קזינו אונליין
             <br />
-            הבחירה המושכלת של אלפי שחקנים
+            בטוח ורווחי — הבחירה המושכלת של אלפי שחקנים
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
