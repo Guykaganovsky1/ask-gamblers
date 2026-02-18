@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { PortableTextComponents } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const portableTextComponents: PortableTextComponents = {
+const portableTextComponents = {
   types: {
     image: ({ value }: { value: SanityImage }) => (
       <div className="my-10 overflow-hidden rounded-xl">
@@ -40,8 +39,8 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
   block: {
-    h2: ({ children }: { children: React.ReactNode }) => <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>,
-    blockquote: ({ children }: { children: React.ReactNode }) => (
+    h2: ({ children }: { children?: React.ReactNode }) => <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>,
+    blockquote: ({ children }: { children?: React.ReactNode }) => (
       <blockquote className="border-l-4 border-accent pl-6 py-2 my-8 italic text-text-secondary">
         {children}
       </blockquote>
