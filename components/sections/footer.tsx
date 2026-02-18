@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterShine } from "@/components/ui/footer-shine";
 
 const FOOTER_LINKS = [
   { href: "/casinos", label: "קזינו" },
@@ -8,8 +9,9 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-glass bg-card/40">
-      <div className="mx-auto max-w-7xl px-4 py-12">
+    <footer className="relative border-t border-border-glass bg-card/40 overflow-hidden">
+      <FooterShine />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <Link href="/" className="font-heading text-xl font-black text-accent">
             Royal Spinz
