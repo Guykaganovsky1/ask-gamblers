@@ -121,6 +121,17 @@ export const CATEGORY_BY_SLUG_QUERY = groq`
   }
 `;
 
+// Software Provider queries
+export const FEATURED_SOFTWARE_PROVIDERS_QUERY = groq`
+  *[_type == "softwareProvider" && featured == true] | order(name asc) [0...12] {
+    _id,
+    name,
+    slug,
+    logo,
+    description
+  }
+`;
+
 // Affiliate redirect
 export const CASINO_AFFILIATE_QUERY = groq`
   *[_type == "casino" && slug.current == $slug][0] {

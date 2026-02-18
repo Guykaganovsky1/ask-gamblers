@@ -1,10 +1,11 @@
 import { client } from "@/sanity/lib/client";
-import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY } from "@/sanity/lib/queries";
+import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY, FEATURED_SOFTWARE_PROVIDERS_QUERY } from "@/sanity/lib/queries";
 import { Hero } from "@/components/sections/hero";
 import { StatsBar } from "@/components/sections/stats-bar";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { BlogCard } from "@/components/ui/blog-card";
 import { CategoryCard } from "@/components/ui/category-card";
+import { SoftwareProviderCard } from "@/components/ui/software-provider-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 
@@ -12,19 +13,20 @@ export const revalidate = 60;
 
 async function getHomeData() {
   try {
-    const [casinos, posts, categories] = await Promise.all([
+    const [casinos, posts, categories, softwareProviders] = await Promise.all([
       client.fetch(FEATURED_CASINOS_QUERY),
       client.fetch(LATEST_POSTS_QUERY),
       client.fetch(CATEGORIES_QUERY),
+      client.fetch(FEATURED_SOFTWARE_PROVIDERS_QUERY),
     ]);
-    return { casinos: casinos ?? [], posts: posts ?? [], categories: categories ?? [] };
+    return { casinos: casinos ?? [], posts: posts ?? [], categories: categories ?? [], softwareProviders: softwareProviders ?? [] };
   } catch {
-    return { casinos: [], posts: [], categories: [] };
+    return { casinos: [], posts: [], categories: [], softwareProviders: [] };
   }
 }
 
 export default async function HomePage() {
-  const { casinos, posts, categories } = await getHomeData();
+  const { casinos, posts, categories, softwareProviders } = await getHomeData();
 
   return (
     <>
@@ -41,6 +43,17 @@ export default async function HomePage() {
           </div>
           <div className="mt-12 text-center">
             <Button href="/casinos" variant="outline">צפו בכל הקזינו</Button>
+          </div>
+        </section>
+      )}
+
+      {softwareProviders.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 py-24">
+          <SectionHeading>ספקי תוכנה</SectionHeading>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {softwareProviders.map((provider: any, i: number) => (
+              <SoftwareProviderCard key={provider._id} {...provider} index={i} />
+            ))}
           </div>
         </section>
       )}
