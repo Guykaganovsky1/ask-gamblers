@@ -35,12 +35,14 @@ export default async function CasinoReviewPage({ params }: Props) {
     <div className="mx-auto max-w-4xl px-4 py-16">
       <div className="flex flex-col items-center gap-6 text-center">
         <div className="relative h-20 w-40">
-          <Image
-            src={urlFor(casino.logo).width(320).height(160).url()}
-            alt={casino.name}
-            fill
-            className="object-contain"
-          />
+          {casino.logo && (
+            <Image
+              src={urlFor(casino.logo).width(320).height(160).url()}
+              alt={casino.name}
+              fill
+              className="object-contain"
+            />
+          )}
         </div>
         <h1 className="font-heading text-4xl font-black">{casino.name}</h1>
         <StarRating rating={casino.rating} size="lg" />
@@ -69,7 +71,7 @@ export default async function CasinoReviewPage({ params }: Props) {
       </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {casino.pros?.length > 0 && (
+        {casino.pros && casino.pros.length > 0 && (
           <div className="rounded-2xl border border-emerald-neon/20 bg-emerald-neon/5 p-6">
             <h3 className="font-heading text-lg font-bold text-emerald-neon">יתרונות</h3>
             <ul className="mt-4 space-y-2">
@@ -81,7 +83,7 @@ export default async function CasinoReviewPage({ params }: Props) {
             </ul>
           </div>
         )}
-        {casino.cons?.length > 0 && (
+        {casino.cons && casino.cons.length > 0 && (
           <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6">
             <h3 className="font-heading text-lg font-bold text-red-400">חסרונות</h3>
             <ul className="mt-4 space-y-2">
@@ -95,7 +97,7 @@ export default async function CasinoReviewPage({ params }: Props) {
         )}
       </div>
 
-      {casino.categories?.length > 0 && (
+      {casino.categories && casino.categories.length > 0 && (
         <div className="mt-12">
           <h3 className="font-heading text-lg font-bold">קטגוריות</h3>
           <div className="mt-4 flex flex-wrap gap-2">

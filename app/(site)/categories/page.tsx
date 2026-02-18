@@ -20,7 +20,7 @@ export default async function CategoriesPage() {
       <SectionHeading>קטגוריות</SectionHeading>
       <div className="mt-10 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {categories.map((cat, i) => (
-          <CategoryCard key={cat._id} {...cat} index={i} />
+          <CategoryCard key={cat._id} name={cat.name} slug={cat.slug} description={cat.description} casinoCount={cat.casinoCount} postCount={cat.postCount} index={i} />
         ))}
       </div>
     </div>

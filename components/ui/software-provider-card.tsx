@@ -9,8 +9,8 @@ import type { Image as SanityImage } from "sanity";
 interface SoftwareProviderCardProps {
   name: string;
   slug: { current: string };
-  logo: SanityImage;
-  description: string;
+  logo?: SanityImage;
+  description?: string;
   index?: number;
 }
 
@@ -38,12 +38,18 @@ export function SoftwareProviderCard({
       >
         {/* Logo Section */}
         <div className="relative h-24 w-32">
-          <Image
-            src={urlFor(logo).width(256).height(192).url()}
-            alt={name}
-            fill
-            className="object-contain transition-transform duration-300 group-hover:scale-105"
-          />
+          {logo ? (
+            <Image
+              src={urlFor(logo).width(256).height(192).url()}
+              alt={name}
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-br from-purple-900 to-purple-700 text-center">
+              <span className="text-sm font-bold text-white">{name.slice(0, 2).toUpperCase()}</span>
+            </div>
+          )}
         </div>
 
         {/* Provider Name */}

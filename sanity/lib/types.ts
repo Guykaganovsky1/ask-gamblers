@@ -3,29 +3,7 @@
  * Comprehensive TypeScript interfaces for all Sanity documents
  */
 
-// Common image type from Sanity
-export interface SanityImage {
-  _type: "image";
-  asset: {
-    _ref: string;
-    _type: "reference";
-  };
-  alt?: string;
-  crop?: {
-    _type: "crop";
-    bottom: number;
-    left: number;
-    right: number;
-    top: number;
-  };
-  hotspot?: {
-    _type: "hotspot";
-    height: number;
-    width: number;
-    x: number;
-    y: number;
-  };
-}
+import type { Image as SanityImage } from "sanity";
 
 // Common slug type from Sanity
 export interface SanitySlug {
@@ -70,6 +48,28 @@ export interface Category {
   icon?: SanityImage;
   casinoCount?: number;
   postCount?: number;
+}
+
+// Category with nested casinos and posts (from CATEGORY_BY_SLUG_QUERY)
+export interface CategoryDetail extends Category {
+  casinos?: Array<{
+    _id: string;
+    name: string;
+    slug: SanitySlug;
+    logo?: SanityImage;
+    rating: number;
+    description: string;
+    bonusTitle?: string;
+    bonusAmount?: string;
+  }>;
+  posts?: Array<{
+    _id: string;
+    title: string;
+    slug: SanitySlug;
+    featuredImage?: SanityImage;
+    publishedAt: string;
+    author?: Author;
+  }>;
 }
 
 // Casino document
@@ -149,3 +149,6 @@ export type CasinoList = Casino[];
 export type BlogPostList = BlogPost[];
 export type CategoryList = Category[];
 export type SoftwareProviderList = SoftwareProvider[];
+
+// Re-export SanityImage for consumer modules
+export type { SanityImage };

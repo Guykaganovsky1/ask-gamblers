@@ -30,7 +30,7 @@ const portableTextComponents = {
       <div className="my-10 overflow-hidden rounded-xl">
         <Image
           src={urlFor(value).width(800).url()}
-          alt={value.alt || ""}
+          alt={typeof value.alt === "string" ? value.alt : ""}
           width={800}
           height={450}
           className="w-full object-cover"
@@ -46,7 +46,7 @@ const portableTextComponents = {
       </blockquote>
     ),
   },
-};
+} as any;
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="absolute inset-0 flex items-end px-4 py-16 md:py-24">
             <div className="max-w-3xl w-full">
               {/* Category Badge */}
-              {post.categories?.length > 0 && (
+              {post.categories && post.categories.length > 0 && (
                 <div className="mb-6">
                   <span className="inline-block rounded-full bg-accent px-4 py-2 text-sm font-bold text-white">
                     {post.categories[0].name}

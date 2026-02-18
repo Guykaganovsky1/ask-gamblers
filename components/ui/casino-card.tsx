@@ -11,7 +11,7 @@ import type { Image as SanityImage } from "sanity";
 interface CasinoCardProps {
   name: string;
   slug: { current: string };
-  logo: SanityImage;
+  logo?: SanityImage;
   rating: number;
   description: string;
   bonusTitle?: string;
