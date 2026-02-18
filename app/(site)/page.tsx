@@ -85,6 +85,25 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+
+      {/* Slots Bonuses Section */}
+      <section className="mx-auto max-w-7xl px-4 py-24">
+        <div className="mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
+            הבונוסים הטובים ביותר למכונות מזל
+          </h2>
+          <div className="w-16 h-1 bg-accent rounded-full" />
+        </div>
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-slate-700 rounded mb-4 flex items-center justify-center text-4xl">💎</div><p className="font-bold">Diamond</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-yellow-400 rounded mb-4 flex items-center justify-center text-4xl">🏆</div><p className="font-bold">Golden</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-black rounded mb-4 flex items-center justify-center text-4xl">⚡</div><p className="font-bold">Lucky</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-purple-900 rounded mb-4 flex items-center justify-center text-4xl">🎰</div><p className="font-bold">Monte</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-slate-800 rounded mb-4 flex items-center justify-center text-4xl">🎯</div><p className="font-bold">Play</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+          <div className="rounded-2xl border border-border-glass bg-card p-6"><div className="h-24 bg-red-500 rounded mb-4 flex items-center justify-center text-4xl">👑</div><p className="font-bold">Pharaoh</p><button className="w-full mt-3 bg-accent text-white py-1 rounded text-sm">קבל בונוס</button></div>
+        </div>
+      </section>
     </>
   );
 }
