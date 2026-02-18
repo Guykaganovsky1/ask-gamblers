@@ -61,20 +61,20 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       {/* Hero Section with Background Image */}
       {post.featuredImage && (
-        <div className="relative min-h-[400px] w-full overflow-hidden">
+        <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden bg-gradient-to-b from-card to-background">
           <Image
-            src={urlFor(post.featuredImage).width(1400).height(600).url()}
+            src={urlFor(post.featuredImage).width(1400).url()}
             alt={post.title}
             fill
-            className="absolute inset-0 object-cover"
+            className="object-cover opacity-50"
             priority
           />
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
 
           {/* Hero Content */}
-          <div className="relative z-10 flex items-end h-full px-4 py-16 md:py-24">
-            <div className="max-w-3xl">
+          <div className="absolute inset-0 flex items-end px-4 py-16 md:py-24">
+            <div className="max-w-3xl w-full">
               {/* Category Badge */}
               {post.categories?.length > 0 && (
                 <div className="mb-6">
