@@ -10,7 +10,6 @@ import { SoftwareProviderCard } from "@/components/ui/software-provider-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { CasinoCard } from "@/components/ui/casino-card";
-import { BonusCard } from "@/components/ui/bonus-card";
 
 export const revalidate = 60;
 
@@ -33,6 +32,47 @@ export default async function HomePage() {
 
   return (
     <>
+      <style>{`
+        @keyframes bonusButtonShine {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          90% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+
+        .bonus-button-shine {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.4) 25%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0.4) 75%,
+            transparent 100%
+          );
+          animation: bonusButtonShine 3s ease-in-out infinite;
+          width: 200%;
+          pointer-events: none;
+          border-radius: inherit;
+        }
+      `}</style>
       <Hero />
       <StatsBar />
 
@@ -88,7 +128,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-slate-700 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">💎</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Diamond</h3><p className="text-xs text-text-muted">100% bonus</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
           <div className="group relative h-full">
@@ -96,7 +136,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-yellow-400 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🏆</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Golden</h3><p className="text-xs text-text-muted">+50 spins</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
           <div className="group relative h-full">
@@ -104,7 +144,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-black rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">⚡</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Lucky</h3><p className="text-xs text-text-muted">Up to $500</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
           <div className="group relative h-full">
@@ -112,7 +152,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-purple-900 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🎰</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Monte</h3><p className="text-xs text-text-muted">+200 spins</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
           <div className="group relative h-full">
@@ -120,7 +160,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-slate-800 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">🎯</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Play</h3><p className="text-xs text-text-muted">+100% bonus</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
           <div className="group relative h-full">
@@ -128,7 +168,7 @@ export default async function HomePage() {
             <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
               <div className="h-24 w-32 bg-red-500 rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300">👑</div>
               <div className="flex flex-col gap-1 flex-1 justify-center"><h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">Pharaoh</h3><p className="text-xs text-text-muted">+free spins</p></div>
-              <button className="w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all">קבל בונוס</button>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden"><div className="bonus-button-shine" /><span className="relative z-10">קבל בונוס</span></button>
             </div>
           </div>
         </div>
@@ -150,63 +190,3 @@ export default async function HomePage() {
     </>
   );
 }
-
-      {/* Slots Bonuses Section */}
-      <section className="mx-auto max-w-7xl px-4 py-24">
-        <div className="mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
-            הבונוסים הטובים ביותר למכונות מזל
-          </h2>
-          <div className="w-16 h-1 bg-accent rounded-full" />
-        </div>
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <BonusCard
-            index={0}
-            casino="Diamond Casino"
-            bonus="Get 100% up to $100 + $88 no deposit"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-slate-700"
-            icon="💎"
-          />
-          <BonusCard
-            index={1}
-            casino="Golden Casino"
-            bonus="Get 100% up to $150 + 50 bonus spins"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-yellow-400"
-            icon="🏆"
-          />
-          <BonusCard
-            index={2}
-            casino="Lucky Casino"
-            bonus="Up to $500 bonus + 50 bonus spins"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-black"
-            icon="⚡"
-          />
-          <BonusCard
-            index={3}
-            casino="Monte Casino"
-            bonus="Slots Casino: 100% up to $100 + 200 spins"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-purple-900"
-            icon="🎰"
-          />
-          <BonusCard
-            index={4}
-            casino="Play Casino"
-            bonus="Get 10 no deposit spins + 100% up to $200"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-slate-800"
-            icon="🎯"
-          />
-          <BonusCard
-            index={5}
-            casino="Pharaoh Casino"
-            bonus="Claim a 100% deposit bonus up to $250 + free spins"
-            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
-            color="bg-red-500"
-            icon="👑"
-          />
-        </div>
-      </section>
