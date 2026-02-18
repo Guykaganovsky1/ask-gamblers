@@ -82,7 +82,7 @@ export default async function CategoryPage({ params }: Props) {
               </h2>
               <div className="w-16 h-1 bg-accent rounded-full" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {category.casinos.map((casino, i) => (
                 <CasinoCard key={casino._id} {...casino} index={i} />
               ))}
@@ -99,7 +99,7 @@ export default async function CategoryPage({ params }: Props) {
               </h2>
               <div className="w-16 h-1 bg-accent rounded-full" />
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {category.posts.map((post, i) => (
                 <BlogCard key={post._id} {...post} index={i} />
               ))}
