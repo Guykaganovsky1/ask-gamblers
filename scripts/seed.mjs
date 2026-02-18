@@ -140,6 +140,24 @@ async function seed() {
       cons: ["דרישות הימור גבוהות"],
       categories: [{ _type: "reference", _ref: "cat-slots", _key: "c1" }],
     },
+    {
+      _id: "casino-royalpanda",
+      _type: "casino",
+      name: "Royal Panda",
+      slug: { _type: "slug", current: "royal-panda" },
+      rating: 4,
+      description: "קזינו מהימן עם חוויה מעולה, מבחר רחב של משחקי אמת וקזינו חי, ותמיכה מפורסמת בשחקנים מישראל.",
+      bonusTitle: "בונוס הצטרפות",
+      bonusAmount: "₪600",
+      wageringRequirement: "x35",
+      affiliateLink: "https://example.com/royalpanda",
+      featured: true,
+      clicks: 0,
+      pros: ["תמיכה מעולה לישראליים", "קזינו חי איכותי", "משחקים מעודכנים"],
+      cons: ["בונוס סטנדרטי"],
+      categories: [{ _type: "reference", _ref: "cat-live", _key: "c1" }, { _type: "reference", _ref: "cat-slots", _key: "c2" }],
+    },
+
   ];
 
   for (const casino of casinos) {
