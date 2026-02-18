@@ -32,23 +32,23 @@ export default async function HomePage() {
       <StatsBar />
 
       {casinos.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-20">
+        <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>קזינו מומלצים</SectionHeading>
-          <div className="mt-10 grid gap-4">
+          <div className="mt-12 grid gap-5">
             {casinos.map((casino: any, i: number) => (
               <CasinoCard key={casino._id} {...casino} index={i} />
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <Button href="/casinos" variant="outline">כל הקזינו ←</Button>
+          <div className="mt-12 text-center">
+            <Button href="/casinos" variant="outline">צפו בכל הקזינו</Button>
           </div>
         </section>
       )}
 
       {categories.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-20">
+        <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>קטגוריות</SectionHeading>
-          <div className="mt-10 grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {categories.map((cat: any, i: number) => (
               <CategoryCard key={cat._id} {...cat} index={i} />
             ))}
@@ -57,15 +57,15 @@ export default async function HomePage() {
       )}
 
       {posts.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-20">
+        <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>מאמרים אחרונים</SectionHeading>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post: any, i: number) => (
               <BlogCard key={post._id} {...post} index={i} />
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <Button href="/blog" variant="outline">כל המאמרים ←</Button>
+          <div className="mt-12 text-center">
+            <Button href="/blog" variant="outline">צפו בכל המאמרים</Button>
           </div>
         </section>
       )}

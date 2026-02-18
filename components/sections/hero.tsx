@@ -46,10 +46,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-8 flex gap-4"
+            className="mt-8 flex flex-col sm:flex-row gap-4"
           >
-            <Button href="/blog" variant="outline">קראו מדריכי אסטרטגיה</Button>
-            <Button href="/casinos">צרו קשר</Button>
+            <Button href="/casinos" className="sm:flex-1">הרשמו עכשיו — בחינם</Button>
+            <Button href="/blog" variant="outline" className="sm:flex-1">קראו מדריכים</Button>
           </motion.div>
         </div>
       </div>
