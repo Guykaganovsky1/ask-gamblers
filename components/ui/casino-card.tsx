@@ -28,50 +28,77 @@ export function CasinoCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ y: -4, boxShadow: "0 0 30px rgba(155,81,224,0.15)" }}
-      className="group relative overflow-hidden rounded-2xl border border-border-card bg-card-light/80 backdrop-blur-md"
+      className="group h-full"
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-      <div className="relative z-10 flex items-center gap-4 p-5">
-        {/* Logo */}
-        <div className="relative flex h-16 w-24 shrink-0 items-center justify-center">
-          {logo ? (
-            <Image
-              src={urlFor(logo).width(192).height(128).url()}
-              alt={name}
-              fill
-              className="object-contain"
-            />
-          ) : (
-            <span className="font-heading text-sm font-bold text-text-muted">{name}</span>
-          )}
-        </div>
+      <div className="relative h-full overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-        {/* Info */}
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <h3 className="font-heading text-lg font-bold">{name}</h3>
-          <StarRating rating={rating} size="sm" />
-          <p className="text-xs text-text-muted line-clamp-1">{description}</p>
-        </div>
-
-        {/* Bonus */}
-        {bonusAmount && (
-          <div className="hidden shrink-0 text-center sm:block">
-            <p className="text-[11px] text-text-muted">{bonusTitle}</p>
-            <p className="font-heading text-xl font-black text-accent">
-              <AnimatedCounter value={bonusAmount} />
-            </p>
+        <div className="relative z-10 flex h-full flex-col gap-5 p-6">
+          {/* Logo Section */}
+          <div className="flex items-center justify-center rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 py-4">
+            <div className="relative h-20 w-32">
+              {logo ? (
+                <Image
+                  src={urlFor(logo).width(256).height(160).url()}
+                  alt={name}
+                  fill
+                  className="object-contain"
+                />
+              ) : (
+                <span className="absolute inset-0 flex items-center justify-center font-heading text-sm font-bold text-text-muted">
+                  {name}
+                </span>
+              )}
+            </div>
           </div>
-        )}
 
-        {/* CTA */}
-        <div className="flex shrink-0 flex-col gap-2">
-          <Button href={`/go/${slug.current}`} rel="nofollow sponsored" className="text-xs px-4 py-2">
-            שחק עכשיו
-          </Button>
-          <Button href={`/casinos/${slug.current}`} variant="outline" className="text-xs px-4 py-2">
-            ביקורת
-          </Button>
+          {/* Content Section */}
+          <div className="flex flex-1 flex-col gap-3">
+            {/* Title */}
+            <h3 className="font-heading text-xl font-black leading-tight text-text-primary">
+              {name}
+            </h3>
+
+            {/* Rating */}
+            <div className="flex items-center gap-2">
+              <StarRating rating={rating} size="sm" />
+              <span className="text-xs font-bold text-accent">{rating.toFixed(1)}</span>
+            </div>
+
+            {/* Description */}
+            <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
+              {description}
+            </p>
+
+            {/* Bonus Section */}
+            {bonusAmount && (
+              <div className="mt-2 rounded-lg bg-accent/10 border border-accent/20 px-4 py-3">
+                <p className="text-xs font-bold text-text-muted mb-1">{bonusTitle}</p>
+                <p className="font-heading text-2xl font-black text-accent">
+                  <AnimatedCounter value={bonusAmount} />
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col gap-2 pt-2">
+            <Button
+              href={`/go/${slug.current}`}
+              rel="nofollow sponsored"
+              className="w-full text-sm"
+            >
+              שחק עכשיו
+            </Button>
+            <Button
+              href={`/casinos/${slug.current}`}
+              variant="outline"
+              className="w-full text-sm"
+            >
+              קראו ביקורת
+            </Button>
+          </div>
         </div>
       </div>
     </motion.div>
