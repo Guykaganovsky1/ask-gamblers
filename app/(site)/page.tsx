@@ -10,6 +10,7 @@ import { SoftwareProviderCard } from "@/components/ui/software-provider-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { CasinoCard } from "@/components/ui/casino-card";
+import { BonusCard } from "@/components/ui/bonus-card";
 
 export const revalidate = 60;
 
@@ -87,3 +88,63 @@ export default async function HomePage() {
     </>
   );
 }
+
+      {/* Slots Bonuses Section */}
+      <section className="mx-auto max-w-7xl px-4 py-24">
+        <div className="mb-12">
+          <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
+            הבונוסים הטובים ביותר למכונות מזל
+          </h2>
+          <div className="w-16 h-1 bg-accent rounded-full" />
+        </div>
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <BonusCard
+            index={0}
+            casino="Diamond Casino"
+            bonus="Get 100% up to $100 + $88 no deposit"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-slate-700"
+            icon="💎"
+          />
+          <BonusCard
+            index={1}
+            casino="Golden Casino"
+            bonus="Get 100% up to $150 + 50 bonus spins"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-yellow-400"
+            icon="🏆"
+          />
+          <BonusCard
+            index={2}
+            casino="Lucky Casino"
+            bonus="Up to $500 bonus + 50 bonus spins"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-black"
+            icon="⚡"
+          />
+          <BonusCard
+            index={3}
+            casino="Monte Casino"
+            bonus="Slots Casino: 100% up to $100 + 200 spins"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-purple-900"
+            icon="🎰"
+          />
+          <BonusCard
+            index={4}
+            casino="Play Casino"
+            bonus="Get 10 no deposit spins + 100% up to $200"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-slate-800"
+            icon="🎯"
+          />
+          <BonusCard
+            index={5}
+            casino="Pharaoh Casino"
+            bonus="Claim a 100% deposit bonus up to $250 + free spins"
+            description="New players only. Welcome Bonus - 100% bonus on your first deposit up to £/$/€200 Unless otherwise stated. This bonus only applies for deposits of £/$/€10 or higher! All you need to do is just deposit the money in your website.com account and you will receive this bonus instantly!"
+            color="bg-red-500"
+            icon="👑"
+          />
+        </div>
+      </section>
