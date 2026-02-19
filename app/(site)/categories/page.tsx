@@ -18,8 +18,8 @@ export default async function CategoriesPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-16">
       <SectionHeading>קטגוריות</SectionHeading>
-      <div className="mt-10 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {categories.map((cat, i) => (
+      <div className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {categories.slice(0, 6).map((cat, i) => (
           <CategoryCard key={cat._id} name={cat.name} slug={cat.slug} description={cat.description} casinoCount={cat.casinoCount} postCount={cat.postCount} index={i} />
         ))}
       </div>

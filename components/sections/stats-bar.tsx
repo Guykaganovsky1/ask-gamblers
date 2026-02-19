@@ -12,7 +12,7 @@ const STATS = [
 export function StatsBar() {
   return (
     <section className="mx-auto max-w-4xl px-4 -mt-16 relative z-20">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}

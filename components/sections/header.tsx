@@ -3,15 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { MobileMenu } from "./mobile-menu";
+import { HeaderShine } from "@/components/ui/header-shine";
 
 const NAV_LINKS = [
   { href: "/", label: "דף הבית", highlight: true },
   { href: "/categories", label: "תכונות" },
-  { href: "/blog?cat=news", label: "חדשות מכונות מזל" },
+  { href: "/news", label: "חדשות" },
   { href: "/casinos", label: "בתי קזינו" },
   { href: "/blog?cat=games", label: "משחקים" },
   { href: "/blog?cat=bonuses", label: "בונוסים" },
-  { href: "/blog", label: "חדשות" },
+  { href: "/blog", label: "בלוג" },
 ];
 
 export function Header() {
@@ -60,8 +61,9 @@ export function Header() {
           border-radius: inherit;
         }
       `}</style>
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md">
-      <div className="flex w-full items-center justify-between px-4 py-4">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md relative overflow-hidden">
+        <HeaderShine />
+        <div className="relative z-10 flex w-full items-center justify-between px-4 py-4">
         <Link href="/" className="font-heading text-2xl font-black text-text-primary tracking-tight">
           Royal Spinz
         </Link>
@@ -93,9 +95,9 @@ export function Header() {
           <span className="block h-0.5 w-6 bg-text-primary" />
           <span className="block h-0.5 w-4 bg-text-primary" />
         </button>
-      </div>
+        </div>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={NAV_LINKS} />
+        <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={NAV_LINKS} />
     </header>
     </>
   );

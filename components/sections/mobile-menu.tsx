@@ -26,27 +26,43 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-50 flex h-full w-72 flex-col bg-card border-l border-border-glass p-8"
+            className="fixed top-0 right-0 z-50 flex h-full w-72 flex-col relative overflow-hidden"
           >
-            <button onClick={onClose} className="mb-8 self-start text-2xl text-text-muted hover:text-text-primary">
-              ✕
-            </button>
-            {links.map((link, i) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 + i * 0.05 }}
-              >
-                <Link
-                  href={link.href}
-                  onClick={onClose}
-                  className="block py-3 font-heading text-lg font-bold text-text-primary transition-colors hover:text-accent"
+            {/* Background gradient with blur */}
+            <div className="absolute inset-0 bg-gradient-to-b from-card-light/95 via-card/95 to-background/98 backdrop-blur-xl" />
+
+            {/* Decorative gradient border */}
+            <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-accent via-emerald-neon to-accent opacity-60" />
+
+            {/* Shine effect */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 opacity-20" style={{
+                background: 'linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.1) 50%, transparent 100%)',
+              }} />
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 flex h-full w-full flex-col p-8">
+              <button onClick={onClose} className="mb-8 self-start text-2xl text-text-muted hover:text-accent transition-colors">
+                ✕
+              </button>
+              {links.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05 }}
                 >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
+                  <Link
+                    href={link.href}
+                    onClick={onClose}
+                    className="block py-4 px-3 font-heading text-lg font-bold text-text-primary transition-all duration-200 hover:text-accent hover:bg-white/5 rounded-lg"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
           </motion.nav>
         </>
       )}
