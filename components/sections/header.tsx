@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { MobileMenu } from "./mobile-menu";
 import { HeaderShine } from "@/components/ui/header-shine";
+import { LuxuryLogo } from "@/components/ui/luxury-logo";
 
 const NAV_LINKS = [
   { href: "/", label: "דף הבית", highlight: true },
@@ -64,9 +65,7 @@ export function Header() {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md relative overflow-hidden">
         <HeaderShine />
         <div className="relative z-10 flex w-full items-center justify-between px-4 py-4">
-        <Link href="/" className="font-heading text-2xl font-black text-text-primary tracking-tight">
-          Royal Spinz
-        </Link>
+        <LuxuryLogo />
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (

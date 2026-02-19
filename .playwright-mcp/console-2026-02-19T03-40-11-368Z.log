@@ -1,0 +1,1087 @@
+[    1423ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+              <SegmentViewNode type="page" pagePath="(site)/pag...">
+                <SegmentTrieNode>
+                <HomePage>
+                  <style>
+                  <HomePage>
+                    <Hero>
+                      <section className="relative m...">
+                        <div className="absolute i...">
+                          <img>
+                          <ImagePreload>
+                          <FloatingParticles particleCount={50} particleSize={3}>
+                            <div className="absolute i...">
+                              <style>
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "28.839604217668256%"
+-                                 left: "77.9876%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.771888429484724px"
+-                                 width: "3.88809px"
++                                 height: "4.915233073495854px"
+-                                 height: "4.14997px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "8.157232241337592s"
++                                 animationDelay: "1.5885108784399855s"
++                                 opacity: 0.30145073333903905
+-                                 opacity: "0.613951"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "8.54525s"
+-                                 animation-delay: "1.98293s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "48.29117335275751%"
+-                                 left: "25.4552%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.40860575394992px"
+-                                 width: "3.04443px"
++                                 height: "4.11050642676535px"
+-                                 height: "4.11073px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "9.423317175622904s"
++                                 animationDelay: "0.16021970932161267s"
++                                 opacity: 0.2705015272245008
+-                                 opacity: "0.626332"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "11.5705s"
+-                                 animation-delay: "1.37665s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "40.08970072342996%"
+-                                 left: "79.9422%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.6811930323929527px"
+-                                 width: "3.5407px"
++                                 height: "3.088513685743064px"
+-                                 height: "3.59638px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "9.452169634066466s"
++                                 animationDelay: "1.947471673838588s"
++                                 opacity: 0.4589374225831415
+-                                 opacity: "0.272354"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "9.11158s"
+-                                 animation-delay: "1.91176s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "72.62509764885509%"
+-                                 left: "65.6645%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.174619079765901px"
+-                                 width: "4.94234px"
++                                 height: "4.341018776927878px"
+-                                 height: "3.14657px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "10.691172510248656s"
++                                 animationDelay: "1.5992049768845966s"
++                                 opacity: 0.5899983589299556
+-                                 opacity: "0.609177"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "9.96712s"
+-                                 animation-delay: "1.776s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "86.90060141673472%"
+-                                 left: "26.6907%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.527759998983763px"
+-                                 width: "4.12176px"
++                                 height: "4.57998562437186px"
+-                                 height: "3.00993px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "11.362477260533518s"
++                                 animationDelay: "0.726335464687011s"
++                                 opacity: 0.27456510507646836
+-                                 opacity: "0.634486"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "10.108s"
+-                                 animation-delay: "1.32512s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "45.205673192186836%"
+-                                 left: "29.9724%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.260683190530391px"
+-                                 width: "3.03361px"
++                                 height: "3.9539082563546613px"
+-                                 height: "3.00335px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "8.655738175234141s"
++                                 animationDelay: "0.04286324226902227s"
++                                 opacity: 0.6012044716664717
+-                                 opacity: "0.562802"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "9.60454s"
+-                                 animation-delay: "0.515565s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "4.9448703254936%"
+-                                 left: "86.778%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.5282678138721004px"
+-                                 width: "3.1088px"
++                                 height: "4.507861794756929px"
+-                                 height: "3.42924px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "9.215683815688953s"
++                                 animationDelay: "0.1925674524688945s"
++                                 opacity: 0.45181448376065364
+-                                 opacity: "0.322006"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "11.4466s"
+-                                 animation-delay: "1.84709s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "71.42226748192527%"
+-                                 left: "96.1973%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.404051560640115px"
+-                                 width: "4.0556px"
++                                 height: "4.413909037103503px"
+-                                 height: "3.37689px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "11.406212070581063s"
++                                 animationDelay: "0.6572057212256945s"
++                                 opacity: 0.4081251491939653
+-                                 opacity: "0.364005"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "12.4798s"
+-                                 animation-delay: "1.11452s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "66.11789517597686%"
+-                                 left: "88.2994%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.0401872619961496px"
+-                                 width: "4.93391px"
++                                 height: "4.337973042495963px"
+-                                 height: "3.97336px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "12.391091546999077s"
++                                 animationDelay: "0.42985203134731s"
++                                 opacity: 0.6967647428933902
+-                                 opacity: "0.349446"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "11.3733s"
+-                                 animation-delay: "0.447345s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "11.869300866530097%"
+-                                 left: "72.6705%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.753329625797136px"
+-                                 width: "3.24722px"
++                                 height: "3.818128448423801px"
+-                                 height: "4.4752px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "10.3049095154811s"
++                                 animationDelay: "1.857559604434471s"
++                                 opacity: 0.6815128784989797
+-                                 opacity: "0.354012"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "8.12501s"
+-                                 animation-delay: "0.640036s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "88.2352331617474%"
+-                                 left: "16.1646%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.018185343353012px"
+-                                 width: "4.24659px"
++                                 height: "3.379357583096245px"
+-                                 height: "4.46201px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "12.159641967090941s"
++                                 animationDelay: "1.1275042549499532s"
++                                 opacity: 0.6011122805791578
+-                                 opacity: "0.499295"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "11.3288s"
+-                                 animation-delay: "1.58159s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "66.2259391171162%"
+-                                 left: "21.7851%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.6732347067283877px"
+-                                 width: "3.22077px"
++                                 height: "3.999380054242878px"
+-                                 height: "3.21809px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "9.77829313996506s"
++                                 animationDelay: "1.812217716198858s"
++                                 opacity: 0.4977042537402124
+-                                 opacity: "0.501298"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "8.04135s"
+-                                 animation-delay: "1.60847s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "33.940973986090924%"
+-                                 left: "39.7137%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.656569324277103px"
+-                                 width: "4.49162px"
++                                 height: "3.48552155019963px"
+-                                 height: "3.41px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "10.23605295517623s"
++                                 animationDelay: "0.344387850353576s"
++                                 opacity: 0.45949909765227565
+-                                 opacity: "0.272793"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "13.1497s"
+-                                 animation-delay: "1.26349s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "25.53328260727149%"
+-                                 left: "39.844%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.2961370850246414px"
+-                                 width: "4.8456px"
++                                 height: "4.099237641304807px"
+-                                 height: "4.12008px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "12.14365345088939s"
++                                 animationDelay: "1.281521341445573s"
++                                 opacity: 0.6288763659477954
+-                                 opacity: "0.3657"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "8.56553s"
+-                                 animation-delay: "1.05747s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "21.82881678454064%"
+-                                 left: "52.106%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.731186295071323px"
+-                                 width: "3.47695px"
++                                 height: "4.6637359030517px"
+-                                 height: "4.6221px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "10.482922432336872s"
++                                 animationDelay: "1.9026369073209282s"
++                                 opacity: 0.5127262092314967
+-                                 opacity: "0.532028"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "11.1122s"
+-                                 animation-delay: "0.178821s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "1.5299234179686705%"
+-                                 left: "98.72%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.243195406406446px"
+-                                 width: "4.92115px"
++                                 height: "3.9100448138741433px"
+-                                 height: "3.50195px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "9.303001419938747s"
++                                 animationDelay: "0.5408008390139689s"
++                                 opacity: 0.6710381541358532
+-                                 opacity: "0.246833"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "12.679s"
+-                                 animation-delay: "0.177628s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "90.21305373130097%"
+-                                 left: "85.0645%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.970265224233536px"
+-                                 width: "3.38525px"
++                                 height: "3.94368445542676px"
+-                                 height: "3.07233px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "12.272507274697169s"
++                                 animationDelay: "0.47210282944709636s"
++                                 opacity: 0.48647097059608135
+-                                 opacity: "0.467441"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "11.8737s"
+-                                 animation-delay: "1.76543s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "13.632975939736724%"
+-                                 left: "13.4593%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.2881973267634184px"
+-                                 width: "3.53473px"
++                                 height: "4.068457402426185px"
+-                                 height: "4.54772px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "11.085599041094099s"
++                                 animationDelay: "1.5693831976127965s"
++                                 opacity: 0.3329100805569279
+-                                 opacity: "0.261493"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "10.7466s"
+-                                 animation-delay: "1.27641s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "2.671810325390611%"
+-                                 left: "95.1152%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.1231606304679653px"
+-                                 width: "4.14022px"
++                                 height: "4.1767644279979335px"
+-                                 height: "4.69735px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "8.199376757268395s"
++                                 animationDelay: "0.2684750729265839s"
++                                 opacity: 0.6346644481557402
+-                                 opacity: "0.633265"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "13.5332s"
+-                                 animation-delay: "0.439125s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "13.904307840139008%"
+-                                 left: "45.9233%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.272549942850172px"
+-                                 width: "4.0491px"
++                                 height: "3.5299213606681574px"
+-                                 height: "4.82235px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "8.924986715845675s"
++                                 animationDelay: "0.8879912608628628s"
++                                 opacity: 0.2271004804092347
+-                                 opacity: "0.367288"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "12.5786s"
+-                                 animation-delay: "1.79237s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "82.73023412358161%"
+-                                 left: "9.70048%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.7170721090728804px"
+-                                 width: "3.06788px"
++                                 height: "4.657817392171541px"
+-                                 height: "4.55137px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "11.62271816657153s"
++                                 animationDelay: "1.165224745156652s"
++                                 opacity: 0.6465992833134595
+-                                 opacity: "0.525201"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "10.8863s"
+-                                 animation-delay: "0.351858s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "20.540477550761192%"
+-                                 left: "21.2323%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.2271655871755147px"
+-                                 width: "4.83574px"
++                                 height: "3.430987927416279px"
+-                                 height: "3.16821px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "12.103987668179844s"
++                                 animationDelay: "1.0482569846719603s"
++                                 opacity: 0.6768817782884631
+-                                 opacity: "0.665791"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "11.5704s"
+-                                 animation-delay: "1.81446s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "66.01239349709473%"
+-                                 left: "64.0119%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.0798285654039192px"
+-                                 width: "4.45514px"
++                                 height: "4.037937965785719px"
+-                                 height: "3.04634px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "9.827064246623173s"
++                                 animationDelay: "0.026793851904743926s"
++                                 opacity: 0.5208489936411936
+-                                 opacity: "0.615785"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "10.3651s"
+-                                 animation-delay: "0.575748s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "36.645749283447806%"
+-                                 left: "21.3848%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.02910847622528px"
+-                                 width: "3.39776px"
++                                 height: "4.286219068586049px"
+-                                 height: "4.60224px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "13.41127181458441s"
++                                 animationDelay: "0.9017005657027191s"
++                                 opacity: 0.3387615298423838
+-                                 opacity: "0.669265"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "9.97695s"
+-                                 animation-delay: "1.67098s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "55.4744015613925%"
+-                                 left: "10.8957%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.6565483291784426px"
+-                                 width: "3.50463px"
++                                 height: "3.3142062208588445px"
+-                                 height: "3.01227px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "8.952640372016292s"
++                                 animationDelay: "0.911677291842238s"
++                                 opacity: 0.570633119261102
+-                                 opacity: "0.633233"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "12.8992s"
+-                                 animation-delay: "1.0245s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "35.97839765448347%"
+-                                 left: "67.4919%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.8661654946949824px"
+-                                 width: "4.0822px"
++                                 height: "4.916773710771533px"
+-                                 height: "4.13322px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "12.296017043330316s"
++                                 animationDelay: "1.839050601189066s"
++                                 opacity: 0.43315018064486993
+-                                 opacity: "0.631791"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "13.9248s"
+-                                 animation-delay: "0.209659s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "67.68568955597144%"
+-                                 left: "8.37031%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.170720586777181px"
+-                                 width: "3.65503px"
++                                 height: "3.0854710275674506px"
+-                                 height: "3.5636px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "9.642045844621606s"
++                                 animationDelay: "0.8064756553559911s"
++                                 opacity: 0.6147317322733372
+-                                 opacity: "0.347631"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "13.605s"
+-                                 animation-delay: "0.835761s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "74.669455818226%"
+-                                 left: "10.8555%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.471707005119304px"
+-                                 width: "3.56857px"
++                                 height: "4.745895477518025px"
+-                                 height: "4.70858px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "11.445647541383622s"
++                                 animationDelay: "1.3906527499267158s"
++                                 opacity: 0.5526035960672838
+-                                 opacity: "0.457876"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "9.11491s"
+-                                 animation-delay: "0.00914534s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "75.71695050412703%"
+-                                 left: "29.861%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.168861993357667px"
+-                                 width: "4.98064px"
++                                 height: "4.595228339720234px"
+-                                 height: "4.77284px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "12.848549531275975s"
++                                 animationDelay: "0.25176177645275977s"
++                                 opacity: 0.6635547531903694
+-                                 opacity: "0.680646"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "10.8601s"
+-                                 animation-delay: "0.419621s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "86.99733323588194%"
+-                                 left: "62.5107%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.0193187063334825px"
+-                                 width: "3.83418px"
++                                 height: "4.884741424250766px"
+-                                 height: "3.79921px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "8.191192348666954s"
++                                 animationDelay: "1.359779420125775s"
++                                 opacity: 0.5416192977191334
+-                                 opacity: "0.258361"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "11.4927s"
+-                                 animation-delay: "0.654812s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "22.167498390248497%"
+-                                 left: "29.8947%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.757962933447689px"
+-                                 width: "3.59799px"
++                                 height: "3.9531876170641005px"
+-                                 height: "4.95196px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "8.975428073797485s"
++                                 animationDelay: "0.4706205870968636s"
++                                 opacity: 0.3937975440562468
+-                                 opacity: "0.416046"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "11.2616s"
+-                                 animation-delay: "1.81516s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "77.01421212137312%"
+-                                 left: "59.9546%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.278358786179945px"
+-                                 width: "4.01259px"
++                                 height: "3.221338212868147px"
+-                                 height: "4.21662px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "12.551137146199334s"
++                                 animationDelay: "1.1687615612334228s"
++                                 opacity: 0.6658431126872031
+-                                 opacity: "0.509535"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "11.0161s"
+-                                 animation-delay: "1.61452s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "78.7175778158176%"
+-                                 left: "8.61417%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.936606342318239px"
+-                                 width: "4.83049px"
++                                 height: "3.2882657076436224px"
+-                                 height: "4.68346px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "9.067515221281404s"
++                                 animationDelay: "1.2717307287137507s"
++                                 opacity: 0.20453736876136835
+-                                 opacity: "0.414937"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "13.0886s"
+-                                 animation-delay: "1.3966s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "25.752492458696217%"
+-                                 left: "51.779%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.058980953650608px"
+-                                 width: "3.00167px"
++                                 height: "4.658801822072495px"
+-                                 height: "4.97081px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "8.719944810127256s"
++                                 animationDelay: "1.6450072386252663s"
++                                 opacity: 0.5075130322647311
+-                                 opacity: "0.66042"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "10.1819s"
+-                                 animation-delay: "0.445666s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "21.523098182408063%"
+-                                 left: "39.8277%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.75278215426195px"
+-                                 width: "4.24777px"
++                                 height: "3.287997348317128px"
+-                                 height: "3.02273px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "10.255614777157152s"
++                                 animationDelay: "1.2678597039794954s"
++                                 opacity: 0.6063096666923242
+-                                 opacity: "0.568543"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "8.42249s"
+-                                 animation-delay: "0.843851s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "88.69897462595992%"
+-                                 left: "91.6854%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.2126205259297405px"
+-                                 width: "3.74728px"
++                                 height: "3.555737950795504px"
+-                                 height: "4.9477px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "8.041420035294694s"
++                                 animationDelay: "0.4753874114848671s"
++                                 opacity: 0.2102588369934792
+-                                 opacity: "0.341175"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "10.5343s"
+-                                 animation-delay: "0.98276s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "58.29150916041619%"
+-                                 left: "63.531%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.4770003834710606px"
+-                                 width: "4.28933px"
++                                 height: "3.5255982796966845px"
+-                                 height: "4.62982px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "13.180142414080837s"
++                                 animationDelay: "1.8904215376811964s"
++                                 opacity: 0.4869881048642236
+-                                 opacity: "0.604306"
+-                                 background-color: "rgb(212, 175, 55)"
+-                                 animation-duration: "11.3461s"
+-                                 animation-delay: "0.198218s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "66.70436128730292%"
+-                                 left: "83.8796%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.1561319775685455px"
+-                                 width: "3.33088px"
++                                 height: "4.716093953351627px"
+-                                 height: "4.93349px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "13.92591915353392s"
++                                 animationDelay: "0.24964953062846318s"
++                                 opacity: 0.21190717554367283
+-                                 opacity: "0.389456"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "8.69763s"
+-                                 animation-delay: "1.66605s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "66.05020261653415%"
+-                                 left: "38.025%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.411978311525335px"
+-                                 width: "3.37681px"
++                                 height: "3.7716228468201822px"
+-                                 height: "3.30624px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "8.061589477583992s"
++                                 animationDelay: "0.05573710439921831s"
++                                 opacity: 0.6076279333492542
+-                                 opacity: "0.604078"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "13.9169s"
+-                                 animation-delay: "0.274557s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "22.87743486827796%"
+-                                 left: "16.7334%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.234680271500638px"
+-                                 width: "4.87111px"
++                                 height: "3.7691478224355373px"
+-                                 height: "3.17487px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "13.988095163304322s"
++                                 animationDelay: "0.6329662550446908s"
++                                 opacity: 0.6813908084614038
+-                                 opacity: "0.550949"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "13.3397s"
+-                                 animation-delay: "0.992409s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "81.15616721281913%"
+-                                 left: "87.5439%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.055597439384794px"
+-                                 width: "4.80937px"
++                                 height: "4.6760484128282185px"
+-                                 height: "4.07577px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "8.228713608286984s"
++                                 animationDelay: "1.2073561542085522s"
++                                 opacity: 0.6678231552630483
+-                                 opacity: "0.239609"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "9.52563s"
+-                                 animation-delay: "1.66501s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "30.6344945654756%"
+-                                 left: "31.6327%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.057557451551401px"
+-                                 width: "4.03607px"
++                                 height: "4.145258498296869px"
+-                                 height: "3.32107px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "12.435362622743437s"
++                                 animationDelay: "0.30654091350529233s"
++                                 opacity: 0.4182303419232358
+-                                 opacity: "0.325786"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "12.4091s"
+-                                 animation-delay: "0.643913s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "52.81681518349093%"
+-                                 left: "93.8583%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.765350761074959px"
+-                                 width: "3.17793px"
++                                 height: "3.9303141809078896px"
+-                                 height: "4.26924px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "9.721469952323224s"
++                                 animationDelay: "0.5092412882898125s"
++                                 opacity: 0.4187115593887304
+-                                 opacity: "0.449652"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "13.7065s"
+-                                 animation-delay: "1.62054s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "96.42976531646474%"
+-                                 left: "80.7696%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.5042064869598546px"
+-                                 width: "4.74231px"
++                                 height: "3.7769001412298486px"
+-                                 height: "3.8241px"
++                                 backgroundColor: "#A855F7"
++                                 animationDuration: "11.065526799850186s"
++                                 animationDelay: "0.6637375821131701s"
++                                 opacity: 0.21267255179965655
+-                                 opacity: "0.278677"
+-                                 background-color: "rgb(0, 230, 118)"
+-                                 animation-duration: "12.8413s"
+-                                 animation-delay: "0.124124s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "12.746697917771865%"
+-                                 left: "7.30318%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.4151853317570575px"
+-                                 width: "3.80901px"
++                                 height: "3.805467212624377px"
+-                                 height: "3.00582px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "11.832740264462032s"
++                                 animationDelay: "0.09173704418625617s"
++                                 opacity: 0.5155489970094917
+-                                 opacity: "0.573337"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "9.34916s"
+-                                 animation-delay: "0.576002s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "34.76368926174729%"
+-                                 left: "84.9391%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.1953305946133455px"
+-                                 width: "4.00819px"
++                                 height: "4.376159209723058px"
+-                                 height: "3.42423px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "11.633049538156934s"
++                                 animationDelay: "0.5994871377080662s"
++                                 opacity: 0.6222726372949472
+-                                 opacity: "0.248711"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "10.0164s"
+-                                 animation-delay: "0.513092s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "97.30677376990131%"
+-                                 left: "58.7708%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.946483160995619px"
+-                                 width: "4.94129px"
++                                 height: "4.391556216862565px"
+-                                 height: "4.92703px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "9.914121322736893s"
++                                 animationDelay: "1.2467569087718628s"
++                                 opacity: 0.6136746304913241
+-                                 opacity: "0.505246"
+-                                 background-color: "rgb(168, 85, 247)"
+-                                 animation-duration: "10.3881s"
+-                                 animation-delay: "0.465787s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "3.1130516069518333%"
+-                                 left: "22.3961%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.954209813415617px"
+-                                 width: "3.83088px"
++                                 height: "3.396465575784989px"
+-                                 height: "4.19218px"
++                                 backgroundColor: "#D4AF37"
++                                 animationDuration: "11.569313681607765s"
++                                 animationDelay: "0.8192829896474938s"
++                                 opacity: 0.2624188878914356
+-                                 opacity: "0.40302"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "12.7027s"
+-                                 animation-delay: "1.26425s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "69.57362866196476%"
+-                                 left: "68.3769%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "4.0494152786403px"
+-                                 width: "4.36137px"
++                                 height: "4.503999076988064px"
+-                                 height: "3.60917px"
++                                 backgroundColor: "#FFE082"
++                                 animationDuration: "11.972146900856595s"
++                                 animationDelay: "0.45883667056814237s"
++                                 opacity: 0.3100618238248608
+-                                 opacity: "0.281762"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "8.73182s"
+-                                 animation-delay: "1.51996s"
+                                }}
+                              >
+                              <div
+                                className="particle"
+                                style={{
++                                 left: "65.02567895795755%"
+-                                 left: "93.3326%"
++                                 bottom: "-3px"
+-                                 bottom: "-3px"
++                                 width: "3.663340987185933px"
+-                                 width: "4.03278px"
++                                 height: "4.942766946037278px"
+-                                 height: "4.45452px"
++                                 backgroundColor: "#00E676"
++                                 animationDuration: "10.744435058362283s"
++                                 animationDelay: "1.5944493729097777s"
++                                 opacity: 0.6082726132496732
+-                                 opacity: "0.520324"
+-                                 background-color: "rgb(255, 224, 130)"
+-                                 animation-duration: "12.7739s"
+-                                 animation-delay: "0.0846114s"
+                                }}
+                              >
+                          ...
+                        ...
+                  ...
+              ...
+            ...
+ @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
