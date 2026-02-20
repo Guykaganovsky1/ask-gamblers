@@ -64,7 +64,7 @@ jobs:
 
       - name: Deploy .env
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no .env ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} "cat > ${{ secrets.CLOUDWAYS_PATH }}/.env" < .env
 
       - name: Start app
         run: |
