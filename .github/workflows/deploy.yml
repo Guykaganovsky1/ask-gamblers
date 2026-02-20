@@ -32,7 +32,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}" >> .env
+          echo "NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}" > .env
           echo "NEXT_PUBLIC_SANITY_DATASET=${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}" >> .env
           echo "NEXT_PUBLIC_SANITY_API_VERSION=${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}" >> .env
           echo "NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}" >> .env
@@ -40,23 +40,37 @@ jobs:
           echo "SANITY_REVALIDATE_SECRET=${{ secrets.SANITY_REVALIDATE_SECRET }}" >> .env
           echo "NODE_ENV=production" >> .env
 
-      - name: Deploy to Cloudways
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.CLOUDWAYS_HOST }}
-          username: ${{ secrets.CLOUDWAYS_USERNAME }}
-          password: ${{ secrets.CLOUDWAYS_PASSWORD }}
-          source: ".next/standalone/*,.next/static,public,.env"
-          target: ${{ secrets.CLOUDWAYS_PATH }}
-          strip_components: 0
+      - name: Deploy to server
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.CLOUDWAYS_HOST }} >> ~/.ssh/known_hosts
+          
+          rsync -avz --delete -e "sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no" \
+            .next/standalone/ ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/
+            
+          rsync -avz -e "sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no" \
+            .next/static/ ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/.next/static/
+            
+          rsync -avz -e "sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no" \
+            public/ ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/public/
+            
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} "cat > ${{ secrets.CLOUDWAYS_PATH }}/.env" < .env
 
-      - name: Restart PM2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.CLOUDWAYS_HOST }}
-          username: ${{ secrets.CLOUDWAYS_USERNAME }}
-          password: ${{ secrets.CLOUDWAYS_PASSWORD }}
-          script: |
+      - name: Start app
+        run: |
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} << 'ENDSSH'
             cd ${{ secrets.CLOUDWAYS_PATH }}
-            pm2 restart casino-raz || pm2 start server.js --name casino-raz
-            pm2 save
+            export PATH="$HOME/.local/bin:$PATH"
+            
+            # Install pm2 locally if not exists
+            if [ ! -f "node_modules/.bin/pm2" ]; then
+              npm install pm2 --save-dev
+            fi
+            
+            # Kill any existing node processes on port 3000
+            npx pm2 delete casino-raz 2>/dev/null || true
+            
+            # Start the app
+            npx pm2 start server.js --name casino-raz
+            npx pm2 save
+          ENDSSH
