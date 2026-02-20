@@ -43,24 +43,18 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
-      - name: Create required directories
-        run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} "mkdir -p ${{ secrets.CLOUDWAYS_PATH }}/.next/static ${{ secrets.CLOUDWAYS_PATH }}/public"
-
       - name: Deploy standalone
         run: |
           sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r .next/standalone/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/
         continue-on-error: true
 
-      - name: Deploy static
+      - name: Deploy static files (critical for CSS/JS)
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r .next/static/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/.next/static/
-        continue-on-error: true
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r .next/static ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/.next/
 
-      - name: Deploy public
+      - name: Deploy public folder
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r public/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/public/
-        continue-on-error: true
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r public ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/
 
       - name: Deploy .env
         run: |
