@@ -40,45 +40,52 @@ jobs:
           echo "SANITY_REVALIDATE_SECRET=${{ secrets.SANITY_REVALIDATE_SECRET }}" >> .env
           echo "NODE_ENV=production" >> .env
 
+      - name: Prepare deployment packages
+        run: |
+          tar czf standalone.tar.gz -C .next/standalone .
+          tar czf static.tar.gz -C .next/static .
+          tar czf public.tar.gz -C public .
+
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
-      - name: Create directories on server
+      - name: Upload deployment packages
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} "mkdir -p ${{ secrets.CLOUDWAYS_PATH }}/.next/static ${{ secrets.CLOUDWAYS_PATH }}/public"
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no standalone.tar.gz static.tar.gz public.tar.gz .env ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:~/
 
-      - name: Deploy standalone
-        run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r .next/standalone/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/
-        continue-on-error: true
-
-      - name: Deploy static files (critical for CSS/JS)
-        run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r .next/static/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/.next/static/
-
-      - name: Deploy public folder
-        run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -r public/* ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:${{ secrets.CLOUDWAYS_PATH }}/public/
-
-      - name: Deploy .env
-        run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} "cat > ${{ secrets.CLOUDWAYS_PATH }}/.env" < .env
-
-      - name: Start app
+      - name: Deploy and restart
         run: |
           sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} << 'ENDSSH'
-            cd ${{ secrets.CLOUDWAYS_PATH }}
+            APP_PATH="~/applications/pwnubhceem/public_html"
             
-            # Install pm2 locally if not exists
+            # Extract standalone
+            cd $APP_PATH
+            tar xzf ~/standalone.tar.gz
+            
+            # Extract static files
+            mkdir -p .next/static
+            cd .next/static
+            tar xzf ~/static.tar.gz
+            
+            # Extract public files
+            cd $APP_PATH
+            mkdir -p public
+            cd public
+            tar xzf ~/public.tar.gz
+            
+            # Copy .env
+            cp ~/.env $APP_PATH/.env
+            
+            # Install pm2 if needed and restart
+            cd $APP_PATH
             if [ ! -f "node_modules/.bin/pm2" ]; then
               npm install pm2 --save-dev
             fi
             
-            # Kill any existing node processes
-            pkill -f "node server.js" 2>/dev/null || true
-            
-            # Start the app with pm2
             npx pm2 delete casino-raz 2>/dev/null || true
             npx pm2 start server.js --name casino-raz
             npx pm2 save
+            
+            # Cleanup
+            rm -f ~/standalone.tar.gz ~/static.tar.gz ~/public.tar.gz ~/.env
           ENDSSH
