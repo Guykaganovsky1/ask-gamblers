@@ -19,7 +19,7 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ delay: index * 0.08 }}
       className="relative h-64"
     >
@@ -27,7 +27,7 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
 
       <Link
-        href={`/categories/${slug.current}`}
+        href={`/softwares/${slug.current}`}
         className="group relative flex h-full flex-col items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
       >
         {/* Icon - Fixed size at top */}

@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
         revalidatePath("/");
         break;
       case "category":
-        revalidatePath("/categories");
-        revalidatePath(`/categories/${body?.slug?.current}`);
+        revalidatePath("/softwares");
+        revalidatePath(`/softwares/${body?.slug?.current}`);
         revalidatePath("/");
         break;
       default:

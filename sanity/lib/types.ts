@@ -79,6 +79,7 @@ export interface Casino {
   name: string;
   slug: SanitySlug;
   logo?: SanityImage;
+  icon?: string;
   rating: number;
   description: string;
   bonusTitle?: string;

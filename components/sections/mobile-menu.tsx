@@ -6,7 +6,7 @@ import Link from "next/link";
 interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
-  links: { href: string; label: string }[];
+  links: { href: string; label: string; badge?: { text: string; bg: string } }[];
 }
 
 export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
@@ -26,7 +26,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-50 flex h-full w-72 flex-col relative overflow-hidden"
+            className="fixed top-0 right-0 z-[60] flex h-full w-72 flex-col overflow-hidden"
           >
             {/* Background gradient with blur */}
             <div className="absolute inset-0 bg-gradient-to-b from-card-light/95 via-card/95 to-background/98 backdrop-blur-xl" />
@@ -56,9 +56,17 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                   <Link
                     href={link.href}
                     onClick={onClose}
-                    className="block py-4 px-3 font-heading text-lg font-bold text-text-primary transition-all duration-200 hover:text-accent hover:bg-white/5 rounded-lg"
+                    className="flex items-center gap-3 py-4 px-3 font-heading text-lg font-bold text-text-primary transition-all duration-200 hover:text-accent hover:bg-white/5 rounded-lg"
                   >
                     {link.label}
+                    {link.badge && (
+                      <span
+                        className="text-[9px] font-extrabold px-2 py-0.5 rounded-full text-white leading-none"
+                        style={{ background: link.badge.bg }}
+                      >
+                        {link.badge.text}
+                      </span>
+                    )}
                   </Link>
                 </motion.div>
               ))}

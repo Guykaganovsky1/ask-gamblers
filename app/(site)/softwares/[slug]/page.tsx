@@ -5,6 +5,8 @@ import { CATEGORY_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { CategoryDetail } from "@/sanity/lib/types";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { BlogCard } from "@/components/ui/blog-card";
+import { PageHero } from "@/components/ui/page-hero";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
@@ -29,47 +31,12 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <>
-      {/* Professional Hero Section */}
-      <div className="w-full bg-gradient-to-b from-card to-background py-20 md:py-32">
-        <div className="mx-auto max-w-7xl px-4">
-          {/* Category Badge */}
-          <div className="mb-8">
-            <span className="inline-block rounded-full bg-accent/20 border border-accent/40 px-4 py-2 text-sm font-bold text-accent">
-              קטגוריה
-            </span>
-          </div>
-
-          {/* Title */}
-          <h1 className="font-heading text-5xl md:text-6xl font-black leading-tight text-text-primary mb-6">
-            {category.name}
-          </h1>
-
-          {/* Description */}
-          {category.description && (
-            <p className="text-lg text-text-secondary max-w-3xl leading-relaxed">
-              {category.description}
-            </p>
-          )}
-
-          {/* Stats */}
-          {((category.casinos && category.casinos.length > 0) || (category.posts && category.posts.length > 0)) && (
-            <div className="mt-10 flex gap-8">
-              {category.casinos && category.casinos.length > 0 && (
-                <div>
-                  <div className="text-3xl font-black text-accent">{category.casinos.length}</div>
-                  <div className="text-sm text-text-muted mt-1">קזינו מומלץ</div>
-                </div>
-              )}
-              {category.posts && category.posts.length > 0 && (
-                <div>
-                  <div className="text-3xl font-black text-accent">{category.posts.length}</div>
-                  <div className="text-sm text-text-muted mt-1">מאמרים</div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
+      <PageHero
+        title={category.name}
+        subtitle={category.description || `קזינו ומאמרים בקטגוריית ${category.name}`}
+        badge="קטגוריה"
+      />
+      <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "ספקי תוכנה", href: "/softwares" }, { label: category.name }]} />
 
       {/* Content Section */}
       <div className="mx-auto max-w-7xl px-4 py-20">

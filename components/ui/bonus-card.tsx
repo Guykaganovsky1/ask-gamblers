@@ -26,7 +26,7 @@ export function BonusCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ delay: index * 0.08, duration: 0.5 }}
       className="flex flex-col h-full rounded-2xl overflow-hidden border border-border-glass bg-card hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] transition-all duration-300"
     >

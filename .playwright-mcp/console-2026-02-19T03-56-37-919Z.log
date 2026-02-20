@@ -4376,3 +4376,178 @@ Import trace:
     ./app/(site)/layout.tsx
 
 https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7460191ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7460487ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7460526ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7460764ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7461801ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7461920ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7555121ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7556143ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7556269ms] [ERROR] ./components/sections/header.tsx:7:1
+Module not found: Can't resolve '@/components/ui/luxury-logo'
+   5 | import { MobileMenu } from "./mobile-menu";
+   6 | import { HeaderShine } from "@/components/ui/header-shine";
+>  7 | import { LuxuryLogo } from "@/components/ui/luxury-logo";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const NAV_LINKS = [
+  10 |   { href: "/", label: "דף הבית", highlight: true },
+
+Import map: aliased to relative './components/ui/luxury-logo' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/sections/header.tsx
+    ./app/(site)/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_f3530cac._.js:3127
+[ 7579740ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7580937ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7582135ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7583413ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7584617ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7589851ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7595047ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7600281ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7605518ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7610848ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7616189ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7621635ms] [ERROR] WebSocket connection to 'wss://succedaneous-euna-tiresomely.ngrok-free.dev/_next/webpack-hmr?id=kjOZu81bb90Kwz26bR-2f' failed: Error during WebSocket handshake: Unexpected response code: 502 @ https://succedaneous-euna-tiresomely.ngrok-free.dev/_next/static/chunks/node_modules_next_dist_client_17643121._.js:10878
+[ 7621901ms] [ERROR] Failed to load resource: the server responded with a status of 502 () @ https://succedaneous-euna-tiresomely.ngrok-free.dev/:0

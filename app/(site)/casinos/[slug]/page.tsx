@@ -9,6 +9,8 @@ import { casinoReviewJsonLd } from "@/lib/json-ld";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/ui/page-hero";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
@@ -32,6 +34,13 @@ export default async function CasinoReviewPage({ params }: Props) {
   if (!casino) notFound();
 
   return (
+    <>
+      <PageHero
+        title={casino.name}
+        subtitle={casino.description}
+        badge="ביקורת קזינו"
+      />
+      <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "בתי קזינו", href: "/casinos" }, { label: casino.name }]} />
     <div className="mx-auto max-w-4xl px-4 py-16">
       <div className="flex flex-col items-center gap-6 text-center">
         <div className="relative h-20 w-40">
@@ -44,7 +53,7 @@ export default async function CasinoReviewPage({ params }: Props) {
             />
           )}
         </div>
-        <h1 className="font-heading text-4xl font-black">{casino.name}</h1>
+        <h1 className="font-heading text-4xl md:text-5xl font-black">{casino.name}</h1>
         <StarRating rating={casino.rating} size="lg" />
       </div>
 
@@ -116,5 +125,6 @@ export default async function CasinoReviewPage({ params }: Props) {
         }}
       />
     </div>
+    </>
   );
 }

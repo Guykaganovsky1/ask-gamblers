@@ -7,7 +7,7 @@ import { Casino } from "@/sanity/lib/types";
 const FOOTER_LINKS = [
   { href: "/casinos", label: "קזינו" },
   { href: "/blog", label: "בלוג" },
-  { href: "/categories", label: "קטגוריות" },
+  { href: "/softwares", label: "ספקי תוכנה" },
 ];
 
 async function getTopCasinos() {

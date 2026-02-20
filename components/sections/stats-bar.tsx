@@ -18,7 +18,7 @@ export function StatsBar() {
             key={stat.label}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
             className="flex flex-col items-center gap-2 rounded-xl border border-border-card bg-card-light/80 backdrop-blur-sm p-6 text-center"
           >

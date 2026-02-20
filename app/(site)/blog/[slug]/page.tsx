@@ -7,6 +7,7 @@ import { POST_BY_SLUG_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries
 import { BlogPost, Casino, SanityImage } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { StarRating } from "@/components/ui/star-rating";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
@@ -103,6 +104,8 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "בלוג", href: "/blog" }, { label: post.title }]} />
 
       {/* Content Section */}
       <div className="mx-auto max-w-7xl px-4 py-16">

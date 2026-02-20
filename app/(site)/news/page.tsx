@@ -4,7 +4,11 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { POSTS_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
 import { BlogPost, Casino } from "@/sanity/lib/types";
+import { urlFor } from "@/sanity/lib/image";
 import { formatDate } from "@/lib/utils";
+import { StarRating } from "@/components/ui/star-rating";
+import { PageHero } from "@/components/ui/page-hero";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
@@ -31,22 +35,16 @@ async function getNewsData() {
 export default async function NewsPage() {
   const { posts, casinos } = await getNewsData();
   const recentPosts = posts.slice(0, 5);
-  const topCasinos = casinos.slice(0, 3);
+  const topCasinos = casinos.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="mx-auto max-w-7xl px-4 py-12">
-        <div className="mb-12">
-          <h1 className="font-heading text-4xl md:text-5xl font-black text-text-primary mb-4">
-            חדשות קזינו
-          </h1>
-          <div className="w-24 h-1 bg-accent rounded-full" />
-          <p className="text-text-muted mt-4 text-lg">
-            עדכוני חדשות, מדריכים וטיפים מהעולם של קזינו אונליין
-          </p>
-        </div>
-      </div>
+      <PageHero
+        title="תמיד צעד אחד לפני כולם"
+        subtitle="עדכונים שוטפים מעולם הקזינו — בונוסים חדשים, קזינוים חדשים וטיפים שלא תמצאו בשום מקום אחר"
+        badge="חדשות קזינו"
+      />
+      <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "חדשות" }]} />
 
       <div className="mx-auto max-w-7xl px-4 pb-20">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -62,7 +60,7 @@ export default async function NewsPage() {
                   <div className="relative h-48 overflow-hidden bg-gradient-to-br from-accent/20 to-transparent">
                     {post.featuredImage ? (
                       <Image
-                        src={post.featuredImage.url || `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${post.featuredImage.asset._ref.replace('image-', '').replace(/-(\w{4})$/, '.$1')}`}
+                        src={urlFor(post.featuredImage).url()}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
@@ -145,76 +143,134 @@ export default async function NewsPage() {
 
             {/* Recent News */}
             {recentPosts.length > 0 && (
-              <div className="rounded-2xl bg-card/50 border border-border-glass/30 p-6">
-                <h3 className="font-heading text-lg font-black text-text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 bg-accent rounded-full" />
-                  חדשות אחרונות
-                </h3>
-                <div className="space-y-4">
+              <div className="rounded-2xl bg-card/50 border border-border-glass/30 overflow-hidden">
+                {/* Header */}
+                <div className="px-5 py-4 border-b border-border-glass/20 flex items-center gap-2">
+                  <span className="text-accent text-lg">🔴</span>
+                  <h3 className="font-heading text-base font-black text-text-primary">
+                    Recent News
+                  </h3>
+                </div>
+
+                {/* News list */}
+                <div className="divide-y divide-border-glass/15">
                   {recentPosts.map((post) => (
-                    <div
+                    <Link
                       key={post._id}
-                      className="group flex gap-3 pb-4 border-b border-border-glass/20 last:border-b-0 last:pb-0 hover:opacity-70 transition-opacity"
+                      href={`/blog/${post.slug.current}`}
+                      className="flex gap-3 p-4 hover:bg-accent/5 transition-colors group"
                     >
-                      {post.featuredImage && (
-                        <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-gradient-to-br from-accent/20 to-transparent">
+                      {/* Thumbnail */}
+                      <div className="flex-shrink-0 w-[90px] h-[90px] rounded-lg overflow-hidden bg-gradient-to-br from-card-light to-card border border-border-glass/20">
+                        {post.featuredImage ? (
                           <Image
-                            src={post.featuredImage.url || `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${post.featuredImage.asset._ref.replace('image-', '').replace(/-(\w{4})$/, '.$1')}`}
+                            src={urlFor(post.featuredImage).url()}
                             alt={post.title}
-                            width={64}
-                            height={64}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            width={90}
+                            height={90}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <Link
-                          href={`/blog/${post.slug.current}`}
-                          className="font-heading text-sm font-bold text-text-primary hover:text-accent transition-colors line-clamp-2 block"
-                        >
-                          {post.title}
-                        </Link>
-                        <time className="text-xs text-text-muted/60 mt-1 block">
-                          {post.publishedAt
-                            ? formatDate(new Date(post.publishedAt))
-                            : "עכשיו"}
-                        </time>
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-3xl bg-gradient-to-br from-accent/10 to-accent/5">
+                            📰
+                          </div>
+                        )}
                       </div>
-                    </div>
+
+                      {/* Info */}
+                      <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+                        <p className="font-heading text-sm font-bold text-text-primary group-hover:text-accent transition-colors line-clamp-3 leading-snug">
+                          {post.title}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-2">
+                          <svg className="w-3 h-3 text-text-muted/50 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                          </svg>
+                          <time className="text-xs text-text-muted/60">
+                            {post.publishedAt
+                              ? formatDate(new Date(post.publishedAt))
+                              : "עכשיו"}
+                          </time>
+                        </div>
+                      </div>
+                    </Link>
                   ))}
+                </div>
+
+                {/* Footer */}
+                <div className="px-5 py-3 border-t border-border-glass/20 text-center">
+                  <Link
+                    href="/news"
+                    className="text-xs text-accent hover:text-accent-light font-bold transition-colors"
+                  >
+                    צפה בכל החדשות →
+                  </Link>
                 </div>
               </div>
             )}
 
-            {/* Top Rated Casinos */}
+            {/* New Casinos */}
             {topCasinos.length > 0 && (
-              <div className="rounded-2xl bg-card/50 border border-border-glass/30 p-6">
-                <h3 className="font-heading text-lg font-black text-text-primary mb-4 flex items-center gap-2">
-                  <span className="w-3 h-3 bg-accent rounded-full" />
-                  קזינוים מובחרים
-                </h3>
-                <div className="space-y-3">
+              <div className="rounded-2xl bg-card/50 border border-border-glass/30 overflow-hidden">
+                {/* Header */}
+                <div className="px-5 py-4 border-b border-border-glass/20 flex items-center gap-2">
+                  <span className="text-accent text-lg">💎</span>
+                  <h3 className="font-heading text-base font-black text-text-primary">
+                    New Casinos
+                  </h3>
+                </div>
+
+                {/* Casino list */}
+                <div className="divide-y divide-border-glass/15">
                   {topCasinos.map((casino) => (
-                    <div
+                    <Link
                       key={casino._id}
-                      className="flex gap-3 p-3 rounded-lg bg-background/50 hover:bg-background/80 transition-colors border border-border-glass/20"
+                      href={`/casinos/${casino.slug.current}`}
+                      className="flex gap-3 p-4 hover:bg-accent/5 transition-colors group"
                     >
-                      <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center text-2xl font-black">
-                        {casino.icon || "🎰"}
+                      {/* Logo */}
+                      <div className="flex-shrink-0 w-[72px] h-[72px] rounded-lg overflow-hidden bg-gradient-to-br from-card-light to-card border border-border-glass/20">
+                        {casino.logo ? (
+                          <Image
+                            src={urlFor(casino.logo).width(144).height(144).url()}
+                            alt={casino.name}
+                            width={72}
+                            height={72}
+                            className="w-full h-full object-contain p-1"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-2xl">
+                            🎰
+                          </div>
+                        )}
                       </div>
+
+                      {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-heading font-bold text-sm text-text-primary truncate">
+                        <h4 className="font-heading font-black text-sm text-text-primary group-hover:text-accent transition-colors truncate">
                           {casino.name}
                         </h4>
-                        <p className="text-xs text-text-muted/70 mt-1 line-clamp-1">
-                          ⭐⭐⭐⭐⭐
-                        </p>
-                        <p className="text-xs text-accent font-bold mt-1">
-                          בקר עכשיו →
+                        <div className="mt-0.5 mb-1.5" dir="ltr">
+                          <StarRating rating={casino.rating} size="sm" />
+                        </div>
+                        <p className="text-xs text-text-muted leading-relaxed line-clamp-2">
+                          {casino.bonusTitle && casino.bonusAmount
+                            ? `${casino.bonusTitle}: ${casino.bonusAmount}`
+                            : casino.description}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
+                </div>
+
+                {/* Footer link */}
+                <div className="px-5 py-3 border-t border-border-glass/20 text-center">
+                  <Link
+                    href="/casinos"
+                    className="text-xs text-accent hover:text-accent-light font-bold transition-colors"
+                  >
+                    צפה בכל הקזינו →
+                  </Link>
                 </div>
               </div>
             )}
