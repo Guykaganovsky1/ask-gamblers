@@ -6,18 +6,21 @@ const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   variable: "--font-heebo",
   display: "swap",
+  preload: true,
 });
 
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
   variable: "--font-assistant",
   display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
