@@ -3,58 +3,34 @@
 const CASINO_ICONS: Record<string, React.ReactNode> = {
   dice: (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <defs>
-        <linearGradient id="diceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#7C3AED" />
-        </linearGradient>
-      </defs>
-      <rect x="8" y="8" width="48" height="48" rx="10" fill="url(#diceGrad)" />
-      <circle cx="20" cy="20" r="4" fill="white" />
-      <circle cx="44" cy="20" r="4" fill="white" />
-      <circle cx="20" cy="44" r="4" fill="white" />
-      <circle cx="44" cy="44" r="4" fill="white" />
+      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="20" cy="20" r="4" fill="currentColor" />
+      <circle cx="44" cy="20" r="4" fill="currentColor" />
+      <circle cx="20" cy="44" r="4" fill="currentColor" />
+      <circle cx="44" cy="44" r="4" fill="currentColor" />
     </svg>
   ),
   "dice-2": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <defs>
-        <linearGradient id="diceGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#7C3AED" />
-        </linearGradient>
-      </defs>
-      <rect x="8" y="8" width="48" height="48" rx="10" fill="url(#diceGrad2)" />
-      <circle cx="32" cy="32" r="6" fill="white" />
+      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="32" cy="32" r="5" fill="currentColor" />
     </svg>
   ),
   "dice-3": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <defs>
-        <linearGradient id="diceGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#7C3AED" />
-        </linearGradient>
-      </defs>
-      <rect x="8" y="8" width="48" height="48" rx="10" fill="url(#diceGrad3)" />
-      <circle cx="18" cy="18" r="4" fill="white" />
-      <circle cx="32" cy="32" r="4" fill="white" />
-      <circle cx="46" cy="46" r="4" fill="white" />
+      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="18" cy="18" r="4" fill="currentColor" />
+      <circle cx="32" cy="32" r="4" fill="currentColor" />
+      <circle cx="46" cy="46" r="4" fill="currentColor" />
     </svg>
   ),
   "dice-4": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <defs>
-        <linearGradient id="diceGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#7C3AED" />
-        </linearGradient>
-      </defs>
-      <rect x="8" y="8" width="48" height="48" rx="10" fill="url(#diceGrad4)" />
-      <circle cx="18" cy="18" r="4" fill="white" />
-      <circle cx="46" cy="18" r="4" fill="white" />
-      <circle cx="18" cy="46" r="4" fill="white" />
-      <circle cx="46" cy="46" r="4" fill="white" />
+      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="18" cy="18" r="4" fill="currentColor" />
+      <circle cx="46" cy="18" r="4" fill="currentColor" />
+      <circle cx="18" cy="46" r="4" fill="currentColor" />
+      <circle cx="46" cy="46" r="4" fill="currentColor" />
     </svg>
   ),
   blackjack: (
