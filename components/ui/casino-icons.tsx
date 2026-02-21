@@ -3,34 +3,30 @@
 const CASINO_ICONS: Record<string, React.ReactNode> = {
   dice: (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="20" cy="20" r="4" fill="currentColor" />
-      <circle cx="44" cy="20" r="4" fill="currentColor" />
-      <circle cx="20" cy="44" r="4" fill="currentColor" />
-      <circle cx="44" cy="44" r="4" fill="currentColor" />
+      <circle cx="20" cy="20" r="5" fill="currentColor" />
+      <circle cx="44" cy="20" r="5" fill="currentColor" />
+      <circle cx="20" cy="44" r="5" fill="currentColor" />
+      <circle cx="44" cy="44" r="5" fill="currentColor" />
     </svg>
   ),
   "dice-2": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="32" cy="32" r="5" fill="currentColor" />
+      <circle cx="32" cy="32" r="6" fill="currentColor" />
     </svg>
   ),
   "dice-3": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="18" cy="18" r="4" fill="currentColor" />
-      <circle cx="32" cy="32" r="4" fill="currentColor" />
-      <circle cx="46" cy="46" r="4" fill="currentColor" />
+      <circle cx="18" cy="18" r="5" fill="currentColor" />
+      <circle cx="32" cy="32" r="5" fill="currentColor" />
+      <circle cx="46" cy="46" r="5" fill="currentColor" />
     </svg>
   ),
   "dice-4": (
     <svg viewBox="0 0 64 64" className="w-full h-full">
-      <rect x="10" y="10" width="44" height="44" rx="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="18" cy="18" r="4" fill="currentColor" />
-      <circle cx="46" cy="18" r="4" fill="currentColor" />
-      <circle cx="18" cy="46" r="4" fill="currentColor" />
-      <circle cx="46" cy="46" r="4" fill="currentColor" />
+      <circle cx="18" cy="18" r="5" fill="currentColor" />
+      <circle cx="46" cy="18" r="5" fill="currentColor" />
+      <circle cx="18" cy="46" r="5" fill="currentColor" />
+      <circle cx="46" cy="46" r="5" fill="currentColor" />
     </svg>
   ),
   blackjack: (
