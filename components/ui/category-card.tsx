@@ -15,6 +15,9 @@ interface CategoryCardProps {
 }
 
 export function CategoryCard({ name, slug, description, icon, casinoCount, postCount, index = 0 }: CategoryCardProps) {
+  const iconSlugs = ["slots", "poker", "blackjack", "sports", "baccarat", "video-poker"];
+  const iconSlug = icon || iconSlugs[index % iconSlugs.length];
+  
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -32,7 +35,7 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
       >
         {/* Icon - Fixed size at top */}
         <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-          <CasinoIcon slug={icon || slug.current} className="w-20 h-20" />
+          <CasinoIcon slug={iconSlug} className="w-20 h-20" />
         </div>
 
         {/* Center content - Takes available space */}
