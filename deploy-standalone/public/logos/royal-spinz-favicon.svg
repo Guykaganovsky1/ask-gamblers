@@ -1,0 +1,18 @@
+<!-- Royal Spinz — Favicon 32x32 (simplified for small sizes) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" shape-rendering="geometricPrecision">
+  <title>Royal Spinz</title>
+  <defs>
+    <linearGradient id="fGold" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#EDD97A"/>
+      <stop offset="100%" stop-color="#C9A84C"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="4" fill="#0D1B2A"/>
+  <!-- Simplified 3-peak crown scaled to 32px -->
+  <polygon
+    points="3,26 3,18 8,8 11,15 16,5 21,15 24,8 29,18 29,26"
+    fill="url(#fGold)"
+  />
+  <rect x="3" y="22" width="26" height="4" fill="#8B6914" opacity="0.5"/>
+  <circle cx="16" cy="4" r="2.5" fill="#F5EDD6"/>
+</svg>

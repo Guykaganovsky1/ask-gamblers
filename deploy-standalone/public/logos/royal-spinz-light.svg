@@ -1,0 +1,44 @@
+<!-- Royal Spinz — Reversed (Light Background) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" role="img" shape-rendering="geometricPrecision">
+  <title>Royal Spinz — Light Version</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@300&display=swap');
+  </style>
+  <defs>
+    <linearGradient id="goldLight" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="120" fill="#FFFFFF"/>
+  <g id="icon" transform="translate(18, 10)">
+    <polygon
+      points="0,74 0,56 14,30 23,48 40,20 57,48 66,30 80,56 80,74"
+      fill="url(#goldLight)"
+    />
+    <rect x="0" y="65" width="80" height="9" fill="#6B5010" opacity="0.4"/>
+    <line x1="0" y1="65" x2="80" y2="65" stroke="#C9A84C" stroke-width="0.8" opacity="0.8"/>
+    <circle cx="40" cy="17" r="5" fill="#8B6914" opacity="0.9"/>
+    <circle cx="14" cy="28" r="3.2" fill="#C9A84C" opacity="0.8"/>
+    <circle cx="66" cy="28" r="3.2" fill="#C9A84C" opacity="0.8"/>
+  </g>
+  <rect x="114" y="24" width="1" height="72" fill="#C9A84C" opacity="0.3"/>
+  <g id="wordmark">
+    <text
+      x="128" y="71"
+      font-family="'Cormorant Garamond', 'Times New Roman', Georgia, serif"
+      font-size="42"
+      font-weight="600"
+      letter-spacing="2.5"
+      fill="#0D1B2A"
+    >Royal Spinz</text>
+    <text
+      x="129" y="90"
+      font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif"
+      font-size="10"
+      font-weight="300"
+      letter-spacing="6"
+      fill="#C9A84C"
+    >PLAY SMART · WIN ROYAL</text>
+  </g>
+</svg>

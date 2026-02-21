@@ -22,6 +22,7 @@
 
 # Cloudways deployment
 deploy/
+deploy-standalone.zip
 
 # misc
 .DS_Store
