@@ -17,6 +17,7 @@ export function Hero() {
           fill
           className="object-cover object-center"
           priority
+          fetchPriority="high"
         />
         {/* Animation Layer 1: Floating Particles */}
         <FloatingParticles particleCount={50} particleSize={3} />
