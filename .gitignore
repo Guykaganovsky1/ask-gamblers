@@ -20,6 +20,9 @@
 # production
 /build
 
+# Cloudways deployment
+deploy/
+
 # misc
 .DS_Store
 *.pem

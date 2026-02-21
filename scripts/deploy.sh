@@ -2,9 +2,9 @@
 set -e
 
 # Config - edit these
-SERVER_USER="your_ssh_user"
-SERVER_HOST="your_server.cloudwaysapps.com"
-SERVER_PATH="/home/xxxxx/app"
+SERVER_USER="1553018"
+SERVER_HOST="phpstack-1553018-6228296.cloudwaysapps.com"
+SERVER_PATH="/home/1553018.cloudwaysapps.com/pwnubhceem"
 BRANCH="main"
 
 echo "Building..."
