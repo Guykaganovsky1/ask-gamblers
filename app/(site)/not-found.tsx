@@ -76,7 +76,7 @@ export default function NotFound() {
         </div>
 
         {/* Dice icon */}
-        <div className="text-5xl">🎲</div>
+        <div className="text-5xl">♠️</div>
 
         {/* Headline */}
         <h1 className="font-heading text-2xl md:text-3xl font-black text-text-primary">

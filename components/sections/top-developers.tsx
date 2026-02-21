@@ -20,7 +20,7 @@ const DEVELOPERS: Developer[] = [
   { name: "Playtech",        logo: "⚡", games: "700+", known: "Age of the Gods, Buffalo Blitz",     rtp: "95.9%", type: "slots" },
   { name: "Evolution",       logo: "📺", games: "200+", known: "Lightning Roulette, Crazy Time",     rtp: "97.3%", type: "tablegames" },
   { name: "Pragmatic Play",  logo: "🎰", games: "300+", known: "Gates of Olympus, Sweet Bonanza",    rtp: "96.5%", type: "newgames" },
-  { name: "IGT",             logo: "🎲", games: "600+", known: "Wheel of Fortune, Cleopatra",        rtp: "95.5%", type: "tablegames" },
+  { name: "IGT",             logo: "♠️", games: "600+", known: "Wheel of Fortune, Cleopatra",        rtp: "95.5%", type: "tablegames" },
   { name: "Play'n GO",       logo: "🃏", games: "250+", known: "Book of Dead, Reactoonz",            rtp: "96.2%", type: "newgames" },
   { name: "Ezugi",           logo: "🎱", games: "80+",  known: "Live Blackjack, Live Baccarat",      rtp: "98.1%", type: "tablegames" },
   { name: "Hacksaw Gaming",  logo: "🚀", games: "120+", known: "Chaos Crew, Stick'em",               rtp: "96.7%", type: "newgames" },

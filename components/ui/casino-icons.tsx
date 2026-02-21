@@ -84,7 +84,7 @@ export function CasinoIcon({ slug, className = "w-16 h-16" }: CasinoIconProps) {
   return (
     <div className={`${className} text-accent`}>
       {CASINO_ICONS[slug] || (
-        <div className="w-full h-full flex items-center justify-center text-4xl">🎲</div>
+        <div className="w-full h-full flex items-center justify-center text-4xl">♠️</div>
       )}
     </div>
   );
