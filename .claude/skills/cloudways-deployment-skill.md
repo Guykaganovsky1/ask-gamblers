@@ -1,126 +1,85 @@
 # Cloudways Node.js Deployment Skill
 
-## Purpose
-This skill defines the architecture and deployment workflow for running a Node.js application on a Cloudways Custom PHP Server using PM2 for process management and Apache for reverse proxying.
+## Credentials
+- **Server:** phpstack-1553018-6228296.cloudwaysapps.com
+- **User:** 1553018
+- **Path:** /home/1553018.cloudwaysapps.com/pwnubhceem
+- **SSH Key:** ~/.ssh/id_rsa (RSA fingerprint: SHA256:MgN+pDyvSIq1oHG5CN2ggwUMmZw0wPkws3GBxB+aVX4)
 
-## Architecture Specs
-- **Server Stack:** Apache/Nginx (Hybrid) + Node.js Runtime
-- **App Directory:** `/home/master/applications/[APP_FOLDER]/public_html/`
-- **Process Manager:** PM2 (Cluster Mode)
-- **Internal Port:** 3000 (Default)
-- **Edge Gateway:** .htaccess Reverse Proxy to 127.0.0.1:3000
+## Important: SSH Key Setup
+1. Add key to SSH agent before connecting:
+   ```bash
+   ssh-add ~/.ssh/id_rsa
+   ```
+2. Key must be added to Cloudways SSH Keys in Server Settings
 
-## Configuration Files
+## Deployment Steps
 
-### 1. PM2 Process Control (ecosystem.config.js)
-```javascript
-module.exports = {
-  apps: [{
-    name: "cloudways-node-app",
-    script: "./server.js",
-    instances: "max",
-    exec_mode: "cluster",
-    env_production: {
-      NODE_ENV: "production",
-      PORT: 3000
-    }
-  }]
-};
+### 1. Build locally
+```bash
+cd /Users/guykaganovsky/Documents/Projects/casino\ raz
+npm run build
 ```
 
-### 2. Reverse Proxy (.htaccess)
+### 2. Upload files via rsync
+```bash
+# Upload standalone app
+rsync -avz --delete \
+  --exclude 'node_modules' \
+  --exclude '.git' \
+  --exclude '.next/cache' \
+  --exclude '.env.local' \
+  -e "ssh -i ~/.ssh/id_rsa" \
+  .next/standalone/ \
+  1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/
+
+# Upload static files
+rsync -avz \
+  -e "ssh -i ~/.ssh/id_rsa" \
+  .next/static/ \
+  1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/.next/static/
+
+# Upload public folder
+rsync -avz \
+  -e "ssh -i ~/.ssh/id_rsa" \
+  public/ \
+  1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/public/
 ```
-DirectoryIndex disabled
-RewriteEngine On
-RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
-RewriteCond %{HTTP:Upgrade} websocket [NC]
-RewriteCond %{HTTP:Connection} upgrade [NC]
-RewriteRule .* ws://127.0.0.1:3000%{REQUEST_URI} [P,L]
+
+### 3. Restart app
+```bash
+ssh -i ~/.ssh/id_rsa 1553018@phpstack-1553018-6228296.cloudwaysapps.com \
+  "cd /home/1553018.cloudwaysapps.com/pwnubhceem && \
+   pkill -f 'node server.js' || true; \
+   nohup node server.js > /tmp/nextjs.log 2>&1 &"
 ```
 
-### 3. package.json Scripts
-```json
-"scripts": {
-  "start": "node server.js",
-  "prod:start": "pm2 start ecosystem.config.js --env production",
-  "prod:reload": "pm2 reload ecosystem.config.js --update-env",
-  "prod:stop": "pm2 stop ecosystem.config.js",
-  "prod:logs": "pm2 logs"
-}
+## Quick Deploy Script
+```bash
+#!/bin/bash
+set -e
+
+cd /Users/guykaganovsky/Documents/Projects/casino\ raz
+
+echo "Building..."
+npm run build
+
+echo "Uploading..."
+rsync -avz --delete --exclude 'node_modules' --exclude '.git' --exclude '.next/cache' --exclude '.env.local' -e "ssh -i ~/.ssh/id_rsa" .next/standalone/ 1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/
+rsync -avz -e "ssh -i ~/.ssh/id_rsa" .next/static/ 1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/.next/static/
+rsync -avz -e "ssh -i ~/.ssh/id_rsa" public/ 1553018@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/pwnubhceem/public/
+
+echo "Restarting..."
+ssh -i ~/.ssh/id_rsa 1553018@phpstack-1553018-6228296.cloudwaysapps.com "cd /home/1553018.cloudwaysapps.com/pwnubhceem && pkill -f 'node server.js' || true; nohup node server.js > /tmp/nextjs.log 2>&1 &"
+
+echo "Done!"
 ```
-
-## Deployment Workflow
-
-1. **Build locally:**
-   ```bash
-   npm run build
-   ```
-
-2. **Sync files** to Cloudways `public_html/` via rsync (include .next/standalone and .next/static):
-   ```bash
-   rsync -avz --delete \
-     --exclude 'node_modules' \
-     --exclude '.next/cache' \
-     -e "ssh -i ~/.ssh/cloudways" \
-     .next/standalone/ master@<server>:/home/master/applications/<app>/public_html/.next/standalone/
-   rsync -avz --delete \
-     -e "ssh -i ~/.ssh/cloudways" \
-     .next/static/ master@<server>:/home/master/applications/<app>/public_html/.next/static/
-   ```
-
-3. **SSH into server** and setup:
-   ```bash
-   # Create _next folder in public_html for Apache to serve static files
-   mkdir -p /home/master/applications/<app>/public_html/_next/static
-   cp -r /home/master/applications/<app>/public_html/.next/static/* /home/master/applications/<app>/public_html/_next/static/
-
-   # Copy public assets
-   cp -r /home/master/applications/<app>/public_html/.next/standalone/public/* /home/master/applications/<app>/public_html/
-
-   # Start Node.js server
-   cd /home/master/applications/<app>/public_html/.next/standalone
-   nohup node server.js > /tmp/nextjs.log 2>&1 &
-   ```
-
-4. **Create .htaccess** in public_html:
-   ```
-   RewriteEngine On
-   RewriteBase /
-   RewriteCond %{REQUEST_FILENAME} !-f
-   RewriteCond %{REQUEST_FILENAME} !-d
-   RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
-   ```
-
-5. **For future deployments**, create a deployment script:
-   ```bash
-   #!/bin/bash
-   # Deploy script - run locally
-   npm run build
-   
-   # Sync files
-   rsync -avz --delete --exclude 'node_modules' --exclude '.next/cache' -e "ssh -i ~/.ssh/cloudways" .next/standalone/ master@<server>:/home/master/applications/<app>/public_html/.next/standalone/
-   rsync -avz -e "ssh -i ~/.ssh/cloudways" .next/static/ master@<server>:/home/master/applications/<app>/public_html/.next/static/
-   
-   # SSH to server and restart
-   ssh -t master@<server> "
-     cp -r /home/master/applications/<app>/public_html/.next/static/* /home/master/applications/<app>/public_html/_next/static/
-     cp -r /home/master/applications/<app>/public_html/.next/standalone/public/* /home/master/applications/<app>/public_html/
-     pkill -f 'next-server' || true
-     cd /home/master/applications/<app>/public_html/.next/standalone
-     nohup node server.js > /tmp/nextjs.log 2>&1 &
-   "
-   ```
-
-## Known Constraints
-
-- **Varnish:** Must be DISABLED in Cloudways Application Settings
-- **Ports:** If 3000 occupied, use 3001+ in both ecosystem.config.js and .htaccess
-- **Permissions:** Files must be owned by the application's system user
-- **proxy_http module:** Not available on Cloudways by default - use static files copy approach instead
 
 ## Troubleshooting
+- **Permission denied**: Run `ssh-add ~/.ssh/id_rsa` first
+- **Connection timeout**: SSH port may be blocked - run commands locally in Terminal
+- **502 Bad Gateway**: Check if Node.js is running on server
+- **Static files 404**: Ensure .next/static is uploaded
 
-- 502 Bad Gateway: Check if Node.js is running (`netstat -tlnp | grep 3000`)
-- Static files 404: Ensure _next/static folder exists in public_html root (Apache can't proxy static files without proxy_http module)
-- Node won't start: Check /tmp/nextjs.log for errors
-- Homepage works but static 404: Copy .next/static to _next/static in public_html
+## Live URL
+https://phpstack-1553018-6228296.cloudwaysapps.com
