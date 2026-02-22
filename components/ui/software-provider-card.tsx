@@ -65,7 +65,7 @@ export function SoftwareProviderCard({
           whileTap={{ scale: 0.95 }}
           className="rounded-lg bg-accent hover:bg-accent-light px-6 py-2 font-heading font-bold text-sm text-white transition-all duration-200 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
         >
-          צפו בגיימס
+          צפו במשחקים
         </motion.button>
       </div>
     </motion.div>

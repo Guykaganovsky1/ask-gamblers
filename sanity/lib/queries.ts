@@ -140,3 +140,29 @@ export const CASINO_AFFILIATE_QUERY = groq`
     clicks
   }
 `;
+
+// Related posts query (posts in same categories)
+export const RELATED_POSTS_QUERY = groq`
+  *[_type == "post" && slug.current != $currentSlug && count(categories[@._ref in $categoryIds]) > 0] 
+  | order(publishedAt desc) [0...3] {
+    _id,
+    title,
+    slug,
+    featuredImage,
+    publishedAt,
+    author->{ name, avatar },
+    categories[]->{ _id, name, slug }
+  }
+`;
+
+// Adjacent posts for navigation (prev/next)
+export const ADJACENT_POSTS_QUERY = groq`
+  {
+    "prev": *[_type == "post" && publishedAt < $publishedAt] | order(publishedAt desc) [0] {
+      _id, title, slug
+    },
+    "next": *[_type == "post" && publishedAt > $publishedAt] | order(publishedAt asc) [0] {
+      _id, title, slug
+    }
+  }
+`;

@@ -1,18 +1,38 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
-import { POST_BY_SLUG_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
+import { 
+  POST_BY_SLUG_QUERY, 
+  FEATURED_CASINOS_QUERY, 
+  RELATED_POSTS_QUERY,
+  ADJACENT_POSTS_QUERY 
+} from "@/sanity/lib/queries";
 import { BlogPost, Casino, SanityImage } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { StarRating } from "@/components/ui/star-rating";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { BlogCard } from "@/components/ui/blog-card";
+import { Button } from "@/components/ui/button";
+import { SocialShare } from "@/components/ui/social-share";
 
 export const revalidate = 60;
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+interface AdjacentPost {
+  _id: string;
+  title: string;
+  slug: { current: string };
+}
+
+interface AdjacentPosts {
+  prev: AdjacentPost | null;
+  next: AdjacentPost | null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -40,9 +60,14 @@ const portableTextComponents = {
     ),
   },
   block: {
-    h2: ({ children }: { children?: React.ReactNode }) => <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>,
+    h2: ({ children }: { children?: React.ReactNode }) => (
+      <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>
+    ),
+    h3: ({ children }: { children?: React.ReactNode }) => (
+      <h3 className="mt-8 mb-3 font-heading text-xl font-bold text-text-primary">{children}</h3>
+    ),
     blockquote: ({ children }: { children?: React.ReactNode }) => (
-      <blockquote className="border-l-4 border-accent pl-6 py-2 my-8 italic text-text-secondary">
+      <blockquote className="border-r-4 border-accent pr-6 py-2 my-8 italic text-text-secondary bg-card-light/30 rounded-lg">
         {children}
       </blockquote>
     ),
@@ -58,67 +83,202 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  // Fetch related posts and adjacent posts
+  const categoryIds = post.categories?.map((c) => c._id) || [];
+  const [relatedPosts, adjacentPosts] = await Promise.all([
+    categoryIds.length > 0 
+      ? client.fetch<BlogPost[]>(RELATED_POSTS_QUERY, { 
+          currentSlug: slug, 
+          categoryIds 
+        })
+      : [],
+    post.publishedAt 
+      ? client.fetch<AdjacentPosts>(ADJACENT_POSTS_QUERY, { 
+          publishedAt: post.publishedAt 
+        })
+      : { prev: null, next: null },
+  ]);
+
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://casinoraz.co.il'}/blog/${slug}`;
+
   return (
     <>
-      {/* Hero Section with Background Image */}
-      {post.featuredImage && (
-        <div className="relative w-full h-[450px] md:h-[550px] overflow-hidden bg-gradient-to-b from-card to-background">
-          <Image
-            src={urlFor(post.featuredImage).width(1400).url()}
-            alt={post.title}
-            fill
-            className="object-cover opacity-50"
-            priority
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+      {/* SECTION 1: Hero - Centered */}
+      <div className="relative w-full h-[350px] md:h-[450px] overflow-hidden">
+        {/* Background - Image or Placeholder */}
+        {post.featuredImage ? (
+          <>
+            <Image
+              src={urlFor(post.featuredImage).width(1400).url()}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/70" />
+          </>
+        ) : (
+          /* Placeholder Gradient Background */
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-card to-background">
+            {/* Decorative Elements */}
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+            {/* Pattern Overlay */}
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }} />
+          </div>
+        )}
 
-          {/* Hero Content */}
-          <div className="absolute inset-0 flex items-end px-4 py-16 md:py-24">
-            <div className="max-w-3xl w-full">
-              {/* Category Badge */}
-              {post.categories && post.categories.length > 0 && (
-                <div className="mb-6">
-                  <span className="inline-block rounded-full bg-accent px-4 py-2 text-sm font-bold text-white">
-                    {post.categories[0].name}
-                  </span>
-                </div>
-              )}
-              {/* Title */}
-              <h1 className="font-heading text-4xl md:text-5xl font-black leading-tight text-text-primary mb-6">
-                {post.title}
-              </h1>
-              {/* Metadata */}
-              <div className="flex items-center gap-4 text-sm text-text-secondary">
-                {post.author && (
-                  <>
-                    <span>{post.author.name}</span>
-                    <span>•</span>
-                  </>
-                )}
-                {post.publishedAt && (
-                  <time>{new Date(post.publishedAt).toLocaleDateString("he-IL")}</time>
-                )}
+        {/* Hero Content - Centered */}
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="max-w-3xl w-full text-center">
+            {/* Category Badge */}
+            {post.categories && post.categories.length > 0 && (
+              <div className="mb-4">
+                <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-sm font-bold text-white">
+                  {post.categories[0].name}
+                </span>
               </div>
+            )}
+            {/* Title */}
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-white mb-6">
+              {post.title}
+            </h1>
+            {/* Metadata */}
+            <div className="flex items-center justify-center gap-4 text-sm text-white/80">
+              {post.author && (
+                <>
+                  <span className="font-medium">{post.author.name}</span>
+                  <span>•</span>
+                </>
+              )}
+              {post.publishedAt && (
+                <time>{new Date(post.publishedAt).toLocaleDateString("he-IL")}</time>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
 
+      {/* SECTION 2: Breadcrumb */}
       <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "בלוג", href: "/blog" }, { label: post.title }]} />
 
-      {/* Content Section */}
+      {/* SECTION 3: Main Content with Sidebar */}
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_340px]">
           {/* Main Content */}
           <article>
+            {/* Article Content */}
             <div className="prose prose-invert max-w-none">
               <style>{`
                 .prose p { margin-bottom: 1.5rem; line-height: 1.8; }
                 .prose strong { color: var(--color-text-primary); }
                 .prose em { color: var(--color-text-secondary); }
+                .prose ul { list-style-type: disc; padding-right: 1.5rem; margin-bottom: 1.5rem; }
+                .prose ol { list-style-type: decimal; padding-right: 1.5rem; margin-bottom: 1.5rem; }
+                .prose li { margin-bottom: 0.5rem; }
               `}</style>
               {post.body && <PortableText value={post.body} components={portableTextComponents} />}
+            </div>
+
+            {/* Categories/Tags Section */}
+            {post.categories && post.categories.length > 0 && (
+              <div className="mt-12 pt-8 border-t border-border-glass">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-sm font-bold text-text-secondary">קטגוריות:</span>
+                  {post.categories.map((category) => (
+                    <Link
+                      key={category._id}
+                      href={`/categories/${category.slug.current}`}
+                      className="px-4 py-2 rounded-full bg-card-light border border-border-glass text-sm text-text-secondary hover:border-accent/50 hover:text-accent transition-colors"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Social Share */}
+            <div className="mt-8 pt-8 border-t border-border-glass">
+              <SocialShare url={postUrl} title={post.title} />
+            </div>
+
+            {/* Author Box */}
+            {post.author && (
+              <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-card-light to-card border border-border-glass">
+                <div className="flex items-start gap-4">
+                  {/* Author Avatar */}
+                  {post.author.avatar ? (
+                    <div className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-accent/20">
+                      <Image
+                        src={urlFor(post.author.avatar).width(128).height(128).url()}
+                        alt={post.author.name}
+                        width={128}
+                        height={128}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    /* Avatar Placeholder */
+                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-accent to-accent-light flex items-center justify-center">
+                      <span className="text-2xl font-bold text-white">
+                        {post.author.name?.charAt(0) || '?'}
+                      </span>
+                    </div>
+                  )}
+                  {/* Author Info */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs text-accent font-bold">הכותב</span>
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-text-primary mb-2">
+                      {post.author.name}
+                    </h3>
+                    {post.author.bio && (
+                      <p className="text-sm text-text-secondary leading-relaxed">
+                        {post.author.bio}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Post Navigation (Prev/Next) */}
+            <div className="mt-12 pt-8 border-t border-border-glass">
+              <div className="grid gap-4 md:grid-cols-2">
+                {/* Previous Post */}
+                <div className={`${adjacentPosts.prev ? '' : 'invisible'}`}>
+                  <span className="text-xs text-text-muted mb-2 block">← הכתבה הקודמת</span>
+                  {adjacentPosts.prev && (
+                    <Link
+                      href={`/blog/${adjacentPosts.prev.slug.current}`}
+                      className="group block p-4 rounded-xl bg-card-light border border-border-glass hover:border-accent/50 transition-colors"
+                    >
+                      <h4 className="font-heading font-bold text-text-primary group-hover:text-accent transition-colors line-clamp-2">
+                        {adjacentPosts.prev.title}
+                      </h4>
+                    </Link>
+                  )}
+                </div>
+                {/* Next Post */}
+                <div className={`text-left ${adjacentPosts.next ? '' : 'invisible'}`}>
+                  <span className="text-xs text-text-muted mb-2 block">הכתבה הבאה →</span>
+                  {adjacentPosts.next && (
+                    <Link
+                      href={`/blog/${adjacentPosts.next.slug.current}`}
+                      className="group block p-4 rounded-xl bg-card-light border border-border-glass hover:border-accent/50 transition-colors"
+                    >
+                      <h4 className="font-heading font-bold text-text-primary group-hover:text-accent transition-colors line-clamp-2">
+                        {adjacentPosts.next.title}
+                      </h4>
+                    </Link>
+                  )}
+                </div>
+              </div>
             </div>
           </article>
 
@@ -155,10 +315,19 @@ export default async function BlogPostPage({ params }: Props) {
                           <div className="mt-1 flex items-center gap-1">
                             <StarRating rating={casino.rating} size="sm" />
                           </div>
-                          {casino.description && (
-                            <p className="mt-2 text-xs text-text-muted line-clamp-2">{casino.description}</p>
+                          {casino.bonusTitle && casino.bonusAmount && (
+                            <p className="mt-2 text-xs text-accent font-medium">
+                              {casino.bonusTitle} {casino.bonusAmount}
+                            </p>
                           )}
                         </div>
+                      </div>
+                      
+                      {/* CTA Button */}
+                      <div className="mt-3">
+                        <Button href={`/go/${casino.slug.current}`} variant="primary" className="w-full text-xs py-2">
+                          שחק עכשיו
+                        </Button>
                       </div>
                     </div>
                   ))}
@@ -168,6 +337,36 @@ export default async function BlogPostPage({ params }: Props) {
           </aside>
         </div>
       </div>
+
+      {/* SECTION 4: Related Posts */}
+      {relatedPosts.length > 0 && (
+        <section className="py-16 bg-card/50">
+          <div className="mx-auto max-w-7xl px-4">
+            {/* Section Title */}
+            <div className="flex items-center gap-2 mb-10">
+              <div className="w-1 h-8 bg-accent rounded" />
+              <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
+                כתבות קשורות
+              </h2>
+            </div>
+
+            {/* Posts Grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((relatedPost, index) => (
+                <BlogCard
+                  key={relatedPost._id}
+                  title={relatedPost.title}
+                  slug={relatedPost.slug}
+                  featuredImage={relatedPost.featuredImage}
+                  publishedAt={relatedPost.publishedAt}
+                  author={relatedPost.author}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }
