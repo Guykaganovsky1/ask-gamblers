@@ -7,7 +7,7 @@
 export const SECTION_COPY = {
   // Casino section
   casinos: {
-    heading: 'קזינו המובטחים שלנו',
+    heading: '10 קזינו אונליין מאושרים — נבדקו, דורגו ואושרו',
     subheading: 'בחרו מקזינו בדוקים ומדורגים',
     cta: 'גלו כל 25 הקזינו',
     description: 'כל קזינו בדוק, מדורג וממומלץ על ידי מומחים',
@@ -22,7 +22,7 @@ export const SECTION_COPY = {
 
   // Blog section
   blog: {
-    heading: 'סודות וטיפים שמשנים משחק',
+    heading: 'טיפים שמנצחים — המדריך השלם לשחקנים ישראלים 2026',
     subheading: 'למדו מחכמים של קזינו',
     cta: 'קראו כל המאמרים',
     description: 'אסטרטגיות, בונוסים וטיפים שנוצחים',

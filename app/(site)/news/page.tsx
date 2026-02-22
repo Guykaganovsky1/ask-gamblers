@@ -10,6 +10,17 @@ import { StarRating } from "@/components/ui/star-rating";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
+
+// Helper function to generate deterministic view counts from post IDs
+function viewsCount(id: string): number {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    const char = id.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash % 9000) + 1000;
+}
 export const revalidate = 60;
 
 export const metadata: Metadata = {
@@ -51,7 +62,7 @@ export default async function NewsPage() {
           {/* Main Content - Articles Grid */}
           <div className="lg:col-span-2">
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-              {posts.map((post, i) => (
+              {posts.map((post) => (
                 <article
                   key={post._id}
                   className="group flex flex-col rounded-2xl overflow-hidden bg-card/40 border border-border-glass/30 hover:border-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
@@ -88,7 +99,7 @@ export default async function NewsPage() {
                           : "עכשיו"}
                       </time>
                       <span>•</span>
-                      <span>👁️ {Math.floor(Math.random() * 10000)} צפיות</span>
+                      <span>👁️ {viewsCount(post._id)} צפיות</span>
                     </div>
 
                     <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors line-clamp-2">
