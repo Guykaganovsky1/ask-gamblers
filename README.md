@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Casino Raz - קזינו רז
 
-## Getting Started
+Hebrew RTL casino affiliate website built with Next.js 16, Sanity CMS, and Tailwind CSS.
 
-First, run the development server:
+## Quick Start
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Vercel (Recommended)
 
-## Learn More
+1. Connect GitHub repo to Vercel
+2. Add environment variables:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   - `NEXT_PUBLIC_SANITY_DATASET`
+   - `NEXT_PUBLIC_SANITY_API_VERSION`
+   - `NEXT_PUBLIC_SITE_URL`
+3. Deploy - auto-deploys on git push
 
-To learn more about Next.js, take a look at the following resources:
+### Cloudways (Node.js)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `.claude/skills/cloudways-deployment-readme.md` for detailed setup.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+- Next.js 16 (App Router)
+- Sanity v5 (Headless CMS)
+- Tailwind CSS v4
+- Framer Motion
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Troubleshooting & Common Issues
+
+If your application isn't loading or returns an error, follow this checklist in order.
+
+### 1. The "503 Service Unavailable" Error
+
+This usually means Apache is working, but it can't find your Node.js process on the specified port.
+
+- Check PM2 Status: `pm2 status`
+- Is it online? If stopped/errored, run `npm run prod:start`
+- Port Mismatch: Ensure PORT in ecosystem.config.js matches .htaccess (default 3000)
+
+### 2. The "Infinite Loading" or "Old Content" Issue
+
+Caused by Varnish Cache.
+
+- **Solution:** Cloudways App Settings → Varnish → Disable
+
+### 3. Port Conflicts
+
+Multiple Node apps need different ports.
+
+- Identify: `netstat -tulpn | grep LISTEN`
+- Change port to 3001+ in both ecosystem.config.js and .htaccess
+
+### 4. Permission Denied (EACCES)
+
+Files uploaded as root instead of app user.
+
+- **Fix:** `chown -R [username]:[username] *` in public_html
+
+## Log Inspection
+
+```bash
+pm2 logs                    # View all logs
+pm2 logs --err             # Errors only
+pm2 flush                  # Clear logs
+```
+
+## Error States
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| 503 Error | Node process down | `pm2 restart all` |
+| 404 Error | .htaccess missing | Re-upload .htaccess |
+| 502 Error | Port mismatch | Align ports in configs |
+| Login Loops | Varnish enabled | Disable Varnish |

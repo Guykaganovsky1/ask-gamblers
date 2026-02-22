@@ -93,4 +93,16 @@ SANITY_REVALIDATE_SECRET=<for webhook auth>
 
 ## Deployment
 
-Configured with `output: "standalone"` in `next.config.ts` for Node.js deployment on Cloudways.
+### Vercel (Recommended)
+1. Connect GitHub repo to Vercel
+2. Add environment variables in Vercel dashboard:
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   - `NEXT_PUBLIC_SANITY_DATASET`
+   - `NEXT_PUBLIC_SANITY_API_VERSION`
+   - `NEXT_PUBLIC_SITE_URL`
+3. Deploy - auto-deploys on git push
+
+### Cloudways (Legacy)
+See `.claude/skills/cloudways-deployment-skill.md` for detailed Node.js + PM2 setup.
+
+Configured with `output: "standalone"` in `next.config.ts` for Node.js deployment.
