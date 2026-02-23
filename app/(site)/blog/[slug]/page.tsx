@@ -17,6 +17,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { BlogCard } from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
 import { SocialShare } from "@/components/ui/social-share";
+import { generateArticleSchema } from "@/lib/seo";
 
 export const revalidate = 60;
 
@@ -39,9 +40,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug });
   if (!post) return {};
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
   return {
     title: post.seoTitle || `${post.title} | קזינו רז`,
     description: post.seoDescription || "",
+    alternates: {
+      canonical: `${baseUrl}/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.seoTitle || `${post.title} | קזינו רז`,
+      description: post.seoDescription || "",
+      type: "article",
+      url: `${baseUrl}/blog/${slug}`,
+      publishedTime: post.publishedAt,
+      authors: post.author?.name ? [post.author.name] : undefined,
+    },
   };
 }
 
@@ -367,6 +380,31 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </section>
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateArticleSchema({
+              title: post.title,
+              slug: post.slug,
+              excerpt: post.seoDescription || post.excerpt,
+              publishedAt: post.publishedAt,
+              author: post.author
+                ? {
+                    name: post.author.name,
+                    image: post.author.avatar
+                      ? urlFor(post.author.avatar).width(128).height(128).url()
+                      : undefined,
+                  }
+                : undefined,
+              mainImage: post.featuredImage
+                ? urlFor(post.featuredImage).width(1200).url()
+                : undefined,
+              body: post.body,
+            })
+          ),
+        }}
+      />
     </>
   );
 }

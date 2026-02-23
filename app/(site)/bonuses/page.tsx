@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "בונוסים | קזינו רז",
-  description: "הבונוסים הטובים ביותר לקזינו אונליין - בחר את הבונוס המתאים לך",
+  description: "מצאו את הבונוסים הכי שווים לקזינו אונליין — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי — השוו הצעות, בחרו את הבונוס המושלם והתחילו לזכות עכשיו",
 };
 
 export default function BonusesPage() {

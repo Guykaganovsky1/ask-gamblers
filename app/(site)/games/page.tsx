@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "משחקים | קזינו רז",
-  description: "משחקים מהמפתחים המובילים בעולם - NetEnt, Microgaming, Playtech ועוד",
+  description: "גלו משחקי קזינו אונליין מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד עם גרפיקה מרהיבה וזכיות גדולות — מצאו את המשחק שלכם והתחילו לשחק עכשיו",
 };
 
 export default function GamesPage() {

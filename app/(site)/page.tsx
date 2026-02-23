@@ -1,97 +1,74 @@
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { client } from "@/sanity/lib/client";
-import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY
-} from "@/sanity/lib/queries";
+import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY } from "@/sanity/lib/queries";
 import { SECTION_COPY } from "@/config/copywriting-config";
 import { Casino, BlogPost, Category } from "@/sanity/lib/types";
 import { Hero } from "@/components/sections/hero";
-import { BonusCards } from "@/components/sections/bonus-cards";
 import { BlogCard } from "@/components/ui/blog-card";
 import { CategoryCard } from "@/components/ui/category-card";
-import { GamesShowcaseSection } from "@/components/sections/games-showcase-section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { LastUpdated } from "@/components/ui/last-updated";
-import { FAQSection } from "@/components/sections/faq-section";
-import { NotRecommendedSection } from "@/components/sections/not-recommended-section";
-import { PaymentMethodsSection } from "@/components/sections/payment-methods-section";
-import { PlayerRoadmapSection } from "@/components/sections/player-roadmap-section";
 import { SafeCasinosSection } from "@/components/sections/safe-casinos-section";
+
+const FAQSection = dynamic(
+  () => import("@/components/sections/faq-section").then((mod) => ({ default: mod.FAQSection })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
+
+const PaymentMethodsSection = dynamic(
+  () => import("@/components/sections/payment-methods-section").then((mod) => ({ default: mod.PaymentMethodsSection })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
+
+const PlayerRoadmapSection = dynamic(
+  () => import("@/components/sections/player-roadmap-section").then((mod) => ({ default: mod.PlayerRoadmapSection })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
+
+const GamesShowcaseSection = dynamic(
+  () => import("@/components/sections/games-showcase-section").then((mod) => ({ default: mod.GamesShowcaseSection })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
+
+const BonusCards = dynamic(
+  () => import("@/components/sections/bonus-cards").then((mod) => ({ default: mod.BonusCards })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
+
+const NotRecommendedSection = dynamic(
+  () => import("@/components/sections/not-recommended-section").then((mod) => ({ default: mod.NotRecommendedSection })),
+  { loading: () => <div className="min-h-[200px]" /> }
+);
 
 export const revalidate = 60;
 
 async function getHomeData() {
   try {
     const [casinos, posts, categories] = await Promise.all([
-  client.fetch<Casino[]>(FEATURED_CASINOS_QUERY),
-  client.fetch<BlogPost[]>(LATEST_POSTS_QUERY),
-  client.fetch<Category[]>(CATEGORIES_QUERY)
-  
-  ]);
+      client.fetch<Casino[]>(FEATURED_CASINOS_QUERY),
+      client.fetch<BlogPost[]>(LATEST_POSTS_QUERY),
+      client.fetch<Category[]>(CATEGORIES_QUERY)
+    ]);
     return { casinos: casinos ?? [], posts: posts ?? [], categories: categories ?? [] };
   } catch {
     return { casinos: [], posts: [], categories: [] };
   }
 }
 
-export default async function HomePage() {
+async function HomeContent() {
   const { casinos, posts, categories } = await getHomeData();
 
   return (
     <>
-      <style>{`
-        @keyframes bonusButtonShine {
-          0% {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.8;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          90% {
-            opacity: 0.8;
-          }
-          100% {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-        }
-
-        .bonus-button-shine {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.4) 25%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255,255, 0.4) 75%,
-            transparent 100%
-          );
-          animation: bonusButtonShine 3s ease-in-out infinite;
-          width: 200%;
-          pointer-events: none;
-          border-radius: inherit;
-        }
-      `}</style>
-      <Hero />
-      {/* <StatsBar /> */}
-
-      {/* Last Updated Badge */}
       <div className="mx-auto max-w-7xl px-4 pt-8">
         <LastUpdated />
       </div>
 
-      {/* Safe Casinos Section */}
       <SafeCasinosSection />
 
-      {/* Casinos Section */}
       {casinos.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.casinos.heading}</SectionHeading>
@@ -108,16 +85,12 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* Not Recommended Section */}
       <NotRecommendedSection />
 
-      {/* Player Roadmap Section */}
       <PlayerRoadmapSection />
 
-      {/* Payment Methods Section */}
       <PaymentMethodsSection />
 
-      {/* Categories Section */}
       {categories.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.categories.heading}</SectionHeading>
@@ -137,11 +110,8 @@ export default async function HomePage() {
         </section>
       )}
 
-
-      {/* Games Showcase Section */}
       <GamesShowcaseSection />
 
-      {/* Bonus Cards Section */}
       <section className="mx-auto max-w-7xl px-4 py-24">
         <div className="mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
@@ -152,7 +122,6 @@ export default async function HomePage() {
         <BonusCards />
       </section>
 
-      {/* Blog Section */}
       {posts.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.blog.heading}</SectionHeading>
@@ -167,10 +136,8 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* FAQ Section with Schema */}
       <FAQSection />
 
-      {/* Conclusion Section */}
       <section className="mx-auto max-w-7xl px-4 py-24">
         <div className="bg-gradient-to-br from-card-light to-card border border-border-glass rounded-2xl p-8 md:p-12 text-center">
           <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
@@ -189,6 +156,18 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+
+      <Suspense fallback={<div className="min-h-[400px]" />}>
+        <HomeContent />
+      </Suspense>
     </>
   );
 }

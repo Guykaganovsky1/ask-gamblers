@@ -166,3 +166,32 @@ export const ADJACENT_POSTS_QUERY = groq`
     }
   }
 `;
+
+// Search queries
+export const SEARCH_CASINOS_QUERY = groq`
+  *[_type == "casino" && (name match $query || description match $query)] | order(rating desc) {
+    _id,
+    name,
+    slug,
+    logo,
+    rating,
+    description,
+    bonusTitle,
+    bonusAmount,
+    featured,
+    categories[]->{ _id, name, slug }
+  }
+`;
+
+export const SEARCH_POSTS_QUERY = groq`
+  *[_type == "post" && (title match $query || pt::text(body) match $query)] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    featuredImage,
+    publishedAt,
+    author->{ name, avatar },
+    categories[]->{ _id, name, slug },
+    "excerpt": array::join(string::split(pt::text(body), "")[0..150], "") + "..."
+  }
+`;

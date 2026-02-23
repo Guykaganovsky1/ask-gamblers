@@ -40,3 +40,42 @@ We use PM2 in cluster mode. This allows the app to:
 - **Environment Variables:** Always update them in ecosystem.config.js under the env_production block. After changing variables, you must run `pm2 reload ecosystem.config.js --update-env`
 - **Port Conflicts:** If you deploy a second Node app on the same server, you must increment the port (e.g., 3001) in both .htaccess and ecosystem.config.js
 - **Persistence:** After a successful start, run `pm2 save` to ensure the app starts automatically if the Cloudways server reboots
+
+---
+
+## ⚠️ Critical Issue: mod_proxy Module
+
+### Problem Encountered (Feb 2026)
+
+After deploying, the site returned **500 errors** for all static files (CSS, JS, fonts, images) even though:
+- Node.js server was running correctly on port 3000
+- Local `curl http://localhost:3000/` worked fine
+- All files were uploaded correctly
+
+### Apache Error Log
+
+```
+[proxy:warn] [pid 54899:tid 55348] AH01144: No protocol handler was valid for the URL /icon.svg (scheme 'http'). If you are using a DSO version of mod_proxy, make sure the proxy submodules are included in the configuration using LoadModule.
+```
+
+### Root Cause
+
+The **`mod_proxy` Apache module was not enabled** on the Cloudways server. This is required for `.htaccess` to proxy requests to the Node.js backend.
+
+### Resolution
+
+**Contact Cloudways support** and request them to enable `mod_proxy`. They will run a command from the root user to enable the proxy submodules.
+
+**Quote from Cloudways support:**
+> "Please note that you had performed all the steps correctly. The issue came up due to mod_proxy as shown in the error logs. After I enabled it from the server by running a command from root user, the issue was resolved."
+
+### Prevent Future Issues
+
+Before deploying a Node.js app, verify `mod_proxy` is enabled:
+
+```bash
+apachectl -M | grep proxy
+# Should output: proxy_module (shared), proxy_http_module (shared)
+```
+
+If not enabled, contact Cloudways support **before** deployment.

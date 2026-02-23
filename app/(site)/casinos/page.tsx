@@ -8,9 +8,20 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+
 export const metadata: Metadata = {
   title: "קזינו מומלצים | קזינו רז",
-  description: "רשימת הקזינו המובילים עם ביקורות, דירוגים ובונוסים בלעדיים",
+    description: "גלו את הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
+  alternates: {
+    canonical: `${baseUrl}/casinos`,
+  },
+  openGraph: {
+    title: "קזינו מומלצים | קזינו רז",
+  description: "גלו את הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
+    type: "website",
+    url: `${baseUrl}/casinos`,
+  },
 };
 
 export default async function CasinosPage() {

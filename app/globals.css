@@ -69,3 +69,84 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* LCP-optimized CSS animations (replaces Framer Motion in hero) */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.3s forwards;
+}
+
+.animate-fade-in-delayed-2 {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.5s forwards;
+}
+
+.animate-fade-in-delayed-3 {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.7s forwards;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-delayed,
+  .animate-fade-in-delayed-2,
+  .animate-fade-in-delayed-3 {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes bonusButtonShine {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.bonus-button-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 100%
+  );
+  animation: bonusButtonShine 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
