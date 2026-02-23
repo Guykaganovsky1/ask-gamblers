@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInViewOnce } from "@/lib/animations";
 
 interface SectionHeadingProps {
   children: React.ReactNode;
@@ -8,15 +8,15 @@ interface SectionHeadingProps {
 }
 
 export function SectionHeading({ children, className = "" }: SectionHeadingProps) {
+  const { ref, isInView } = useInViewOnce(0.1);
+
   return (
-    <motion.h2
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0 }}
-      className={`font-heading text-4xl font-bold text-text-primary md:text-5xl ${className}`}
+    <h2
+      ref={ref as React.RefObject<HTMLHeadingElement>}
+      className={`font-heading text-4xl font-bold text-text-primary md:text-5xl ${isInView ? "animate-fade-in" : "opacity-0"} ${className}`}
     >
       {children}
       <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-l from-accent to-accent-light" />
-    </motion.h2>
+    </h2>
   );
 }

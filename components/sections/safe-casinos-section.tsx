@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInViewOnce } from "@/lib/animations";
 
 const safetyChecks = [
   {
@@ -36,15 +36,14 @@ const safetyChecks = [
 ];
 
 export function SafeCasinosSection() {
+  const { ref, isInView } = useInViewOnce(0.1);
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-gradient-to-br from-emerald/10 to-emerald/5 border border-emerald/30 rounded-2xl p-8 md:p-10"
+      <div
+        ref={ref as React.RefObject<HTMLDivElement>}
+        className={`bg-gradient-to-br from-emerald/10 to-emerald/5 border border-emerald/30 rounded-2xl p-8 md:p-10 ${isInView ? "animate-fade-in" : "opacity-0"}`}
       >
-        {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="p-3 bg-emerald/20 rounded-xl">
             <svg className="w-8 h-8 text-emerald" fill="currentColor" viewBox="0 0 20 20">
@@ -61,16 +60,12 @@ export function SafeCasinosSection() {
           </div>
         </div>
 
-        {/* Safety Checks Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {safetyChecks.map((check, index) => (
-            <motion.div
+            <div
               key={check.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="text-center p-4 rounded-xl bg-card/50"
+              className={`text-center p-4 rounded-xl bg-card/50 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="text-3xl mb-2">{check.icon}</div>
               <h3 className="font-heading font-bold text-text-primary text-sm mb-1">
@@ -79,10 +74,10 @@ export function SafeCasinosSection() {
               <p className="text-text-muted text-xs leading-relaxed">
                 {check.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type GameType = "newgames" | "slots" | "tablegames" | "upcoming";
 
@@ -44,7 +43,6 @@ export function TopDevelopers() {
 
   return (
     <>
-      {/* Filter bar */}
       <div className="mb-10 flex flex-wrap gap-2" dir="rtl">
         {FILTERS.map(({ label, key }) => (
           <button
@@ -66,58 +64,47 @@ export function TopDevelopers() {
         ))}
       </div>
 
-      {/* Grid */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((dev, i) => (
-            <motion.div
-              key={dev.name}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ delay: i * 0.05, duration: 0.35 }}
-              className="group relative"
-            >
-              {/* Gradient border */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-accent-light to-emerald-neon p-[1px]" />
+        {filtered.map((dev, i) => (
+          <div
+            key={dev.name}
+            className="group relative animate-slide-up"
+            style={{ animationDelay: `${i * 0.05}s` }}
+          >
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-accent-light to-emerald-neon p-[1px]" />
 
-              <div className="relative flex flex-col gap-5 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_36px_rgba(168,85,247,0.3)]">
+            <div className="relative flex flex-col gap-5 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_36px_rgba(168,85,247,0.3)]">
 
-                {/* Header */}
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-2xl transition-transform duration-300 group-hover:scale-110">
-                    {dev.logo}
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">
-                      {dev.name}
-                    </h3>
-                    <span className="text-xs text-text-muted">{dev.games} משחקים</span>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-2xl transition-transform duration-300 group-hover:scale-110">
+                  {dev.logo}
                 </div>
-
-                {/* Info */}
-                <div className="flex flex-col gap-2 flex-1">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-text-muted">ידועים בזכות</span>
-                    <span className="text-text-secondary font-medium text-left">{dev.known}</span>
-                  </div>
-                  <div className="h-px bg-border-glass" />
-                  <div className="flex justify-between text-xs">
-                    <span className="text-text-muted">ממוצע RTP</span>
-                    <span className="font-bold text-accent">{dev.rtp}</span>
-                  </div>
+                <div>
+                  <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">
+                    {dev.name}
+                  </h3>
+                  <span className="text-xs text-text-muted">{dev.games} משחקים</span>
                 </div>
-
-                {/* CTA */}
-                <button className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-                  צפו במשחקים
-                </button>
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+
+              <div className="flex flex-col gap-2 flex-1">
+                <div className="flex justify-between text-xs">
+                  <span className="text-text-muted">ידועים בזכות</span>
+                  <span className="text-text-secondary font-medium text-left">{dev.known}</span>
+                </div>
+                <div className="h-px bg-border-glass" />
+                <div className="flex justify-between text-xs">
+                  <span className="text-text-muted">ממוצע RTP</span>
+                  <span className="font-bold text-accent">{dev.rtp}</span>
+                </div>
+              </div>
+
+              <button className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                צפו במשחקים
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
       {filtered.length === 0 && (

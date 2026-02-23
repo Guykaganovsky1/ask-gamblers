@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInViewOnce } from "@/lib/animations";
 import Image from "next/image";
 import { StarRating } from "./star-rating";
 import { AnimatedCounter } from "./animated-counter";
@@ -22,20 +22,19 @@ interface CasinoCardProps {
 export function CasinoCard({
   name, slug, logo, rating, description, bonusTitle, bonusAmount, index = 0,
 }: CasinoCardProps) {
+  const { ref, isInView } = useInViewOnce(0.1);
+  const delayClass = index === 0 ? "animate-slide-up" : `animate-slide-up-delay-${Math.min(index, 3)}`;
+  const shouldAnimate = isInView || index < 4;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="group h-full"
+    <div
+      ref={ref as React.RefObject<HTMLDivElement>}
+      className={`group h-full ${shouldAnimate ? delayClass : "opacity-0"}`}
     >
       <div className="relative h-full overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
-        {/* Gradient overlay on hover */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <div className="relative z-10 flex h-full flex-col gap-5 p-6">
-          {/* Logo Section */}
           <div className="flex items-center justify-center rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 py-4">
             <div className="relative h-20 w-32">
               {logo ? (
@@ -53,25 +52,20 @@ export function CasinoCard({
             </div>
           </div>
 
-          {/* Content Section */}
           <div className="flex flex-1 flex-col gap-3">
-            {/* Title */}
             <h3 className="font-heading text-xl font-black leading-tight text-text-primary">
               {name}
             </h3>
 
-            {/* Rating */}
             <div className="flex items-center gap-2">
               <StarRating rating={rating} size="sm" />
               <span className="text-xs font-bold text-accent">{rating.toFixed(1)}</span>
             </div>
 
-            {/* Description */}
             <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
               {description}
             </p>
 
-            {/* Bonus Section */}
             {bonusAmount && (
               <div className="mt-2 rounded-lg bg-accent/10 border border-accent/20 px-4 py-3">
                 <p className="text-xs font-bold text-text-muted mb-1">{bonusTitle}</p>
@@ -82,7 +76,6 @@ export function CasinoCard({
             )}
           </div>
 
-          {/* CTA Buttons */}
           <div className="flex flex-col gap-2 pt-2">
             <Button
               href={`/go/${slug.current}`}
@@ -101,6 +94,6 @@ export function CasinoCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

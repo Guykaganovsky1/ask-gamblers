@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useInViewOnce } from "@/lib/animations";
 
 interface AnimatedCounterProps {
   value: string;
@@ -9,8 +9,7 @@ interface AnimatedCounterProps {
 }
 
 export function AnimatedCounter({ value, className = "" }: AnimatedCounterProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
+  const { ref, isInView } = useInViewOnce(0.1);
   const [display, setDisplay] = useState("0");
 
   const numericMatch = value.match(/(\d[\d,]*)/);
@@ -38,7 +37,7 @@ export function AnimatedCounter({ value, className = "" }: AnimatedCounterProps)
   if (targetNum === 0) return <span className={className}>{value}</span>;
 
   return (
-    <span ref={ref} className={`font-mono ${className}`}>
+    <span ref={ref as React.RefObject<HTMLSpanElement>} className={`font-mono ${className}`}>
       {prefix}{display}{suffix}
     </span>
   );

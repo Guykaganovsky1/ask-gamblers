@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface SocialShareProps {
   url: string;
   title: string;
@@ -57,7 +55,6 @@ export function SocialShare({ url, title }: SocialShareProps) {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      // Could add toast notification here
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -68,30 +65,26 @@ export function SocialShare({ url, title }: SocialShareProps) {
       <span className="text-sm font-bold text-text-secondary">שתף:</span>
       <div className="flex items-center gap-2">
         {shareLinks.map((link) => (
-          <motion.a
+          <a
             key={link.name}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className={`p-2.5 rounded-lg border border-border-glass bg-card-light/50 text-text-secondary transition-all duration-200 ${link.color}`}
+            className={`button-scale p-2.5 rounded-lg border border-border-glass bg-card-light/50 text-text-secondary transition-all duration-200 ${link.color}`}
             aria-label={`שתף ב${link.name}`}
           >
             {link.icon}
-          </motion.a>
+          </a>
         ))}
-        <motion.button
+        <button
           onClick={copyToClipboard}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="p-2.5 rounded-lg border border-border-glass bg-card-light/50 text-text-secondary transition-all duration-200 hover:bg-accent/20 hover:border-accent/50"
+          className="button-scale p-2.5 rounded-lg border border-border-glass bg-card-light/50 text-text-secondary transition-all duration-200 hover:bg-accent/20 hover:border-accent/50"
           aria-label="העתק קישור"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
-        </motion.button>
+        </button>
       </div>
     </div>
   );

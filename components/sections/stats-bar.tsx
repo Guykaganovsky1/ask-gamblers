@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInViewOnce } from "@/lib/animations";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 const STATS = [
@@ -10,24 +10,23 @@ const STATS = [
 ];
 
 export function StatsBar() {
+  const { ref, isInView } = useInViewOnce(0.1);
+
   return (
-    <section className="mx-auto max-w-4xl px-4 -mt-16 relative z-20">
+    <section ref={ref as React.RefObject<HTMLElement>} className="mx-auto max-w-4xl px-4 -mt-16 relative z-20">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {STATS.map((stat, i) => (
-          <motion.div
+          <div
             key={stat.label}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="flex flex-col items-center gap-2 rounded-xl border border-border-card bg-card-light/80 backdrop-blur-sm p-6 text-center"
+            className={`flex flex-col items-center gap-2 rounded-xl border border-border-card bg-card-light/80 backdrop-blur-sm p-6 text-center ${isInView ? "animate-slide-up" : "opacity-0"}`}
+            style={{ animationDelay: `${i * 0.1}s` }}
           >
             <span className="text-2xl">{stat.icon}</span>
             <span className="font-heading text-3xl font-black text-accent md:text-4xl">
               <AnimatedCounter value={stat.value} />
             </span>
             <span className="text-sm text-text-muted">{stat.label}</span>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 
@@ -20,54 +19,11 @@ export function Button({ href, children, variant = "primary", rel, className = "
   };
 
   return (
-    <>
-      <style>{`
-        @keyframes buttonShine {
-          0% {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.8;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          90% {
-            opacity: 0.8;
-          }
-          100% {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-        }
-
-        .button-shine {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.4) 25%,
-            rgba(255, 255, 255, 0.7) 50%,
-            rgba(255, 255, 255, 0.4) 75%,
-            transparent 100%
-          );
-          animation: buttonShine 3s ease-in-out infinite;
-          width: 200%;
-          pointer-events: none;
-          border-radius: inherit;
-        }
-      `}</style>
-      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative">
-        <Link href={href} rel={rel} className={`relative ${base} ${variants[variant]} ${className} overflow-hidden`}>
-          {variant === "primary" && <div className="button-shine" />}
-          <span className="relative z-10">{children}</span>
-        </Link>
-      </motion.div>
-    </>
+    <div className="button-scale relative">
+      <Link href={href} rel={rel} className={`relative ${base} ${variants[variant]} ${className} overflow-hidden`}>
+        {variant === "primary" && <div className="bonus-button-shine" />}
+        <span className="relative z-10">{children}</span>
+      </Link>
+    </div>
   );
 }

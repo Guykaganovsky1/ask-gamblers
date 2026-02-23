@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type BonusType = "cashback" | "bonusdeposit" | "bonusfree" | "spinswelcome" | "bonus";
 
@@ -44,7 +43,6 @@ export function BonusCards() {
 
   return (
     <>
-      {/* Filter bar */}
       <div className="mb-10 flex flex-wrap gap-2" dir="rtl">
         {FILTERS.map(({ label, key }) => (
           <button
@@ -66,38 +64,31 @@ export function BonusCards() {
         ))}
       </div>
 
-      {/* Grid */}
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((bonus, i) => (
-            <motion.div
-              key={bonus.name}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ delay: i * 0.05, duration: 0.35 }}
-              className="group relative h-full"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
-              <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
-                <div className={`h-24 w-32 ${bonus.bg} rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300`}>
-                  {bonus.emoji}
-                </div>
-                <div className="flex flex-col gap-1 flex-1 justify-center">
-                  <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">
-                    {bonus.name}
-                  </h3>
-                  <p className="text-xs text-text-muted">{bonus.desc}</p>
-                </div>
-                <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden">
-                  <div className="bonus-button-shine" />
-                  <span className="relative z-10">קבל בונוס</span>
-                </button>
+        {filtered.map((bonus, i) => (
+          <div
+            key={bonus.name}
+            className="group relative h-full animate-slide-up"
+            style={{ animationDelay: `${i * 0.05}s` }}
+          >
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+              <div className={`h-24 w-32 ${bonus.bg} rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300`}>
+                {bonus.emoji}
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+              <div className="flex flex-col gap-1 flex-1 justify-center">
+                <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">
+                  {bonus.name}
+                </h3>
+                <p className="text-xs text-text-muted">{bonus.desc}</p>
+              </div>
+              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden">
+                <div className="bonus-button-shine" />
+                <span className="relative z-10">קבל בונוס</span>
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
       {filtered.length === 0 && (

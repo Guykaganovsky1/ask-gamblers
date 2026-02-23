@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useInViewOnce } from "@/lib/animations";
 
 const notRecommendedCasinos = [
   {
@@ -53,9 +53,10 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function NotRecommendedSection() {
+  const { ref, isInView } = useInViewOnce(0.1);
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-24">
-      {/* Section Header */}
       <div className="flex items-center gap-2 mb-10">
         <div className="w-1 h-8 bg-red-500 rounded" />
         <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
@@ -63,31 +64,24 @@ export function NotRecommendedSection() {
         </h2>
       </div>
 
-      {/* Intro */}
       <p className="text-text-secondary mb-8 max-w-3xl leading-relaxed">
         אנחנו לא ממליצים לשחק בקזינו הבאים. במהלך הסקירות שלנו מצאנו ליקויים מהותיים בשירות, 
         בשקיפות ובאמינות. שחקנים דיווחו על עיכובים בהעברות כספים, תשלומים שבוטלו ללא סיבה ברורה 
         ותנאי בונוסים מבלבלים.
       </p>
 
-      {/* Warning Cards */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div ref={ref as React.RefObject<HTMLDivElement>} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {notRecommendedCasinos.map((casino, index) => (
-          <motion.div
+          <div
             key={casino.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="border border-red-500/30 rounded-xl bg-red-500/5 p-6"
+            className={`border border-red-500/30 rounded-xl bg-red-500/5 p-6 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
-            {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-heading font-bold text-text-primary">{casino.name}</h3>
               <StarRating rating={casino.rating} />
             </div>
 
-            {/* Reasons */}
             <ul className="space-y-2">
               {casino.reasons.map((reason, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
@@ -98,16 +92,13 @@ export function NotRecommendedSection() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
 
-      {/* Trust Message */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-8 p-6 rounded-xl bg-emerald/10 border border-emerald/30"
+      <div
+        className={`mt-8 p-6 rounded-xl bg-emerald/10 border border-emerald/30 ${isInView ? "animate-fade-in" : "opacity-0"}`}
+        style={{ animationDelay: "0.4s" }}
       >
         <div className="flex items-start gap-4">
           <svg className="w-8 h-8 text-emerald flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -121,7 +112,7 @@ export function NotRecommendedSection() {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
