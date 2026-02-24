@@ -3,9 +3,22 @@ import { BonusCards } from "@/components/sections/bonus-cards";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+
 export const metadata: Metadata = {
   title: "בונוסים קזינו 2026 — הצעות בלעדיות, ספינים וקאשבק | Ask Gamblers",
   description: "מצאו את הבונוסים הכי שווים לקזינו באינטרנט — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי — השוו הצעות, בחרו את הבונוס המושלם והתחילו לזכות עכשיו",
+  alternates: {
+    canonical: `${SITE_URL}/bonuses`,
+  },
+  openGraph: {
+    title: "בונוסים קזינו 2026 — הצעות בלעדיות, ספינים וקאשבק | Ask Gamblers",
+    description: "מצאו את הבונוסים הכי שווים לקזינו באינטרנט — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי",
+    url: `${SITE_URL}/bonuses`,
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
+    type: "website",
+  },
+  robots: "index, follow",
 };
 
 export default function BonusesPage() {

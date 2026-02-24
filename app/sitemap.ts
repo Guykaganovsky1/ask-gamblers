@@ -20,7 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
     { url: `${BASE_URL}/casinos`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "daily", priority: 0.8 },
-    { url: `${BASE_URL}/softwares`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/news`, lastModified: new Date(), changeFrequency: "daily", priority: 0.7 },
+    { url: `${BASE_URL}/bonuses`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/games`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const casinoPages = casinos.map((c) => ({
@@ -38,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const categoryPages = categories.map((c) => ({
-    url: `${BASE_URL}/softwares/${c.slug.current}`,
+    url: `${BASE_URL}/categories/${c.slug.current}`,
     lastModified: new Date(c._updatedAt),
     changeFrequency: "weekly" as const,
     priority: 0.5,

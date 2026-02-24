@@ -23,9 +23,22 @@ function viewsCount(id: string): number {
 }
 export const revalidate = 60;
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+
 export const metadata: Metadata = {
   title: "חדשות קזינו ישראל 2026 — עדכונים שוטפים | Ask Gamblers",
   description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
+  alternates: {
+    canonical: `${SITE_URL}/news`,
+  },
+  openGraph: {
+    title: "חדשות קזינו ישראל 2026 — עדכונים שוטפים | Ask Gamblers",
+    description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
+    url: `${SITE_URL}/news`,
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
+    type: "website",
+  },
+  robots: "index, follow",
 };
 
 async function getNewsData() {

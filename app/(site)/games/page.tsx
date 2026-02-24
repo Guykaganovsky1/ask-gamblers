@@ -3,9 +3,22 @@ import { TopDevelopers } from "@/components/sections/top-developers";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+
 export const metadata: Metadata = {
   title: "משחקי קזינו אונליין 2026 — סלוטים, רולטה, בלאקג'ק | Ask Gamblers",
   description: "גלו משחקי קזינו באינטרנט מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד עם גרפיקה מרהיבה וזכיות גדולות — מצאו את המשחק שלכם והתחילו לשחק עכשיו",
+  alternates: {
+    canonical: `${SITE_URL}/games`,
+  },
+  openGraph: {
+    title: "משחקי קזינו אונליין 2026 — סלוטים, רולטה, בלאקג'ק | Ask Gamblers",
+    description: "גלו משחקי קזינו באינטרנט מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד",
+    url: `${SITE_URL}/games`,
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
+    type: "website",
+  },
+  robots: "index, follow",
 };
 
 export default function GamesPage() {
