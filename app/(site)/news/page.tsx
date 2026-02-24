@@ -109,7 +109,7 @@ export default async function NewsPage() {
                     </h3>
 
                     <p className="text-sm text-text-muted line-clamp-2 flex-1">
-                      {post.excerpt || "מאמר חדש בקטגוריית קזינו אונליין"}
+                      {post.excerpt || "מאמר חדש בקטגוריית קזינו באינטרנט"}
                     </p>
 
                     <Link
@@ -124,18 +124,6 @@ export default async function NewsPage() {
               ))}
             </div>
 
-            {/* Pagination */}
-            <div className="mt-12 flex justify-center gap-2">
-              <button className="px-4 py-2 bg-accent text-white font-bold rounded-lg hover:bg-accent-light transition-colors">
-                1
-              </button>
-              <button className="px-4 py-2 border border-border-glass text-text-muted hover:border-accent hover:text-accent rounded-lg transition-colors font-bold">
-                2
-              </button>
-              <button className="px-4 py-2 border border-border-glass text-text-muted hover:border-accent hover:text-accent rounded-lg transition-colors font-bold">
-                3
-              </button>
-            </div>
           </div>
 
           {/* Sidebar */}
@@ -152,14 +140,14 @@ export default async function NewsPage() {
               </p>
             </div>
 
-            {/* Recent News */}
+            {/* חדשות אחרונות */}
             {recentPosts.length > 0 && (
               <div className="rounded-2xl bg-card/50 border border-border-glass/30 overflow-hidden">
                 {/* Header */}
                 <div className="px-5 py-4 border-b border-border-glass/20 flex items-center gap-2">
                   <span className="text-accent text-lg">🔴</span>
                   <h3 className="font-heading text-base font-black text-text-primary">
-                    Recent News
+                    חדשות אחרונות
                   </h3>
                 </div>
 
@@ -220,14 +208,14 @@ export default async function NewsPage() {
               </div>
             )}
 
-            {/* New Casinos */}
+            {/* קזינו מובילים */}
             {topCasinos.length > 0 && (
               <div className="rounded-2xl bg-card/50 border border-border-glass/30 overflow-hidden">
                 {/* Header */}
                 <div className="px-5 py-4 border-b border-border-glass/20 flex items-center gap-2">
                   <span className="text-accent text-lg">💎</span>
                   <h3 className="font-heading text-base font-black text-text-primary">
-                    New Casinos
+                    קזינו מובילים
                   </h3>
                 </div>
 
@@ -286,28 +274,6 @@ export default async function NewsPage() {
               </div>
             )}
 
-            {/* Newsletter Signup */}
-            <div className="rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 p-6">
-              <h3 className="font-heading text-lg font-black text-text-primary mb-3">
-                הירשם לעדכונים
-              </h3>
-              <p className="text-sm text-text-muted mb-4">
-                קבל חדשות קזינו חדשות ישר לתיבת הדואר שלך
-              </p>
-              <form className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="הכנס דוא״ל"
-                  className="w-full px-4 py-2 rounded-lg bg-background border border-border-glass text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-2 bg-accent hover:bg-accent-light text-white font-bold rounded-lg transition-colors"
-                >
-                  הירשם
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </div>
