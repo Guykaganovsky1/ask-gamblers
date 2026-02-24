@@ -41,15 +41,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug });
   if (!post) return {};
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+  const title = post.seoTitle || post.title;
+  const description = post.seoDescription || post.excerpt || "";
   return {
-    title: post.seoTitle || `${post.title} | Ask Gamblers`,
-    description: post.seoDescription || "",
+    title: `${title} | Ask Gamblers`,
+    description,
     alternates: {
       canonical: `${baseUrl}/blog/${slug}`,
     },
     openGraph: {
-      title: post.seoTitle || `${post.title} | Ask Gamblers`,
-      description: post.seoDescription || "",
+      title,
+      description,
       type: "article",
       url: `${baseUrl}/blog/${slug}`,
       publishedTime: post.publishedAt,
