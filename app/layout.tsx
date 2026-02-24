@@ -24,9 +24,33 @@ const inter = Inter({
   preload: true,
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+
 export const metadata: Metadata = {
-  title: "Ask Gamblers - המדריך המלא לקזינו אונליין",
-  description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו האונליין",
+  title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+  description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+  openGraph: {
+    title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+    description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+    url: SITE_URL,
+    siteName: "Ask Gamblers",
+    images: [
+      {
+        url: `${SITE_URL}/logo.svg`,
+        width: 600,
+        height: 120,
+        alt: "Ask Gamblers Logo",
+      },
+    ],
+    locale: "he_IL",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+    description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+    images: [`${SITE_URL}/logo.svg`],
+  },
 };
 
 export default function RootLayout({
