@@ -6,9 +6,6 @@ import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <head>
-        <link rel="preload" as="image" href="/images/hero-bg.webp" />
-      </head>
       <Header />
       <main className="min-h-screen">{children}</main>
       <Footer />
