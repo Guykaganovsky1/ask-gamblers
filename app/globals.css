@@ -229,6 +229,70 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Games showcase: background orb pulse */
+@keyframes pulse-orb {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.animate-orb-1 { animation: pulse-orb 4s ease-in-out infinite; }
+.animate-orb-2 { animation: pulse-orb 5s ease-in-out infinite 1s; }
+.animate-orb-3 { animation: pulse-orb 6s ease-in-out infinite 2s; }
+
+/* Games showcase: flowing scan lines */
+@keyframes scan-line-ltr {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes scan-line-rtl {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+
+.animate-scan-ltr-8  { animation: scan-line-ltr  8s linear infinite; }
+.animate-scan-rtl-10 { animation: scan-line-rtl 10s linear infinite; }
+.animate-scan-ltr-12 { animation: scan-line-ltr 12s linear infinite; }
+
+/* Games showcase: game card hover lift */
+.game-card-hover {
+  transition: transform 0.3s ease;
+}
+
+.game-card-hover:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* Games showcase: CTA emoji bounce */
+@keyframes bounce-x {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(5px); }
+}
+
+.animate-bounce-x { animation: bounce-x 1s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-orb-3,
+  .animate-scan-ltr-8,
+  .animate-scan-rtl-10,
+  .animate-scan-ltr-12,
+  .animate-bounce-x {
+    animation: none;
+  }
+
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-orb-3 {
+    opacity: 0.3;
+  }
+
+  .game-card-hover:hover {
+    transform: none;
+  }
+}
+
 /* Star rating pop animation */
 @keyframes starPop {
   0% {

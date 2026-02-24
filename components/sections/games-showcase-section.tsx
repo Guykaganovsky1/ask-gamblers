@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 // Game icons as SVG components
@@ -124,112 +123,66 @@ export function GamesShowcaseSection() {
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[#0f0f1a] to-background">
         {/* Animated gradient orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-3xl"
-        />
+        <div className="animate-orb-1 absolute top-20 right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
+        <div className="animate-orb-2 absolute bottom-20 left-20 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl" />
+        <div className="animate-orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-3xl" />
       </div>
 
       {/* Flowing lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"
-        />
-        <motion.div
-          animate={{ x: ["100%", "-100%"] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"
-        />
-        <motion.div
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
-        />
+        <div className="animate-scan-ltr-8 absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+        <div className="animate-scan-rtl-10 absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+        <div className="animate-scan-ltr-12 absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, type: "spring" }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/20 to-emerald-600/20 border border-purple-500/30 mb-6"
+        <div className="animate-slide-up text-center mb-16">
+          <div
+            className="animate-slide-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-600/20 to-emerald-600/20 border border-purple-500/30 mb-6"
+            style={{ animationDelay: "0.2s" }}
           >
             <span className="text-2xl">🎮</span>
             <span className="text-sm font-bold text-purple-300">המשחקים הכי חמים</span>
-          </motion.div>
-          
+          </div>
+
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-emerald-200 mb-6">
             היכון, הסתכל... זכה!
           </h2>
-          
+
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary leading-relaxed">
-            גלה עולם שלם של משחקים מטורפים — סלוטים עם ג׳קפוטים ענקיים, רולטה חיה, קלפים מנצחים ועוד. 
+            גלה עולם שלם של משחקים מטורפים — סלוטים עם ג׳קפוטים ענקיים, רולטה חיה, קלפים מנצחים ועוד.
             <span className="text-accent font-bold"> כל משחק הוא הזדמנות חדשה לזכות!</span>
           </p>
-        </motion.div>
+        </div>
 
         {/* Games Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
           {games.map((game, i) => (
-            <motion.div
+            <div
               key={game.id}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group relative"
+              className="animate-slide-up group relative game-card-hover"
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
               <Link href={game.href}>
                 {/* Animated border */}
                 <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-emerald-500 opacity-0 group-hover:opacity-100 blur transition-all duration-500 animate-pulse" />
-                
+
                 {/* Card */}
                 <div className="relative h-44 md:h-52 rounded-2xl bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1a] border border-white/10 overflow-hidden flex flex-col items-center justify-center gap-3 p-4 transition-all duration-300 group-hover:border-transparent">
                   {/* Glow effect on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-t ${game.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                  
+
                   {/* Icon */}
                   <div className={`relative text-white/80 group-hover:text-white transition-colors duration-300 group-hover:drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]`}>
                     {game.icon}
                   </div>
-                  
+
                   {/* Name */}
                   <span className="font-heading text-lg font-bold text-white text-center">
                     {game.name}
                   </span>
-                  
+
                   {/* Players badge */}
                   <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                     <span className="relative flex h-2 w-2">
@@ -240,31 +193,23 @@ export function GamesShowcaseSection() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="text-center mt-12"
+        <div
+          className="animate-slide-up text-center mt-12"
+          style={{ animationDelay: "0.6s" }}
         >
           <Link
             href="/games"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-emerald-500 text-white font-heading font-bold text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] hover:scale-105 group"
           >
             <span>קדימה, בואו לשחק!</span>
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              🎰
-            </motion.span>
+            <span className="animate-bounce-x">🎰</span>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
