@@ -159,9 +159,13 @@ export async function Footer() {
 
                     {/* CTA Button */}
                     <div className="pt-2 border-t border-accent/10">
-                      <button className="w-full py-2 px-3 bg-accent/90 hover:bg-accent text-white font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95">
+                      <Link
+                        href={`/go/${casino.slug.current}`}
+                        rel="nofollow sponsored"
+                        className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-white font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95 text-center"
+                      >
                         בדוק עכשיו
-                      </button>
+                      </Link>
                     </div>
                   </div>
 
