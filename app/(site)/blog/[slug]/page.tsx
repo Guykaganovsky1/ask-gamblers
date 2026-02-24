@@ -70,6 +70,8 @@ const portableTextComponents = {
           width={800}
           height={450}
           className="w-full object-cover"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 800px"
         />
       </div>
     ),
@@ -127,6 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
               src={urlFor(post.featuredImage).width(1400).url()}
               alt={post.title}
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />

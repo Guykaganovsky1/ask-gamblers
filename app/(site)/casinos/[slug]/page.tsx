@@ -59,6 +59,7 @@ export default async function CasinoReviewPage({ params }: Props) {
               src={urlFor(casino.logo).width(320).height(160).url()}
               alt={casino.name}
               fill
+              sizes="(max-width: 768px) 160px, 160px"
               className="object-contain"
             />
           )}

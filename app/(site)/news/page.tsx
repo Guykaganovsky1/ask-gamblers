@@ -74,6 +74,7 @@ export default async function NewsPage() {
                         src={urlFor(post.featuredImage).url()}
                         alt={post.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     ) : (
@@ -167,6 +168,7 @@ export default async function NewsPage() {
                             alt={post.title}
                             width={90}
                             height={90}
+                            sizes="90px"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                         ) : (

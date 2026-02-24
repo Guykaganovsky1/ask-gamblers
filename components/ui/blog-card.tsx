@@ -32,6 +32,7 @@ export function BlogCard({ title, slug, featuredImage, publishedAt, author, inde
               src={urlFor(featuredImage).width(640).height(360).url()}
               alt={title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />

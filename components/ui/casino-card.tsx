@@ -42,6 +42,7 @@ export function CasinoCard({
                   src={urlFor(logo).width(256).height(160).url()}
                   alt={name}
                   fill
+                  sizes="(max-width: 768px) 128px, 128px"
                   className="object-contain"
                 />
               ) : (
