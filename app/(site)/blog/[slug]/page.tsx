@@ -190,14 +190,6 @@ export default async function BlogPostPage({ params }: Props) {
           <article>
             {/* Article Content */}
             <div className="prose prose-invert max-w-none">
-              <style>{`
-                .prose p { margin-bottom: 1.5rem; line-height: 1.8; }
-                .prose strong { color: var(--color-text-primary); }
-                .prose em { color: var(--color-text-secondary); }
-                .prose ul { list-style-type: disc; padding-right: 1.5rem; margin-bottom: 1.5rem; }
-                .prose ol { list-style-type: decimal; padding-right: 1.5rem; margin-bottom: 1.5rem; }
-                .prose li { margin-bottom: 0.5rem; }
-              `}</style>
               {post.body && <PortableText value={post.body} components={portableTextComponents} />}
             </div>
 
