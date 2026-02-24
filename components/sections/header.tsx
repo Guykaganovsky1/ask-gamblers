@@ -10,9 +10,9 @@ const NAV_LINKS = [
   { href: "/", label: "דף הבית", highlight: true },
   { href: "/softwares", label: "ספקי תוכנה" },
   { href: "/news", label: "חדשות" },
-  { href: "/casinos", label: "בתי קזינו", badge: { text: "Best", bg: "#16a34a" } },
-  { href: "/games", label: "משחקים", badge: { text: "Top", bg: "#0891b2" } },
-  { href: "/bonuses", label: "בונוסים", badge: { text: "Hot", bg: "#dc2626" } },
+  { href: "/casinos", label: "בתי קזינו", badge: { text: "Best", bg: "#15803d" } },
+  { href: "/games", label: "משחקים", badge: { text: "Top", bg: "#0e7490" } },
+  { href: "/bonuses", label: "בונוסים", badge: { text: "Hot", bg: "#b91c1c" } },
   { href: "/blog", label: "בלוג" },
 ];
 

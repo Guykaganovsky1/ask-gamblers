@@ -64,16 +64,18 @@ export async function Footer() {
 
               .premium-badge {
                 position: absolute;
-                top: -8px;
+                top: 1px;
                 right: 12px;
                 background: linear-gradient(135deg, #D4AF37, #F4E4C1);
                 color: #0A0A0F;
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: 900;
-                padding: 4px 8px;
-                border-radius: 4px;
+                padding: 5px 12px;
+                border-radius: 6px;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
+                letter-spacing: 0.8px;
+                box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+                z-index: 20;
               }
             `}</style>
 

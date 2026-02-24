@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Hero() {
   return (
     <section 
-      className="relative min-h-[80vh] flex items-center overflow-hidden pt-8"
+      className="relative min-h-[80vh] flex items-center overflow-hidden pt-0.5 -mt-5 md:mt-0 md:pt-8"
       // Inline gradient renders instantly for LCP - no image wait
       style={{
         background: 'linear-gradient(135deg, #0B0E14 0%, #1a1a2e 50%, #16213e 100%)',
@@ -45,7 +45,7 @@ export function Hero() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/casinos"
-              className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-background font-bold text-center hover:bg-accent/90 transition-colors"
+              className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-white font-bold text-center hover:bg-accent/90 transition-colors"
             >
               גלה את בתי הקזינו המובילים ←
             </Link>

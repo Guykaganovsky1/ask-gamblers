@@ -55,7 +55,7 @@ export function CasinoFilter({ casinos }: Props) {
           >
             {label}
             {key !== "all" && (
-              <span className="ms-1.5 text-xs opacity-60">
+              <span className="ms-1.5 text-xs opacity-90">
                 ({casinos.filter((c) => matchesFilter(c, key)).length})
               </span>
             )}

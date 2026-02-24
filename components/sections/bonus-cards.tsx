@@ -56,7 +56,7 @@ export function BonusCards() {
           >
             {label}
             {key !== "all" && (
-              <span className="ms-1.5 text-xs opacity-60">
+              <span className="ms-1.5 text-xs opacity-90">
                 ({BONUSES.filter((b) => b.type === key).length})
               </span>
             )}
@@ -82,7 +82,7 @@ export function BonusCards() {
                 </h3>
                 <p className="text-xs text-text-muted">{bonus.desc}</p>
               </div>
-              <button className="relative w-full bg-accent hover:bg-accent-light text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden">
+              <button className="relative w-full bg-accent hover:bg-accent/80 text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden">
                 <div className="bonus-button-shine" />
                 <span className="relative z-10">קבל בונוס</span>
               </button>

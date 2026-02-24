@@ -56,7 +56,7 @@ export function TopDevelopers() {
           >
             {label}
             {key !== "all" && (
-              <span className="ms-1.5 text-xs opacity-60">
+              <span className="ms-1.5 text-xs opacity-90">
                 ({DEVELOPERS.filter((d) => d.type === key).length})
               </span>
             )}
