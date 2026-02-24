@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     siteName: "Ask Gamblers",
     images: [
       {
-        url: `${SITE_URL}/logo.svg`,
-        width: 600,
-        height: 120,
-        alt: "Ask Gamblers Logo",
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
       },
     ],
     locale: "he_IL",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
     description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
-    images: [`${SITE_URL}/logo.svg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 
