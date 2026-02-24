@@ -194,7 +194,7 @@ export function GamesShowcaseSection() {
           </h2>
           
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary leading-relaxed">
-            גלה עולם שלם של משחקים מטורפים — סלוטים עם ג׳קפוטים ענקיים, רולטה חיה, קלפים שמנצחים ועוד. 
+            גלה עולם שלם של משחקים מטורפים — סלוטים עם ג׳קפוטים ענקיים, רולטה חיה, קלפים מנצחים ועוד. 
             <span className="text-accent font-bold"> כל משחק הוא הזדמנות חדשה לזכות!</span>
           </p>
         </motion.div>

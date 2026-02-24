@@ -16,7 +16,8 @@ pm2 logs
 
 - **Server:** phpstack-1553018-6228296.cloudwaysapps.com
 - **App User:** contact@adimpress.me
-- **App Password:** Djhg78LLK
+- **App Password:** Hdu483hfe
+- **SSH Key:** ~/.ssh/id_rsa_cloudways_askgamblers.pub
 - **Path:** /home/1553018.cloudwaysapps.com/pwnubhceem/public_html
 - **Live URL:** https://phpstack-1553018-6228296.cloudwaysapps.com
 
@@ -45,7 +46,7 @@ Ensure build completes without errors before continuing.
 
 ```bash
 # Upload standalone app
-sshpass -p 'Djhg78LLK' rsync -avz --delete \
+sshpass -p 'Hdu483hfe' rsync -avz --delete \
   --exclude 'node_modules' \
   --exclude '.git' \
   --exclude '.next/cache' \
@@ -265,7 +266,7 @@ ls -la /home/1553018.cloudwaysapps.com/pwnubhceem/public_html/.next/static/
 From project root, after successful build:
 
 ```bash
-sshpass -p 'Djhg78LLK' rsync -avz --delete \
+sshpass -p 'Hdu483hfe' rsync -avz --delete \
   --exclude 'node_modules' --exclude '.git' --exclude '.next/cache' --exclude '.env.local' \
   -e "ssh -o StrictHostKeyChecking=no" \
   .next/standalone/ \

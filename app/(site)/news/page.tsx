@@ -52,7 +52,7 @@ export default async function NewsPage() {
     <div className="min-h-screen bg-background">
       <PageHero
         title="תמיד צעד אחד לפני כולם"
-        subtitle="עדכונים שוטפים מעולם הקזינו — בונוסים חדשים, קזינוים חדשים וטיפים שלא תמצאו בשום מקום אחר"
+        subtitle="עדכונים שוטפים מעולם הקזינו — בונוסים חדשים, קזינו חדשים וטיפים שלא תמצאו בשום מקום אחר"
         badge="חדשות קזינו"
       />
       <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "חדשות" }]} />
