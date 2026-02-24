@@ -24,7 +24,7 @@ function viewsCount(id: string): number {
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "חדשות | קזינו רז",
+  title: "חדשות | Ask Gamblers",
   description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
 };
 

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 interface SitemapItem {
   slug: { current: string };

@@ -8,16 +8,16 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "בלוג | קזינו רז",
+  title: "בלוג | Ask Gamblers",
     description: "קראו מאמרים מקצועיים, מדריכים מפורטים וטיפים לקזינו אונליין — למדו אסטרטגיות, שפרו את המשחק והפכו לשחקנים חכמים יותר היום",
   alternates: {
     canonical: `${baseUrl}/blog`,
   },
   openGraph: {
-    title: "בלוג | קזינו רז",
+    title: "בלוג | Ask Gamblers",
   description: "קראו מאמרים מקצועיים, מדריכים מפורטים וטיפים לקזינו אונליין — למדו אסטרטגיות, שפרו את המשחק והפכו לשחקנים חכמים יותר היום",
     type: "website",
     url: `${baseUrl}/blog`,

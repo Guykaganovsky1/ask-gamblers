@@ -1,5 +1,5 @@
 #!/bin/bash
-# Casino Raz - Cloudways Deployment Script
+# Ask Gamblers - Cloudways Deployment Script
 # Usage: ./deploy-cloudways.sh SERVER_IP APP_ID
 
 set -e
@@ -15,7 +15,7 @@ if [ -z "$SERVER_IP" ] || [ -z "$APP_ID" ]; then
   exit 1
 fi
 
-echo "🚀 Deploying Casino Raz to Cloudways..."
+echo "🚀 Deploying Ask Gamblers to Cloudways..."
 echo "Server: $SERVER_IP"
 echo "App ID: $APP_ID"
 echo ""
@@ -56,7 +56,7 @@ echo ""
 echo "🔄 Restarting PM2..."
 ssh master@$SERVER_IP << EOF
   cd $REMOTE_PATH
-  pm2 restart casino-raz || pm2 start ecosystem.config.js --env production
+  pm2 restart ask-gamblers || pm2 start ecosystem.config.js --env production
   pm2 save
 EOF
 

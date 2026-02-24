@@ -5,7 +5,7 @@
 **If something fails, check logs first. Never guess.**
 
 ```bash
-pm2 logs casino-raz
+pm2 logs ask-gamblers
 # Or for system issues:
 pm2 logs
 ```
@@ -96,7 +96,7 @@ nohup node server.js > /tmp/nextjs.log 2>&1 &
 **Or using PM2 (recommended):**
 
 ```bash
-pm2 start server.js --name casino-raz
+pm2 start server.js --name ask-gamblers
 pm2 save
 ```
 
@@ -119,7 +119,7 @@ Via Application Console:
 cd /home/1553018.cloudwaysapps.com/pwnubhceem/public_html
 npm install
 npm run build
-pm2 restart casino-raz
+pm2 restart ask-gamblers
 ```
 
 ### Step 3: Future Updates
@@ -129,7 +129,7 @@ cd /home/1553018.cloudwaysapps.com/pwnubhceem/public_html
 git pull
 npm install
 npm run build
-pm2 restart casino-raz
+pm2 restart ask-gamblers
 ```
 
 ---
@@ -141,16 +141,16 @@ pm2 restart casino-raz
 pm2 list
 
 # View logs (FIRST THING TO CHECK)
-pm2 logs casino-raz
+pm2 logs ask-gamblers
 
 # Monitor
 pm2 monit
 
 # Restart
-pm2 restart casino-raz
+pm2 restart ask-gamblers
 
 # Stop
-pm2 stop casino-raz
+pm2 stop ask-gamblers
 
 # Save process list (persists across reboots)
 pm2 save
@@ -179,12 +179,12 @@ Restart application from panel after changes.
 
 ### ❌ 502 Bad Gateway
 
-**Check logs first:** `pm2 logs casino-raz`
+**Check logs first:** `pm2 logs ask-gamblers`
 
 Common causes:
 - App crashed → Check logs, fix error, restart
 - Wrong port → Ensure app listens on `0.0.0.0:3000`
-- PM2 not running → `pm2 list` then `pm2 restart casino-raz`
+- PM2 not running → `pm2 list` then `pm2 restart ask-gamblers`
 
 ### ❌ Error: EADDRINUSE (Port in use)
 
@@ -256,7 +256,7 @@ ls -la /home/1553018.cloudwaysapps.com/pwnubhceem/public_html/.next/static/
 - [ ] Static files uploaded (`.next/static/`)
 - [ ] Public folder uploaded
 - [ ] Test all pages work
-- [ ] Check logs for errors: `pm2 logs casino-raz`
+- [ ] Check logs for errors: `pm2 logs ask-gamblers`
 
 ---
 

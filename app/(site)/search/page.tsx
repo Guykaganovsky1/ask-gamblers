@@ -10,7 +10,7 @@ import { SearchForm } from "./search-form";
 
 export const revalidate = 60;
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 interface SearchParams {
   q?: string;
@@ -25,18 +25,18 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
   const query = params.q || "";
 
   return {
-    title: query ? `חיפוש: ${query} | קזינו רז` : "חיפוש | קזינו רז",
+    title: query ? `חיפוש: ${query} | Ask Gamblers` : "חיפוש | Ask Gamblers",
     description: query
       ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
-      : "חפשו קזינו מומלצים, מאמרים ומדריכים בקזינו רז",
+      : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
     alternates: {
       canonical: `${baseUrl}/search${query ? `?q=${encodeURIComponent(query)}` : ""}`,
     },
     openGraph: {
-      title: query ? `חיפוש: ${query} | קזינו רז` : "חיפוש | קזינו רז",
+      title: query ? `חיפוש: ${query} | Ask Gamblers` : "חיפוש | Ask Gamblers",
       description: query
         ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
-        : "חפשו קזינו מומלצים, מאמרים ומדריכים בקזינו רז",
+        : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
       type: "website",
       url: `${baseUrl}/search${query ? `?q=${encodeURIComponent(query)}` : ""}`,
     },

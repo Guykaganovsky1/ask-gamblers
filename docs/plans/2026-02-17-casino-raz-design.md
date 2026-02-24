@@ -1,4 +1,4 @@
-# Casino Raz — Design Document
+# Ask Gamblers — Design Document
 
 Casino affiliate website targeting the Israeli market (Hebrew, RTL) focused on driving signups via CPA/rev-share affiliate deals.
 
@@ -15,7 +15,7 @@ Casino affiliate website targeting the Israeli market (Hebrew, RTL) focused on d
 ## Project Structure
 
 ```
-casino-raz/
+ask-gamblers/
 ├── app/
 │   ├── (site)/
 │   │   ├── page.tsx              # Homepage

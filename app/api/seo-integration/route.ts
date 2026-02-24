@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
   try {
     const content = await client.fetch(CONTENT_QUERY);
     
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://casinoraz.co.il';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://askgamblers.co.il';
     
     const pages = [
       { type: 'homepage', url: siteUrl, priority: 1 },
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       site: {
         url: siteUrl,
-        name: 'Casino Raz',
+        name: 'Ask Gamblers',
         lastUpdated: new Date().toISOString(),
       },
       pages,

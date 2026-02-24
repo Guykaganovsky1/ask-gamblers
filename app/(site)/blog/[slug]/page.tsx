@@ -40,15 +40,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await client.fetch<BlogPost>(POST_BY_SLUG_QUERY, { slug });
   if (!post) return {};
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   return {
-    title: post.seoTitle || `${post.title} | קזינו רז`,
+    title: post.seoTitle || `${post.title} | Ask Gamblers`,
     description: post.seoDescription || "",
     alternates: {
       canonical: `${baseUrl}/blog/${slug}`,
     },
     openGraph: {
-      title: post.seoTitle || `${post.title} | קזינו רז`,
+      title: post.seoTitle || `${post.title} | Ask Gamblers`,
       description: post.seoDescription || "",
       type: "article",
       url: `${baseUrl}/blog/${slug}`,
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: Props) {
       : { prev: null, next: null },
   ]);
 
-  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://casinoraz.co.il'}/blog/${slug}`;
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://askgamblers.co.il'}/blog/${slug}`;
 
   return (
     <>

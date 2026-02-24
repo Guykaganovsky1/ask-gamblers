@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Casino Raz — Hebrew RTL casino affiliate website targeting the Israeli market. Revenue model: CPA/rev-share affiliate deals driving casino signups.
+Ask Gamblers — Hebrew RTL casino affiliate website targeting the Israeli market. Revenue model: CPA/rev-share affiliate deals driving casino signups.
 
 ## Commands
 
@@ -86,7 +86,7 @@ Required in `.env.local`:
 NEXT_PUBLIC_SANITY_PROJECT_ID=<from sanity.io>
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
-NEXT_PUBLIC_SITE_URL=https://casinoraz.co.il
+NEXT_PUBLIC_SITE_URL=https://askgamblers.co.il
 SANITY_WRITE_TOKEN=<for click tracking>
 SANITY_REVALIDATE_SECRET=<for webhook auth>
 ```

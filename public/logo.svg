@@ -22,14 +22,14 @@
   </g>
   
   <text x="95" y="75" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="url(#goldGradient)" filter="url(#glow)">
-    קזינו רז
+    Ask Gamblers
   </text>
   
   <text x="95" y="100" font-family="Arial, sans-serif" font-size="16" fill="#8B7355" letter-spacing="2">
-    CASINO RAZ
+    המדריך לקזינו אונליין
   </text>
   
-  <rect x="95" y="105" width="200" height="2" fill="url(#goldGradient)" opacity="0.5"/>
+  <rect x="95" y="105" width="280" height="2" fill="url(#goldGradient)" opacity="0.5"/>
   
   <g transform="translate(500, 35)">
     <circle cx="25" cy="25" r="20" fill="none" stroke="url(#goldGradient)" stroke-width="2"/>

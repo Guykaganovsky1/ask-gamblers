@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: "casino-raz",
+    name: "ask-gamblers",
     script: "node_modules/next/dist/bin/next",
     args: "start -p 3000 -H 0.0.0.0",
     instances: "max",

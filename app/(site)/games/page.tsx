@@ -4,7 +4,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "משחקים | קזינו רז",
+  title: "משחקים | Ask Gamblers",
   description: "גלו משחקי קזינו אונליין מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד עם גרפיקה מרהיבה וזכיות גדולות — מצאו את המשחק שלכם והתחילו לשחק עכשיו",
 };
 

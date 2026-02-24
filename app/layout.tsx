@@ -25,7 +25,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "קזינו רז - המדריך המלא לקזינו אונליין",
+  title: "Ask Gamblers - המדריך המלא לקזינו אונליין",
   description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו האונליין",
 };
 

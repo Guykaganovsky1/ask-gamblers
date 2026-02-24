@@ -1,4 +1,4 @@
-# Casino Raz - קזינו רז
+# Ask Gamblers
 
 Hebrew RTL casino affiliate website built with Next.js 16, Sanity CMS, and Tailwind CSS.
 

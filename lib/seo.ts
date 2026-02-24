@@ -1,5 +1,5 @@
-const SITE_NAME = "קזינו רז";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+const SITE_NAME = "Ask Gamblers";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 const SITE_DESCRIPTION = "המדריך המלא לקזינו אונליין";
 
 export interface ArticlePost {
@@ -91,10 +91,10 @@ export function generateOrganizationSchema() {
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",
     sameAs: [
-      "https://www.facebook.com/casinoraz",
-      "https://twitter.com/casinoraz",
-      "https://t.me/casinoraz",
-      "https://www.instagram.com/casinoraz",
+      "https://www.facebook.com/askgamblersil",
+      "https://twitter.com/askgamblersil",
+      "https://t.me/askgamblersil",
+      "https://www.instagram.com/askgamblersil",
     ],
     contactPoint: {
       "@type": "ContactPoint",

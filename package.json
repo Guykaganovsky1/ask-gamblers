@@ -1,5 +1,5 @@
 {
-  "name": "casino-raz",
+  "name": "ask-gamblers",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,8 @@
     "lint": "eslint",
     "prod:start": "pm2 start ecosystem.config.js --env production",
     "prod:reload": "pm2 reload ecosystem.config.js --env production",
-    "prod:logs": "pm2 logs casino-raz",
-    "prod:stop": "pm2 stop casino-raz"
+    "prod:logs": "pm2 logs ask-gamblers",
+    "prod:stop": "pm2 stop ask-gamblers"
   },
   "dependencies": {
     "@portabletext/react": "^6.0.2",

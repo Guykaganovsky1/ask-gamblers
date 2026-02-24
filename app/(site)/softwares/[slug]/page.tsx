@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await client.fetch<CategoryDetail>(CATEGORY_BY_SLUG_QUERY, { slug });
   if (!category) return {};
   return {
-    title: `${category.name} | קזינו רז`,
+    title: `${category.name} | Ask Gamblers`,
     description: category.description || `קזינו ומאמרים בקטגוריית ${category.name}`,
   };
 }

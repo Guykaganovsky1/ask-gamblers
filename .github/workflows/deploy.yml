@@ -82,8 +82,8 @@ jobs:
               npm install pm2 --save-dev
             fi
             
-            npx pm2 delete casino-raz 2>/dev/null || true
-            npx pm2 start server.js --name casino-raz
+            npx pm2 delete ask-gamblers 2>/dev/null || true
+            npx pm2 start server.js --name ask-gamblers
             npx pm2 save
             
             # Cleanup

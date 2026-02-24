@@ -32,22 +32,22 @@ export function LuxuryLogo() {
           animation: leverBounce 0.8s ease-in-out forwards;
         }
 
-        .logo-name-royal {
+        .logo-name-ask {
           font-family: 'Cinzel', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
           font-weight: 700;
           font-size: 1.15rem;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.15em;
           background: linear-gradient(160deg, #fff 0%, #D8B4FE 60%, #A855F7 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
           line-height: 1;
         }
-        .logo-name-spinz {
+        .logo-name-gamblers {
           font-family: 'Cinzel', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
           font-weight: 700;
           font-size: 1.15rem;
-          letter-spacing: 0.22em;
+          letter-spacing: 0.18em;
           background: linear-gradient(160deg, #D8B4FE 0%, #A855F7 60%, #7C3AED 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -123,8 +123,8 @@ export function LuxuryLogo() {
 
       {/* ── Wordmark ── */}
       <div className="flex flex-col leading-none gap-[3px]">
-        <span className="logo-name-royal">ROYAL</span>
-        <span className="logo-name-spinz">SPINZ</span>
+        <span className="logo-name-ask">ASK</span>
+        <span className="logo-name-gamblers">GAMBLERS</span>
       </div>
     </Link>
   );

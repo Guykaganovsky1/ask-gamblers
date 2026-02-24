@@ -31,7 +31,7 @@ export function Hero() {
           <h1 className="font-heading text-4xl font-black leading-tight md:text-5xl lg:text-6xl">
             <span className="text-text-primary">הבחירה של אלפי שחקנים —</span>
             <br />
-            <span className="text-accent">הקזינו הטובים ביותר בישראל 2026</span>
+            <span className="text-accent">בתי קזינו מובילים בישראל 2026</span>
           </h1>
 
           <p className="mt-6 max-w-lg text-lg md:text-xl text-text-secondary mr-0 ml-auto leading-relaxed">

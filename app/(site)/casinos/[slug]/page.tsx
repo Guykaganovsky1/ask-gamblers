@@ -22,15 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
   if (!casino) return {};
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://casinoraz.co.il";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   return {
-    title: `${casino.name} - ביקורת | קזינו רז`,
+    title: `${casino.name} - ביקורת | Ask Gamblers`,
     description: casino.description,
     alternates: {
       canonical: `${baseUrl}/casinos/${slug}`,
     },
     openGraph: {
-      title: `${casino.name} - ביקורת | קזינו רז`,
+      title: `${casino.name} - ביקורת | Ask Gamblers`,
       description: casino.description,
       type: "article",
       url: `${baseUrl}/casinos/${slug}`,

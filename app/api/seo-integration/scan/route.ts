@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { pages: requestedPages } = body;
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://casinoraz.co.il';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://askgamblers.co.il';
     
     let pagesToScan: string[] = [];
 

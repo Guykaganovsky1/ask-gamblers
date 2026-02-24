@@ -1,4 +1,4 @@
-# Casino Raz - Copywriting Improvements
+# Ask Gamblers - Copywriting Improvements
 
 This document analyzes current website copy and provides improved versions using professional copywriting frameworks (AIDA, PAS, and benefit-focused messaging).
 
