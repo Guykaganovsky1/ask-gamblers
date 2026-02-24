@@ -6,6 +6,7 @@ import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { casinoReviewJsonLd } from "@/lib/json-ld";
+import { generateBreadcrumbSchema } from "@/lib/seo";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
@@ -133,6 +134,18 @@ export default async function CasinoReviewPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(casinoReviewJsonLd(casino)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateBreadcrumbSchema([
+              { name: "דף הבית", url: "/" },
+              { name: "בתי קזינו", url: "/casinos" },
+              { name: casino.name, url: `/casinos/${casino.slug.current}` },
+            ])
+          ),
         }}
       />
     </div>

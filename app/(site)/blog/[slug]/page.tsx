@@ -17,7 +17,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { BlogCard } from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
 import { SocialShare } from "@/components/ui/social-share";
-import { generateArticleSchema } from "@/lib/seo";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const revalidate = 60;
 
@@ -394,11 +394,23 @@ export default async function BlogPostPage({ params }: Props) {
                       : undefined,
                   }
                 : undefined,
-              mainImage: post.featuredImage
+              featuredImage: post.featuredImage
                 ? urlFor(post.featuredImage).width(1200).url()
                 : undefined,
               body: post.body,
             })
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateBreadcrumbSchema([
+              { name: "דף הבית", url: "/" },
+              { name: "בלוג", url: "/blog" },
+              { name: post.title, url: `/blog/${post.slug.current}` },
+            ])
           ),
         }}
       />

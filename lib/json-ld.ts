@@ -19,7 +19,8 @@ export function casinoReviewJsonLd(casino: {
     description: casino.description,
     publisher: {
       "@type": "Organization",
-      name: "קזינו רז",
+      name: "Ask Gamblers",
+      url: "https://askgamblers.co.il",
     },
   };
 }

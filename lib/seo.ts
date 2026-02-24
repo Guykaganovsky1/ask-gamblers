@@ -12,7 +12,7 @@ export interface ArticlePost {
     name: string;
     image?: string;
   };
-  mainImage?: string;
+  featuredImage?: string;
   body?: unknown;
 }
 
@@ -33,7 +33,7 @@ export function generateArticleSchema(post: ArticlePost) {
     },
     headline: post.title,
     description: post.excerpt || SITE_DESCRIPTION,
-    image: post.mainImage ? [post.mainImage] : undefined,
+    image: post.featuredImage ? [post.featuredImage] : undefined,
     datePublished: post.publishedAt,
     dateModified: post.modifiedAt || post.publishedAt,
     author: post.author
@@ -84,12 +84,14 @@ export function generateOrganizationSchema() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logo.svg`,
-      width: 600,
-      height: 120,
+      url: `${SITE_URL}/og-image.png`,
+      width: 1200,
+      height: 630,
     },
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",
+    areaServed: "IL",
+    knowsAbout: ["Online Casino", "Casino Bonuses", "Online Gambling", "קזינו אונליין", "בונוסי קזינו"],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
