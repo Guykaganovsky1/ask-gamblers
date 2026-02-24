@@ -90,7 +90,7 @@ export async function Footer() {
                   <h3 className="font-heading text-3xl md:text-4xl font-black text-text-primary">
                     קזינו מדורגים
                   </h3>
-                  <p className="text-xs text-text-muted/70 mt-1 font-medium tracking-wide">קזינוים מובחרים ומדורגים</p>
+                  <p className="text-xs text-text-muted/70 mt-1 font-medium tracking-wide">קזינו מובחרים ומדורגים</p>
                 </div>
               </div>
               <div className="flex gap-2">
