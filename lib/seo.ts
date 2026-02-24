@@ -1,6 +1,6 @@
 const SITE_NAME = "Ask Gamblers";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
-const SITE_DESCRIPTION = "המדריך המלא לקזינו אונליין";
+const SITE_DESCRIPTION = "המדריך המלא לקזינו באינטרנט";
 
 export interface ArticlePost {
   title: string;
@@ -116,14 +116,6 @@ export function generateWebSiteSchema() {
       "@type": "Organization",
       name: SITE_NAME,
       url: SITE_URL,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
     },
   };
 }
