@@ -138,12 +138,12 @@ export async function Footer() {
                       <div className="flex flex-col gap-1 items-end">
                         <div className="flex gap-0.5">
                           {Array.from({ length: 5 }).map((_, idx) => (
-                            <span key={idx} className={idx < 4 ? 'text-lg' : 'text-lg'}>
-                              {idx < 4 ? '★' : '☆'}
+                            <span key={idx} className="text-lg">
+                              {idx < Math.round(casino.rating) ? '★' : '☆'}
                             </span>
                           ))}
                         </div>
-                        <span className="text-xs font-bold text-accent">4.0/5</span>
+                        <span className="text-xs font-bold text-accent">{casino.rating?.toFixed(1)}/5</span>
                       </div>
                     </div>
 
