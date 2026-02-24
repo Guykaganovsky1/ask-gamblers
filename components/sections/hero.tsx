@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function Hero() {
   return (
     <section 
@@ -41,18 +43,18 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <a
+            <Link
               href="/casinos"
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-background font-bold text-center hover:bg-accent/90 transition-colors"
             >
               גלה את בתי הקזינו המובילים ←
-            </a>
-            <a
+            </Link>
+            <Link
               href="/blog"
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg border border-accent text-accent font-bold text-center hover:bg-accent/10 transition-colors "
             >
               קרא ביקורות מלאות
-            </a>
+            </Link>
           </div>
 
           <div className="mt-8 flex items-center justify-end gap-6 text-sm text-text-muted">
