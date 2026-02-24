@@ -24,7 +24,7 @@ function viewsCount(id: string): number {
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "חדשות | Ask Gamblers",
+  title: "חדשות קזינו ישראל 2026 — עדכונים שוטפים | Ask Gamblers",
   description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
 };
 

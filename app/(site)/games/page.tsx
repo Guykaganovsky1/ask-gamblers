@@ -4,8 +4,8 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "משחקים | Ask Gamblers",
-  description: "גלו משחקי קזינו אונליין מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד עם גרפיקה מרהיבה וזכיות גדולות — מצאו את המשחק שלכם והתחילו לשחק עכשיו",
+  title: "משחקי קזינו אונליין 2026 — סלוטים, רולטה, בלאקג'ק | Ask Gamblers",
+  description: "גלו משחקי קזינו באינטרנט מהמפתחים המובילים — סלוטים, רולטה, בלאקג׳ק ועוד עם גרפיקה מרהיבה וזכיות גדולות — מצאו את המשחק שלכם והתחילו לשחק עכשיו",
 };
 
 export default function GamesPage() {

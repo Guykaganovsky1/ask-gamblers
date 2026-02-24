@@ -4,8 +4,8 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "בונוסים | Ask Gamblers",
-  description: "מצאו את הבונוסים הכי שווים לקזינו אונליין — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי — השוו הצעות, בחרו את הבונוס המושלם והתחילו לזכות עכשיו",
+  title: "בונוסים קזינו 2026 — הצעות בלעדיות, ספינים וקאשבק | Ask Gamblers",
+  description: "מצאו את הבונוסים הכי שווים לקזינו באינטרנט — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי — השוו הצעות, בחרו את הבונוס המושלם והתחילו לזכות עכשיו",
 };
 
 export default function BonusesPage() {
