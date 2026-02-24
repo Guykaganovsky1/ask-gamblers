@@ -36,7 +36,7 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
   return (
     <div
       className="animate-fade-in border border-border-glass rounded-xl overflow-hidden bg-card-light/30"
-      style={{ animationDelay: `${index * 0.1}s`, opacity: 0 }}
+      style={{ animationDelay: `${index * 0.1}s` }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -55,7 +55,7 @@ function FAQItem({ item, index }: { item: FAQItem; index: number }) {
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: isOpen ? '500px' : '0', opacity: isOpen ? 1 : 0 }}
+        style={{ maxHeight: isOpen ? '2000px' : '0', opacity: isOpen ? 1 : 0 }}
       >
         <p className="px-5 pb-5 text-text-secondary leading-relaxed">{item.answer}</p>
       </div>
