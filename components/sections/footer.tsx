@@ -177,7 +177,7 @@ export async function Footer() {
 
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <Link href="/" className="font-heading text-xl font-black text-accent">
-            Royal Spinz
+            Ask Gamblers
           </Link>
           <nav className="flex gap-6">
             {FOOTER_LINKS.map((link) => (
@@ -196,7 +196,7 @@ export async function Footer() {
             הימורים עלולים לגרום להתמכרות. שחק באחריות. מותר מגיל 18+ בלבד.
             האתר מכיל קישורי שותפים.
           </p>
-          <p className="mt-4">&copy; {new Date().getFullYear()} Royal Spinz. כל הזכויות שמורות.</p>
+          <p className="mt-4">&copy; {new Date().getFullYear()} Ask Gamblers. כל הזכויות שמורות.</p>
         </div>
       </div>
     </footer>
