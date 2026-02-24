@@ -5,6 +5,7 @@ import "./globals.css";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
+  weight: ["400", "700", "900"],
   variable: "--font-heebo",
   display: "swap",
   preload: true,
@@ -12,6 +13,7 @@ const heebo = Heebo({
 
 const assistant = Assistant({
   subsets: ["hebrew", "latin"],
+  weight: ["400", "600", "700"],
   variable: "--font-assistant",
   display: "swap",
   preload: true,
@@ -62,6 +64,8 @@ export default function RootLayout({
     <html lang="he" dir="rtl">
       <head>
         <link rel="preload" as="image" href="/images/hero-bg.webp" />
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <meta name="theme-color" content="#9333EA" />
       </head>
       <body
         className={`${heebo.variable} ${assistant.variable} ${inter.variable} font-assistant bg-[#0B0E14] text-[#F5F5F5] antialiased`}
