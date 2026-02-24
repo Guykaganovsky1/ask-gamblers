@@ -27,10 +27,10 @@ const inter = Inter({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+  title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
   description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
   openGraph: {
-    title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+    title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
     description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
     url: SITE_URL,
     siteName: "Ask Gamblers",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+        alt: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
       },
     ],
     locale: "he_IL",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ask Gamblers - המדריך המלא לקזינו באינטרנט",
+    title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
     description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
     images: [`${SITE_URL}/og-image.png`],
   },
