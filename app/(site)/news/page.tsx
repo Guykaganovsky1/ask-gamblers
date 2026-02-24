@@ -280,7 +280,7 @@ export default async function NewsPage() {
                     href="/casinos"
                     className="text-xs text-accent hover:text-accent-light font-bold transition-colors"
                   >
-                    צפה בכל הקזינו →
+                    צפה בכל בתי הקזינו →
                   </Link>
                 </div>
               </div>

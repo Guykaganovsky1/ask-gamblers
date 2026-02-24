@@ -6,7 +6,7 @@ const safetyChecks = [
   {
     icon: "📜",
     title: "רישיון חוקי",
-    description: "כל הקזינו מחזיקים ברישיון תקף (Curacao, MGA)"
+    description: "כל בתי הקזינו מחזיקים ברישיון תקף (Curacao, MGA)"
   },
   {
     icon: "🔒",

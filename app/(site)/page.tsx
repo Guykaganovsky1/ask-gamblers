@@ -79,7 +79,7 @@ async function HomeContent() {
           </div>
           <div className="mt-12 text-center">
             <Button href="/casinos" variant="outline">
-              גלו כל {casinos.length} הקזינו
+              גלו את כל {casinos.length} בתי הקזינו
             </Button>
           </div>
         </section>
@@ -144,11 +144,11 @@ async function HomeContent() {
             מוכנים להתחיל? בחרו קזינו בטוח היום
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto mb-8 leading-relaxed">
-            כל הקזינו באתר עברו בדיקה מקיפה. אנחנו בודקים רישיון, שיטות תשלום, בונוסים, תמיכה וחוויית משתמש — כדי שתוכלו לשחק בראש שקט.
+            כל בתי הקזינו באתר עברו בדיקה מקיפה. אנחנו בודקים רישיון, שיטות תשלום, בונוסים, תמיכה וחוויית משתמש — כדי שתוכלו לשחק בראש שקט.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/casinos">
-              גלו את כל הקזינו
+              גלו את כל בתי הקזינו
             </Button>
             <Button href="/blog" variant="outline">
               קראו את המדריך המלא

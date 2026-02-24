@@ -9,7 +9,7 @@ export const SECTION_COPY = {
   casinos: {
     heading: '10 קזינו אונליין מאושרים — נבדקו, דורגו ואושרו',
     subheading: 'בחרו מקזינו בדוקים ומדורגים',
-    cta: 'גלו כל 25 הקזינו',
+    cta: 'גלו את כל 25 בתי הקזינו',
     description: 'כל קזינו בדוק, מדורג וממומלץ על ידי מומחים',
   },
 
@@ -45,7 +45,7 @@ export const CTA_COPY = {
   casino: {
     primary: 'שחקו בביטחון היום',
     secondary: 'קראו ביקורת מלאה',
-    viewAll: 'גלו כל 25 הקזינו',
+    viewAll: 'גלו את כל 25 בתי הקזינו',
   },
 
   // Blog CTAs
@@ -63,7 +63,7 @@ export const CTA_COPY = {
 
   // Navigation CTAs
   navigation: {
-    allCasinos: 'גלו כל 25 הקזינו',
+    allCasinos: 'גלו את כל 25 בתי הקזינו',
     allPosts: 'קראו כל המאמרים',
     allCategories: 'בחרו משחק',
   },

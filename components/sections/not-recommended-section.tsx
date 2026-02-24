@@ -108,7 +108,7 @@ export function NotRecommendedSection() {
             <h4 className="font-heading font-bold text-text-primary mb-2">למה אנחנו מפרסמים את זה?</h4>
             <p className="text-sm text-text-secondary leading-relaxed">
               המטרה שלנו היא להגן על שחקנים ישראלים. אנחנו מעדיפים לאבד עמלות שיווקיות מאשר להמליץ על אתר 
-              שעלול לפגוע בשחקנים. כל הקזינו ברשימה שלנו נבדקו בפועל, והביקורות שלנו מבוססות על ניסיון אמיתי.
+              שעלול לפגוע בשחקנים. כל בתי הקזינו ברשימה שלנו נבדקו בפועל, והביקורות שלנו מבוססות על ניסיון אמיתי.
             </p>
           </div>
         </div>

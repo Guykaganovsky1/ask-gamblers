@@ -45,7 +45,7 @@ export function Hero() {
               href="/casinos"
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-background font-bold text-center hover:bg-accent/90 transition-colors"
             >
-              גלה את הקזינו המובילים ←
+              גלה את בתי הקזינו המובילים ←
             </a>
             <a
               href="/blog"
