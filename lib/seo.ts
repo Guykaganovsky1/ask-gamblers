@@ -90,12 +90,6 @@ export function generateOrganizationSchema() {
     },
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",
-    sameAs: [
-      "https://www.facebook.com/askgamblersil",
-      "https://twitter.com/askgamblersil",
-      "https://t.me/askgamblersil",
-      "https://www.instagram.com/askgamblersil",
-    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
