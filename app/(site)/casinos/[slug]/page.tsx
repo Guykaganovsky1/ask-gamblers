@@ -144,6 +144,10 @@ export default async function CasinoReviewPage({ params }: Props) {
           __html: JSON.stringify(casinoReviewJsonLd(casino)),
         }}
       />
+      {casino.faqs && casino.faqs.length > 0 && (
+        <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
+      )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

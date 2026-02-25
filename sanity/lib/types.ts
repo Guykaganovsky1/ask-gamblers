@@ -99,6 +99,7 @@ export interface Casino {
   affiliateLink?: string;
   featured?: boolean;
   clicks?: number;
+  faqs?: FAQItem[];
   categories?: Array<{
     _id: string;
     name: string;
@@ -160,6 +161,12 @@ export type CasinoList = Casino[];
 export type BlogPostList = BlogPost[];
 export type CategoryList = Category[];
 export type SoftwareProviderList = SoftwareProvider[];
+
+// FAQ Item for casino pages
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
 
 // Re-export SanityImage for consumer modules
 export type { SanityImage };
