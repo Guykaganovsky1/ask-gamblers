@@ -30,10 +30,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 
 export const metadata: Metadata = {
   title: "קזינו בישראל | ביקורות ובונוסים",
-  description: "מדריך קזינו בישראל - ביקורות מפורטות, בונוסים משתלמים, דירוגי ביטחון ומידע עדכני על בתי קזינו מומלצים עבור שחקנים ישראליים.",
+  description: "מדריך קזינו בישראל - ביקורות מלאות, בונוסים בטוחים ודירוגי ביטחון לשחקנים.",
   openGraph: {
     title: "קזינו בישראל | ביקורות ובונוסים",
-    description: "מדריך קזינו בישראל - ביקורות מפורטות, בונוסים משתלמים, דירוגי ביטחון ומידע עדכני על בתי קזינו מומלצים עבור שחקנים ישראליים.",
+    description: "מדריך קזינו בישראל - ביקורות מלאות, בונוסים בטוחים ודירוגי ביטחון לשחקנים.",
     url: SITE_URL,
     siteName: "Ask Gamblers",
     images: [
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "קזינו בישראל | ביקורות ובונוסים",
-    description: "מדריך קזינו בישראל - ביקורות מפורטות, בונוסים משתלמים, דירוגי ביטחון ומידע עדכני על בתי קזינו מומלצים עבור שחקנים ישראליים.",
+    description: "מדריך קזינו בישראל - ביקורות מלאות, בונוסים בטוחים ודירוגי ביטחון לשחקנים.",
     images: [`${SITE_URL}/og-image.png`],
   },
   metadataBase: new URL(SITE_URL),
