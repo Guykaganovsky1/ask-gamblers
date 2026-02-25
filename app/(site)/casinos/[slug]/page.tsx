@@ -12,6 +12,7 @@ import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { CasinoFAQ } from "@/components/ui/casino-faq";
 
 export const revalidate = 60;
 
@@ -130,12 +131,20 @@ export default async function CasinoReviewPage({ params }: Props) {
           </div>
         </div>
       )}
+      {casino.faqs && casino.faqs.length > 0 && (
+        <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
+      )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(casinoReviewJsonLd(casino)),
         }}
       />
+      {casino.faqs && casino.faqs.length > 0 && (
+        <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
+      )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

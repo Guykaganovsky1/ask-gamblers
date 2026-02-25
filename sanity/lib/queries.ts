@@ -46,6 +46,7 @@ export const CASINO_BY_SLUG_QUERY = groq`
     affiliateLink,
     featured,
     clicks,
+    faqs,
     categories[]->{ _id, name, slug }
   }
 `;
