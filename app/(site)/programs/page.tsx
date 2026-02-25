@@ -4,7 +4,7 @@ import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
-  title: "תוכניות | Ask Gamblers",
+  title: "תוכניות משחק קזינו - בחר משחק",
   description: "מצאו את המשחק המושלם שלכם",
 };
 

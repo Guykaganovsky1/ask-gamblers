@@ -9,7 +9,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "ספקי תוכנה | Ask Gamblers",
+  title: "ספקי תוכנה קזינו - NetEnt, Microgaming",
   description: "גלה קזינו לפי ספק תוכנה - NetEnt, Microgaming, Playtech ועוד",
 };
 
