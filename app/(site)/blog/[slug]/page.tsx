@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
-import { 
-  POST_BY_SLUG_QUERY, 
-  FEATURED_CASINOS_QUERY, 
+import {
+  POST_BY_SLUG_QUERY,
+  FEATURED_CASINOS_QUERY,
   RELATED_POSTS_QUERY,
-  ADJACENT_POSTS_QUERY 
+  ADJACENT_POSTS_QUERY,
+  RELATED_CASINOS_QUERY
 } from "@/sanity/lib/queries";
 import { BlogPost, Casino, SanityImage } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
@@ -103,18 +104,23 @@ export default async function BlogPostPage({ params }: Props) {
 
   // Fetch related posts and adjacent posts
   const categoryIds = post.categories?.map((c) => c._id) || [];
-  const [relatedPosts, adjacentPosts] = await Promise.all([
-    categoryIds.length > 0 
-      ? client.fetch<BlogPost[]>(RELATED_POSTS_QUERY, { 
-          currentSlug: slug, 
-          categoryIds 
+  const [relatedPosts, adjacentPosts, relatedCasinos] = await Promise.all([
+    categoryIds.length > 0
+      ? client.fetch<BlogPost[]>(RELATED_POSTS_QUERY, {
+          currentSlug: slug,
+          categoryIds
         })
       : [],
-    post.publishedAt 
-      ? client.fetch<AdjacentPosts>(ADJACENT_POSTS_QUERY, { 
-          publishedAt: post.publishedAt 
+    post.publishedAt
+      ? client.fetch<AdjacentPosts>(ADJACENT_POSTS_QUERY, {
+          publishedAt: post.publishedAt
         })
       : { prev: null, next: null },
+    categoryIds.length > 0
+      ? client.fetch<Casino[]>(RELATED_CASINOS_QUERY, {
+          categoryIds
+        })
+      : [],
   ]);
 
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://askgamblers.co.il'}/blog/${slug}`;
@@ -349,7 +355,70 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      {/* SECTION 4: Related Posts */}
+      {/* SECTION 4: Related Casinos */}
+      {relatedCasinos.length > 0 && (
+        <section className="py-16 bg-accent/5">
+          <div className="mx-auto max-w-7xl px-4">
+            {/* Section Title */}
+            <div className="flex items-center gap-2 mb-10">
+              <div className="w-1 h-8 bg-accent rounded" />
+              <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
+                קזינו מומלצים לכתבה זו
+              </h2>
+            </div>
+
+            {/* Casinos Grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {relatedCasinos.map((casino) => (
+                <Link
+                  key={casino._id}
+                  href={`/casinos/${casino.slug.current}`}
+                  className="group rounded-xl border border-border-glass bg-card-light/50 p-4 hover:bg-card-light hover:border-accent/50 transition-all"
+                >
+                  <div className="flex flex-col gap-3">
+                    {casino.logo && (
+                      <div className="w-full h-12 relative overflow-hidden rounded-lg bg-card flex items-center justify-center">
+                        <Image
+                          src={urlFor(casino.logo).width(200).height(100).url()}
+                          alt={casino.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="font-heading font-bold text-text-primary text-sm group-hover:text-accent transition-colors truncate">
+                        {casino.name}
+                      </h3>
+                      <div className="mt-1 flex items-center justify-between">
+                        <StarRating rating={casino.rating} size="sm" />
+                        <span className="text-xs font-medium text-accent">
+                          {casino.rating} ⭐
+                        </span>
+                      </div>
+                    </div>
+                    {casino.bonusAmount && (
+                      <div className="text-xs text-accent font-medium pt-2 border-t border-border-glass/50">
+                        {casino.bonusTitle} {casino.bonusAmount}
+                      </div>
+                    )}
+                    <Button
+                      href={`/go/${casino.slug.current}`}
+                      variant="primary"
+                      className="w-full text-xs py-2"
+                      rel="nofollow sponsored"
+                    >
+                      בחר קזינו
+                    </Button>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 5: Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="py-16 bg-card/50">
           <div className="mx-auto max-w-7xl px-4">

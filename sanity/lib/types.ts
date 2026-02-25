@@ -72,6 +72,12 @@ export interface CategoryDetail extends Category {
   }>;
 }
 
+// FAQ item for casinos
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 // Casino document
 export interface Casino {
   _id: string;
@@ -82,11 +88,14 @@ export interface Casino {
   icon?: string;
   rating: number;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   bonusTitle?: string;
   bonusAmount?: string;
   wageringRequirement?: string;
   pros?: string[];
   cons?: string[];
+  faqs?: FAQItem[];
   affiliateLink?: string;
   featured?: boolean;
   clicks?: number;

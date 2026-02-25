@@ -163,6 +163,7 @@ async function HomeContent() {
 export default function HomePage() {
   return (
     <>
+      <h1 className="sr-only">Ask Gamblers - בתי קזינו בטוחים בישראל 2026 | ביקורות ובונוסים</h1>
       <Hero />
 
       <Suspense fallback={<div className="min-h-[400px]" />}>

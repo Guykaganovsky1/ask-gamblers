@@ -38,6 +38,20 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "seoTitle",
+      title: "SEO Title (Meta Title)",
+      type: "string",
+      description: "Optimized title for search engines (50-60 characters)",
+      validation: (rule) => rule.max(60),
+    }),
+    defineField({
+      name: "seoDescription",
+      title: "SEO Description (Meta Description)",
+      type: "string",
+      description: "Optimized description for search engines (150-160 characters)",
+      validation: (rule) => rule.max(160),
+    }),
+    defineField({
       name: "pros",
       title: "יתרונות",
       type: "array",
@@ -88,6 +102,21 @@ export default defineType({
       type: "number",
       initialValue: 0,
       readOnly: true,
+    }),
+    defineField({
+      name: "faqs",
+      title: "שאלות נפוצות (FAQ)",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "question", type: "string", title: "שאלה" },
+            { name: "answer", type: "text", title: "תשובה" },
+          ],
+        },
+      ],
+      description: "הוסף שאלות ותשובות נפוצות כדי לשפר את ה-SEO",
     }),
   ],
 });

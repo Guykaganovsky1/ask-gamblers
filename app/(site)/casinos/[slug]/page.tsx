@@ -5,13 +5,14 @@ import { client } from "@/sanity/lib/client";
 import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
-import { casinoReviewJsonLd } from "@/lib/json-ld";
-import { generateBreadcrumbSchema } from "@/lib/seo";
+import { casinoReviewJsonLd, casinoAggregateRatingJsonLd } from "@/lib/json-ld";
+import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/seo";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { CasinoFAQ } from "@/components/ui/casino-faq";
 
 export const revalidate = 60;
 
@@ -24,15 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
   if (!casino) return {};
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+  const title = casino.seoTitle || `${casino.name} - ביקורת קזינו | Ask Gamblers`;
+  const description = casino.seoDescription || casino.description;
   return {
-    title: `${casino.name} - ביקורת | Ask Gamblers`,
-    description: casino.description,
+    title,
+    description,
     alternates: {
       canonical: `${baseUrl}/casinos/${slug}`,
     },
     openGraph: {
-      title: `${casino.name} - ביקורת | Ask Gamblers`,
-      description: casino.description,
+      title,
+      description,
       type: "article",
       url: `${baseUrl}/casinos/${slug}`,
     },
@@ -130,6 +133,11 @@ export default async function CasinoReviewPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      {casino.faqs && casino.faqs.length > 0 && (
+        <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
+      )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -148,6 +156,20 @@ export default async function CasinoReviewPage({ params }: Props) {
           ),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(casinoAggregateRatingJsonLd(casino)),
+        }}
+      />
+      {casino.faqs && casino.faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateFAQSchema(casino.faqs)),
+          }}
+        />
+      )}
     </div>
     </>
   );

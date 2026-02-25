@@ -38,6 +38,8 @@ export const CASINO_BY_SLUG_QUERY = groq`
     logo,
     rating,
     description,
+    seoTitle,
+    seoDescription,
     pros,
     cons,
     bonusTitle,
@@ -46,6 +48,7 @@ export const CASINO_BY_SLUG_QUERY = groq`
     affiliateLink,
     featured,
     clicks,
+    faqs,
     categories[]->{ _id, name, slug }
   }
 `;
@@ -165,6 +168,22 @@ export const ADJACENT_POSTS_QUERY = groq`
     "next": *[_type == "post" && publishedAt > $publishedAt] | order(publishedAt asc) [0] {
       _id, title, slug
     }
+  }
+`;
+
+// Related casinos query (casinos in same categories)
+export const RELATED_CASINOS_QUERY = groq`
+  *[_type == "casino" && count(categories[@._ref in $categoryIds]) > 0]
+  | order(rating desc) [0...4] {
+    _id,
+    name,
+    slug,
+    logo,
+    rating,
+    description,
+    bonusTitle,
+    bonusAmount,
+    categories[]->{ _id, name, slug }
   }
 `;
 
