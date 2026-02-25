@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" role="img">
+  <title>Ask Gamblers Logo</title>
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8C547;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="emeraldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1FFF89;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E676;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="200" fill="#0A0A0F" rx="8"/>
+
+  <!-- Icon: Shield with Dice -->
+  <g id="icon" transform="translate(50, 50)">
+    <!-- Shield outline -->
+    <path d="M 40 10 L 70 10 L 70 45 Q 55 65 40 70 Q 25 65 10 45 L 10 10 Z"
+          fill="url(#goldGradient)" stroke="#D4AF37" stroke-width="2" shape-rendering="geometricPrecision"/>
+
+    <!-- Dice dots (simple geometric) -->
+    <!-- Left die -->
+    <circle cx="25" cy="35" r="2.5" fill="#0A0A0F"/>
+    <circle cx="25" cy="45" r="2.5" fill="#0A0A0F"/>
+
+    <!-- Right die -->
+    <circle cx="55" cy="35" r="2.5" fill="#0A0A0F"/>
+    <circle cx="55" cy="45" r="2.5" fill="#0A0A0F"/>
+
+    <!-- Center dot (emerald accent) -->
+    <circle cx="40" cy="40" r="3" fill="url(#emeraldGradient)"/>
+  </g>
+
+  <!-- Brand Text -->
+  <g id="wordmark">
+    <!-- Main text -->
+    <text x="130" y="85" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#F5F5F5" letter-spacing="-1">
+      Ask
+    </text>
+    <text x="130" y="115" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="url(#goldGradient)" letter-spacing="-1">
+      Gamblers
+    </text>
+
+    <!-- Tagline -->
+    <text x="130" y="135" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#00E676" letter-spacing="1.2">
+      SAFE • TRUSTED • WINNING
+    </text>
+  </g>
+
+  <!-- Accent line -->
+  <line x1="130" y1="125" x2="320" y2="125" stroke="url(#emeraldGradient)" stroke-width="2" shape-rendering="geometricPrecision"/>
+</svg>

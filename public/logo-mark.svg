@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img">
+  <title>Ask Gamblers Icon Mark</title>
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8C547;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1FFF89;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00E676;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="200" height="200" fill="#0A0A0F" rx="12"/>
+
+  <!-- Shield with Dice -->
+  <g transform="translate(50, 50)">
+    <path d="M 50 10 L 90 10 L 90 55 Q 70 80 50 85 Q 30 80 10 55 L 10 10 Z"
+          fill="url(#goldGrad)" stroke="#D4AF37" stroke-width="2.5" shape-rendering="geometricPrecision"/>
+
+    <!-- Dice dots -->
+    <circle cx="32" cy="42" r="3" fill="#0A0A0F"/>
+    <circle cx="32" cy="58" r="3" fill="#0A0A0F"/>
+    <circle cx="68" cy="42" r="3" fill="#0A0A0F"/>
+    <circle cx="68" cy="58" r="3" fill="#0A0A0F"/>
+    <circle cx="50" cy="50" r="3.5" fill="url(#emeraldGrad)"/>
+  </g>
+</svg>

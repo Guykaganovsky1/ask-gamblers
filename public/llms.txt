@@ -1,0 +1,61 @@
+# Ask Gamblers - LLM Accessibility Guide
+
+## Site Information
+- **Site Name:** Ask Gamblers
+- **URL:** https://askgamblers.co.il
+- **Language:** Hebrew (RTL)
+- **Purpose:** Casino reviews, bonuses, and ratings for Israeli market
+
+## Content Structure
+
+### Homepage
+- Hero section with featured casinos
+- Category browsing
+- Latest blog posts
+- Casino listings with ratings
+
+### Key Pages
+- `/casinos` - Full casino directory with reviews
+- `/blog` - Blog posts about casinos and gaming
+- `/bonuses` - Current casino promotions and bonuses
+- `/games` - Casino game information
+- `/softwares` - Software providers directory
+- `/news` - Latest casino news
+
+## Content Guidelines
+
+### Casino Reviews
+Each casino review includes:
+- Detailed rating and scoring
+- Safety information
+- Bonus offers
+- Payment methods
+- Customer support evaluation
+- Pros and cons
+
+### Blog Posts
+Educational content about:
+- Casino strategies
+- Bonus comparison
+- Software reviews
+- Gaming tips
+- Industry news
+
+## SEO Information
+- **Title Tags:** 50-60 characters
+- **Meta Descriptions:** 120-160 characters
+- **Canonical Tags:** Implemented on all pages
+- **Structured Data:** Schema.org markup for organizations and websites
+
+## Do Not Crawl
+- `/studio` - Sanity CMS admin
+- `/api/*` - Internal API routes
+- `/go/*` - Affiliate redirect system
+
+## Language & RTL
+- Primary language: Hebrew
+- RTL (right-to-left) layout
+- English terms and brand names appear inline
+
+## Last Updated
+February 25, 2026
