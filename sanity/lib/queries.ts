@@ -60,7 +60,7 @@ export const POSTS_QUERY = groq`
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug },
-    "excerpt": array::join(string::split(pt::text(body), "")[0..150], "") + "..."
+    "excerpt": pt::text(body)[0..150] + "..."
   }
 `;
 
@@ -83,6 +83,7 @@ export const POST_BY_SLUG_QUERY = groq`
     slug,
     featuredImage,
     publishedAt,
+    "modifiedAt": _updatedAt,
     body,
     seoTitle,
     seoDescription,
@@ -192,6 +193,6 @@ export const SEARCH_POSTS_QUERY = groq`
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug },
-    "excerpt": array::join(string::split(pt::text(body), "")[0..150], "") + "..."
+    "excerpt": pt::text(body)[0..150] + "..."
   }
 `;

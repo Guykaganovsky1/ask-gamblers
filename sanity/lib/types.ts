@@ -107,6 +107,7 @@ export interface BlogPost {
   body?: PortableTextBlock[];
   excerpt?: string;
   publishedAt: string;
+  modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
   author?: Author;

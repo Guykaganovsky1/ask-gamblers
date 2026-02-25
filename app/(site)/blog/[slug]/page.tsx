@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       url: `${baseUrl}/blog/${slug}`,
       publishedTime: post.publishedAt,
+      modifiedTime: post.modifiedAt || post.publishedAt,
       authors: post.author?.name ? [post.author.name] : undefined,
     },
   };
