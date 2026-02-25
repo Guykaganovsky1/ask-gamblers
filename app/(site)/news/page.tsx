@@ -27,13 +27,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 
 export const metadata: Metadata = {
   title: "חדשות קזינו 2026 - עדכונים שוטפים",
-  description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
+  description: "עקבו אחר חדשות הקזינו האחרונות — בונוסים חדשים, קזינו חדשים, טיפים מקצועיים ומדריכים למשחקי הימור אונליין. עדכונים שוטפים עבור שחקנים ישראלים.",
   alternates: {
     canonical: `${SITE_URL}/news`,
   },
   openGraph: {
     title: "חדשות קזינו 2026 - עדכונים שוטפים",
-    description: "חדשות קזינו, טיפים ומדריכים של משחקי הימור אונליין",
+    description: "עקבו אחר חדשות הקזינו האחרונות — בונוסים חדשים, קזינו חדשים, טיפים מקצועיים ומדריכים למשחקי הימור אונליין.",
     url: `${SITE_URL}/news`,
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
     type: "website",
