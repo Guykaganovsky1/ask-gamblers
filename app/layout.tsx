@@ -54,7 +54,9 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og-image.png`],
   },
   metadataBase: new URL(SITE_URL),
-  canonical: SITE_URL,
+  alternates: {
+    canonical: SITE_URL,
+  },
 };
 
 export default function RootLayout({
