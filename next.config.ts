@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
       "@sanity/icons",
       "@sanity/image-url",
       "framer-motion",
-      "styled-components",
     ],
   },
   
