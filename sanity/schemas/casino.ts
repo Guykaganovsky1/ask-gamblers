@@ -89,5 +89,29 @@ export default defineType({
       initialValue: 0,
       readOnly: true,
     }),
+    defineField({
+      name: "faqs",
+      title: "שאלות נפוצות",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "question",
+              title: "שאלה",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: "answer",
+              title: "תשובה",
+              type: "text",
+              validation: (rule) => rule.required(),
+            },
+          ],
+        },
+      ],
+    }),
   ],
 });
