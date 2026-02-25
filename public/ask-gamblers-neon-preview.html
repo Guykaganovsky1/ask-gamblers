@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask Gamblers - Neon Gaming Logo System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0A0A1A 0%, #1A0A2E 100%);
+      color: #F5F5F5;
+      font-family: 'Arial', sans-serif;
+      padding: 60px 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      font-weight: 900;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #00FFFF 0%, #FF6B00 50%, #6B2DD1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+      letter-spacing: 3px;
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      background: linear-gradient(90deg, #00FFFF 0%, #6B2DD1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    section {
+      margin-bottom: 100px;
+    }
+
+    h2 {
+      font-size: 2.2em;
+      font-weight: 900;
+      margin-bottom: 40px;
+      color: #00FFFF;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      border-bottom: 2px solid #6B2DD1;
+      padding-bottom: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: rgba(15, 15, 35, 0.9);
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      border-color: #00FFFF;
+      transform: translateY(-8px);
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.4), 0 0 30px rgba(107, 45, 209, 0.2);
+    }
+
+    .preview-area {
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.05) 0%, rgba(107, 45, 209, 0.05) 100%);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .preview-area svg {
+      max-width: 100%;
+      max-height: 100%;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
+    }
+
+    .card h3 {
+      font-size: 1.4em;
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #00FFFF;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      color: #B0B0D0;
+      line-height: 1.6;
+    }
+
+    .specs {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0, 255, 255, 0.2);
+      font-size: 0.85em;
+      color: #00FFFF;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .comparison-item {
+      background: rgba(15, 15, 35, 0.9);
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .comparison-item:hover {
+      border-color: #6B2DD1;
+      box-shadow: 0 0 40px rgba(107, 45, 209, 0.3);
+    }
+
+    .comparison-item h3 {
+      font-size: 1.4em;
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: #6B2DD1;
+    }
+
+    .comparison-preview {
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(107, 45, 209, 0.1) 100%);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .comparison-preview.dark {
+      background: linear-gradient(135deg, #0A0A1A 0%, #1A0A2E 100%);
+    }
+
+    .comparison-preview.light {
+      background: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
+    }
+
+    .comparison-preview svg {
+      max-width: 100%;
+      max-height: 100%;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.2));
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .feature {
+      background: rgba(0, 255, 255, 0.08);
+      border-left: 4px solid #00FFFF;
+      padding: 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      border-left: 4px solid #FF6B00;
+      background: rgba(255, 107, 0, 0.08);
+      transform: translateX(8px);
+    }
+
+    .feature h4 {
+      color: #00FFFF;
+      margin-bottom: 12px;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+    }
+
+    .feature p {
+      color: #B0B0D0;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #00FFFF 0%, #6B2DD1 100%);
+      color: #0A0A1A;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 0.75em;
+      font-weight: 900;
+      margin: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .color-item {
+      background: rgba(15, 15, 35, 0.9);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .color-swatch {
+      width: 100%;
+      height: 100px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .color-item h4 {
+      font-size: 1.1em;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #00FFFF;
+    }
+
+    .color-item p {
+      font-size: 0.9em;
+      color: #B0B0D0;
+    }
+
+    .footer {
+      background: rgba(0, 255, 255, 0.05);
+      border-top: 2px solid #6B2DD1;
+      border-bottom: 2px solid #00FFFF;
+      padding: 40px;
+      border-radius: 16px;
+      margin-top: 80px;
+    }
+
+    .footer h3 {
+      color: #00FFFF;
+      margin-bottom: 20px;
+      font-size: 1.3em;
+      letter-spacing: 1px;
+    }
+
+    .footer ul {
+      list-style: none;
+      columns: 2;
+      column-gap: 40px;
+    }
+
+    .footer li {
+      margin-bottom: 15px;
+      color: #B0B0D0;
+      line-height: 1.8;
+    }
+
+    code {
+      background: rgba(107, 45, 209, 0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #00FFFF;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5em; }
+      h2 { font-size: 1.6em; }
+      .grid { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .color-palette { grid-template-columns: 1fr; }
+      .footer ul { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>⚡ Ask Gamblers</h1>
+      <p class="subtitle">NEON Gaming Logo System</p>
+    </header>
+
+    <!-- Primary Logos -->
+    <section>
+      <h2>🔥 Primary Logo Variants</h2>
+      <div class="grid">
+        <!-- Main Neon Logo -->
+        <div class="card">
+          <div class="preview-area">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="width: 100%; max-width: 400px;">
+              <defs>
+                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                
+                <filter id="strongGlow" x="-80%" y="-80%" width="260%" height="260%">
+                  <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+
+                <linearGradient id="purpleCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:1" />
+                </linearGradient>
+
+                <linearGradient id="purpleOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#FF6B00;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:1" />
+                </linearGradient>
+
+                <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:0.3" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:0" />
+                </radialGradient>
+              </defs>
+
+              <circle cx="80" cy="125" r="120" fill="url(#glowGradient)" opacity="0.6"/>
+              <circle cx="80" cy="125" r="110" fill="none" stroke="#00FFFF" stroke-width="2" opacity="0.4" filter="url(#neonGlow)"/>
+              
+              <g filter="url(#strongGlow)">
+                <path d="M 80 50 L 95 95 L 75 95 L 95 200 L 65 120 L 85 120 Z" fill="none" stroke="#FF6B00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+              </g>
+
+              <g filter="url(#neonGlow)">
+                <path d="M 80 50 L 95 95 L 75 95 L 95 200 L 65 120 L 85 120 Z" fill="url(#purpleCyan)" stroke="#00FFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+
+              <circle cx="80" cy="125" r="65" fill="none" stroke="url(#purpleCyan)" stroke-width="2.5" filter="url(#neonGlow)"/>
+              <circle cx="80" cy="125" r="35" fill="none" stroke="#00FFFF" stroke-width="1" opacity="0.8" filter="url(#neonGlow)"/>
+
+              <g filter="url(#strongGlow)">
+                <text x="180" y="95" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="none" stroke="#00FFFF" stroke-width="2" letter-spacing="2" opacity="0.6">Ask</text>
+                <text x="180" y="160" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="none" stroke="url(#purpleOrange)" stroke-width="2" letter-spacing="2" opacity="0.6">Gamblers</text>
+              </g>
+
+              <g filter="url(#neonGlow)">
+                <text x="180" y="95" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="#00FFFF" letter-spacing="2">Ask</text>
+                <text x="180" y="160" font-family="Arial, sans-serif" font-size="56" font-weight="900" fill="url(#purpleOrange)" letter-spacing="2">Gamblers</text>
+              </g>
+
+              <line x1="180" y1="175" x2="450" y2="175" stroke="#00FFFF" stroke-width="2" opacity="0.9" filter="url(#neonGlow)"/>
+
+              <g filter="url(#neonGlow)">
+                <text x="180" y="210" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#00FFFF" letter-spacing="2" text-transform="uppercase" opacity="0.9">NEON • GAMING • ELITE</text>
+              </g>
+            </svg>
+          </div>
+          <h3>Primary Logo</h3>
+          <p>Full horizontal logo with neon glow effects</p>
+          <div class="specs">
+            <strong>File:</strong> <code>ask-gamblers-neon-logo.svg</code><br>
+            <strong>Size:</strong> 500×250px
+          </div>
+        </div>
+
+        <!-- Neon Icon Mark -->
+        <div class="card">
+          <div class="preview-area" style="height: 250px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="width: 180px; height: 180px;">
+              <defs>
+                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <linearGradient id="purpleCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:1" />
+                </linearGradient>
+                <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:0.3" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:0" />
+                </radialGradient>
+              </defs>
+              <circle cx="100" cy="100" r="90" fill="url(#glowGradient)" opacity="0.5"/>
+              <circle cx="100" cy="100" r="85" fill="none" stroke="#00FFFF" stroke-width="1.5" opacity="0.4" filter="url(#neonGlow)"/>
+              <g filter="url(#neonGlow)">
+                <path d="M 100 30 L 115 75 L 95 75 L 115 160 L 85 100 L 105 100 Z" fill="none" stroke="#FF6B00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+              </g>
+              <g filter="url(#neonGlow)">
+                <path d="M 100 30 L 115 75 L 95 75 L 115 160 L 85 100 L 105 100 Z" fill="url(#purpleCyan)" stroke="#00FFFF" stroke-width="1"/>
+              </g>
+              <circle cx="100" cy="100" r="50" fill="none" stroke="url(#purpleCyan)" stroke-width="2" filter="url(#neonGlow)"/>
+              <circle cx="100" cy="100" r="25" fill="none" stroke="#00FFFF" stroke-width="0.8" opacity="0.8" filter="url(#neonGlow)"/>
+            </svg>
+          </div>
+          <h3>Icon Mark</h3>
+          <p>Square neon icon for apps and avatars</p>
+          <div class="specs">
+            <strong>File:</strong> <code>ask-gamblers-neon-mark.svg</code><br>
+            <strong>Size:</strong> 200×200px (scalable)
+          </div>
+        </div>
+
+        <!-- Favicon -->
+        <div class="card">
+          <div class="preview-area" style="height: 250px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width: 120px; height: 120px;">
+              <defs>
+                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <linearGradient id="purpleCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#6B2DD1;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="16" cy="16" r="14" fill="none" stroke="#00FFFF" stroke-width="1" opacity="0.4" filter="url(#neonGlow)"/>
+              <g filter="url(#neonGlow)">
+                <path d="M 16 4 L 23 12 L 19 12 L 23 26 L 13 16 L 17 16 Z" fill="url(#purpleCyan)" stroke="#00FFFF" stroke-width="0.8"/>
+              </g>
+              <circle cx="16" cy="16" r="10" fill="none" stroke="url(#purpleCyan)" stroke-width="1" filter="url(#neonGlow)"/>
+            </svg>
+          </div>
+          <h3>Neon Favicon</h3>
+          <p>Browser tab icon with neon effects</p>
+          <div class="specs">
+            <strong>File:</strong> <code>ask-gamblers-neon-favicon.svg</code><br>
+            <strong>Size:</strong> 32×32px
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme Variants -->
+    <section>
+      <h2>🌈 Theme Variants</h2>
+      <div class="comparison">
+        <div class="comparison-item">
+          <h3>Neon (Dark BG)</h3>
+          <div class="comparison-preview dark">
+            <img src="/ask-gamblers-neon-logo.svg" style="max-width: 90%; max-height: 90%; filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));">
+          </div>
+          <p><span class="badge">Primary</span></p>
+        </div>
+
+        <div class="comparison-item">
+          <h3>White (Light BG)</h3>
+          <div class="comparison-preview light">
+            <img src="/ask-gamblers-neon-white.svg" style="max-width: 90%; max-height: 90%; filter: drop-shadow(0 0 15px rgba(100, 100, 100, 0.3));">
+          </div>
+          <p><span class="badge">Alternative</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section>
+      <h2>🎨 Neon Color Palette</h2>
+      <div class="color-palette">
+        <div class="color-item">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #00FFFF 0%, #00FFFF 100%);"></div>
+          <h4>Neon Cyan</h4>
+          <p>#00FFFF</p>
+          <p style="font-size: 0.85em; margin-top: 8px;">Primary glow, text accents</p>
+        </div>
+        <div class="color-item">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #6B2DD1 0%, #6B2DD1 100%);"></div>
+          <h4>Neon Purple</h4>
+          <p>#6B2DD1</p>
+          <p style="font-size: 0.85em; margin-top: 8px;">Secondary glow, gradients</p>
+        </div>
+        <div class="color-item">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #FF6B00 0%, #FF6B00 100%);"></div>
+          <h4>Neon Orange</h4>
+          <p>#FF6B00</p>
+          <p style="font-size: 0.85em; margin-top: 8px;">Accent glow, energy</p>
+        </div>
+        <div class="color-item">
+          <div class="color-swatch" style="background: linear-gradient(135deg, #0A0A1A 0%, #1A0A2E 100%);"></div>
+          <h4>Dark Background</h4>
+          <p>#0A0A1A</p>
+          <p style="font-size: 0.85em; margin-top: 8px;">Deep dark base</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Features -->
+    <section>
+      <h2>✨ Design Excellence</h2>
+      <div class="features">
+        <div class="feature">
+          <h4>⚡ Neon Glow Effects</h4>
+          <p>Professional SVG filters create authentic neon lighting effects with multiple glow layers</p>
+        </div>
+        <div class="feature">
+          <h4>🔥 Lightning Bold Icon</h4>
+          <p>Geometric lightning bolt symbolizes speed, energy, and gaming excitement</p>
+        </div>
+        <div class="feature">
+          <h4>🎮 Gaming Aesthetic</h4>
+          <p>Modern neon style matches contemporary online gaming and casino branding</p>
+        </div>
+        <div class="feature">
+          <h4>♿ Accessible Colors</h4>
+          <p>Neon cyan #00FFFF provides 8:1+ contrast ratio for WCAG AAA compliance</p>
+        </div>
+        <div class="feature">
+          <h4>📱 Scalable Vector</h4>
+          <p>Pure SVG design scales perfectly from 16px favicon to billboard size</p>
+        </div>
+        <div class="feature">
+          <h4>🌓 Multi-Variant System</h4>
+          <p>Primary neon, icon mark, white variant, and favicon for all use cases</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      <h3>📁 Production Files & Documentation</h3>
+      <ul>
+        <li>✓ <code>ask-gamblers-neon-logo.svg</code> — Horizontal neon logo</li>
+        <li>✓ <code>ask-gamblers-neon-mark.svg</code> — Square icon mark</li>
+        <li>✓ <code>ask-gamblers-neon-white.svg</code> — White variant</li>
+        <li>✓ <code>ask-gamblers-neon-favicon.svg</code> — Favicon (32×32px)</li>
+        <li>✓ <code>ask-gamblers-neon-preview.html</code> — This preview page</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

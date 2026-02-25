@@ -8,9 +8,22 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 
 export const revalidate = 60;
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+
 export const metadata: Metadata = {
-  title: "ספקי תוכנה | Ask Gamblers",
-  description: "גלה קזינו לפי ספק תוכנה - NetEnt, Microgaming, Playtech ועוד",
+  title: "ספקי תוכנה קזינו 2026 | NetEnt, Microgaming, Playtech",
+  description: "גלה קזינו לפי ספק תוכנה — NetEnt, Microgaming, Playtech ועוד. בחרנו את ספקי התוכנה הטובים ביותר עם משחקים מהמפתחים המובילים בעולם.",
+  alternates: {
+    canonical: `${SITE_URL}/softwares`,
+  },
+  openGraph: {
+    title: "ספקי תוכנה קזינו 2026 | NetEnt, Microgaming, Playtech",
+    description: "גלה קזינו לפי ספק תוכנה — NetEnt, Microgaming, Playtech ועוד. בחרנו את ספקי התוכנה הטובים ביותר.",
+    url: `${SITE_URL}/softwares`,
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
+    type: "website",
+  },
+  robots: "index, follow",
 };
 
 export default async function CategoriesPage() {

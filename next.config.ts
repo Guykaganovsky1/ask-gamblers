@@ -16,11 +16,7 @@ const nextConfig: NextConfig = {
       "framer-motion",
     ],
   },
-  
-  turbopack: {
-    root: __dirname,
-  },
-  
+
   images: {
     remotePatterns: [
       {

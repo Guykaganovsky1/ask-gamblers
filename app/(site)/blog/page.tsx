@@ -11,13 +11,13 @@ export const revalidate = 60;
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "בלוג קזינו ישראל — מדריכים, טיפים ואסטרטגיות 2026 | Ask Gamblers",
+  title: "בלוג קזינו - מדריכים וטיפים 2026",
     description: "קראו מאמרים מקצועיים, מדריכים מפורטים וטיפים לקזינו באינטרנט — למדו אסטרטגיות, שפרו את המשחק והפכו לשחקנים חכמים יותר היום",
   alternates: {
     canonical: `${baseUrl}/blog`,
   },
   openGraph: {
-    title: "בלוג קזינו ישראל — מדריכים, טיפים ואסטרטגיות 2026 | Ask Gamblers",
+    title: "בלוג קזינו - מדריכים וטיפים 2026",
   description: "קראו מאמרים מקצועיים, מדריכים מפורטים וטיפים לקזינו באינטרנט — למדו אסטרטגיות, שפרו את המשחק והפכו לשחקנים חכמים יותר היום",
     type: "website",
     url: `${baseUrl}/blog`,

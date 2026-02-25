@@ -29,11 +29,11 @@ const inter = Inter({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
-  description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+  title: "קזינו בישראל | ביקורות ובונוסים",
+  description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
   openGraph: {
-    title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
-    description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+    title: "קזינו בישראל | ביקורות ובונוסים",
+    description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
     url: SITE_URL,
     siteName: "Ask Gamblers",
     images: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
+        alt: "Ask Gamblers - מדריך קזינו בטוח בישראל 2026",
       },
     ],
     locale: "he_IL",
@@ -49,9 +49,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ask Gamblers - בתי קזינו מומלצים בישראל 2026 | ביקורות ובונוסים",
-    description: "ביקורות קזינו, בונוסים והמלצות - המדריך המלא שלך לעולם הקזינו באינטרנט",
+    title: "קזינו בישראל | ביקורות ובונוסים",
+    description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים.",
     images: [`${SITE_URL}/og-image.png`],
+  },
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
   },
 };
 

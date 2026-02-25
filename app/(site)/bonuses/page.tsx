@@ -6,13 +6,13 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "בונוסים קזינו 2026 — הצעות בלעדיות, ספינים וקאשבק | Ask Gamblers",
+  title: "בונוסים קזינו בטוח 2026 | כל ההצעות",
   description: "מצאו את הבונוסים הכי שווים לקזינו באינטרנט — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי — השוו הצעות, בחרו את הבונוס המושלם והתחילו לזכות עכשיו",
   alternates: {
     canonical: `${SITE_URL}/bonuses`,
   },
   openGraph: {
-    title: "בונוסים קזינו 2026 — הצעות בלעדיות, ספינים וקאשבק | Ask Gamblers",
+    title: "בונוסים קזינו בטוח 2026 | כל ההצעות",
     description: "מצאו את הבונוסים הכי שווים לקזינו באינטרנט — בונוסי הפקדה, ספינים חינם וקאשבק בלעדי",
     url: `${SITE_URL}/bonuses`,
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],

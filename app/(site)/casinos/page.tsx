@@ -11,13 +11,13 @@ export const revalidate = 60;
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "קזינו מומלצים | Ask Gamblers",
+  title: "קזינו בטוח בישראל - ביקורות 2026",
     description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
   alternates: {
     canonical: `${baseUrl}/casinos`,
   },
   openGraph: {
-    title: "קזינו מומלצים | Ask Gamblers",
+    title: "קזינו בטוח בישראל - ביקורות 2026",
   description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
     type: "website",
     url: `${baseUrl}/casinos`,
