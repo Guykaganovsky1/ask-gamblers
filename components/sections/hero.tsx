@@ -14,7 +14,7 @@ export function Hero() {
       {/* Image loads asynchronously - doesn't block LCP */}
       <img 
         src="/images/hero-bg.webp" 
-        alt=""
+        alt="בתי קזינו מובילים בישראל - Ask Gamblers"
         className="absolute inset-0 w-full h-full object-cover opacity-100"
         loading="eager"
         decoding="async"
