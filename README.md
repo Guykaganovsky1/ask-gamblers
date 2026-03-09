@@ -82,3 +82,4 @@ pm2 flush                  # Clear logs
 | 404 Error | .htaccess missing | Re-upload .htaccess |
 | 502 Error | Port mismatch | Align ports in configs |
 | Login Loops | Varnish enabled | Disable Varnish |
+# askgamblers.co.il
