@@ -44,7 +44,7 @@ export const CTA_COPY = {
   // Casino CTAs
   casino: {
     primary: 'שחקו בביטחון היום',
-    secondary: 'קראו ביקורת מלאה',
+    secondary: 'קרא ביקורת מלאה',
     viewAll: 'גלו את כל 25 בתי הקזינו',
   },
 

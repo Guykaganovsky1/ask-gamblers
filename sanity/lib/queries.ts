@@ -59,7 +59,7 @@ export const POSTS_QUERY = groq`
     _id,
     title,
     slug,
-    featuredImage,
+    "featuredImage": mainImage,
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug },
@@ -72,7 +72,7 @@ export const LATEST_POSTS_QUERY = groq`
     _id,
     title,
     slug,
-    featuredImage,
+    "featuredImage": mainImage,
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug }
@@ -84,7 +84,7 @@ export const POST_BY_SLUG_QUERY = groq`
     _id,
     title,
     slug,
-    featuredImage,
+    "featuredImage": mainImage,
     publishedAt,
     "modifiedAt": _updatedAt,
     body,
@@ -137,7 +137,7 @@ export const CATEGORY_BY_SLUG_QUERY = groq`
       _id, name, slug, logo, rating, description, bonusTitle, bonusAmount
     },
     "posts": *[_type == "post" && references(^._id)] | order(publishedAt desc) {
-      _id, title, slug, featuredImage, publishedAt,
+      _id, title, slug, "featuredImage": mainImage, publishedAt,
       author->{ name, avatar }
     }
   }
@@ -170,7 +170,7 @@ export const RELATED_POSTS_QUERY = groq`
     _id,
     title,
     slug,
-    featuredImage,
+    "featuredImage": mainImage,
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug }
@@ -226,7 +226,7 @@ export const SEARCH_POSTS_QUERY = groq`
     _id,
     title,
     slug,
-    featuredImage,
+    "featuredImage": mainImage,
     publishedAt,
     author->{ name, avatar },
     categories[]->{ _id, name, slug },

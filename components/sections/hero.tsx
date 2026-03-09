@@ -37,7 +37,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 max-w-lg text-lg md:text-xl text-text-secondary mr-0 ml-auto leading-relaxed">
-            בונוסים עצומים, משחקים מהנים ורווחים אמיתיים מחכים לך עכשיו.
+            בונוסים עצומים, משחקים בנייד ורווחים אמיתיים מחכים לך עכשיו.
             <br />
             <span className="text-text-muted">בדקנו, דירגנו ובחרנו רק את המובטחים ביותר.</span>
           </p>

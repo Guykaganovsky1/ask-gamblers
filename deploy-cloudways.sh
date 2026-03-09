@@ -7,8 +7,8 @@ set -e
 
 # ─── Configuration ────────────────────────────────────────────────────────────
 SERVER="phpstack-1553018-6228296.cloudwaysapps.com"
-USER="contact@adimpress.me"
-PASSWORD="Hdu483hfe"
+SSH_USER="contact"
+SSH_KEY="$HOME/.ssh/id_rsa_cloudways"
 REMOTE_PATH="/home/1553018.cloudwaysapps.com/pwnubhceem/public_html"
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10"
 
@@ -47,31 +47,34 @@ echo ""
 
 # ─── Step 3: Stop old server ──────────────────────────────────────────────────
 echo "🛑 Stopping old server..."
-sshpass -p "$PASSWORD" ssh $SSH_OPTS "$USER@$SERVER" \
+ssh -i "$SSH_KEY" $SSH_OPTS "$SSH_USER@$SERVER" \
   "pm2 stop ask-gamblers 2>/dev/null; pm2 delete ask-gamblers 2>/dev/null; pkill -9 -f 'node\|next' 2>/dev/null; true" || true
 sleep 2
 
 # ─── Step 4: Upload via rsync ─────────────────────────────────────────────────
 echo "📤 Uploading application files (rsync)..."
 rsync -avz --delete \
-  -e "sshpass -p '$PASSWORD' ssh $SSH_OPTS" \
+  -e "ssh -i '$SSH_KEY' $SSH_OPTS" \
   --exclude='.git' \
   --exclude='*.map' \
+  --filter='protect .next/static/chunks/*.css' \
+  --filter='protect .next/static/chunks/*.js' \
+  --filter='protect .next/static/media/*' \
   "$STANDALONE/" \
-  "$USER@$SERVER:$REMOTE_PATH/"
+  "$SSH_USER@$SERVER:$REMOTE_PATH/"
 echo "   ✅ Upload complete"
 
 # ─── Step 5: Start with PM2 (reload if running, start if new) ────────────────
 echo ""
 echo "🚀 Starting with PM2..."
-sshpass -p "$PASSWORD" ssh $SSH_OPTS "$USER@$SERVER" \
+ssh -i "$SSH_KEY" $SSH_OPTS "$SSH_USER@$SERVER" \
   "cd \"$REMOTE_PATH\" && (pm2 reload ecosystem.config.js --update-env 2>/dev/null || npm run prod:start) && pm2 save && pm2 list"
 sleep 3
 
 # ─── Step 6: Generate route-based static files ────────────────────────────────
 echo ""
 echo "📄 Generating static route files..."
-sshpass -p "$PASSWORD" ssh $SSH_OPTS "$USER@$SERVER" "
+ssh -i "$SSH_KEY" $SSH_OPTS "$SSH_USER@$SERVER" "
   cd \"$REMOTE_PATH\" && \
   curl -sf http://localhost:3000/robots.txt -o robots.txt && echo '   ✅ robots.txt' || echo '   ⚠️  robots.txt failed' && \
   curl -sf http://localhost:3000/icon.svg   -o icon.svg   && echo '   ✅ icon.svg'   || echo '   ⚠️  icon.svg failed'
@@ -80,7 +83,7 @@ sshpass -p "$PASSWORD" ssh $SSH_OPTS "$USER@$SERVER" "
 # ─── Step 7: Create symlinks for static file serving ─────────────────────────
 echo ""
 echo "🔗 Creating symlinks..."
-sshpass -p "$PASSWORD" ssh $SSH_OPTS "$USER@$SERVER" "
+ssh -i "$SSH_KEY" $SSH_OPTS "$SSH_USER@$SERVER" "
   cd \"$REMOTE_PATH\" && \
   ln -sf .next _next 2>/dev/null || true && \
   echo '   ✅ _next → .next'
@@ -110,5 +113,5 @@ else
   echo "⚠️  Could not verify title. Server may still be starting."
   echo "   HTTP status: $(curl -sk -o /dev/null -w "%{http_code}" "https://$SERVER/")"
   echo ""
-  echo "   Check logs: sshpass -p '$PASSWORD' ssh $SSH_OPTS $USER@$SERVER 'pm2 logs ask-gamblers --lines 30'"
+  echo "   Check logs: ssh -i '$SSH_KEY' $SSH_OPTS $SSH_USER@$SERVER 'pm2 logs ask-gamblers --lines 30'"
 fi

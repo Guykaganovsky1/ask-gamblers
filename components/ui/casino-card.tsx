@@ -90,7 +90,7 @@ export function CasinoCard({
               variant="outline"
               className="w-full text-sm"
             >
-              קראו ביקורת
+              קרא ביקורת
             </Button>
           </div>
         </div>
