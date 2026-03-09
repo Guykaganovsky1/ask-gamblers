@@ -176,6 +176,40 @@ Restart application from panel after changes.
 
 ---
 
+## Enable SSH Shell Access
+
+Go to **Cloudways → Server → SSH Access** (or Application SSH Access settings):
+
+**Enable or disable SSH shell access** to your Application for Team members.
+
+> Please note that SFTP (Secure File Transfer Protocol) remains available for file transfers even when shell access is disabled.
+
+### Steps to Enable
+
+1. Log into Cloudways dashboard
+2. Navigate to **Servers** → select your server
+3. Go to **SSH Access** tab
+4. Toggle **SSH Shell Access** to enabled
+5. Add your SSH public key under the **SSH Keys** section
+
+### Why This Matters
+
+- Without SSH shell access enabled, you **cannot connect via SSH** even with a valid key
+- This is a per-server setting — must be enabled before any SSH deployment scripts will work
+- The Shell In A Box web terminal (`https://<server-ip>:4200`) also requires this to be enabled
+
+### Credentials for This Server
+
+- **Server IP:** `178.62.56.62`
+- **Shell In A Box:** `https://178.62.56.62:4200`
+- **Master User:** `master_vksctstkpy`
+- **Login Username:** `contact@adimpress.me`
+- **Master Password:** `Hdu483hfe`
+- **SSH Key (accepted):** `~/.ssh/id_rsa_cloudways` (cloudways-deploy, RSA 4096)
+- **Note:** Direct SSH (port 22/2222/22022) is blocked by Cloudways firewall — use Shell In A Box at `https://178.62.56.62:4200` or whitelist IP in Cloudways firewall settings
+
+---
+
 ## Troubleshooting
 
 ### ❌ 502 Bad Gateway
