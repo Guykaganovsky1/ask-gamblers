@@ -49,16 +49,21 @@ jobs:
       - name: Install sshpass
         run: sudo apt-get install -y sshpass
 
+      - name: Test connection
+        run: |
+          sshpass -p "${{ secrets.CLOUDWAYS_PASSWORD }}" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 \
+            "${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}" "echo connection_ok"
+
       - name: Upload deployment packages
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -o Port=22 \
+          sshpass -p "${{ secrets.CLOUDWAYS_PASSWORD }}" scp -o StrictHostKeyChecking=no -o ConnectTimeout=30 -r \
             standalone.tar.gz static.tar.gz public.tar.gz .env \
-            '${{ secrets.CLOUDWAYS_USERNAME }}'@'${{ secrets.CLOUDWAYS_HOST }}':~/
+            "${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}":~/
 
       - name: Deploy and restart
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no -o Port=22 \
-            '${{ secrets.CLOUDWAYS_USERNAME }}'@'${{ secrets.CLOUDWAYS_HOST }}' << 'ENDSSH'
+          sshpass -p "${{ secrets.CLOUDWAYS_PASSWORD }}" ssh -o StrictHostKeyChecking=no -o Port=22 \
+            "${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}" << 'ENDSSH'
             APP_PATH="/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html"
             
             # Extract standalone
