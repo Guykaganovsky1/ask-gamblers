@@ -10,11 +10,19 @@ interface SitemapItem {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [casinos, posts, categories] = await Promise.all([
-    client.fetch<SitemapItem[]>(groq`*[_type == "casino"]{ slug, _updatedAt }`),
-    client.fetch<SitemapItem[]>(groq`*[_type == "post"]{ slug, _updatedAt }`),
-    client.fetch<SitemapItem[]>(groq`*[_type == "category"]{ slug, _updatedAt }`),
-  ]);
+  let casinos: SitemapItem[] = [];
+  let posts: SitemapItem[] = [];
+  let categories: SitemapItem[] = [];
+
+  try {
+    [casinos, posts, categories] = await Promise.all([
+      client.fetch<SitemapItem[]>(groq`*[_type == "casino"]{ slug, _updatedAt }`),
+      client.fetch<SitemapItem[]>(groq`*[_type == "post"]{ slug, _updatedAt }`),
+      client.fetch<SitemapItem[]>(groq`*[_type == "category"]{ slug, _updatedAt }`),
+    ]);
+  } catch (error) {
+    console.error("Failed to fetch sitemap data:", error);
+  }
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
@@ -27,21 +35,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/programs`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
   ];
 
-  const casinoPages = casinos.map((c) => ({
+  const casinoPages = (casinos || []).filter(c => c?.slug?.current).map((c) => ({
     url: `${BASE_URL}/casinos/${c.slug.current}`,
     lastModified: new Date(c._updatedAt),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  const postPages = posts.map((p) => ({
+  const postPages = (posts || []).filter(p => p?.slug?.current).map((p) => ({
     url: `${BASE_URL}/blog/${p.slug.current}`,
     lastModified: new Date(p._updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
-  const categoryPages = categories.map((c) => ({
+  const categoryPages = (categories || []).filter(c => c?.slug?.current).map((c) => ({
     url: `${BASE_URL}/categories/${c.slug.current}`,
     lastModified: new Date(c._updatedAt),
     changeFrequency: "weekly" as const,
