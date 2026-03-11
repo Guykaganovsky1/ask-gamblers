@@ -51,8 +51,12 @@ jobs:
 
       - name: Test connection
         run: |
-          sshpass -p "${{ secrets.CLOUDWAYS_PASSWORD }}" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 \
-            "${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}" "echo connection_ok"
+          echo "=== Debug Info ==="
+          echo "Host: ${{ secrets.CLOUDWAYS_HOST }}"
+          echo "User: ${{ secrets.CLOUDWAYS_USERNAME }}"
+          echo "=================="
+          sshpass -v -p "${{ secrets.CLOUDWAYS_PASSWORD }}" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 \
+            "${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}" "echo connection_ok" 2>&1 | tail -30
 
       - name: Upload deployment packages
         run: |
