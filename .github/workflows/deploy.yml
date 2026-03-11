@@ -51,11 +51,14 @@ jobs:
 
       - name: Upload deployment packages
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no standalone.tar.gz static.tar.gz public.tar.gz .env ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }}:~/
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' scp -o StrictHostKeyChecking=no -o Port=22 \
+            standalone.tar.gz static.tar.gz public.tar.gz .env \
+            '${{ secrets.CLOUDWAYS_USERNAME }}'@'${{ secrets.CLOUDWAYS_HOST }}':~/
 
       - name: Deploy and restart
         run: |
-          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} << 'ENDSSH'
+          sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no -o Port=22 \
+            '${{ secrets.CLOUDWAYS_USERNAME }}'@'${{ secrets.CLOUDWAYS_HOST }}' << 'ENDSSH'
             APP_PATH="/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html"
             
             # Extract standalone
