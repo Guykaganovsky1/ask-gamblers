@@ -6,10 +6,11 @@
 set -e
 
 # ─── Configuration ────────────────────────────────────────────────────────────
-SERVER="phpstack-1553018-6228296.cloudwaysapps.com"
-SSH_USER="contact"
+# Server IP: 178.62.56.62 (use IP instead of hostname - hostname doesn't resolve)
+SERVER="178.62.56.62"
+SSH_USER="contact@adimpress.me"  # user@email format for Cloudways
 SSH_KEY="$HOME/.ssh/id_rsa_cloudways"
-REMOTE_PATH="/home/1553018.cloudwaysapps.com/pwnubhceem/public_html"
+REMOTE_PATH="/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html"
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10"
 
 # Project directory
