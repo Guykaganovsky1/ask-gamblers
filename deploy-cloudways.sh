@@ -12,11 +12,11 @@ SSH_KEY="$HOME/.ssh/id_rsa_cloudways"
 REMOTE_PATH="/home/1553018.cloudwaysapps.com/pwnubhceem/public_html"
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10"
 
-# Next.js standalone mirrors local filesystem path inside .next/standalone/
-# e.g.: .next/standalone/Documents/Projects/casino raz/
+# Project directory
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_REL="${PROJECT_DIR#$HOME/}"          # Documents/Projects/casino raz
-STANDALONE="$PROJECT_DIR/.next/standalone/$PROJECT_REL"
+
+# Next.js standalone outputs directly to .next/standalone/
+STANDALONE="$PROJECT_DIR/.next/standalone"
 
 SKIP_BUILD=false
 if [ "$1" == "--skip-build" ]; then
