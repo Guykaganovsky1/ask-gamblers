@@ -206,7 +206,7 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="mt-12 pt-8 border-t border-border-glass">
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="text-sm font-bold text-text-secondary">קטגוריות:</span>
-                  {post.categories.map((category) => (
+                  {post.categories.filter((category) => category.slug?.current).map((category) => (
                     <Link
                       key={category._id}
                       href={`/categories/${category.slug.current}`}

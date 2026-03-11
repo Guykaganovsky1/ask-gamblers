@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Ask Gamblers",
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
+        url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: "Ask Gamblers - מדריך קזינו בטוח בישראל 2026",
@@ -51,11 +51,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "קזינו בישראל | ביקורות ובונוסים",
     description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים.",
-    images: [`${SITE_URL}/og-image.png`],
+    images: [`${SITE_URL}/opengraph-image`],
   },
   metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: SITE_URL,
+    canonical: "/",
   },
 };
 

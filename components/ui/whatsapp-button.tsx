@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 
-const WHATSAPP_NUMBER = "972500000000"; // Replace with real number
+const WHATSAPP_NUMBER = "972509200920";
+const WHATSAPP_MESSAGE = "שלום, הגעתם לעסק גמבלרס. השאירו הודעה ונחזור אליכם בהקדם. תודה";
 
 export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
 
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
       target="_blank"
       rel="noopener noreferrer"
       onMouseEnter={() => setHovered(true)}

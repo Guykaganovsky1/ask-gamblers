@@ -1,13 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "standalone",
-  
+  output: "standalone",
+
+  turbopack: {
+    root: __dirname,
+  },
+
   // Enable production optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
-  
+
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: [

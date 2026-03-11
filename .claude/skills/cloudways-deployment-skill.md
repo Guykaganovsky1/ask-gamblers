@@ -14,14 +14,34 @@ pm2 logs
 
 ## Credentials
 
+### Production App (pwnubhceem)
 - **Server:** phpstack-1553018-6228296.cloudwaysapps.com
 - **App User:** contact@adimpress.me
 - **App Password:** Hdu483hfe
-- **SSH Key:** ~/.ssh/id_rsa_cloudways_askgamblers.pub
+- **SSH Key:** ~/.ssh/id_rsa_cloudways (RSA 4096)
 - **Path:** /home/1553018.cloudwaysapps.com/pwnubhceem/public_html
-- **Live URL:** https://phpstack-1553018-6228296.cloudwaysapps.com
+- **Live URL:** https://askgamblers.co.il
+
+### Staging App (dzdatjcdrp)
+- **Server:** phpstack-1553018-6228296.cloudwaysapps.com
+- **App User:** contact@adimpress.me
+- **SSH Key:** ~/.ssh/id_rsa_cloudways (RSA 4096) ← this key lands here by default
+- **Path:** /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html
+- **Staging URL:** https://phpstack-1553018-6265432.cloudwaysapps.com
 
 ---
+
+## ⚠️ CRITICAL: Stack Architecture
+
+**Nginx (80/443) → Apache (8080) → Node.js (3000)**
+
+- mod_proxy is NOT enabled on Apache by default on this server
+- **DO NOT use `[P,L]` RewriteRule in .htaccess** — it causes 500 errors without mod_proxy
+- **Solution: PHP reverse proxy** — use `index.php` + simple `.htaccess` to forward traffic to Node on 3000
+- Node CANNOT run on 8080 (Apache owns it)
+- PM2_HOME must be set to `/tmp/.pm2_askgamblers` (app user has no write access to home .pm2 dir)
+- PM2 binary: `/home/master/.next/node_modules/.bin/pm2`
+- `next.config.ts` MUST have `output: "standalone"` AND `turbopack: { root: __dirname }` or server.js ends up in a nested path
 
 ## ⚠️ IMPORTANT: Node.js on Cloudways
 
@@ -295,7 +315,42 @@ ls -la /home/1553018.cloudwaysapps.com/pwnubhceem/public_html/.next/static/
 
 ---
 
-## Quick Deployment Command (One-Liner)
+## Quick Staging Deploy (One-Liner)
+
+```bash
+# From project root - builds and deploys to staging (dzdatjcdrp)
+npm run build && \
+  cp -r public .next/standalone/ && \
+  mkdir -p .next/standalone/.next && \
+  cp -r .next/static .next/standalone/.next/static && \
+  rsync -avz --delete \
+    --exclude 'node_modules' --exclude '.git' --exclude '.next/cache' --exclude '.env.local' \
+    -e "ssh -i ~/.ssh/id_rsa_cloudways -o StrictHostKeyChecking=no" \
+    .next/standalone/ \
+    "contact@adimpress.me@phpstack-1553018-6228296.cloudwaysapps.com:/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html/" && \
+  ssh -i ~/.ssh/id_rsa_cloudways -o StrictHostKeyChecking=no \
+    "contact@adimpress.me@phpstack-1553018-6228296.cloudwaysapps.com" \
+    "export PM2_HOME=/tmp/.pm2_askgamblers; PM2=/home/master/.next/node_modules/.bin/pm2; \$PM2 describe ask-gamblers > /dev/null 2>&1 && \$PM2 restart ask-gamblers || (cd /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html && PORT=3000 NODE_ENV=production \$PM2 start server.js --name ask-gamblers)"
+```
+
+**Note:** `next.config.ts` must have BOTH:
+- `output: "standalone"`
+- `turbopack: { root: __dirname }`
+
+**Note:** `.htaccess` + `index.php` PHP proxy must exist in `public_html` (created once, persists). If missing, create on server:
+```bash
+ssh -i ~/.ssh/id_rsa_cloudways -o StrictHostKeyChecking=no "contact@adimpress.me@phpstack-1553018-6228296.cloudwaysapps.com" "
+cat > /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html/.htaccess << 'EOF'
+DirectoryIndex index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L,QSA]
+EOF"
+```
+
+---
+
+## Quick Production Deploy (One-Liner)
 
 From project root, after successful build:
 
