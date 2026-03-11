@@ -56,7 +56,7 @@ jobs:
       - name: Deploy and restart
         run: |
           sshpass -p '${{ secrets.CLOUDWAYS_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.CLOUDWAYS_USERNAME }}@${{ secrets.CLOUDWAYS_HOST }} << 'ENDSSH'
-            APP_PATH="~/applications/pwnubhceem/public_html"
+            APP_PATH="/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html"
             
             # Extract standalone
             cd $APP_PATH
