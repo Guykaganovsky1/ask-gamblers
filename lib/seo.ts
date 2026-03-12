@@ -95,8 +95,13 @@ export function generateOrganizationSchema() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
+      telephone: "+972-50-920-0920",
+      email: "contact@askgamblers.co.il",
       availableLanguage: ["Hebrew", "English"],
     },
+    sameAs: [
+      "https://wa.me/972509200920"
+    ]
   };
 }
 

@@ -41,3 +41,26 @@ export function casinoAggregateRatingJsonLd(casino: {
     reviewCount: Math.max(1, Math.ceil((casino.clicks || 0) / 50)), // Estimate based on clicks
   };
 }
+
+export function localBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ask Gamblers",
+    "description": "המדריך המלא לקזינו אונליין בישראל - ביקורות, בונוסים ודירוגים",
+    "url": "https://askgamblers.co.il",
+    "telephone": "+972-50-920-0920",
+    "email": "contact@askgamblers.co.il",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IL",
+      "addressLocality": "Israel"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Israel"
+    },
+    "inLanguage": "he",
+    "priceRange": "₪₪₪₪"
+  };
+}
