@@ -31,6 +31,19 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 export const metadata: Metadata = {
   title: "קזינו בישראל | ביקורות ובונוסים",
   description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
+  keywords: [
+    "קזינו אונליין",
+    "קזינו בישראל",
+    "בונוס קזינו",
+    "קזינו בטוח",
+    "דירוג קזינו",
+    "הימורים אונליין",
+    "קזינו מקוון",
+    "בונוסי קזינו",
+    "משחקי קזינו",
+    "casino israel",
+    "online casino israel"
+  ],
   openGraph: {
     title: "קזינו בישראל | ביקורות ובונוסים",
     description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
@@ -56,6 +69,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
+    languages: {
+      "he": SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
 };
 
