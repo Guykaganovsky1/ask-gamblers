@@ -1,0 +1,20 @@
+User-Agent: *
+Allow: /
+
+User-Agent: GPTBot
+Disallow: /
+
+User-Agent: ClaudeBot
+Disallow: /
+
+User-Agent: Google-Extended
+Disallow: /
+
+User-Agent: Amazonbot
+Disallow: /
+
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+
+Sitemap: https://askgamblers.co.il/sitemap.xml
