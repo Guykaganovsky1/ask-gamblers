@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const WHATSAPP_NUMBER = "972509200920";
-const WHATSAPP_MESSAGE = "שלום, השאירו הודעה ונחזור אליכם בהקדם. תודה";
+const WHATSAPP_MESSAGE = "Ask Gamblers\nשלום, השאירו הודעה ונחזור אליכם בהקדם. תודה";
 
 export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
