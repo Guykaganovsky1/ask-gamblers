@@ -166,6 +166,12 @@ export default async function CasinoReviewPage({ params }: Props) {
           __html: JSON.stringify(casinoAggregateRatingJsonLd(casino)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(casinoReviewJsonLd(casino)),
+        }}
+      />
       {casino.faqs && casino.faqs.length > 0 && (
         <script
           type="application/ld+json"
