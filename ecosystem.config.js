@@ -1,8 +1,7 @@
 module.exports = {
   apps: [{
     name: "ask-gamblers",
-    script: "node",
-    args: ".next/standalone/server.js",
+    script: ".next/standalone/server.js",
     instances: 1,
     exec_mode: "fork",
     autorestart: true,
