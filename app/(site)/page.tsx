@@ -5,14 +5,13 @@ import { FEATURED_CASINOS_QUERY, LATEST_POSTS_QUERY, CATEGORIES_QUERY } from "@/
 import { SECTION_COPY } from "@/config/copywriting-config";
 import { Casino, BlogPost, Category } from "@/sanity/lib/types";
 import { Hero } from "@/components/sections/hero";
+import { BlogCard } from "@/components/ui/blog-card";
+import { CategoryCard } from "@/components/ui/category-card";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Button } from "@/components/ui/button";
+import { CasinoCard } from "@/components/ui/casino-card";
+import { LastUpdated } from "@/components/ui/last-updated";
 import { SafeCasinosSection } from "@/components/sections/safe-casinos-section";
-
-const BlogCard = dynamic(() => import("@/components/ui/blog-card").then((mod) => ({ default: mod.BlogCard })));
-const CategoryCard = dynamic(() => import("@/components/ui/category-card").then((mod) => ({ default: mod.CategoryCard })));
-const SectionHeading = dynamic(() => import("@/components/ui/section-heading").then((mod) => ({ default: mod.SectionHeading })));
-const Button = dynamic(() => import("@/components/ui/button").then((mod) => ({ default: mod.Button })));
-const CasinoCard = dynamic(() => import("@/components/ui/casino-card").then((mod) => ({ default: mod.CasinoCard })));
-const LastUpdated = dynamic(() => import("@/components/ui/last-updated").then((mod) => ({ default: mod.LastUpdated })));
 
 const FAQSection = dynamic(
   () => import("@/components/sections/faq-section").then((mod) => ({ default: mod.FAQSection })),
