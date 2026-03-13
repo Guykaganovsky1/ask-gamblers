@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = post.seoTitle || post.title;
   const description = post.seoDescription || post.excerpt || "";
-  const imageUrl = post.coverImage ? urlFor(post.coverImage).width(1200).height(630).url() : `${baseUrl}/opengraph-image`;
+  const imageUrl = post.featuredImage ? urlFor(post.featuredImage).width(1200).height(630).url() : `${baseUrl}/opengraph-image`;
   
   return {
     title: `${title} | Ask Gamblers`,
