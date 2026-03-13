@@ -45,11 +45,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = post.seoTitle || post.title;
   const description = post.seoDescription || post.excerpt || "";
+  const imageUrl = post.coverImage ? urlFor(post.coverImage).width(1200).height(630).url() : `${baseUrl}/opengraph-image`;
+  
   return {
     title: `${title} | Ask Gamblers`,
     description,
     alternates: {
       canonical: `${baseUrl}/blog/${slug}`,
+      languages: {
+        "he": `${baseUrl}/blog/${slug}`,
+        "x-default": `${baseUrl}/blog/${slug}`,
+      },
     },
     openGraph: {
       title,
@@ -59,6 +65,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.publishedAt,
       modifiedTime: post.modifiedAt || post.publishedAt,
       authors: post.author?.name ? [post.author.name] : undefined,
+      images: [{ url: imageUrl, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }

@@ -70,12 +70,16 @@ export function Header() {
                   } : undefined}
                 >
                   {"badge" in link && link.badge && (
-                    <span
-                      className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[9px] font-extrabold text-white"
-                      style={{ background: link.badge.bg }}
-                    >
-                      {link.badge.text}
-                    </span>
+                    <>
+                      <span
+                        className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full px-1.5 py-0.5 text-[9px] font-extrabold text-white"
+                        style={{ background: link.badge.bg }}
+                        aria-hidden="true"
+                      >
+                        {link.badge.text}
+                      </span>
+                      <span className="sr-only">{link.badge.text}</span>
+                    </>
                   )}
                   {link.label}
                 </Link>

@@ -8,6 +8,7 @@ export interface ArticlePost {
   excerpt?: string;
   publishedAt?: string;
   modifiedAt?: string;
+  _createdAt?: string;
   author?: {
     name: string;
     image?: string;
@@ -23,6 +24,10 @@ export interface BreadcrumbItem {
 
 export function generateArticleSchema(post: ArticlePost) {
   const articleUrl = `${SITE_URL}/blog/${post.slug.current}`;
+  
+  // Fix null dates - use _createdAt as fallback or remove field
+  const publishedDate = post.publishedAt || post._createdAt || undefined;
+  const modifiedDate = post.modifiedAt || post.publishedAt || post._createdAt || undefined;
 
   return {
     "@context": "https://schema.org",
@@ -34,8 +39,8 @@ export function generateArticleSchema(post: ArticlePost) {
     headline: post.title,
     description: post.excerpt || SITE_DESCRIPTION,
     image: post.featuredImage ? [post.featuredImage] : undefined,
-    datePublished: post.publishedAt,
-    dateModified: post.modifiedAt || post.publishedAt,
+    ...(publishedDate && { datePublished: publishedDate }),
+    ...(modifiedDate && { dateModified: modifiedDate }),
     author: post.author
       ? {
           "@type": "Person",

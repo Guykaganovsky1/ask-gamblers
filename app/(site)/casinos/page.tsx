@@ -12,15 +12,26 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
   title: "קזינו בטוח בישראל - ביקורות 2026",
-    description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
+  description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
   alternates: {
     canonical: `${baseUrl}/casinos`,
+    languages: {
+      "he": `${baseUrl}/casinos`,
+      "x-default": `${baseUrl}/casinos`,
+    },
   },
   openGraph: {
     title: "קזינו בטוח בישראל - ביקורות 2026",
-  description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
+    description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים — השוו אתרים והתחילו לשחק בקזינו הטוב ביותר עכשיו",
     type: "website",
     url: `${baseUrl}/casinos`,
+    images: [{ url: `${baseUrl}/opengraph-image`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "קזינו בטוח בישראל - ביקורות 2026",
+    description: "גלו את בתי הקזינו המובילים לישראלים עם ביקורות מקיפות, דירוגים שקופים ובונוסים בלעדיים",
+    images: [`${baseUrl}/opengraph-image`],
   },
 };
 

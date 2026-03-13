@@ -1,16 +1,26 @@
 User-Agent: *
 Allow: /
 
+# Block AI training bots but allow Google AI Overviews
+User-Agent: Google-Extended
+Allow: /
+
 User-Agent: GPTBot
 Disallow: /
 
 User-Agent: ClaudeBot
 Disallow: /
 
-User-Agent: Google-Extended
+User-Agent: Amazonbot
 Disallow: /
 
-User-Agent: Amazonbot
+User-Agent: o1-preview
+Disallow: /
+
+User-Agent: o1-mini
+Disallow: /
+
+User-Agent: anthropic-ai
 Disallow: /
 
 Disallow: /studio/

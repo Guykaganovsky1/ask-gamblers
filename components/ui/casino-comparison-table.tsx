@@ -95,6 +95,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
               <td className="px-4 py-4 text-center">
                 <Button
                   href={`/go/${casino.slug.current}`}
+                  rel="nofollow sponsored"
                   variant="primary"
                   className="whitespace-nowrap"
                 >
@@ -150,7 +151,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
               </div>
             </div>
 
-            <Button href={`/go/${casino.slug.current}`} variant="primary" className="w-full">
+            <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
               שחק עכשיו
             </Button>
           </div>
