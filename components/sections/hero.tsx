@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 export function Hero() {
@@ -12,10 +10,12 @@ export function Hero() {
       }}
     >
       {/* Image loads asynchronously - doesn't block LCP */}
-      <img 
-        src="/images/hero-bg.webp" 
+      <img
+        src="/images/hero-bg.webp"
         alt="בתי קזינו מובילים בישראל - Ask Gamblers"
         className="absolute inset-0 w-full h-full object-cover opacity-100"
+        width="1200"
+        height="1200"
         loading="eager"
         decoding="async"
         fetchPriority="high"

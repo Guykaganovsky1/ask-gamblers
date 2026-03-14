@@ -84,8 +84,8 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <head>
-        <link rel="preload" as="image" href="/images/hero-bg.webp" />
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/images/hero-bg.webp" fetchPriority="high" type="image/webp" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

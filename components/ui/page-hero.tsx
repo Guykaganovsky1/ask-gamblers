@@ -20,57 +20,6 @@ const SPARKLES: [number, number, number, number][] = [
 export function PageHero({ title, subtitle, badge }: PageHeroProps) {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: 300 }}>
-      <style>{`
-        /* ── X: constant linear travel ── */
-        @keyframes d1x {
-          from { transform: translateX(-100px); }
-          to   { transform: translateX(1560px); }
-        }
-        @keyframes d2x {
-          from { transform: translateX(1560px); }
-          to   { transform: translateX(-100px); }
-        }
-
-        /* ── Y: smooth arc bounces (3 full arcs per pass) ── */
-        @keyframes d1y {
-          0%     { transform: translateY(245px); animation-timing-function: ease-in; }
-          16.67% { transform: translateY(55px);  animation-timing-function: ease-out; }
-          33.33% { transform: translateY(245px); animation-timing-function: ease-in; }
-          50%    { transform: translateY(55px);  animation-timing-function: ease-out; }
-          66.67% { transform: translateY(245px); animation-timing-function: ease-in; }
-          83.33% { transform: translateY(55px);  animation-timing-function: ease-out; }
-          100%   { transform: translateY(245px); }
-        }
-
-        /* ── Spin: continuous slow axis rotation ── */
-        @keyframes dSpin {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-
-        /* ── Sparkles ── */
-        @keyframes phTwinkle {
-          0%, 100% { opacity: 0.07; transform: scale(0.5); }
-          50%      { opacity: 0.55; transform: scale(1); }
-        }
-
-        .d1x { animation: d1x 20s linear infinite; }
-        .d2x { animation: d2x 20s linear infinite 10s; }
-        .d1y { animation: d1y 20s linear infinite; }
-        .d2y { animation: d1y 20s linear infinite 10s; }
-        .d1spin {
-          animation: dSpin 11s linear infinite;
-          transform-box: fill-box;
-          transform-origin: 50% 50%;
-        }
-        .d2spin {
-          animation: dSpin 14s linear infinite reverse;
-          transform-box: fill-box;
-          transform-origin: 50% 50%;
-        }
-        .ph-spark { transform-box: fill-box; transform-origin: 50% 50%; }
-      `}</style>
-
       {/* Background */}
       <div
         className="absolute inset-0"
@@ -87,26 +36,13 @@ export function PageHero({ title, subtitle, badge }: PageHeroProps) {
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-        <defs>
-          <filter id="f-dice" x="-35%" y="-35%" width="170%" height="170%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
-            <feColorMatrix in="blur" type="matrix"
-              values="1.4 0 0 0 0.1  0 0.05 0 0 0  0 0 0.05 0 0  0 0 0 0.8 0"
-              result="coloredBlur"/>
-            <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-
         {/* ── Die 1 — large, L→R ──
             Layer 1 (outermost): horizontal travel
             Layer 2 (middle):    vertical bounce
             Layer 3 (inner):     axis spin              */}
         <g className="d1x">
           <g className="d1y">
-            <g className="d1spin" filter="url(#f-dice)">
+            <g className="d1spin">
               {/* Right face */}
               <polygon points="27,-27 43,-43 43,12 27,27"    fill="#7F1D1D"/>
               {/* Right face dots — 3 (diagonal) */}
@@ -133,7 +69,7 @@ export function PageHero({ title, subtitle, badge }: PageHeroProps) {
         {/* ── Die 2 — smaller, R→L ── */}
         <g className="d2x">
           <g className="d2y">
-            <g className="d2spin" filter="url(#f-dice)">
+            <g className="d2spin">
               {/* Right face */}
               <polygon points="22,-22 34,-34 34,10 22,22"    fill="#7F1D1D"/>
               {/* Right face dots — 2 */}

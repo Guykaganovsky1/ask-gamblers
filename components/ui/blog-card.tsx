@@ -29,7 +29,7 @@ export function BlogCard({ title, slug, featuredImage, publishedAt, author, inde
         {featuredImage ? (
           <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-accent/10 to-accent/5">
             <Image
-              src={urlFor(featuredImage).width(640).height(360).url()}
+              src={urlFor(featuredImage).width(750).height(422).url()}
               alt={title}
               fill
               priority={index < 2}

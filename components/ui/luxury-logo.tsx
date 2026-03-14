@@ -7,10 +7,10 @@ export function LuxuryLogo() {
   return (
     <Link href="/" className="group flex items-center" style={{ direction: "ltr" }}>
       <Image
-        src="/Ask_Gamblers_Logo.png"
+        src="/Ask_Gamblers_Logo.webp"
         alt="Ask Gamblers"
-        width={126}
-        height={42}
+        width={81}
+        height={34}
         className="transition-transform duration-300 group-hover:scale-105"
         priority
       />

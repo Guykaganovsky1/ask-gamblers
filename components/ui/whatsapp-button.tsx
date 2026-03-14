@@ -81,26 +81,9 @@ export function WhatsAppButton() {
       </span>
 
       {/* Pulse ring */}
-      {!hovered && (
-        <span
-          style={{
-            position: "absolute",
-            inset: "-1px",
-            borderRadius: "50px",
-            border: "1px solid rgba(168,85,247,0.4)",
-            animation: "waPulse 2.5s ease-out infinite",
-            pointerEvents: "none",
-          }}
-        />
-      )}
-
-      <style>{`
-        @keyframes waPulse {
-          0%   { transform: scale(1);   opacity: 0.6; }
-          70%  { transform: scale(1.08); opacity: 0; }
-          100% { transform: scale(1.08); opacity: 0; }
-        }
-      `}</style>
+      {!hovered && <span className="wa-pulse-ring" />}
     </a>
   );
 }
+
+export default WhatsAppButton;

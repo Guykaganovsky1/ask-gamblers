@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 interface MobileMenuProps {
@@ -11,17 +11,18 @@ interface MobileMenuProps {
 
 export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
   return (
+    <LazyMotion features={domAnimation}>
     <AnimatePresence>
       {open && (
         <>
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black/60"
             onClick={onClose}
           />
-          <motion.nav
+          <m.nav
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -47,7 +48,7 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                 ✕
               </button>
               {links.map((link, i) => (
-                <motion.div
+                <m.div
                   key={link.href}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -68,12 +69,15 @@ export function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                       </span>
                     )}
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.nav>
+          </m.nav>
         </>
       )}
     </AnimatePresence>
+    </LazyMotion>
   );
 }
+
+export default MobileMenu;

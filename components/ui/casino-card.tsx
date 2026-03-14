@@ -39,7 +39,7 @@ export function CasinoCard({
             <div className="relative h-20 w-32">
               {logo ? (
                 <Image
-                  src={urlFor(logo).width(256).height(160).url()}
+                  src={urlFor(logo).width(256).height(145).url()}
                   alt={name}
                   fill
                   priority={index < 3}

@@ -6,7 +6,7 @@ import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { casinoReviewJsonLd, casinoAggregateRatingJsonLd } from "@/lib/json-ld";
-import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/seo";
+import { generateFAQSchema } from "@/lib/seo";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
@@ -68,7 +68,7 @@ export default async function CasinoReviewPage({ params }: Props) {
             />
           )}
         </div>
-        <h1 className="font-heading text-4xl md:text-5xl font-black">{casino.name}</h1>
+        <h2 className="font-heading text-4xl md:text-5xl font-black">{casino.name}</h2>
         <StarRating rating={casino.rating} size="lg" />
       </div>
 
@@ -144,32 +144,10 @@ export default async function CasinoReviewPage({ params }: Props) {
           __html: JSON.stringify(casinoReviewJsonLd(casino)),
         }}
       />
-      {casino.faqs && casino.faqs.length > 0 && (
-        <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
-      )}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateBreadcrumbSchema([
-              { name: "דף הבית", url: "/" },
-              { name: "בתי קזינו", url: "/casinos" },
-              { name: casino.name, url: `/casinos/${casino.slug.current}` },
-            ])
-          ),
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(casinoAggregateRatingJsonLd(casino)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(casinoReviewJsonLd(casino)),
         }}
       />
       {casino.faqs && casino.faqs.length > 0 && (
