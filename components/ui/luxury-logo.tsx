@@ -9,8 +9,8 @@ export function LuxuryLogo() {
       <Image
         src="/Ask_Gamblers_Logo.webp"
         alt="Ask Gamblers"
-        width={81}
-        height={34}
+        width={114}
+        height={48}
         className="transition-transform duration-300 group-hover:scale-105"
         priority
       />
