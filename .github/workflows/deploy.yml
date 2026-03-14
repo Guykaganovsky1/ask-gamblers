@@ -8,13 +8,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            cd /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html
-            bash deploy.sh
-          command_timeout: 10m
+      - name: Trigger deploy webhook
+        run: |
+          curl -f -X POST \
+            "https://askgamblers.co.il/api/autodeploy?secret=${{ secrets.DEPLOY_SECRET }}" \
+            --max-time 10
+          echo "Deploy triggered — check https://askgamblers.co.il"
