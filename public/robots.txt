@@ -1,10 +1,47 @@
 User-Agent: *
 Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
 
-# Block AI training bots but allow Google AI Overviews
+# Allow AI search/retrieval crawlers while keeping private paths blocked
+User-Agent: OAI-SearchBot
+Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
+
+User-Agent: ChatGPT-User
+Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
+
+User-Agent: Claude-SearchBot
+Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
+
+User-Agent: PerplexityBot
+Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
+
 User-Agent: Google-Extended
 Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /go/
+Disallow: /search
 
+# Block AI training bots
 User-Agent: GPTBot
 Disallow: /
 
@@ -22,9 +59,5 @@ Disallow: /
 
 User-Agent: anthropic-ai
 Disallow: /
-
-Disallow: /studio/
-Disallow: /api/
-Disallow: /go/
 
 Sitemap: https://askgamblers.co.il/sitemap.xml

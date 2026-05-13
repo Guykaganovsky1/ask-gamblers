@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = post.seoTitle || post.title;
-  const pageTitle = title.includes("Ask Gamblers") ? title : `${title} | Ask Gamblers`;
-  const description = post.seoDescription || post.excerpt || "";
+  const pageTitle = formatBlogTitle(title);
+  const description = formatBlogDescription(post.seoDescription || post.excerpt, post.title);
   const imageUrl = post.featuredImage ? urlFor(post.featuredImage).width(1200).height(630).url() : `${baseUrl}/opengraph-image`;
   
   return {
@@ -93,6 +93,9 @@ const portableTextComponents = {
     ),
   },
   block: {
+    h1: ({ children }: { children?: React.ReactNode }) => (
+      <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>
+    ),
     h2: ({ children }: { children?: React.ReactNode }) => (
       <h2 className="mt-10 mb-4 font-heading text-2xl font-black text-text-primary">{children}</h2>
     ),
@@ -106,6 +109,32 @@ const portableTextComponents = {
     ),
   },
 };
+
+function formatBlogTitle(title: string) {
+  const brand = " | Ask Gamblers";
+  const cleanTitle = title.replace(/\s*\|\s*Ask Gamblers\s*$/i, "").trim();
+  if (cleanTitle.length + brand.length <= 65) return `${cleanTitle}${brand}`;
+
+  const primaryTitle = cleanTitle.split(/\s+[—–-]\s+/)[0]?.trim();
+  if (primaryTitle && primaryTitle.length + brand.length >= 25 && primaryTitle.length + brand.length <= 65) {
+    return `${primaryTitle}${brand}`;
+  }
+
+  return `${cleanTitle.slice(0, 65 - brand.length).trim()}${brand}`;
+}
+
+function formatBlogDescription(description: string | undefined, title: string) {
+  const cleanDescription = description?.trim();
+  if (cleanDescription && cleanDescription.length >= 90 && cleanDescription.length <= 170) {
+    return cleanDescription;
+  }
+  if (cleanDescription && cleanDescription.length > 170) {
+    return cleanDescription.slice(0, 167).trim();
+  }
+
+  const base = cleanDescription || `מדריך ${title} עבור שחקנים ישראלים`;
+  return `${base} כולל בדיקת אתרים, תנאים, תשלומים, בונוסים ומשחק אחראי לפני הרשמה.`;
+}
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -222,7 +251,7 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.categories.filter((category) => category.slug?.current).map((category) => (
                     <Link
                       key={category._id}
-                      href={`/categories/${category.slug.current}`}
+                      href={`/categories/${encodeURIComponent(category.slug.current)}`}
                       className="px-4 py-2 rounded-full bg-card-light border border-border-glass text-sm text-text-secondary hover:border-accent/50 hover:text-accent transition-colors"
                     >
                       {category.name}

@@ -7,7 +7,7 @@ import { generateAboutPageSchema } from "@/lib/seo";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "אודות Ask Gamblers ישראל",
+  title: "אודות Ask Gamblers ישראל | מי אנחנו",
   description: "מי עומד מאחורי Ask Gamblers ישראל, איך האתר בודק קזינו אונליין, ומה חשוב לדעת על דירוגים, גילוי נאות ומשחק אחראי.",
   alternates: { canonical: `${SITE_URL}/about` },
 };

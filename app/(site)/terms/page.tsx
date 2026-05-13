@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 
 export const metadata: Metadata = {
   title: "תנאי שימוש | Ask Gamblers",
-  description: "תנאי שימוש באתר Ask Gamblers, הגבלת אחריות, גיל 18+, קישורים חיצוניים ותוכן מידע בלבד.",
+  description: "תנאי שימוש באתר Ask Gamblers: מידע בלבד, הגבלת אחריות, גיל 18+, קישורים חיצוניים, שינויי בונוסים וחובת בדיקת תנאים לפני הרשמה.",
   alternates: { canonical: `${SITE_URL}/terms` },
 };
 

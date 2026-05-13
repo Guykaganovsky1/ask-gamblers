@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 
 export const metadata: Metadata = {
   title: "משחק אחראי | Ask Gamblers",
-  description: "כללי משחק אחראי, סימני אזהרה, הגדרת תקציב ומתי לעצור הימורים אונליין.",
+  description: "כללי משחק אחראי באתר Ask Gamblers: סימני אזהרה, הגדרת תקציב, מגבלות זמן, מתי לעצור הימורים אונליין ואיך לפנות לעזרה מקצועית.",
   alternates: { canonical: `${SITE_URL}/responsible-gambling` },
 };
 

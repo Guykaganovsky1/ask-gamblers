@@ -28,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = casino.seoTitle || `${casino.name} - ביקורת קזינו | Ask Gamblers`;
   const description = casino.seoDescription || `${casino.name}: ביקורת קזינו לישראלים עם דירוג, יתרונות, חסרונות, בונוס, שיטת בדיקה וגילוי נאות של Ask Gamblers.`;
+  const imageUrl = casino.logo ? urlFor(casino.logo).width(1200).height(630).url() : `${baseUrl}/og-image.png`;
+
   return {
     title,
     description,
@@ -39,6 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: "article",
       url: `${baseUrl}/casinos/${slug}`,
+      images: [{ url: imageUrl, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }

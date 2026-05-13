@@ -30,15 +30,16 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
       ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
       : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
     alternates: {
-      canonical: `${baseUrl}/search${query ? `?q=${encodeURIComponent(query)}` : ""}`,
+      canonical: `${baseUrl}/search`,
     },
+    robots: "noindex, follow",
     openGraph: {
       title: query ? `חיפוש: ${query} | Ask Gamblers` : "חיפוש קזינו בישראל | Ask Gamblers",
       description: query
         ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
         : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
       type: "website",
-      url: `${baseUrl}/search${query ? `?q=${encodeURIComponent(query)}` : ""}`,
+      url: `${baseUrl}/search`,
     },
   };
 }

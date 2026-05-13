@@ -22,12 +22,37 @@ const nextConfig: NextConfig = {
   },
 
   async headers() {
+    const securityHeaders = [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+    ];
+    const noIndexHeaders = [
+      ...securityHeaders,
+      { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+    ];
+
     return [
       {
         source: "/:path*",
-        headers: [
-          { key: "X-Robots-Tag", value: "index, follow" },
-        ],
+        headers: securityHeaders,
+      },
+      {
+        source: "/studio/:path*",
+        headers: noIndexHeaders,
+      },
+      {
+        source: "/api/:path*",
+        headers: noIndexHeaders,
+      },
+      {
+        source: "/go/:path*",
+        headers: noIndexHeaders,
+      },
+      {
+        source: "/search",
+        headers: noIndexHeaders,
       },
       {
         source: "/_next/static/:path*",
