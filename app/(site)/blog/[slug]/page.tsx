@@ -136,6 +136,10 @@ function formatBlogDescription(description: string | undefined, title: string) {
   return `${base} כולל בדיקת אתרים, תנאים, תשלומים, בונוסים ומשחק אחראי לפני הרשמה.`;
 }
 
+function encodeCategorySlug(slug: string) {
+  return encodeURIComponent(slug).replace(/'/g, "%27");
+}
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const [post, topCasinos] = await Promise.all([
@@ -251,7 +255,7 @@ export default async function BlogPostPage({ params }: Props) {
                   {post.categories.filter((category) => category.slug?.current).map((category) => (
                     <Link
                       key={category._id}
-                      href={`/categories/${encodeURIComponent(category.slug.current)}`}
+                      href={`/categories/${encodeCategorySlug(category.slug.current)}`}
                       className="px-4 py-2 rounded-full bg-card-light border border-border-glass text-sm text-text-secondary hover:border-accent/50 hover:text-accent transition-colors"
                     >
                       {category.name}

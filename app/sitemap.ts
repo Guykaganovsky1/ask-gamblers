@@ -9,6 +9,10 @@ interface SitemapItem {
   _updatedAt: string;
 }
 
+function encodePathSegment(value: string) {
+  return encodeURIComponent(value).replace(/'/g, "%27");
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let casinos: SitemapItem[] = [];
   let posts: SitemapItem[] = [];
@@ -56,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const categoryPages = (categories || []).filter(c => c?.slug?.current).map((c) => ({
-    url: `${BASE_URL}/categories/${encodeURIComponent(c.slug.current)}`,
+    url: `${BASE_URL}/categories/${encodePathSegment(c.slug.current)}`,
     lastModified: new Date(c._updatedAt),
     changeFrequency: "weekly" as const,
     priority: 0.5,

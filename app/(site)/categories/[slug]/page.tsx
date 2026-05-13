@@ -25,7 +25,11 @@ function decodeSlug(slug: string) {
 }
 
 function categoryPath(slug: string) {
-  return `/categories/${encodeURIComponent(slug)}`;
+  return `/categories/${encodeCategorySlug(slug)}`;
+}
+
+function encodeCategorySlug(slug: string) {
+  return encodeURIComponent(slug).replace(/'/g, "%27");
 }
 
 function buildCategoryTitle(categoryName: string) {
