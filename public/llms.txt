@@ -5,6 +5,8 @@
 - **URL:** https://askgamblers.co.il
 - **Language:** Hebrew (RTL)
 - **Purpose:** Casino reviews, bonuses, and ratings for Israeli market
+- **Entity:** Ask Gamblers Israel / Ask Gamblers ישראל
+- **Disclosure:** The site contains casino affiliate links and marks affiliate redirects as sponsored/nofollow.
 
 ## Content Structure
 
@@ -21,6 +23,13 @@
 - `/games` - Casino game information
 - `/softwares` - Software providers directory
 - `/news` - Latest casino news
+- `/about` - Brand and editorial overview
+- `/review-methodology` - Review criteria and ranking method
+- `/affiliate-disclosure` - Affiliate relationship disclosure
+- `/responsible-gambling` - Responsible gambling guidance
+- `/contact` - Editorial contact details
+- `/privacy` - Privacy policy
+- `/terms` - Terms of use
 
 ## Content Guidelines
 
@@ -32,6 +41,8 @@ Each casino review includes:
 - Payment methods
 - Customer support evaluation
 - Pros and cons
+- Editorial methodology links
+- Affiliate disclosure and responsible gambling links
 
 ### Blog Posts
 Educational content about:
@@ -58,4 +69,4 @@ Educational content about:
 - English terms and brand names appear inline
 
 ## Last Updated
-February 25, 2026
+May 13, 2026

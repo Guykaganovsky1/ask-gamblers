@@ -10,6 +10,19 @@ const FOOTER_LINKS = [
   { href: "/softwares", label: "ספקי תוכנה" },
 ];
 
+const TRUST_LINKS = [
+  { href: "/about", label: "אודות" },
+  { href: "/review-methodology", label: "שיטת הדירוג" },
+  { href: "/affiliate-disclosure", label: "גילוי נאות" },
+  { href: "/responsible-gambling", label: "משחק אחראי" },
+  { href: "/contact", label: "צור קשר" },
+];
+
+const LEGAL_LINKS = [
+  { href: "/privacy", label: "פרטיות" },
+  { href: "/terms", label: "תנאי שימוש" },
+];
+
 async function getTopCasinos() {
   try {
     const casinos = await client.fetch<Casino[]>(CASINOS_QUERY);
@@ -181,21 +194,59 @@ export async function Footer() {
           </div>
         )}
 
-        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <Link href="/" className="font-heading text-xl font-black text-accent">
-            Ask Gamblers
-          </Link>
-          <nav className="flex gap-6">
-            {FOOTER_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-text-muted transition-colors hover:text-accent"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+        <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
+          <div>
+            <Link href="/" className="font-heading text-xl font-black text-accent">
+              Ask Gamblers
+            </Link>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
+              מדריך עברי לבדיקת קזינו אונליין, בונוסים, תשלומים ומשחק אחראי לשחקנים ישראלים.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <nav aria-label="ניווט ראשי">
+              <h4 className="font-heading text-sm font-bold text-text-primary">ניווט</h4>
+              <div className="mt-3 grid gap-2">
+                {FOOTER_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+            <nav aria-label="אמון ושקיפות">
+              <h4 className="font-heading text-sm font-bold text-text-primary">אמון ושקיפות</h4>
+              <div className="mt-3 grid gap-2">
+                {TRUST_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+            <nav aria-label="משפטי">
+              <h4 className="font-heading text-sm font-bold text-text-primary">משפטי</h4>
+              <div className="mt-3 grid gap-2">
+                {LEGAL_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-text-muted transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          </div>
         </div>
         <div className="mt-8 border-t border-border-glass pt-8 text-center text-xs text-text-muted">
           <p className="mx-auto max-w-2xl">

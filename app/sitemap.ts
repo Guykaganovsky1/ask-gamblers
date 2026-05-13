@@ -32,6 +32,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/bonuses`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/games`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/softwares`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+    { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/review-methodology`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/affiliate-disclosure`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/responsible-gambling`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.4 },
+    { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const casinoPages = (casinos || []).filter(c => c?.slug?.current).map((c) => ({

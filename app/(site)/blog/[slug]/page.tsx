@@ -19,7 +19,6 @@ import { BlogCard } from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
 import { SocialShare } from "@/components/ui/social-share";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/seo";
-import { BlogGuideLayout } from "@/components/sections/blog-guide-layout";
 
 export const revalidate = 60;
 
@@ -44,11 +43,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = post.seoTitle || post.title;
+  const pageTitle = title.includes("Ask Gamblers") ? title : `${title} | Ask Gamblers`;
   const description = post.seoDescription || post.excerpt || "";
   const imageUrl = post.featuredImage ? urlFor(post.featuredImage).width(1200).height(630).url() : `${baseUrl}/opengraph-image`;
   
   return {
-    title: `${title} | Ask Gamblers`,
+    title: pageTitle,
     description,
     alternates: {
       canonical: `${baseUrl}/blog/${slug}`,
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title,
+      title: pageTitle,
       description,
       type: "article",
       url: `${baseUrl}/blog/${slug}`,
@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: pageTitle,
       description,
       images: [imageUrl],
     },
@@ -356,7 +356,7 @@ export default async function BlogPostPage({ params }: Props) {
                       
                       {/* CTA Button */}
                       <div className="mt-3">
-                        <Button href={`/go/${casino.slug.current}`} variant="primary" className="w-full text-xs py-2">
+                        <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full text-xs py-2">
                           שחק עכשיו
                         </Button>
                       </div>

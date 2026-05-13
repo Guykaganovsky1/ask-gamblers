@@ -27,21 +27,6 @@ export function casinoReviewJsonLd(casino: {
   };
 }
 
-export function casinoAggregateRatingJsonLd(casino: {
-  name: string;
-  rating: number;
-  clicks?: number;
-}) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    ratingValue: casino.rating,
-    bestRating: 5,
-    worstRating: 1,
-    reviewCount: Math.max(1, Math.ceil((casino.clicks || 0) / 50)), // Estimate based on clicks
-  };
-}
-
 export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",

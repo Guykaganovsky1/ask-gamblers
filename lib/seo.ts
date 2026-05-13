@@ -1,6 +1,6 @@
 const SITE_NAME = "Ask Gamblers";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
-const SITE_DESCRIPTION = "המדריך המלא לקזינו אונליין";
+const SITE_DESCRIPTION = "Ask Gamblers ישראל הוא מדריך עברי לבדיקת קזינו אונליין, בונוסים, תשלומים ומשחק אחראי לשחקנים ישראלים.";
 
 export interface ArticlePost {
   title: string;
@@ -85,7 +85,9 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: ["Ask Gamblers Israel", "AskGamblers Israel", "Ask Gamblers ישראל"],
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
@@ -96,10 +98,21 @@ export function generateOrganizationSchema() {
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",
     areaServed: "IL",
-    knowsAbout: ["Online Casino", "Casino Bonuses", "Online Gambling", "קזינו אונליין", "בונוסי קזינו"],
+    knowsAbout: [
+      "Online Casino",
+      "Casino Bonuses",
+      "Online Gambling",
+      "Responsible Gambling",
+      "קזינו אונליין",
+      "בונוסי קזינו",
+      "משחק אחראי",
+      "שיטות תשלום לקזינו"
+    ],
+    publishingPrinciples: `${SITE_URL}/review-methodology`,
+    ethicsPolicy: `${SITE_URL}/affiliate-disclosure`,
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "customer service",
+      contactType: "editorial support",
       telephone: "+972-50-920-0920",
       email: "contact@askgamblers.co.il",
       availableLanguage: ["Hebrew", "English"],
@@ -107,6 +120,44 @@ export function generateOrganizationSchema() {
     sameAs: [
       "https://wa.me/972509200920"
     ]
+  };
+}
+
+export function generateAboutPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "אודות Ask Gamblers",
+    url: `${SITE_URL}/about`,
+    inLanguage: "he-IL",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    about: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
+}
+
+export function generateContactPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "צור קשר עם Ask Gamblers",
+    url: `${SITE_URL}/contact`,
+    inLanguage: "he-IL",
+    about: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "editorial support",
+      telephone: "+972-50-920-0920",
+      email: "contact@askgamblers.co.il",
+      availableLanguage: ["Hebrew", "English"],
+    },
   };
 }
 
@@ -119,9 +170,12 @@ export function generateWebSiteSchema() {
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",
     publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
+      "@id": `${SITE_URL}/#organization`,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
     },
   };
 }

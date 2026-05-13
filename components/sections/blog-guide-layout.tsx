@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { PortableText } from "@portabletext/react";
-import { Casino, BlogPost, SanityImage } from "@/sanity/lib/types";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import { Casino, BlogPost } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { StarRating } from "@/components/ui/star-rating";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { CasinoComparisonTable } from "@/components/ui/casino-comparison-table";
 interface BlogGuideLayoutProps {
   post: BlogPost;
   casinos: Casino[];
-  portableTextComponents: any;
+  portableTextComponents: PortableTextComponents;
   topCasinos: Casino[];
   relatedCasinos: Casino[];
 }
@@ -100,7 +100,7 @@ export function BlogGuideLayout({
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {featuredCasinos.slice(0, 4).map((casino) => (
-                  <Link key={casino._id} href={`/go/${casino.slug.current}`} className="block">
+                  <Link key={casino._id} href={`/go/${casino.slug.current}`} rel="nofollow sponsored" className="block">
                     <div className="w-full px-4 py-2 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors text-center text-sm">
                       {casino.name} - {casino.bonusAmount || "בונוס בלעדי"}
                     </div>
@@ -144,7 +144,7 @@ export function BlogGuideLayout({
                 <div className="bg-card-light/50 rounded-lg p-4 text-center">
                   <p className="text-sm text-text-muted">זמן קריאה משוער</p>
                   <p className="text-2xl font-black text-accent">
-                    {post.estimatedReadTime} דק'
+                    {post.estimatedReadTime} דק&apos;
                   </p>
                 </div>
               )}
@@ -172,7 +172,7 @@ export function BlogGuideLayout({
                       <p className="text-xs text-accent font-bold my-2">
                         {casino.bonusAmount}
                       </p>
-                      <Button href={`/go/${casino.slug.current}`} variant="primary" className="w-full">
+                      <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
                         שחק עכשיו
                       </Button>
                     </div>
@@ -276,7 +276,7 @@ function CasinoFeaturedCard({ casino }: { casino: Casino }) {
         </div>
 
         {/* CTA */}
-        <Button href={`/go/${casino.slug.current}`} variant="primary" className="w-full">
+        <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
           שחק עכשיו - {casino.bonusAmount}
         </Button>
       </div>

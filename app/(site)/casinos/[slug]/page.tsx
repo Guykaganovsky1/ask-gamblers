@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { CASINO_BY_SLUG_QUERY } from "@/sanity/lib/queries";
 import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
-import { casinoReviewJsonLd, casinoAggregateRatingJsonLd } from "@/lib/json-ld";
+import { casinoReviewJsonLd } from "@/lib/json-ld";
 import { generateFAQSchema } from "@/lib/seo";
 import { StarRating } from "@/components/ui/star-rating";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!casino) return {};
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
   const title = casino.seoTitle || `${casino.name} - ביקורת קזינו | Ask Gamblers`;
-  const description = casino.seoDescription || casino.description;
+  const description = casino.seoDescription || `${casino.name}: ביקורת קזינו לישראלים עם דירוג, יתרונות, חסרונות, בונוס, שיטת בדיקה וגילוי נאות של Ask Gamblers.`;
   return {
     title,
     description,
@@ -46,6 +47,8 @@ export default async function CasinoReviewPage({ params }: Props) {
   const { slug } = await params;
   const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
   if (!casino) notFound();
+  const categoryNames = casino.categories?.map((cat) => cat.name).filter(Boolean) || [];
+  const hasBonus = Boolean(casino.bonusAmount);
 
   return (
     <>
@@ -92,7 +95,71 @@ export default async function CasinoReviewPage({ params }: Props) {
       <div className="mt-12">
         <h2 className="font-heading text-2xl font-bold">סקירה</h2>
         <p className="mt-4 text-text-muted leading-relaxed">{casino.description}</p>
+        <p className="mt-4 text-text-muted leading-relaxed">
+          הביקורת הזו נכתבה עבור שחקנים ישראלים שרוצים להבין לא רק מה גובה הבונוס,
+          אלא גם האם תנאי המשחק ברורים, האם חוויית ההרשמה סבירה, ומה חשוב לבדוק
+          לפני שמפקידים כסף אמיתי. הדירוג שלנו משלב בדיקת חוויית משתמש, שקיפות,
+          תנאי בונוס, זמינות משחקים, תמיכה ושיקולי משחק אחראי.
+        </p>
       </div>
+
+      <section className="mt-12 rounded-2xl border border-border-glass bg-card/40 p-6">
+        <h2 className="font-heading text-2xl font-bold">איך בדקנו את {casino.name}</h2>
+        <p className="mt-4 text-text-muted leading-relaxed">
+          Ask Gamblers מדרג קזינו לפי מסגרת בדיקה קבועה: קריאת תנאי הבונוס, בדיקת
+          מידע על רישוי ובעלות שמופיע באתר הקזינו, איכות התשלום והמשיכה, זמינות
+          משחקים פופולריים, תמיכה ללקוחות, התאמה למובייל ושקיפות מול שחקנים.
+          כאשר מידע מסוים לא זמין או לא ברור, אנחנו מתייחסים לכך כחולשה ולא
+          כיתרון.
+        </p>
+        <ul className="mt-5 grid gap-3 text-sm text-text-muted md:grid-cols-2">
+          <li className="rounded-lg border border-border-glass bg-background/40 p-4">בדיקת תנאי בונוס, דרישות הימור ותקרות משיכה.</li>
+          <li className="rounded-lg border border-border-glass bg-background/40 p-4">בדיקת אפשרויות תשלום, משיכה וזמני טיפול משוערים.</li>
+          <li className="rounded-lg border border-border-glass bg-background/40 p-4">בדיקת התאמה לשחקנים ישראלים, עברית, מובייל ותמיכה.</li>
+          <li className="rounded-lg border border-border-glass bg-background/40 p-4">בדיקת כלים למשחק אחראי, מגבלות והגנת שחקנים.</li>
+        </ul>
+        <p className="mt-5 text-sm text-text-muted">
+          לפירוט מלא קראו את{" "}
+          <Link href="/review-methodology" className="text-accent hover:text-accent-light">
+            שיטת הדירוג שלנו
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="rounded-2xl border border-border-glass bg-card/40 p-6">
+          <h2 className="font-heading text-2xl font-bold">בטיחות ושקיפות</h2>
+          <p className="mt-4 text-text-muted leading-relaxed">
+            לפני הרשמה ל-{casino.name}, חשוב לבדוק בעמודי הקזינו את פרטי החברה,
+            הרישיון, מדיניות האימות, תנאי המשיכה וכלי ההגבלה העצמית. אנחנו
+            ממליצים להימנע מכל אתר שלא מציג תנאים ברורים או שמקשה למצוא מידע על
+            זהות המפעיל, מגבלות בונוס ותהליך טיפול במשיכות.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border-glass bg-card/40 p-6">
+          <h2 className="font-heading text-2xl font-bold">בונוס ותנאים</h2>
+          <p className="mt-4 text-text-muted leading-relaxed">
+            {hasBonus
+              ? `ההצעה שמופיעה אצלנו עבור ${casino.name} היא ${casino.bonusTitle || "בונוס"} ${casino.bonusAmount}. לפני מימוש ההצעה צריך לבדוק דרישות הימור, משחקים שמוחרגים מהבונוס, תוקף הבונוס ותקרת משיכה.`
+              : `כרגע לא מוצג אצלנו בונוס פעיל עבור ${casino.name}. אם מוצעת לכם הטבה באתר הקזינו עצמו, בדקו את דרישות ההימור, תוקף ההצעה ותקרת המשיכה לפני הפקדה.`}
+          </p>
+          {casino.wageringRequirement && (
+            <p className="mt-3 text-sm text-text-muted">דרישת הימור שמופיעה אצלנו: {casino.wageringRequirement}</p>
+          )}
+        </div>
+      </section>
+
+      <section className="mt-12 rounded-2xl border border-border-glass bg-card/40 p-6">
+        <h2 className="font-heading text-2xl font-bold">למי {casino.name} מתאים?</h2>
+        <p className="mt-4 text-text-muted leading-relaxed">
+          {categoryNames.length > 0
+            ? `${casino.name} מופיע אצלנו בקטגוריות ${categoryNames.join(", ")}. לכן הוא יכול להתאים לשחקנים שמחפשים את סוגי המשחק או ההצעות האלה, כל עוד תנאי האתר מתאימים לתקציב ולרמת הניסיון שלהם.`
+            : `${casino.name} יכול להתאים לשחקנים שמעדיפים לבדוק קזינו לפי דירוג, בונוס, חוויית מובייל ותנאי תשלום לפני הרשמה.`}
+          שחקנים חדשים צריכים להתחיל בסכומים קטנים, לקרוא את תנאי הבונוס במלואם
+          ולהגדיר מראש תקציב וזמן משחק.
+        </p>
+      </section>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         {casino.pros && casino.pros.length > 0 && (
@@ -134,6 +201,25 @@ export default async function CasinoReviewPage({ params }: Props) {
         </div>
       )}
 
+      <section className="mt-12 rounded-2xl border border-border-glass bg-card/40 p-6">
+        <h2 className="font-heading text-2xl font-bold">לפני הרשמה</h2>
+        <ul className="mt-4 space-y-3 text-text-muted">
+          <li>בדקו שהשם והכתובת של מפעיל הקזינו מופיעים באתר הקזינו.</li>
+          <li>קראו את תנאי הבונוס, במיוחד דרישות הימור, תוקף ותקרת משיכה.</li>
+          <li>ודאו שאפשרויות ההפקדה והמשיכה מתאימות לכם לפני הפקדה.</li>
+          <li>הגדירו תקציב, מגבלת זמן ומגבלת הפסד מראש.</li>
+          <li>אם המשחק כבר לא מרגיש כמו בידור, עצרו ופנו לעזרה מקצועית.</li>
+        </ul>
+        <div className="mt-5 flex flex-wrap gap-3 text-sm">
+          <Link href="/responsible-gambling" className="rounded-lg border border-accent/30 px-4 py-2 text-accent hover:bg-accent/10">
+            משחק אחראי
+          </Link>
+          <Link href="/affiliate-disclosure" className="rounded-lg border border-accent/30 px-4 py-2 text-accent hover:bg-accent/10">
+            גילוי נאות
+          </Link>
+        </div>
+      </section>
+
       {casino.faqs && casino.faqs.length > 0 && (
         <CasinoFAQ casinoName={casino.name} faqs={casino.faqs} />
       )}
@@ -142,12 +228,6 @@ export default async function CasinoReviewPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(casinoReviewJsonLd(casino)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(casinoAggregateRatingJsonLd(casino)),
         }}
       />
       {casino.faqs && casino.faqs.length > 0 && (
