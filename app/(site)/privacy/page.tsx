@@ -5,7 +5,7 @@ import { Breadcrumb } from "@/components/ui/breadcrumb";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "מדיניות פרטיות | Ask Gamblers",
+  title: "מדיניות פרטיות באתר Ask Gamblers ישראל",
   description: "מדיניות פרטיות של Ask Gamblers: איזה מידע עשוי להיאסף, שימוש בקישורי שותפים, אנליטיקה ופניות משתמשים.",
   alternates: { canonical: `${SITE_URL}/privacy` },
 };

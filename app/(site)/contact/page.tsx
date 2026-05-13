@@ -6,7 +6,7 @@ import { generateContactPageSchema } from "@/lib/seo";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
-  title: "צור קשר | Ask Gamblers ישראל",
+  title: "צור קשר עם Ask Gamblers ישראל | תיקונים ושאלות",
   description: "יצירת קשר עם Ask Gamblers ישראל עבור תיקוני מידע, שאלות מערכתיות, שיתופי פעולה או בקשות הסרה ועדכון תוכן.",
   alternates: { canonical: `${SITE_URL}/contact` },
 };
