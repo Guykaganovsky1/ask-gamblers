@@ -13,6 +13,10 @@ export interface ArticlePost {
     name: string;
     image?: string;
   };
+  reviewedBy?: {
+    name: string;
+    image?: string;
+  };
   featuredImage?: string;
   body?: unknown;
 }
@@ -52,6 +56,13 @@ export function generateArticleSchema(post: ArticlePost) {
           name: SITE_NAME,
           url: SITE_URL,
         },
+    reviewedBy: post.reviewedBy
+      ? {
+          "@type": "Person",
+          name: post.reviewedBy.name,
+          image: post.reviewedBy.image,
+        }
+      : undefined,
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,

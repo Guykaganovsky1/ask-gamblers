@@ -24,6 +24,25 @@ export const postType = defineType({
       to: {type: 'author'},
     }),
     defineField({
+      name: 'reviewedBy',
+      title: 'Reviewed by',
+      type: 'reference',
+      to: {type: 'author'},
+      description: 'Optional editor or fact checker for YMYL-style trust signals',
+    }),
+    defineField({
+      name: 'factCheckedAt',
+      title: 'Fact checked date',
+      type: 'date',
+    }),
+    defineField({
+      name: 'summaryAnswer',
+      title: 'Short answer for AI/search snippets',
+      type: 'text',
+      rows: 3,
+      description: '2-3 sentence direct answer displayed near the top of long guides',
+    }),
+    defineField({
       name: 'mainImage',
       type: 'image',
       options: {
@@ -49,6 +68,47 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO title',
+      type: 'string',
+      validation: (rule) => rule.max(65),
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO description',
+      type: 'text',
+      rows: 3,
+      validation: (rule) => rule.max(170),
+    }),
+    defineField({
+      name: 'isMegaGuide',
+      title: 'Mega guide',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'targetKeyword',
+      title: 'Primary target keyword',
+      type: 'string',
+    }),
+    defineField({
+      name: 'keywords',
+      title: 'Secondary keywords',
+      type: 'array',
+      of: [defineArrayMember({type: 'string'})],
+    }),
+    defineField({
+      name: 'relatedCasinos',
+      title: 'Related casinos',
+      type: 'array',
+      of: [defineArrayMember({type: 'reference', to: {type: 'casino'}})],
+    }),
+    defineField({
+      name: 'estimatedReadTime',
+      title: 'Estimated read time in minutes',
+      type: 'number',
     }),
   ],
   preview: {

@@ -4,6 +4,10 @@ export function casinoReviewJsonLd(casino: {
   rating: number;
   slug: { current: string };
   clicks?: number;
+  reviewedBy?: {
+    name: string;
+  };
+  lastCheckedAt?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -19,6 +23,17 @@ export function casinoReviewJsonLd(casino: {
       worstRating: 1,
     },
     description: casino.description,
+    dateModified: casino.lastCheckedAt,
+    author: casino.reviewedBy
+      ? {
+          "@type": "Person",
+          name: casino.reviewedBy.name,
+        }
+      : {
+          "@type": "Organization",
+          name: "Ask Gamblers",
+          url: "https://askgamblers.co.il",
+        },
     publisher: {
       "@type": "Organization",
       name: "Ask Gamblers",

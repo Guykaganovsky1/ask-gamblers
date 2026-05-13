@@ -36,6 +36,29 @@ export const authorType = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'role',
+      title: 'Editorial role',
+      type: 'string',
+      description: 'Example: Casino reviewer, editor, fact checker',
+    }),
+    defineField({
+      name: 'credentials',
+      title: 'Credentials',
+      type: 'string',
+      description: 'Short trust line shown near author content',
+    }),
+    defineField({
+      name: 'expertise',
+      title: 'Expertise topics',
+      type: 'array',
+      of: [defineArrayMember({type: 'string'})],
+    }),
+    defineField({
+      name: 'profileUrl',
+      title: 'Public profile URL',
+      type: 'url',
+    }),
   ],
   preview: {
     select: {

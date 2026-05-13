@@ -21,7 +21,7 @@ export interface SEORecommendation {
   description: string;
   impact: string;
   effort: string;
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
 }
 
 export async function triggerScan(pages?: string[]): Promise<{
@@ -59,7 +59,7 @@ export async function getRecommendations(): Promise<{
   return response.json();
 }
 
-export async function sendWebhook(event: string, data: Record<string, any>): Promise<void> {
+export async function sendWebhook(event: string, data: Record<string, unknown>): Promise<void> {
   if (!SEO_PLATFORM_URL || !SITE_ID) {
     console.warn('[SEO] Platform not configured');
     return;

@@ -140,6 +140,15 @@ function encodeCategorySlug(slug: string) {
   return encodeURIComponent(slug).replace(/'/g, "%27");
 }
 
+function formatHebrewDate(date?: string) {
+  if (!date) return null;
+  return new Date(date).toLocaleDateString("he-IL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const [post, topCasinos] = await Promise.all([
@@ -229,6 +238,12 @@ export default async function BlogPostPage({ params }: Props) {
               {post.publishedAt && (
                 <time>{new Date(post.publishedAt).toLocaleDateString("he-IL")}</time>
               )}
+              {post.factCheckedAt && (
+                <>
+                  <span>•</span>
+                  <time>נבדק: {formatHebrewDate(post.factCheckedAt)}</time>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -242,6 +257,21 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="grid gap-12 lg:grid-cols-[1fr_340px]">
           {/* Main Content */}
           <article>
+            {post.summaryAnswer && (
+              <section className="mb-10 rounded-xl border border-accent/25 bg-accent/10 p-6">
+                <h2 className="font-heading text-xl font-black text-text-primary">תשובה קצרה</h2>
+                <p className="mt-3 leading-relaxed text-text-secondary">{post.summaryAnswer}</p>
+                <div className="mt-5 flex flex-wrap gap-2 text-sm">
+                  <Link href="/casinos" className="rounded-lg border border-accent/25 px-3 py-2 font-bold text-accent hover:bg-accent/10">
+                    השוואת קזינו
+                  </Link>
+                  <Link href="/responsible-gambling" className="rounded-lg border border-accent/25 px-3 py-2 font-bold text-accent hover:bg-accent/10">
+                    משחק אחראי
+                  </Link>
+                </div>
+              </section>
+            )}
+
             {/* Article Content */}
             <div className="prose prose-invert max-w-none">
               {post.body && <PortableText value={post.body} components={portableTextComponents} />}
@@ -296,18 +326,39 @@ export default async function BlogPostPage({ params }: Props) {
                   {/* Author Info */}
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-accent font-bold">הכותב</span>
+                      <span className="text-xs text-accent font-bold">{post.author.role || "הכותב"}</span>
                     </div>
                     <h3 className="font-heading text-lg font-bold text-text-primary mb-2">
                       {post.author.name}
                     </h3>
+                    {post.author.credentials && (
+                      <p className="mb-2 text-xs font-bold text-text-muted">{post.author.credentials}</p>
+                    )}
                     {post.author.bio && (
                       <p className="text-sm text-text-secondary leading-relaxed">
                         {post.author.bio}
                       </p>
                     )}
+                    {post.author.expertise && post.author.expertise.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {post.author.expertise.map((topic) => (
+                          <span key={topic} className="rounded-full border border-border-glass px-3 py-1 text-xs text-text-muted">
+                            {topic}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
+              </div>
+            )}
+
+            {post.reviewedBy && (
+              <div className="mt-6 rounded-xl border border-border-glass bg-card/40 p-5 text-sm text-text-secondary">
+                <span className="font-bold text-text-primary">בדיקת תוכן:</span>{" "}
+                {post.reviewedBy.name}
+                {post.reviewedBy.role ? `, ${post.reviewedBy.role}` : ""}
+                {post.factCheckedAt ? ` | עודכן ונבדק: ${formatHebrewDate(post.factCheckedAt)}` : ""}
               </div>
             )}
 
@@ -508,6 +559,14 @@ export default async function BlogPostPage({ params }: Props) {
                     name: post.author.name,
                     image: post.author.avatar
                       ? urlFor(post.author.avatar).width(128).height(128).url()
+                      : undefined,
+                  }
+                : undefined,
+              reviewedBy: post.reviewedBy
+                ? {
+                    name: post.reviewedBy.name,
+                    image: post.reviewedBy.avatar
+                      ? urlFor(post.reviewedBy.avatar).width(128).height(128).url()
                       : undefined,
                   }
                 : undefined,

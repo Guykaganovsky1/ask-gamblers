@@ -38,6 +38,14 @@ export const CASINO_BY_SLUG_QUERY = groq`
     logo,
     rating,
     description,
+    reviewedBy->{ name, "avatar": coalesce(avatar, image), role, credentials, expertise, profileUrl },
+    lastCheckedAt,
+    operatorName,
+    licenseInfo,
+    withdrawalTime,
+    paymentMethods,
+    supportChannels,
+    mobileExperience,
     seoTitle,
     seoDescription,
     pros,
@@ -61,7 +69,7 @@ export const POSTS_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
-    author->{ name, avatar },
+    author->{ name, "avatar": coalesce(avatar, image), role, credentials },
     categories[]->{ _id, name, slug },
     "excerpt": pt::text(body)[0..150] + "..."
   }
@@ -74,7 +82,7 @@ export const LATEST_POSTS_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
-    author->{ name, avatar },
+    author->{ name, "avatar": coalesce(avatar, image), role, credentials },
     categories[]->{ _id, name, slug }
   }
 `;
@@ -88,9 +96,28 @@ export const POST_BY_SLUG_QUERY = groq`
     publishedAt,
     "modifiedAt": _updatedAt,
     body,
+    summaryAnswer,
+    factCheckedAt,
     seoTitle,
     seoDescription,
-    author->{ name, avatar, bio },
+    author->{
+      name,
+      "avatar": coalesce(avatar, image),
+      "bio": select(bio[0]._type == "block" => pt::text(bio), defined(bio) => bio),
+      role,
+      credentials,
+      expertise,
+      profileUrl
+    },
+    reviewedBy->{
+      name,
+      "avatar": coalesce(avatar, image),
+      "bio": select(bio[0]._type == "block" => pt::text(bio), defined(bio) => bio),
+      role,
+      credentials,
+      expertise,
+      profileUrl
+    },
     categories[]->{ _id, name, slug },
     isMegaGuide,
     targetKeyword,
@@ -138,7 +165,7 @@ export const CATEGORY_BY_SLUG_QUERY = groq`
     },
     "posts": *[_type == "post" && references(^._id)] | order(publishedAt desc) {
       _id, title, slug, "featuredImage": mainImage, publishedAt,
-      author->{ name, avatar }
+      author->{ name, "avatar": coalesce(avatar, image), role, credentials }
     }
   }
 `;
@@ -172,7 +199,7 @@ export const RELATED_POSTS_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
-    author->{ name, avatar },
+    author->{ name, "avatar": coalesce(avatar, image), role, credentials },
     categories[]->{ _id, name, slug }
   }
 `;
@@ -228,7 +255,7 @@ export const SEARCH_POSTS_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
-    author->{ name, avatar },
+    author->{ name, "avatar": coalesce(avatar, image), role, credentials },
     categories[]->{ _id, name, slug },
     "excerpt": pt::text(body)[0..150] + "..."
   }

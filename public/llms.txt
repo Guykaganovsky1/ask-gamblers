@@ -57,6 +57,33 @@ Educational content about:
 - **Meta Descriptions:** 120-160 characters
 - **Canonical Tags:** Implemented on all pages
 - **Structured Data:** Schema.org markup for organizations and websites
+- **Review Signals:** Casino pages can expose last checked date, reviewer, operator, license notes, payment methods, support channels, withdrawal time, and mobile experience.
+- **Short Answers:** Long guides can include a direct answer summary for AI search and featured-snippet style extraction.
+
+## Priority Query Intents
+- קזינו אונליין בישראל
+- קזינו מומלץ לישראלים
+- בונוס קזינו אונליין
+- קזינו עם משיכה מהירה
+- קזינו בטוח
+- שיטות תשלום לקזינו
+- משחקי קזינו אונליין
+- ביקורת קזינו
+
+## Editorial Source Of Truth
+- Review methodology: `/review-methodology`
+- Affiliate disclosure: `/affiliate-disclosure`
+- Responsible gambling guidance: `/responsible-gambling`
+- Contact/corrections: `/contact`
+- Casino directory: `/casinos`
+- Bonus directory: `/bonuses`
+- Games directory: `/games`
+
+## Freshness Guidance
+- Casino reviews: check bonus terms, payment information, operator details, and responsible gambling tools monthly.
+- Bonus pages: check active offers weekly when campaigns change.
+- Blog guides: refresh when laws, payment methods, platform terms, or major casino offers change.
+- Any page with uncertain claims should avoid absolute wording and link to the source page or methodology.
 
 ## Do Not Crawl
 - `/studio` - Sanity CMS admin

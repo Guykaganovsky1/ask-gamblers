@@ -27,10 +27,11 @@ const inter = Inter({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
+const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
-  title: "קזינו בישראל | ביקורות ובונוסים",
-  description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
+  title: "קזינו אונליין בישראל | ביקורות ובונוסים",
+  description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים, משחקים, שיטת דירוג ושיקולי משחק אחראי לפני הרשמה.",
   keywords: [
     "קזינו אונליין",
     "קזינו בישראל",
@@ -45,8 +46,8 @@ export const metadata: Metadata = {
     "online casino israel"
   ],
   openGraph: {
-    title: "קזינו בישראל | ביקורות ובונוסים",
-    description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים. בדקנו עשרות אתרים ובחרנו רק את הבטוחים והמשתלמים ביותר.",
+    title: "קזינו אונליין בישראל | ביקורות ובונוסים",
+    description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים, משחקים, שיטת דירוג ושיקולי משחק אחראי לפני הרשמה.",
     url: SITE_URL,
     siteName: "Ask Gamblers",
     images: [
@@ -62,10 +63,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "קזינו בישראל | ביקורות ובונוסים",
-    description: "מדריך קזינו בישראל 2026 — ביקורות מקיפות, בונוסים בלעדיים ודירוגי ביטחון לשחקנים ישראלים.",
+    title: "קזינו אונליין בישראל | ביקורות ובונוסים",
+    description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים ושיקולי משחק אחראי.",
     images: [`${SITE_URL}/opengraph-image`],
   },
+  ...(GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",

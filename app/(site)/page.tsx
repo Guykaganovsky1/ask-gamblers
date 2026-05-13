@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { CasinoCard } from "@/components/ui/casino-card";
 import { LastUpdated } from "@/components/ui/last-updated";
 import { SafeCasinosSection } from "@/components/sections/safe-casinos-section";
+import { SeoTopicHub } from "@/components/sections/seo-topic-hub";
 
 const FAQSection = dynamic(
   () => import("@/components/sections/faq-section").then((mod) => ({ default: mod.FAQSection })),
@@ -66,6 +67,8 @@ async function HomeContent() {
       <div className="mx-auto max-w-7xl px-4 pt-8">
         <LastUpdated />
       </div>
+
+      <SeoTopicHub />
 
       <SafeCasinosSection />
 

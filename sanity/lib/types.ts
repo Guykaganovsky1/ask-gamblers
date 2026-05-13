@@ -36,6 +36,10 @@ export interface Author {
   name: string;
   avatar?: SanityImage;
   bio?: string;
+  role?: string;
+  credentials?: string;
+  expertise?: string[];
+  profileUrl?: string;
 }
 
 // Category document
@@ -88,6 +92,14 @@ export interface Casino {
   icon?: string;
   rating: number;
   description: string;
+  reviewedBy?: Author;
+  lastCheckedAt?: string;
+  operatorName?: string;
+  licenseInfo?: string;
+  withdrawalTime?: string;
+  paymentMethods?: string[];
+  supportChannels?: string[];
+  mobileExperience?: string;
   seoTitle?: string;
   seoDescription?: string;
   bonusTitle?: string;
@@ -117,6 +129,9 @@ export interface BlogPost {
   excerpt?: string;
   publishedAt: string;
   modifiedAt?: string;
+  reviewedBy?: Author;
+  factCheckedAt?: string;
+  summaryAnswer?: string;
   seoTitle?: string;
   seoDescription?: string;
   author?: Author;

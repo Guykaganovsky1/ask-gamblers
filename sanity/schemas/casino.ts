@@ -38,6 +38,51 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "reviewedBy",
+      title: "נבדק על ידי",
+      type: "reference",
+      to: [{ type: "author" }],
+      description: "עורך/בודק תוכן שיוצג כאות אמון בעמוד הביקורת",
+    }),
+    defineField({
+      name: "lastCheckedAt",
+      title: "תאריך בדיקה אחרון",
+      type: "date",
+      description: "מומלץ לעדכן בכל בדיקת בונוס, תשלומים או תנאי שימוש",
+    }),
+    defineField({
+      name: "operatorName",
+      title: "שם מפעיל",
+      type: "string",
+    }),
+    defineField({
+      name: "licenseInfo",
+      title: "מידע רישוי",
+      type: "string",
+    }),
+    defineField({
+      name: "withdrawalTime",
+      title: "זמן משיכה משוער",
+      type: "string",
+    }),
+    defineField({
+      name: "paymentMethods",
+      title: "שיטות תשלום",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "supportChannels",
+      title: "ערוצי תמיכה",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "mobileExperience",
+      title: "חוויית מובייל",
+      type: "string",
+    }),
+    defineField({
       name: "seoTitle",
       title: "SEO Title (Meta Title)",
       type: "string",

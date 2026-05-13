@@ -21,6 +21,15 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function formatHebrewDate(date?: string) {
+  if (!date) return null;
+  return new Date(date).toLocaleDateString("he-IL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const casino = await client.fetch<Casino>(CASINO_BY_SLUG_QUERY, { slug });
@@ -58,6 +67,14 @@ export default async function CasinoReviewPage({ params }: Props) {
   if (!casino) notFound();
   const categoryNames = casino.categories?.map((cat) => cat.name).filter(Boolean) || [];
   const hasBonus = Boolean(casino.bonusAmount);
+  const trustFacts = [
+    { label: "מפעיל", value: casino.operatorName },
+    { label: "רישוי", value: casino.licenseInfo },
+    { label: "משיכה", value: casino.withdrawalTime },
+    { label: "מובייל", value: casino.mobileExperience },
+    { label: "תשלומים", value: casino.paymentMethods?.join(", ") },
+    { label: "תמיכה", value: casino.supportChannels?.join(", ") },
+  ].filter((item) => item.value);
 
   return (
     <>
@@ -82,6 +99,12 @@ export default async function CasinoReviewPage({ params }: Props) {
         </div>
         <h2 className="font-heading text-4xl md:text-5xl font-black">{casino.name}</h2>
         <StarRating rating={casino.rating} size="lg" />
+        {(casino.lastCheckedAt || casino.reviewedBy) && (
+          <div className="flex flex-wrap justify-center gap-3 text-sm text-text-muted">
+            {casino.lastCheckedAt && <span>נבדק לאחרונה: {formatHebrewDate(casino.lastCheckedAt)}</span>}
+            {casino.reviewedBy && <span>בודק: {casino.reviewedBy.name}</span>}
+          </div>
+        )}
       </div>
 
       {casino.bonusAmount && (
@@ -135,6 +158,20 @@ export default async function CasinoReviewPage({ params }: Props) {
           .
         </p>
       </section>
+
+      {trustFacts.length > 0 && (
+        <section className="mt-12 rounded-2xl border border-border-glass bg-card/40 p-6">
+          <h2 className="font-heading text-2xl font-bold">נתוני אמון מהירים</h2>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {trustFacts.map((fact) => (
+              <div key={fact.label} className="rounded-lg border border-border-glass bg-background/40 p-4">
+                <p className="text-xs font-bold text-accent">{fact.label}</p>
+                <p className="mt-2 text-sm text-text-secondary">{fact.value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mt-12 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-border-glass bg-card/40 p-6">
