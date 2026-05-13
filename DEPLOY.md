@@ -1,75 +1,49 @@
 # Ask Gamblers - Deploy Guide
 
-## Quick Deploy (Just push to GitHub)
+## Current Production
+
+Production is on Vercel, not Cloudways.
+
+- Production domain: `https://askgamblers.co.il`
+- Vercel project: `toptips-projects-8567ecd8/ask-gamblers`
+- Vercel project id: `prj_dyDjNFrgGFAYqV892bKtLOjnbs6Z`
+
+---
+
+## Deploy From This Machine
+
+Use the Vercel CLI:
 
 ```bash
-git add .
-git commit -m "Your changes"
-git push
+vercel deploy --prod --scope toptips-projects-8567ecd8
 ```
 
-Server auto-deploys within **1 minute** via cron job.
-
----
-
-## How It Works
-
-1. **GitHub** → Code lives here
-2. **Server cron** → Pulls from GitHub every minute
-3. **Screen session** → Keeps app running
-
----
-
-## Server Details
-
-| | |
-|---|---|
-| **IP** | `178.62.56.62` |
-| **SSH** | `contact@adimpress.me` |
-| **Password** | `Hdu483hfe` |
-| **App Path** | `/home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html` |
-| **Port** | `3334` |
-
----
-
-## Manual Deploy ( worksif SSH)
+If using a token:
 
 ```bash
-sshpass -p 'Hdu483hfe' ssh -o StrictHostKeyChecking=no contact@adimpress.me@178.62.56.62
-
-# On server:
-cd /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html
-
-# Pull latest
-git pull origin main
-
-# Restart (if not using cron)
-screen -dmS next bash -c 'cd /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html && npx next start -p 3334'
+VERCEL_TOKEN=<token> vercel deploy --prod --scope toptips-projects-8567ecd8
 ```
 
+Do not commit tokens to the repo.
+
 ---
 
-## If Server Crashes
+## Normal Change Flow
 
 ```bash
-# SSH in and restart
-sshpass -p 'Hdu483hfe' ssh -o StrictHostKeyChecking=no contact@adimpress.me@178.62.56.62
-
-screen -dmS next bash -c 'cd /home/1553018.cloudwaysapps.com/dzdatjcdrp/public_html && npx next start -p 3334'
+npm run build
+git add <files>
+git commit -m "Describe change"
+git push origin main
+vercel deploy --prod --scope toptips-projects-8567ecd8
 ```
 
 ---
 
 ## Troubleshooting
 
-**Site down?**
-1. Check if server running: `ss -tlnp | grep 3334`
-2. If not, restart with screen command above
-
-**Port 3334 not responding?**
-- Cloudways may have changed routing
-- Restart from Cloudways Console
-
 **Build fails?**
-- Check Node version: `node --version` (need v20+)
-- Clear cache: `rm -rf .next`
+- Check Vercel build logs.
+- Confirm the project is linked to `toptips-projects-8567ecd8/ask-gamblers`.
+- Confirm required Vercel environment variables are set.
+- Run `npm run build` locally before deploying.

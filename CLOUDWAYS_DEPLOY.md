@@ -1,35 +1,10 @@
-# Deploy to Ask Gamblers
+# Legacy Cloudways Deploy Notes
 
-## Quick Deploy (Just push to GitHub)
+Ask Gamblers production is now on Vercel, not Cloudways.
 
-```bash
-git add .
-git commit -m "Your changes"
-git push
-```
+Use `DEPLOY.md` for the current deployment process.
 
-**Done!** The server auto-deploys within 1 minute.
+Current production:
 
----
-
-## Manual Deploy (if needed)
-
-```bash
-sshpass -p 'Hdu483hfe' ssh -o StrictHostKeyChecking=no contact@adimpress.me@178.62.56.62
-./deploy.sh
-```
-
-Or run on server:
-```bash
-./deploy.sh
-```
-
----
-
-## What happens automatically
-
-Every minute, the server:
-1. Pulls latest from GitHub
-2. Restarts the app
-
-No manual restart needed!
+- Domain: `https://askgamblers.co.il`
+- Vercel project: `toptips-projects-8567ecd8/ask-gamblers`
