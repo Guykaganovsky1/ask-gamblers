@@ -37,7 +37,7 @@ export function SeoTopicHub() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20">
       <div className="mb-10 max-w-3xl">
-        <p className="text-sm font-bold text-accent">מדריך מהיר</p>
+        <p className="text-sm font-bold text-accent-light">מדריך מהיר</p>
         <h2 className="mt-3 font-heading text-3xl font-black text-text-primary md:text-4xl">
           מה לבדוק לפני שבוחרים קזינו אונליין?
         </h2>
@@ -57,7 +57,7 @@ export function SeoTopicHub() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-accent/25 px-3 py-2 text-sm font-bold text-accent transition-colors hover:bg-accent/10"
+                  className="rounded-lg border border-accent-light/25 px-3 py-2 text-sm font-bold text-accent-light transition-colors hover:bg-accent-light/10"
                 >
                   {link.label}
                 </Link>

@@ -17,19 +17,19 @@
 - Casino listings with ratings
 
 ### Key Pages
-- `/casinos` - Full casino directory with reviews
-- `/blog` - Blog posts about casinos and gaming
-- `/bonuses` - Current casino promotions and bonuses
-- `/games` - Casino game information
-- `/softwares` - Software providers directory
-- `/news` - Latest casino news
-- `/about` - Brand and editorial overview
-- `/review-methodology` - Review criteria and ranking method
-- `/affiliate-disclosure` - Affiliate relationship disclosure
-- `/responsible-gambling` - Responsible gambling guidance
-- `/contact` - Editorial contact details
-- `/privacy` - Privacy policy
-- `/terms` - Terms of use
+- [Casino Directory](https://askgamblers.co.il/casinos) - Full casino directory with reviews
+- [Blog](https://askgamblers.co.il/blog) - Blog posts about casinos and gaming
+- [Bonuses](https://askgamblers.co.il/bonuses) - Current casino promotions and bonuses
+- [Games](https://askgamblers.co.il/games) - Casino game information
+- [Software Providers](https://askgamblers.co.il/softwares) - Software providers directory
+- [News](https://askgamblers.co.il/news) - Latest casino news
+- [About](https://askgamblers.co.il/about) - Brand and editorial overview
+- [Review Methodology](https://askgamblers.co.il/review-methodology) - Review criteria and ranking method
+- [Affiliate Disclosure](https://askgamblers.co.il/affiliate-disclosure) - Affiliate relationship disclosure
+- [Responsible Gambling](https://askgamblers.co.il/responsible-gambling) - Responsible gambling guidance
+- [Contact](https://askgamblers.co.il/contact) - Editorial contact details
+- [Privacy Policy](https://askgamblers.co.il/privacy) - Privacy policy
+- [Terms of Use](https://askgamblers.co.il/terms) - Terms of use
 
 ## Content Guidelines
 
@@ -71,13 +71,13 @@ Educational content about:
 - ביקורת קזינו
 
 ## Editorial Source Of Truth
-- Review methodology: `/review-methodology`
-- Affiliate disclosure: `/affiliate-disclosure`
-- Responsible gambling guidance: `/responsible-gambling`
-- Contact/corrections: `/contact`
-- Casino directory: `/casinos`
-- Bonus directory: `/bonuses`
-- Games directory: `/games`
+- Review methodology: [/review-methodology](https://askgamblers.co.il/review-methodology)
+- Affiliate disclosure: [/affiliate-disclosure](https://askgamblers.co.il/affiliate-disclosure)
+- Responsible gambling guidance: [/responsible-gambling](https://askgamblers.co.il/responsible-gambling)
+- Contact/corrections: [/contact](https://askgamblers.co.il/contact)
+- Casino directory: [/casinos](https://askgamblers.co.il/casinos)
+- Bonus directory: [/bonuses](https://askgamblers.co.il/bonuses)
+- Games directory: [/games](https://askgamblers.co.il/games)
 
 ## Freshness Guidance
 - Casino reviews: check bonus terms, payment information, operator details, and responsible gambling tools monthly.
@@ -96,4 +96,4 @@ Educational content about:
 - English terms and brand names appear inline
 
 ## Last Updated
-May 13, 2026
+June 12, 2026

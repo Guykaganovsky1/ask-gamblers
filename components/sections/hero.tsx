@@ -15,6 +15,7 @@ export function Hero() {
         alt="בתי קזינו מובילים בישראל - Ask Gamblers"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="absolute inset-0 object-cover opacity-100"
       />
