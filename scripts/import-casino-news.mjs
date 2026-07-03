@@ -18,7 +18,6 @@ loadEnvFile(join(projectRoot, ".env.local"));
 loadEnvFile(join(projectRoot, ".env"));
 
 const DRY_RUN = process.argv.includes("--dry-run");
-const ALLOW_FALLBACK = process.argv.includes("--allow-fallback") || process.env.NEWS_IMPORT_ALLOW_FALLBACK === "true";
 const LIMIT = getNumberArg("--limit", Number(process.env.NEWS_IMPORT_LIMIT || 5));
 const MAX_AGE_DAYS = Number(process.env.NEWS_IMPORT_MAX_AGE_DAYS || 7);
 const SANITY_API_VERSION = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01";
@@ -26,7 +25,6 @@ const SANITY_API_VERSION = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-0
 const PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 const WRITE_TOKEN = process.env.SANITY_WRITE_TOKEN;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 const AUTHOR_ID = "author-newsdesk";
 const CATEGORY_ID = "cat-news";
@@ -103,7 +101,7 @@ async function main() {
     return;
   }
 
-  const analyses = await enrichItems(selected);
+  const analyses = selected.map(buildNewsSummary);
   const posts = selected
     .map((item, index) => buildPostDocument(item, analyses[index]))
     .filter(Boolean);
@@ -229,99 +227,23 @@ function scoreItem(item) {
   return score >= 3 ? score : 0;
 }
 
-async function enrichItems(items) {
-  if (!GEMINI_API_KEY) {
-    if (!DRY_RUN && !ALLOW_FALLBACK) {
-      throw new Error("Missing GEMINI_API_KEY. Refusing to publish fallback news summaries without enrichment.");
-    }
-    console.log("Gemini enrichment skipped: GEMINI_API_KEY is not set");
-    return items.map(buildFallbackAnalysis);
-  }
-
-  const prompt = buildGeminiPrompt(items);
-  const models = ["gemini-2.0-flash-lite", "gemini-2.0-flash", "gemini-2.5-flash", "gemini-flash-lite-latest"];
-
-  for (const model of models) {
-    try {
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              responseMimeType: "application/json",
-              temperature: 0.2,
-              maxOutputTokens: 4096,
-            },
-          }),
-        }
-      );
-
-      if (response.status === 429 || response.status === 404) continue;
-      if (!response.ok) throw new Error(`Gemini ${model} HTTP ${response.status}`);
-
-      const payload = await response.json();
-      const text = payload.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
-      const parsed = JSON.parse(stripCodeFence(text));
-      const analyses = parsed.items || [];
-
-      if (analyses.length === items.length) {
-        console.log(`Gemini enrichment completed with ${model}`);
-        return analyses.map((analysis, index) => normaliseAnalysis(analysis, items[index]));
-      }
-    } catch (error) {
-      console.warn(`Gemini enrichment failed with ${model}: ${error.message}`);
-    }
-  }
-
-  return items.map(buildFallbackAnalysis);
-}
-
-function buildGeminiPrompt(items) {
-  return `Create short Hebrew news summaries for AskGamblers.co.il from these RSS items.
-
-Rules:
-- Use only the facts in the item title, description, source, date, and URL.
-- Do not copy full source wording. Summarize in original Hebrew.
-- Do not claim guaranteed wins, safe casinos, recommendations, or legal advice.
-- Do not encourage gambling. Keep it informational and include source attribution.
-- If an item is not casino/igaming/bonus/game/operator/regulation relevant, set import to false.
-
-Return JSON only:
-{"items":[{"import":true,"titleHebrew":"...","seoTitle":"...","seoDescription":"...","summaryAnswer":"...","excerpt":"...","takeaways":["...","...","..."],"whyItMatters":"...","keywords":["..."],"categoryLabel":"..."}]}
-
-Items:
-${JSON.stringify(items.map((item) => ({
-    title: item.title,
-    description: item.description,
-    sourceName: item.sourceName,
-    sourcePublishedAt: item.sourcePublishedAt,
-    url: item.url,
-  })), null, 2)}`;
-}
-
 function buildPostDocument(item, analysis) {
-  const safeAnalysis = analysis?.import === false ? null : normaliseAnalysis(analysis, item);
-  if (!safeAnalysis) return null;
-
   const slug = `news-${dateSlug(new Date())}-${slugify(item.title).slice(0, 58) || item.id}`;
 
   return {
     _id: `imported-casino-news-${item.id}`,
     _type: "post",
-    title: safeAnalysis.titleHebrew,
+    title: analysis.titleHebrew,
     slug: { _type: "slug", current: slug },
     author: { _type: "reference", _ref: AUTHOR_ID },
     categories: [{ _type: "reference", _ref: CATEGORY_ID, _key: `cat-${item.id.slice(0, 8)}` }],
     publishedAt: new Date().toISOString(),
-    body: buildBody(item, safeAnalysis),
-    summaryAnswer: safeAnalysis.summaryAnswer,
-    seoTitle: truncate(safeAnalysis.seoTitle, 65),
-    seoDescription: truncate(safeAnalysis.seoDescription, 170),
+    body: buildBody(item, analysis),
+    summaryAnswer: analysis.summaryAnswer,
+    seoTitle: truncate(analysis.seoTitle, 65),
+    seoDescription: truncate(analysis.seoDescription, 170),
     targetKeyword: "חדשות קזינו",
-    keywords: safeAnalysis.keywords,
+    keywords: analysis.keywords,
     estimatedReadTime: 2,
     sourceName: item.sourceName,
     sourceUrl: item.url,
@@ -389,41 +311,40 @@ async function mutateSanity(posts) {
   }
 }
 
-function buildFallbackAnalysis(item) {
+function buildNewsSummary(item) {
   const description = item.description || item.title;
   const cleanDescription = truncate(description, 220);
-  const summary = `לפי ${item.sourceName}, פורסם עדכון חדש בתחום הקזינו והאייגיימינג: ${cleanDescription}`;
+  const topic = detectTopic(item);
+  const sourceDate = item.sourcePublishedAt
+    ? new Date(item.sourcePublishedAt).toLocaleDateString("he-IL", { year: "numeric", month: "long", day: "numeric" })
+    : "בימים האחרונים";
+  const summary = `${item.sourceName} פרסם ${sourceDate} עדכון בנושא ${topic}. הכותרת המקורית: "${truncate(item.title, 140)}". ${cleanDescription}`;
 
   return {
-    import: true,
-    titleHebrew: truncate(`עדכון קזינו: ${item.title}`, 90),
+    titleHebrew: truncate(`עדכון ${topic}: ${item.title}`, 95),
     seoTitle: truncate(`חדשות קזינו: ${item.title}`, 65),
     seoDescription: truncate(summary, 170),
     summaryAnswer: summary,
     excerpt: cleanDescription,
     takeaways: [
       `העדכון הגיע ממקור חיצוני: ${item.sourceName}.`,
-      "הנושא עשוי להיות רלוונטי לשחקנים שעוקבים אחרי משחקים, בונוסים או מפעילי קזינו.",
+      `הנושא המרכזי הוא ${topic}, ולכן הוא עשוי להיות רלוונטי למעקב אחרי שוק הקזינו והאייגיימינג.`,
       "יש לבדוק את המקור ואת תנאי האתר לפני הסקת מסקנות מעשיות.",
     ],
     whyItMatters: "חדשות בתחום הקזינו משתנות במהירות ומשפיעות על זמינות משחקים, מבצעים, רגולציה ותנאי שימוש. הסיכום נועד לתת הקשר קצר ולהפנות למקור המלא.",
-    keywords: ["חדשות קזינו", "קזינו אונליין", "אייגיימינג", "בונוסים", "משחק אחראי"],
+    keywords: ["חדשות קזינו", "קזינו אונליין", "אייגיימינג", topic, "משחק אחראי"],
   };
 }
 
-function normaliseAnalysis(analysis, item) {
-  const fallback = buildFallbackAnalysis(item);
-  return {
-    import: analysis?.import !== false,
-    titleHebrew: truncate(analysis?.titleHebrew || fallback.titleHebrew, 95),
-    seoTitle: truncate(analysis?.seoTitle || fallback.seoTitle, 65),
-    seoDescription: truncate(analysis?.seoDescription || fallback.seoDescription, 170),
-    summaryAnswer: truncate(analysis?.summaryAnswer || fallback.summaryAnswer, 280),
-    excerpt: truncate(analysis?.excerpt || fallback.excerpt, 180),
-    takeaways: Array.isArray(analysis?.takeaways) && analysis.takeaways.length > 0 ? analysis.takeaways : fallback.takeaways,
-    whyItMatters: truncate(analysis?.whyItMatters || fallback.whyItMatters, 320),
-    keywords: Array.isArray(analysis?.keywords) && analysis.keywords.length > 0 ? analysis.keywords.slice(0, 8) : fallback.keywords,
-  };
+function detectTopic(item) {
+  const text = `${item.title} ${item.description}`.toLocaleLowerCase("en-US");
+  if (/slot|slots|game|games|studio|supplier|developer/.test(text)) return "משחקים חדשים";
+  if (/bonus|promotion|free spins|jackpot|prize|tournament/.test(text)) return "בונוסים ומבצעים";
+  if (/license|regulat|law|bill|ban|compliance|responsible/.test(text)) return "רגולציה ומשחק אחראי";
+  if (/operator|launch|brand|market|platform|casino/.test(text)) return "מפעילים וקזינו אונליין";
+  if (/payment|withdrawal|deposit|banking/.test(text)) return "תשלומים ומשיכות";
+  if (/sportsbook|betting|sport/.test(text)) return "הימורי ספורט";
+  return "קזינו ואייגיימינג";
 }
 
 function block(text, style = "normal", markDefs = [], extra = {}) {
@@ -517,10 +438,6 @@ function decodeEntities(value = "") {
 
 function stripCdata(value = "") {
   return value.replace(/^\s*<!\[CDATA\[/, "").replace(/\]\]>\s*$/, "");
-}
-
-function stripCodeFence(value = "") {
-  return value.replace(/^```(?:json)?\s*/i, "").replace(/```$/i, "").trim();
 }
 
 function hashId(value) {
