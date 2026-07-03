@@ -143,16 +143,16 @@ export function GamesShowcaseSection() {
             style={{ animationDelay: "0.2s" }}
           >
             <span className="text-2xl">🎮</span>
-            <span className="text-sm font-bold text-purple-300">המשחקים הכי חמים</span>
+            <span className="text-sm font-bold text-purple-300">מדריך משחקים</span>
           </div>
 
           <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-emerald-200 mb-6">
-            היכון, הסתכל... זכה!
+            הכירו את סוגי המשחקים לפני שמתחילים
           </h2>
 
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary leading-relaxed">
-            גלה עולם שלם של משחקים מטורפים — סלוטים עם ג׳קפוטים ענקיים, רולטה חיה, קלפים מנצחים ועוד.
-            <span className="text-accent font-bold"> כל משחק הוא הזדמנות חדשה לזכות!</span>
+            גלו סוגי משחקים שונים — סלוטים, רולטה חיה, קלפים ועוד.
+            <span className="text-accent font-bold"> בדקו חוקים, קצב משחק ותנאי בונוס לפני בחירה.</span>
           </p>
         </div>
 

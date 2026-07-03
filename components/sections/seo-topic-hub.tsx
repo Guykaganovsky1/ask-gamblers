@@ -6,7 +6,7 @@ const topicGroups = [
     answer:
       "הבחירה מתחילה בבדיקת רישוי, תנאי בונוס, זמני משיכה, תמיכה ושקיפות מפעיל. דירוג גבוה בלי תנאים ברורים לא מספיק כדי להמליץ על אתר.",
     links: [
-      { href: "/casinos", label: "קזינו מומלצים" },
+      { href: "/casinos", label: "קזינו להשוואה" },
       { href: "/review-methodology", label: "שיטת הדירוג" },
       { href: "/responsible-gambling", label: "משחק אחראי" },
     ],

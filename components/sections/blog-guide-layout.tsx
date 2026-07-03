@@ -9,6 +9,14 @@ import { StarRating } from "@/components/ui/star-rating";
 import { Button } from "@/components/ui/button";
 import { CasinoComparisonTable } from "@/components/ui/casino-comparison-table";
 
+function cleanBonusText(value: string) {
+  return value
+    .replace(/ספינות/g, "ספינים")
+    .replace("בונוס עצום", "בונוס")
+    .replace("מובטח", "לבחינה")
+    .trim();
+}
+
 interface BlogGuideLayoutProps {
   post: BlogPost;
   casinos: Casino[];
@@ -65,7 +73,7 @@ export function BlogGuideLayout({
             {featuredCasinos.length > 0 && (
               <section className="mb-12">
                 <h2 className="text-3xl font-black mb-8 text-text-primary">
-                  🏆 {featuredCasinos.length} קזינו מובילים
+                  {featuredCasinos.length} קזינו להשוואה
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {featuredCasinos.map((casino) => (
@@ -93,16 +101,16 @@ export function BlogGuideLayout({
             {/* CTA Section */}
             <section className="mb-12 bg-gradient-to-r from-card-light to-card border border-border-glass rounded-2xl p-8">
               <h3 className="text-2xl font-black mb-4 text-text-primary">
-                🎮 התחל לשחק עכשיו
+                בדקו תנאים לפני הרשמה
               </h3>
               <p className="text-text-secondary mb-6">
-                בחר אחד מהקזינו המובילים שלנו והתחל עם בונוסים בלעדיים:
+                השוו בין קזינו, קראו תנאי בונוס ובדקו שיטות תשלום לפני החלטה:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {featuredCasinos.slice(0, 4).map((casino) => (
                   <Link key={casino._id} href={`/go/${casino.slug.current}`} rel="nofollow sponsored" className="block">
                     <div className="w-full px-4 py-2 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors text-center text-sm">
-                      {casino.name} - {casino.bonusAmount || "בונוס בלעדי"}
+                      {casino.name} - {cleanBonusText(casino.bonusAmount || "בונוס בכפוף לתנאים")}
                     </div>
                   </Link>
                 ))}
@@ -118,10 +126,10 @@ export function BlogGuideLayout({
                 {/* FAQ items will be rendered from post.body or custom FAQ field */}
                 <div className="bg-card-light/30 rounded-lg p-6 border border-border-glass">
                   <h3 className="font-bold text-lg mb-2 text-text-primary">
-                    איך בוחרים קזינו בטוח?
+                    איך בודקים קזינו לפני הרשמה?
                   </h3>
                   <p className="text-text-secondary">
-                    בדוק רישיון תקף, תנאי משחק ברורים, ותמיכה בעברית. כל הקזינו באתר עברו בדיקה מקיפה.
+                    בדקו פרטי מפעיל, רישיון, תנאי משחק, שיטות תשלום ותמיכה. אל תסתמכו על בונוס או ציון בלבד.
                   </p>
                 </div>
                 <div className="bg-card-light/30 rounded-lg p-6 border border-border-glass">
@@ -152,7 +160,7 @@ export function BlogGuideLayout({
               {/* Top Casinos Sidebar */}
               <div className="bg-gradient-to-br from-card-light to-card border border-border-glass rounded-xl p-6">
                 <h3 className="font-heading font-black text-lg mb-4 text-text-primary">
-                  🎰 קזינו מוביל
+                  קזינו להשוואה
                 </h3>
                 <div className="space-y-3">
                   {topCasinos.slice(0, 3).map((casino) => (
@@ -170,10 +178,10 @@ export function BlogGuideLayout({
                       <p className="font-bold text-sm mb-1">{casino.name}</p>
                       <StarRating rating={casino.rating || 0} size="sm" />
                       <p className="text-xs text-accent font-bold my-2">
-                        {casino.bonusAmount}
+                        {cleanBonusText(casino.bonusAmount || "בונוס בכפוף לתנאים")}
                       </p>
                       <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
-                        שחק עכשיו
+                        בדקו תנאים
                       </Button>
                     </div>
                   ))}
@@ -208,13 +216,13 @@ export function BlogGuideLayout({
       <section className="mx-auto max-w-6xl px-4 py-12 w-full">
         <div className="bg-gradient-to-r from-accent/20 to-accent/10 border border-accent rounded-2xl p-8 text-center">
           <h2 className="text-2xl md:text-3xl font-black mb-4 text-text-primary">
-            מוכנים להתחיל?
+            רוצים להשוות לפני הרשמה?
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto mb-8">
-            בחרו קזינו מהרשימה שלנו והתחילו לשחק עם בונוסים בלעדיים ותשלומים מאובטחים.
+            עברו לרשימת הקזינו, קראו תנאי בונוס, בדקו תשלומים והשוו את המידע לפני החלטה.
           </p>
           <Button href="/casinos" variant="primary">
-            גלו את כל קזינו ה-VIP שלנו →
+            השוו בתי קזינו →
           </Button>
         </div>
       </section>
@@ -255,7 +263,7 @@ function CasinoFeaturedCard({ casino }: { casino: Casino }) {
         {casino.bonusAmount && (
           <div className="bg-accent/20 rounded-lg p-3 mb-4 text-center">
             <p className="text-xs text-text-muted">בונוס ברכישה ראשונה</p>
-            <p className="font-black text-accent text-lg">{casino.bonusAmount}</p>
+            <p className="font-black text-accent text-lg">{cleanBonusText(casino.bonusAmount)}</p>
           </div>
         )}
 
@@ -277,7 +285,7 @@ function CasinoFeaturedCard({ casino }: { casino: Casino }) {
 
         {/* CTA */}
         <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
-          שחק עכשיו - {casino.bonusAmount}
+          בדקו תנאים - {cleanBonusText(casino.bonusAmount || "בונוס")}
         </Button>
       </div>
     </div>

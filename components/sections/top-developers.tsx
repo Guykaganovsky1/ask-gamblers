@@ -1,48 +1,109 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
-type GameType = "newgames" | "slots" | "tablegames" | "upcoming";
+type GameType = "slots" | "table" | "cards" | "live";
 
-interface Developer {
+interface GameGuide {
   name: string;
-  logo: string;
-  games: string;
-  known: string;
-  rtp: string;
+  icon: string;
+  description: string;
+  risk: string;
+  skill: string;
+  check: string;
+  href: string;
   type: GameType;
 }
 
-const DEVELOPERS: Developer[] = [
-  { name: "NetEnt",          logo: "🎮", games: "500+", known: "Starburst, Gonzo's Quest",          rtp: "96.5%", type: "slots" },
-  { name: "Microgaming",     logo: "🏆", games: "800+", known: "Mega Moolah, Immortal Romance",      rtp: "96.8%", type: "slots" },
-  { name: "Playtech",        logo: "⚡", games: "700+", known: "Age of the Gods, Buffalo Blitz",     rtp: "95.9%", type: "slots" },
-  { name: "Evolution",       logo: "📺", games: "200+", known: "Lightning Roulette, Crazy Time",     rtp: "97.3%", type: "tablegames" },
-  { name: "Pragmatic Play",  logo: "🎰", games: "300+", known: "Gates of Olympus, Sweet Bonanza",    rtp: "96.5%", type: "newgames" },
-  { name: "IGT",             logo: "♠️", games: "600+", known: "Wheel of Fortune, Cleopatra",        rtp: "95.5%", type: "tablegames" },
-  { name: "Play'n GO",       logo: "🃏", games: "250+", known: "Book of Dead, Reactoonz",            rtp: "96.2%", type: "newgames" },
-  { name: "Ezugi",           logo: "🎱", games: "80+",  known: "Live Blackjack, Live Baccarat",      rtp: "98.1%", type: "tablegames" },
-  { name: "Hacksaw Gaming",  logo: "🚀", games: "120+", known: "Chaos Crew, Stick'em",               rtp: "96.7%", type: "newgames" },
-  { name: "Push Gaming",     logo: "🌊", games: "60+",  known: "Jammin' Jars, Razor Returns",        rtp: "96.4%", type: "upcoming" },
-  { name: "Nolimit City",    logo: "🔥", games: "90+",  known: "Mental, xWays Hoarder",              rtp: "96.1%", type: "upcoming" },
-  { name: "Relax Gaming",    logo: "💫", games: "70+",  known: "Money Train 4, Snake Arena",         rtp: "96.0%", type: "upcoming" },
+const GAME_GUIDES: GameGuide[] = [
+  {
+    name: "סלוטים",
+    icon: "🎰",
+    description: "משחקים מהירים ופשוטים להבנה, אבל עם תנודתיות גבוהה ותוצאות אקראיות.",
+    risk: "בינוני עד גבוה",
+    skill: "נמוכה",
+    check: "תנודתיות, תקרת זכייה, קניית בונוס ומשחקים מוחרגים מבונוסים.",
+    href: "/categories/slots",
+    type: "slots",
+  },
+  {
+    name: "רולטה",
+    icon: "🎡",
+    description: "משחק שולחן עם הימורים על צבעים, מספרים וקבוצות מספרים. הסיכון משתנה לפי סוג ההימור.",
+    risk: "משתנה לפי הימור",
+    skill: "נמוכה",
+    check: "סוג הרולטה, מגבלות שולחן, חוקי אפס יחיד או כפול וקצב סיבוב.",
+    href: "/categories/roulette",
+    type: "table",
+  },
+  {
+    name: "בלאקג׳ק",
+    icon: "🃏",
+    description: "משחק קלפים שבו החלטות השחקן משפיעות על התוצאה יותר מאשר בסלוטים או רולטה.",
+    risk: "בינוני",
+    skill: "בינונית",
+    check: "חוקי שולחן, תשלום על בלאקג׳ק, פיצול, דאבל ודילר עומד או מושך.",
+    href: "/categories/blackjack",
+    type: "cards",
+  },
+  {
+    name: "פוקר",
+    icon: "♠️",
+    description: "משחק מבוסס החלטות, סבלנות וניהול תקציב. מתאים יותר לשחקנים שמכירים את החוקים.",
+    risk: "בינוני עד גבוה",
+    skill: "גבוהה",
+    check: "סוג הפוקר, עמלות שולחן, רמת שחקנים וקצב הטורניר או הקאש.",
+    href: "/categories/poker",
+    type: "cards",
+  },
+  {
+    name: "לייב קזינו",
+    icon: "🎥",
+    description: "משחקי שולחן עם דילר חי. החוויה איטית וברורה יותר, אך עדיין דורשת תקציב מוגדר מראש.",
+    risk: "משתנה לפי משחק",
+    skill: "נמוכה עד בינונית",
+    check: "איכות שידור, מגבלות שולחן, זמינות בעברית ותמיכה במובייל.",
+    href: "/categories/live",
+    type: "live",
+  },
+  {
+    name: "באקרה",
+    icon: "🎴",
+    description: "משחק שולחן עם חוקים קבועים וקצב מהיר יחסית. חשוב להבין את סוגי ההימור לפני שמתחילים.",
+    risk: "בינוני",
+    skill: "נמוכה",
+    check: "מגבלות שולחן, עמלות, גרסת המשחק וזמינות בלייב או במובייל.",
+    href: "/categories/baccarat",
+    type: "table",
+  },
 ];
 
 const FILTERS: { label: string; key: "all" | GameType }[] = [
-  { label: "הכל",            key: "all" },
-  { label: "משחקים חדשים",   key: "newgames" },
-  { label: "סלוטס",          key: "slots" },
-  { label: "משחקי שולחן",    key: "tablegames" },
-  { label: "בקרוב",          key: "upcoming" },
+  { label: "הכל", key: "all" },
+  { label: "סלוטים", key: "slots" },
+  { label: "שולחן", key: "table" },
+  { label: "קלפים", key: "cards" },
+  { label: "לייב", key: "live" },
 ];
 
 export function TopDevelopers() {
   const [active, setActive] = useState<"all" | GameType>("all");
 
-  const filtered = active === "all" ? DEVELOPERS : DEVELOPERS.filter((d) => d.type === active);
+  const filtered = active === "all" ? GAME_GUIDES : GAME_GUIDES.filter((game) => game.type === active);
 
   return (
     <>
+      <section className="mb-10">
+        <h2 className="font-heading text-2xl font-black text-text-primary md:text-3xl">
+          סוגי משחקי קזינו להשוואה
+        </h2>
+        <p className="mt-3 max-w-3xl leading-relaxed text-text-secondary">
+          בחרו משחק לפי רמת סיכון, קצב, חוקים וכמה החלטות צריך לקבל. אין משחק שמבטיח זכייה,
+          ולכן כדאי להבין את הכללים ולהגדיר תקציב לפני כל הפקדה.
+        </p>
+      </section>
+
       <div className="mb-10 flex flex-wrap gap-2" dir="rtl">
         {FILTERS.map(({ label, key }) => (
           <button
@@ -57,7 +118,7 @@ export function TopDevelopers() {
             {label}
             {key !== "all" && (
               <span className="ms-1.5 text-xs opacity-90">
-                ({DEVELOPERS.filter((d) => d.type === key).length})
+                ({GAME_GUIDES.filter((game) => game.type === key).length})
               </span>
             )}
           </button>
@@ -65,9 +126,9 @@ export function TopDevelopers() {
       </div>
 
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((dev, i) => (
+        {filtered.map((game, i) => (
           <div
-            key={dev.name}
+            key={game.name}
             className="group relative animate-slide-up"
             style={{ animationDelay: `${i * 0.05}s` }}
           >
@@ -77,31 +138,40 @@ export function TopDevelopers() {
 
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-2xl transition-transform duration-300 group-hover:scale-110">
-                  {dev.logo}
+                  {game.icon}
                 </div>
                 <div>
                   <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors">
-                    {dev.name}
+                    {game.name}
                   </h3>
-                  <span className="text-xs text-text-muted">{dev.games} משחקים</span>
+                  <span className="text-xs text-text-muted">מדריך בחירה לשחקנים ישראלים</span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 flex-1">
+                <p className="text-sm leading-relaxed text-text-secondary">{game.description}</p>
+                <div className="h-px bg-border-glass" />
                 <div className="flex justify-between text-xs">
-                  <span className="text-text-muted">ידועים בזכות</span>
-                  <span className="text-text-secondary font-medium text-left">{dev.known}</span>
+                  <span className="text-text-muted">רמת סיכון</span>
+                  <span className="text-text-secondary font-medium text-left">{game.risk}</span>
                 </div>
                 <div className="h-px bg-border-glass" />
                 <div className="flex justify-between text-xs">
-                  <span className="text-text-muted">ממוצע RTP</span>
-                  <span className="font-bold text-accent">{dev.rtp}</span>
+                  <span className="text-text-muted">מיומנות</span>
+                  <span className="font-bold text-accent">{game.skill}</span>
                 </div>
+                <p className="rounded-lg border border-border-glass bg-background/30 p-3 text-xs leading-relaxed text-text-muted">
+                  <span className="font-bold text-text-secondary">מה לבדוק: </span>
+                  {game.check}
+                </p>
               </div>
 
-              <button className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-                צפו במשחקים
-              </button>
+              <Link
+                href={game.href}
+                className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-center text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+              >
+                קראו מדריך
+              </Link>
             </div>
           </div>
         ))}
@@ -109,7 +179,7 @@ export function TopDevelopers() {
 
       {filtered.length === 0 && (
         <div className="py-24 text-center text-text-muted">
-          לא נמצאו משחקים בקטגוריה זו
+          לא נמצאו מדריכים בקטגוריה זו
         </div>
       )}
     </>

@@ -3,7 +3,6 @@
 import { useInViewOnce } from "@/lib/animations";
 import Image from "next/image";
 import { StarRating } from "./star-rating";
-import { AnimatedCounter } from "./animated-counter";
 import { Button } from "./button";
 import { urlFor } from "@/sanity/lib/image";
 import type { Image as SanityImage } from "sanity";
@@ -17,6 +16,24 @@ interface CasinoCardProps {
   bonusTitle?: string;
   bonusAmount?: string;
   index?: number;
+}
+
+function cleanCasinoDescription(description: string) {
+  return description
+    .replace("תוצאות אמיתיות שאנחנו יכולים להמליץ עליהן", "מידע ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("ביטחון מדורג 5 כוכבים", "דירוג גבוה באתר")
+    .replace("בונוס עצום, משחקים מהטובים בעולם, בדוק ומומלץ על ידי אלפים", "בונוס ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("בונוסים עצומים שלא תיפסיקו", "בונוסים ותנאים שכדאי לבדוק")
+    .replace("ומלא משחקים שמזכים", "ומבחר משחקים להשוואה")
+    .replace("משחקים שמזכים", "מבחר משחקים")
+    .replace("בדוק, מובטח,", "נבדק,")
+    .replace("מובטח", "נבדק")
+    .replace("בדוק, נבדק,", "נבדק,")
+    .trim();
+}
+
+function cleanBonusText(value: string) {
+  return value.replace(/ספינות/g, "ספינים").trim();
 }
 
 export function CasinoCard({
@@ -65,14 +82,14 @@ export function CasinoCard({
             </div>
 
             <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
-              {description}
+              {cleanCasinoDescription(description)}
             </p>
 
             {bonusAmount && (
               <div className="mt-2 rounded-lg bg-accent/10 border border-accent/20 px-4 py-3">
                 <p className="text-xs font-bold text-text-muted mb-1">{bonusTitle}</p>
                 <p className="font-heading text-2xl font-black text-accent">
-                  <AnimatedCounter value={bonusAmount} />
+                  {cleanBonusText(bonusAmount)}
                 </p>
               </div>
             )}
@@ -84,7 +101,7 @@ export function CasinoCard({
               rel="nofollow sponsored"
               className="w-full text-sm"
             >
-              שחק עכשיו
+              בדקו תנאים
             </Button>
             <Button
               href={`/casinos/${slug.current}`}

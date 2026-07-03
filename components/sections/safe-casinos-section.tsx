@@ -5,28 +5,28 @@ import { useInViewOnce } from "@/lib/animations";
 const safetyChecks = [
   {
     icon: "📜",
-    title: "רישיון חוקי",
-    description: "כל בתי הקזינו מחזיקים ברישיון תקף (Curacao, MGA)"
+    title: "בדיקת רישוי",
+    description: "פרטי מפעיל, מדינת פיקוח ותנאי שימוש גלויים"
   },
   {
     icon: "🔒",
-    title: "הצפנה מתקדמת",
-    description: "הגנה על נתונים אישיים ופיננסיים"
+    title: "פרטיות ואבטחה",
+    description: "מידע על הצפנה, אימות זהות ומדיניות פרטיות"
   },
   {
     icon: "🎮",
-    title: "משחקים הוגנים",
-    description: "בדיקות RNG עצמאיות להגינות"
+    title: "מידע על משחקים",
+    description: "ספקי תוכן, כללי משחק ותנאים שמופיעים באתר"
   },
   {
     icon: "💰",
-    title: "תשלומים מהירים",
-    description: "משיכות תוך 24-48 שעות"
+    title: "תשלומים ומשיכות",
+    description: "זמני טיפול, עמלות, מסמכים ומגבלות משיכה"
   },
   {
     icon: "💬",
-    title: "תמיכה 24/7",
-    description: "צ'אט חי ותמיכה בעברית/אנגלית"
+    title: "ערוצי תמיכה",
+    description: "זמינות צ'אט, מייל, שפות וזמני מענה מוצהרים"
   },
   {
     icon: "🛡️",
@@ -52,10 +52,10 @@ export function SafeCasinosSection() {
           </div>
           <div>
             <h2 className="font-heading text-xl md:text-2xl font-bold text-text-primary">
-              בטוחים לשחק — אנחנו בדקנו הכל
+              מה אנחנו בודקים לפני שמציגים קזינו
             </h2>
             <p className="text-text-secondary text-sm mt-1">
-              כל קזינו באתר עבר את הבדיקות הבאות
+              רשימת בדיקות בסיסית להשוואה לפני הרשמה
             </p>
           </div>
         </div>

@@ -118,7 +118,7 @@ async function HomeContent() {
       <section className="mx-auto max-w-7xl px-4 py-24">
         <div className="mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
-            הבונוסים הטובים ביותר למכונות מזל
+            בונוסים למכונות מזל: מה לבדוק
           </h2>
           <div className="w-16 h-1 bg-accent rounded-full" />
         </div>
@@ -144,17 +144,17 @@ async function HomeContent() {
       <section className="mx-auto max-w-7xl px-4 py-24">
         <div className="bg-gradient-to-br from-card-light to-card border border-border-glass rounded-2xl p-8 md:p-12 text-center">
           <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
-            מוכנים להתחיל? בחרו קזינו בטוח היום
+            רוצים להשוות לפני הרשמה?
           </h2>
           <p className="text-text-secondary max-w-2xl mx-auto mb-8 leading-relaxed">
-            כל בתי הקזינו באתר עברו בדיקה מקיפה. אנחנו בודקים רישיון, שיטות תשלום, בונוסים, תמיכה וחוויית משתמש — כדי שתוכלו לשחק בראש שקט.
+            אנחנו בודקים רישיון, שיטות תשלום, בונוסים, תמיכה, חוויית משתמש וכלי משחק אחראי — כדי שתוכלו להשוות בצורה מסודרת לפני החלטה.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/casinos">
-              גלו את כל בתי הקזינו
+              השוו בתי קזינו
             </Button>
             <Button href="/blog" variant="outline">
-              קראו את המדריך המלא
+              קראו מדריך בדיקה
             </Button>
           </div>
         </div>

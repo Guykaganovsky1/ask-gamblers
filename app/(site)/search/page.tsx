@@ -27,8 +27,8 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
   return {
     title: query ? `חיפוש: ${query} | Ask Gamblers` : "חיפוש קזינו בישראל | Ask Gamblers",
     description: query
-      ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
-      : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
+      ? `תוצאות חיפוש עבור "${query}" - קזינו, מאמרים ומדריכי בדיקה`
+      : "חפשו קזינו להשוואה, מאמרים ומדריכים ב-Ask Gamblers",
     alternates: {
       canonical: `${baseUrl}/search`,
     },
@@ -36,8 +36,8 @@ export async function generateMetadata({ searchParams }: SearchPageProps): Promi
     openGraph: {
       title: query ? `חיפוש: ${query} | Ask Gamblers` : "חיפוש קזינו בישראל | Ask Gamblers",
       description: query
-        ? `תוצאות חיפוש עבור "${query}" - קזינו מומלצים ומאמרים מקצועיים`
-        : "חפשו קזינו מומלצים, מאמרים ומדריכים ב-Ask Gamblers",
+        ? `תוצאות חיפוש עבור "${query}" - קזינו, מאמרים ומדריכי בדיקה`
+        : "חפשו קזינו להשוואה, מאמרים ומדריכים ב-Ask Gamblers",
       type: "website",
       url: `${baseUrl}/search`,
     },

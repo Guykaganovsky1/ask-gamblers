@@ -12,6 +12,12 @@ export const revalidate = 60;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
+const CANONICAL_CATEGORY_SLUG_BY_NAME: Record<string, string> = {
+  "הימורי ספורט": "sports",
+  "רולטה": "roulette",
+  "פוקר": "poker",
+};
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -26,6 +32,10 @@ function decodeSlug(slug: string) {
 
 function categoryPath(slug: string) {
   return `/categories/${encodeCategorySlug(slug)}`;
+}
+
+function canonicalCategorySlug(categoryName: string, currentSlug: string) {
+  return CANONICAL_CATEGORY_SLUG_BY_NAME[categoryName] || currentSlug;
 }
 
 function encodeCategorySlug(slug: string) {
@@ -43,7 +53,7 @@ function buildCategoryDescription(categoryName: string, description?: string) {
     return cleanDescription;
   }
 
-  return `השוואת קזינו, בונוסים ומדריכים בקטגוריית ${categoryName}: איך לבחור אתר בטוח, לבדוק תנאים ותשלומים, ולהימנע מהצעות לא שקופות לפני הרשמה.`;
+  return `השוואת קזינו, בונוסים ומדריכים בקטגוריית ${categoryName}: איך לבדוק תנאים, תשלומים, רישוי ושקיפות מפעיל לפני הרשמה.`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,15 +63,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!category) return {};
 
   const categoryName = category.name || categorySlug;
+  const canonicalSlug = canonicalCategorySlug(categoryName, categorySlug);
   const title = buildCategoryTitle(categoryName);
   const description = buildCategoryDescription(categoryName, category.description);
-  const path = categoryPath(categorySlug);
+  const path = categoryPath(canonicalSlug);
+  const isCanonical = canonicalSlug === categorySlug;
 
   return {
     title,
     description,
     alternates: {
       canonical: `${SITE_URL}${path}`,
+    },
+    robots: {
+      index: isCanonical,
+      follow: true,
     },
     openGraph: {
       title,
@@ -104,7 +120,7 @@ export default async function CategoryPage({ params }: Props) {
               מדריך קצר לקטגוריית {categoryName}
             </h2>
             <p className="mt-5">
-              עמוד זה מרכז קזינו, מדריכים והמלצות שקשורים לקטגוריית {categoryName}.
+              עמוד זה מרכז קזינו, מדריכים וקישורים שקשורים לקטגוריית {categoryName}.
               לפני שבוחרים אתר חשוב לבדוק את התמונה המלאה: תנאי הבונוס, דרישות
               ההימור, זמני משיכה, אפשרויות תשלום, איכות התמיכה וכלים למשחק אחראי.
               בונוס גדול יכול להיראות טוב בפרסום, אבל התנאים הקטנים הם אלה שקובעים
@@ -144,7 +160,7 @@ export default async function CategoryPage({ params }: Props) {
           <section className="mb-24">
             <div className="mb-12">
               <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
-                קזינו מומלצים
+                קזינו להשוואה
               </h2>
               <div className="w-16 h-1 bg-accent rounded-full" />
             </div>

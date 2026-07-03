@@ -26,10 +26,43 @@ const LEGAL_LINKS = [
 async function getTopCasinos() {
   try {
     const casinos = await client.fetch<Casino[]>(CASINOS_QUERY);
-    return casinos ?? [];
+    return (casinos ?? []).map(cleanCasinoForDisplay);
   } catch {
     return [];
   }
+}
+
+function cleanCasinoDescription(description?: string) {
+  return (description || "מידע בסיסי, דירוג ותנאי בונוס לבדיקה")
+    .replace("תוצאות אמיתיות שאנחנו יכולים להמליץ עליהן", "מידע ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("ביטחון מדורג 5 כוכבים", "דירוג גבוה באתר")
+    .replace("בונוס עצום, משחקים מהטובים בעולם, בדוק ומומלץ על ידי אלפים", "בונוס ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("בונוסים עצומים שלא תיפסיקו", "בונוסים ותנאים שכדאי לבדוק")
+    .replace("ומלא משחקים שמזכים", "ומבחר משחקים להשוואה")
+    .replace("משחקים שמזכים", "מבחר משחקים")
+    .replace("בדוק, מובטח,", "נבדק,")
+    .replace("מובטח", "נבדק")
+    .replace("בדוק, נבדק,", "נבדק,")
+    .trim();
+}
+
+function cleanCategoryName(name: string) {
+  return name
+    .replace("מכונות מזל - הניצחון מהדייש כאן", "מכונות מזל")
+    .replace("קזינו חי - חוויה הבא לאשך", "קזינו חי")
+    .replace("בלאק ג'ק - יזמי הטקטיקה", "בלאק ג'ק")
+    .replace("רולטה - מהמרים החכמים בוחרים", "רולטה")
+    .replace("הימורי ספורט - רווח מהידע", "הימורי ספורט")
+    .trim();
+}
+
+function cleanCasinoForDisplay(casino: Casino): Casino {
+  casino.description = cleanCasinoDescription(casino.description);
+  casino.categories = casino.categories?.map((category) => ({
+    ...category,
+    name: cleanCategoryName(category.name),
+  }));
+  return casino;
 }
 
 export async function Footer() {
@@ -105,7 +138,7 @@ export async function Footer() {
                   <h3 className="font-heading text-3xl md:text-4xl font-black text-text-primary">
                     קזינו מדורגים
                   </h3>
-                  <p className="text-xs text-text-muted/70 mt-1 font-medium tracking-wide">קזינו מובחרים ומדורגים</p>
+                  <p className="text-xs text-text-muted/70 mt-1 font-medium tracking-wide">קזינו להשוואה ודירוגים</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -128,7 +161,7 @@ export async function Footer() {
                   </div>
 
                   {/* Badge */}
-                  {i === 0 && <div className="premium-badge">⭐ המובחר</div>}
+                  {i === 0 && <div className="premium-badge">⭐ דירוג גבוה</div>}
 
                   {/* Content */}
                   <div className="relative z-10 flex flex-col h-full gap-4">
@@ -168,7 +201,7 @@ export async function Footer() {
                         {casino.name}
                       </h4>
                       <p className="text-sm text-text-muted/80 leading-relaxed line-clamp-2">
-                        {casino.description || 'קזינו מובחר עם בונוסים מעולים וחוויה משחק פריימיום'}
+                        {cleanCasinoDescription(casino.description)}
                       </p>
                     </div>
 

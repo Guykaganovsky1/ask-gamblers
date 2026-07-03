@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
@@ -9,6 +8,14 @@ import { Button } from "@/components/ui/button";
 
 interface CasinoComparisonTableProps {
   casinos: Casino[];
+}
+
+function cleanBonusText(value: string) {
+  return value
+    .replace(/ספינות/g, "ספינים")
+    .replace("בונוס עצום", "בונוס")
+    .replace("מובטח", "לבחינה")
+    .trim();
 }
 
 export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
@@ -79,7 +86,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
               <td className="px-4 py-4 text-center">
                 <div className="inline-block rounded-lg bg-accent/20 px-3 py-1">
                   <span className="font-black text-accent text-sm">
-                    {casino.bonusAmount || "בונוס"}
+                    {cleanBonusText(casino.bonusAmount || "בונוס")}
                   </span>
                 </div>
               </td>
@@ -99,7 +106,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
                   variant="primary"
                   className="whitespace-nowrap"
                 >
-                  שחק עכשיו
+                  בדקו תנאים
                 </Button>
               </td>
             </tr>
@@ -142,7 +149,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
               <div className="flex justify-between">
                 <span className="text-text-muted">בונוס:</span>
                 <span className="font-bold text-accent">
-                  {casino.bonusAmount}
+                  {cleanBonusText(casino.bonusAmount || "בונוס")}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -152,7 +159,7 @@ export function CasinoComparisonTable({ casinos }: CasinoComparisonTableProps) {
             </div>
 
             <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored" variant="primary" className="w-full">
-              שחק עכשיו
+              בדקו תנאים
             </Button>
           </div>
         ))}

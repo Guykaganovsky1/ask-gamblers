@@ -9,7 +9,6 @@ import { urlFor } from "@/sanity/lib/image";
 import { casinoReviewJsonLd } from "@/lib/json-ld";
 import { generateFAQSchema } from "@/lib/seo";
 import { StarRating } from "@/components/ui/star-rating";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -28,6 +27,24 @@ function formatHebrewDate(date?: string) {
     month: "long",
     day: "numeric",
   });
+}
+
+function cleanCasinoDescription(description: string) {
+  return description
+    .replace("תוצאות אמיתיות שאנחנו יכולים להמליץ עליהן", "מידע ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("ביטחון מדורג 5 כוכבים", "דירוג גבוה באתר")
+    .replace("בונוס עצום, משחקים מהטובים בעולם, בדוק ומומלץ על ידי אלפים", "בונוס ותנאים שכדאי לבדוק לפני הרשמה")
+    .replace("בונוסים עצומים שלא תיפסיקו", "בונוסים ותנאים שכדאי לבדוק")
+    .replace("ומלא משחקים שמזכים", "ומבחר משחקים להשוואה")
+    .replace("משחקים שמזכים", "מבחר משחקים")
+    .replace("בדוק, מובטח,", "נבדק,")
+    .replace("מובטח", "נבדק")
+    .replace("בדוק, נבדק,", "נבדק,")
+    .trim();
+}
+
+function cleanBonusText(value: string) {
+  return value.replace(/ספינות/g, "ספינים").trim();
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -80,7 +97,7 @@ export default async function CasinoReviewPage({ params }: Props) {
     <>
       <PageHero
         title={casino.name}
-        subtitle={casino.description}
+        subtitle={cleanCasinoDescription(casino.description)}
         badge="ביקורת קזינו"
       />
       <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "בתי קזינו", href: "/casinos" }, { label: casino.name }]} />
@@ -111,7 +128,7 @@ export default async function CasinoReviewPage({ params }: Props) {
         <div className="mx-auto mt-10 max-w-md rounded-2xl border border-accent/20 bg-accent/5 p-8 text-center">
           <p className="text-sm text-text-muted">{casino.bonusTitle}</p>
           <p className="mt-2 font-heading text-3xl font-black text-accent">
-            <AnimatedCounter value={casino.bonusAmount} />
+            {cleanBonusText(casino.bonusAmount)}
           </p>
           {casino.wageringRequirement && (
             <p className="mt-2 text-xs text-text-muted">דרישות הימור: {casino.wageringRequirement}</p>
@@ -126,7 +143,7 @@ export default async function CasinoReviewPage({ params }: Props) {
 
       <div className="mt-12">
         <h2 className="font-heading text-2xl font-bold">סקירה</h2>
-        <p className="mt-4 text-text-muted leading-relaxed">{casino.description}</p>
+        <p className="mt-4 text-text-muted leading-relaxed">{cleanCasinoDescription(casino.description)}</p>
         <p className="mt-4 text-text-muted leading-relaxed">
           הביקורת הזו נכתבה עבור שחקנים ישראלים שרוצים להבין לא רק מה גובה הבונוס,
           אלא גם האם תנאי המשחק ברורים, האם חוויית ההרשמה סבירה, ומה חשוב לבדוק

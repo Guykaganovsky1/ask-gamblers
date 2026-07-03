@@ -7,32 +7,32 @@
 export const SECTION_COPY = {
   // Casino section
   casinos: {
-    heading: '10 קזינו אונליין מאושרים — נבדקו, דורגו ואושרו',
-    subheading: 'בחרו מקזינו בדוקים ומדורגים',
-    cta: 'גלו את כל 25 בתי הקזינו',
-    description: 'כל קזינו בדוק, מדורג וממומלץ על ידי מומחים',
+    heading: 'קזינו אונליין להשוואה — בדיקה לפי תנאים גלויים',
+    subheading: 'השוו רישוי, תשלומים, בונוסים ותמיכה',
+    cta: 'השוו את בתי הקזינו',
+    description: 'מידע על רישוי, תשלומים, בונוסים, תמיכה וכלי משחק אחראי',
   },
 
   // Categories section
   categories: {
-    heading: 'מצאו את המשחק המושלם שלכם',
+    heading: 'מצאו משחק שמתאים לתקציב ולניסיון',
     subheading: 'סוגי משחקים עבור כל שחקן',
-    description: 'משחקים מהמפתחים המובילים בעולם',
+    description: 'מדריכים לפי סוג משחק, קצב, חוקים ורמת סיכון',
   },
 
   // Blog section
   blog: {
-    heading: 'טיפים מנצחים — המדריך השלם לשחקנים ישראלים 2026',
-    subheading: 'למדו מחכמים של קזינו',
-    cta: 'קראו כל המאמרים',
-    description: 'אסטרטגיות, בונוסים וטיפים שנוצחים',
+    heading: 'מדריכים לבדיקת קזינו ותנאי משחק 2026',
+    subheading: 'מידע ברור לפני הרשמה והפקדה',
+    cta: 'קראו את המדריכים',
+    description: 'תנאים, בונוסים, תשלומים ומשחק אחראי',
   },
 
   // Software providers section
   softwareProviders: {
-    heading: 'משחקים מהמפתחים המובילים בעולם',
-    subheading: 'הטכנולוגיה מאחורי הניצחון',
-    description: 'טכנולוגיה מובטחת, משחקים יוצאי דופן',
+    heading: 'ספקי תוכנה ומשחקים להשוואה',
+    subheading: 'הטכנולוגיה שמאחורי חוויית המשחק',
+    description: 'מידע על ספקים, מובייל, משחקי לייב ושקיפות',
   },
 };
 
@@ -43,28 +43,28 @@ export const SECTION_COPY = {
 export const CTA_COPY = {
   // Casino CTAs
   casino: {
-    primary: 'שחקו בביטחון היום',
+    primary: 'בדקו תנאים לפני הרשמה',
     secondary: 'קרא ביקורת מלאה',
-    viewAll: 'גלו את כל 25 בתי הקזינו',
+    viewAll: 'השוו את כל בתי הקזינו',
   },
 
   // Blog CTAs
   blog: {
-    primary: 'קראו הטיפים',
+    primary: 'קראו מדריך',
     secondary: 'שמרו את זה',
-    viewAll: 'קראו 50+ מאמרים',
+    viewAll: 'קראו מאמרים נוספים',
   },
 
   // Software provider CTAs
   softwareProvider: {
-    primary: 'צפו בגיימס',
+    primary: 'בדקו משחקים',
     secondary: 'למדו עוד',
   },
 
   // Navigation CTAs
   navigation: {
-    allCasinos: 'גלו את כל 25 בתי הקזינו',
-    allPosts: 'קראו כל המאמרים',
+    allCasinos: 'השוו בתי קזינו',
+    allPosts: 'קראו את המדריכים',
     allCategories: 'בחרו משחק',
   },
 };
@@ -74,11 +74,11 @@ export const CTA_COPY = {
  * Main value proposition with emotional resonance
  */
 export const HERO_COPY = {
-  headline: 'קזינו אונליין בטוח ורווחי — הבחירה המושכלת של אלפי שחקנים',
+  headline: 'קזינו אונליין בישראל — השוואה לפני הרשמה',
   subheading:
-    'אנחנו בדקנו כל פרט של כל קזינו. אתם מקבלים בחירה בטוחה, מובטחת ומדורגת על ידי מומחים אמיתיים. לא עוד בזבוז זמן וכסף על קזינו לא אמינים.',
-  cta1: 'בחרו קזינו בטוח היום',
-  cta2: 'גלו טיפים מנצחים',
+    'אנחנו בודקים רישוי, תשלומים, תנאי בונוס, תמיכה וכלים למשחק אחראי כדי לעזור לכם להשוות לפני החלטה.',
+  cta1: 'השוו בתי קזינו',
+  cta2: 'קראו מדריכי בדיקה',
 };
 
 /**
@@ -87,13 +87,13 @@ export const HERO_COPY = {
  */
 export const POWER_WORDS = {
   // Trust & Safety
-  trust: ['בטוח', 'מובטח', 'מומלץ', 'מאומת', 'בדוק'],
+  trust: ['שקוף', 'נבדק', 'מאומת', 'ברור', 'אחראי'],
   // Winning & Results
-  winning: ['נוצח', 'רוויח', 'תוצאה', 'הצלחה', 'ניצחון'],
+  winning: ['בדיקה', 'השוואה', 'תנאים', 'שיקול דעת', 'שליטה'],
   // Exclusivity
-  exclusive: ['אך', 'רק', 'דבר אחד', 'יחיד', 'בלעדי'],
+  exclusive: ['מידע ברור', 'תנאים גלויים', 'בדיקה עצמאית', 'גילוי נאות', 'עדכני'],
   // Urgency
-  urgency: ['היום', 'עכשיו', 'מיד', 'לפני שיסתיים', 'שנית זו'],
+  urgency: ['לפני הרשמה', 'לפני הפקדה', 'בדקו מראש', 'קראו תנאים', 'השוו קודם'],
 };
 
 /**
@@ -116,24 +116,24 @@ export interface CopyScore {
  */
 export const AB_TEST_VARIATIONS = {
   heroHeadline: {
-    control: 'קזינו אונליין בטוח ורווחי',
-    curiosity: 'החלק הסודי של קזינו שחקנים משתמשים',
-    benefit: 'בחרו קזינו שמעניקים ניצחונות אמיתיים',
-    urgency: 'מצאו את קזינו המנצח שלכם — מיד',
+    control: 'קזינו אונליין בישראל להשוואה',
+    curiosity: 'מה לבדוק לפני הרשמה לקזינו',
+    benefit: 'השוו תנאים לפני שבוחרים קזינו',
+    urgency: 'בדקו רישוי ותנאי בונוס לפני הפקדה',
   },
 
   casinoCTA: {
-    control: 'שחקו עכשיו',
-    benefit: 'שחקו בביטחון היום',
-    outcome: 'התחילו לנצח',
-    urgency: 'הצטרפו עוד היום',
+    control: 'בדקו תנאים',
+    benefit: 'השוו לפני הרשמה',
+    outcome: 'קראו ביקורת מלאה',
+    urgency: 'בדקו לפני הפקדה',
   },
 
   blogHeading: {
     control: 'מאמרים אחרונים',
-    curiosity: 'סודות וטיפים מנצחים',
-    benefit: 'למדו לנצח',
-    emotion: 'הסיפורים של הניצחונות',
+    curiosity: 'מה חשוב לבדוק לפני הרשמה',
+    benefit: 'מדריכים לתנאי קזינו',
+    emotion: 'מדריכים למשחק אחראי',
   },
 };
 
@@ -143,22 +143,22 @@ export const AB_TEST_VARIATIONS = {
 export const CHANNEL_MESSAGING = {
   // Homepage - Lead with benefit & safety
   homepage: {
-    primaryMessage: 'בטוח, מובטח, ורווחי',
-    emotionalHook: 'לא עוד אי ודאות או הפסדים מיותרים',
-    cta: 'בחרו קזינו בטוח היום',
+    primaryMessage: 'השוואה, שקיפות ומשחק אחראי',
+    emotionalHook: 'לא בוחרים לפני שקוראים את התנאים',
+    cta: 'השוו בתי קזינו',
   },
 
   // Email campaigns - Add urgency
   email: {
-    subject: '[Variation 1] סוד בונוס 3:1 שקזינו לא רוצה שתדעו',
-    subject2: '[Variation 2] כיצד 5,000 שחקנים הכפילו את הזכיות שלהם',
-    primaryMessage: 'הטיפים החדשים שלנו מעניקים תוצאות',
+    subject: '[Variation 1] מה לבדוק לפני שמממשים בונוס קזינו',
+    subject2: '[Variation 2] תנאי בונוס שכדאי לקרוא לפני הפקדה',
+    primaryMessage: 'המדריכים החדשים שלנו עוזרים להשוות תנאים',
   },
 
   // Social media - Emotional & urgent
   social: {
-    hook: '🎰 5,000 שחקנים כבר בחרו בטוח. אתה הבא?',
-    benefit: '⭐ קזינו בדוקים = ניצחונות ממשיים',
-    cta: 'צא לראות איך »',
+    hook: 'מה כדאי לבדוק לפני הרשמה לקזינו אונליין?',
+    benefit: 'קזינו משווים לפי רישוי, תשלומים ותנאים',
+    cta: 'קראו את המדריך',
   },
 };

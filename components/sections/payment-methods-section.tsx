@@ -67,7 +67,7 @@ export function PaymentMethodsSection() {
           >
             {method.recommended && (
               <span className="absolute -top-3 right-4 px-3 py-1 bg-accent text-white text-xs font-bold rounded-full">
-                מומלץ
+                נפוץ
               </span>
             )}
             

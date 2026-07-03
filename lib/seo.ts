@@ -6,6 +6,11 @@ export interface ArticlePost {
   title: string;
   slug: { current: string };
   excerpt?: string;
+  summaryAnswer?: string;
+  keywords?: string[];
+  about?: string[];
+  wordCount?: number;
+  factCheckedAt?: string;
   publishedAt?: string;
   modifiedAt?: string;
   _createdAt?: string;
@@ -42,9 +47,19 @@ export function generateArticleSchema(post: ArticlePost) {
     },
     headline: post.title,
     description: post.excerpt || SITE_DESCRIPTION,
+    abstract: post.summaryAnswer || post.excerpt || SITE_DESCRIPTION,
+    keywords: post.keywords?.length ? post.keywords.join(", ") : undefined,
+    about: post.about?.length
+      ? post.about.map((name) => ({
+          "@type": "Thing",
+          name,
+        }))
+      : undefined,
+    wordCount: post.wordCount,
     image: post.featuredImage ? [post.featuredImage] : undefined,
     ...(publishedDate && { datePublished: publishedDate }),
     ...(modifiedDate && { dateModified: modifiedDate }),
+    ...(post.factCheckedAt && { dateReviewed: post.factCheckedAt }),
     author: post.author
       ? {
           "@type": "Person",

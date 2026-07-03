@@ -6,7 +6,7 @@ const GAMES = [
   {
     icon: "🎰",
     name: "סלוטס",
-    description: "מאות מכונות מזל מהספקים המובילים בעולם עם ג'קפוטים עצומים",
+    description: "סלוטים מספקים שונים עם קצב משחק מהיר, תנודתיות ותנאי בונוס שחשוב לבדוק",
     tag: "הכי פופולרי",
   },
   {
@@ -18,8 +18,8 @@ const GAMES = [
   {
     icon: "🃏",
     name: "בלאקג'ק",
-    description: "הגיע ל-21 ונצח את הבנק. אחוז החזר גבוה ואסטרטגיה פשוטה",
-    tag: "אחוז החזר גבוה",
+    description: "משחק קלפים שבו החלטות השחקן משפיעות על כל יד; כדאי להכיר חוקים ואסטרטגיה בסיסית",
+    tag: "דורש היכרות",
   },
   {
     icon: "🎡",
@@ -30,13 +30,13 @@ const GAMES = [
   {
     icon: "📺",
     name: "קזינו חי",
-    description: "דילרים אמיתיים בשידור חי 24/7 — חוויה אמיתית מהבית",
+    description: "דילרים אמיתיים בשידור חי 24/7 — בדקו איכות שידור, שפה ומגבלות שולחן",
     tag: "חדש",
   },
   {
     icon: "♠️",
     name: "קרפס ובינגו",
-    description: "משחקי קוביה ובינגו מרגשים — פשוטים, מהירים ומשתלמים",
+    description: "משחקי קובייה ובינגו בקצב משתנה — בדקו חוקים, עלויות ותנאי השתתפות",
     tag: null,
   },
 ];
@@ -76,7 +76,7 @@ export function GameFinder() {
             </div>
 
             <button className="mt-2 w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
-              שחקו עכשיו
+              קראו מה לבדוק
             </button>
           </div>
         </div>
