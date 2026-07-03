@@ -7,6 +7,7 @@
     "build": "next build && cp -r public/. .next/standalone/public/ && cp -r .next/static .next/standalone/.next/static",
     "start": "next start -p 3334 -H 0.0.0.0",
     "lint": "eslint",
+    "news:import": "node scripts/import-casino-news.mjs",
     "prod:start": "pm2 start ecosystem.config.js --env production",
     "prod:reload": "pm2 reload ecosystem.config.js --env production",
     "prod:logs": "pm2 logs ask-gamblers",

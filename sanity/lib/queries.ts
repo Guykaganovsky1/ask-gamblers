@@ -69,6 +69,25 @@ export const POSTS_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
+    sourceName,
+    sourceUrl,
+    sourcePublishedAt,
+    author->{ name, "avatar": coalesce(avatar, image), role, credentials },
+    categories[]->{ _id, name, slug },
+    "excerpt": pt::text(body)[0..150] + "..."
+  }
+`;
+
+export const NEWS_POSTS_QUERY = groq`
+  *[_type == "post" && (defined(sourceUrl) || "cat-news" in categories[]._ref)] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    "featuredImage": mainImage,
+    publishedAt,
+    sourceName,
+    sourceUrl,
+    sourcePublishedAt,
     author->{ name, "avatar": coalesce(avatar, image), role, credentials },
     categories[]->{ _id, name, slug },
     "excerpt": pt::text(body)[0..150] + "..."
@@ -94,6 +113,9 @@ export const POST_BY_SLUG_QUERY = groq`
     slug,
     "featuredImage": mainImage,
     publishedAt,
+    sourceName,
+    sourceUrl,
+    sourcePublishedAt,
     "modifiedAt": _updatedAt,
     body,
     summaryAnswer,

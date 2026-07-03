@@ -146,6 +146,11 @@ export interface BlogPost {
   keywords?: string[];
   relatedCasinos?: Casino[];
   estimatedReadTime?: number;
+  sourceName?: string;
+  sourceUrl?: string;
+  sourcePublishedAt?: string;
+  importedAt?: string;
+  newsSourceId?: string;
 }
 
 // Software Provider document

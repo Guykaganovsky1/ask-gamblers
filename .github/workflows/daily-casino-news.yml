@@ -1,0 +1,45 @@
+name: Daily Casino News
+
+on:
+  schedule:
+    - cron: "0 7,8 * * *"
+  workflow_dispatch:
+
+jobs:
+  import-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check Israel time
+        id: israel_time
+        shell: bash
+        run: |
+          hour="$(TZ=Asia/Jerusalem date +%H)"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$hour" = "10" ]; then
+            echo "run_import=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_import=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.israel_time.outputs.run_import == 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: steps.israel_time.outputs.run_import == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Import casino news
+        if: steps.israel_time.outputs.run_import == 'true'
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET || 'production' }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION || '2024-01-01' }}
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEWS_IMPORT_LIMIT: 5
+          NEWS_IMPORT_MAX_AGE_DAYS: 7
+        run: node scripts/import-casino-news.mjs

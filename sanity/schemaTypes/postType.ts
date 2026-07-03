@@ -110,6 +110,34 @@ export const postType = defineType({
       title: 'Estimated read time in minutes',
       type: 'number',
     }),
+    defineField({
+      name: 'sourceName',
+      title: 'External source name',
+      type: 'string',
+      description: 'Used for imported news summaries',
+    }),
+    defineField({
+      name: 'sourceUrl',
+      title: 'External source URL',
+      type: 'url',
+      description: 'Original article URL for imported news summaries',
+    }),
+    defineField({
+      name: 'sourcePublishedAt',
+      title: 'External source publish date',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'importedAt',
+      title: 'Imported at',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'newsSourceId',
+      title: 'News source ID',
+      type: 'string',
+      description: 'Deterministic hash used by the importer to avoid duplicates',
+    }),
   ],
   preview: {
     select: {

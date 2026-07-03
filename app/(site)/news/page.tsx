@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
-import { POSTS_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
+import { POSTS_QUERY, NEWS_POSTS_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
 import { BlogPost, Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDate } from "@/lib/utils";
@@ -10,30 +10,19 @@ import { StarRating } from "@/components/ui/star-rating";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 
-
-// Helper function to generate deterministic view counts from post IDs
-function viewsCount(id: string): number {
-  let hash = 0;
-  for (let i = 0; i < id.length; i++) {
-    const char = id.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return Math.abs(hash % 9000) + 1000;
-}
 export const revalidate = 60;
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 
 export const metadata: Metadata = {
   title: "חדשות קזינו 2026 - עדכונים שוטפים",
-  description: "עקבו אחר חדשות הקזינו האחרונות — בונוסים חדשים, קזינו חדשים, טיפים מקצועיים ומדריכים למשחקי הימור אונליין. עדכונים שוטפים עבור שחקנים ישראלים.",
+  description: "חדשות קזינו ואייגיימינג עם סיכומים קצרים ממקורות ציבוריים: משחקים חדשים, בונוסים, מפעילים, רגולציה ועדכונים לשחקנים ישראלים.",
   alternates: {
     canonical: `${SITE_URL}/news`,
   },
   openGraph: {
     title: "חדשות קזינו 2026 - עדכונים שוטפים",
-    description: "עקבו אחר חדשות הקזינו האחרונות — בונוסים חדשים, קזינו חדשים, טיפים מקצועיים ומדריכים למשחקי הימור אונליין.",
+    description: "חדשות קזינו ואייגיימינג עם סיכומים קצרים וקישורים למקורות.",
     url: `${SITE_URL}/news`,
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
     type: "website",
@@ -43,12 +32,13 @@ export const metadata: Metadata = {
 
 async function getNewsData() {
   try {
-    const [posts, casinos] = await Promise.all([
+    const [newsPosts, fallbackPosts, casinos] = await Promise.all([
+      client.fetch<BlogPost[]>(NEWS_POSTS_QUERY),
       client.fetch<BlogPost[]>(POSTS_QUERY),
       client.fetch<Casino[]>(FEATURED_CASINOS_QUERY),
     ]);
     return {
-      posts: posts ?? [],
+      posts: newsPosts?.length ? newsPosts : fallbackPosts ?? [],
       casinos: casinos ?? [],
     };
   } catch {
@@ -65,12 +55,44 @@ export default async function NewsPage() {
     <div className="min-h-screen bg-background">
       <PageHero
         title="תמיד צעד אחד לפני כולם"
-        subtitle="עדכונים שוטפים מעולם הקזינו — בונוסים חדשים, קזינו חדשים וטיפים שלא תמצאו בשום מקום אחר"
+        subtitle="סיכומי חדשות קצרים ממקורות ציבוריים על משחקים חדשים, בונוסים, מפעילים, רגולציה ועדכונים חשובים"
         badge="חדשות קזינו"
       />
       <Breadcrumb items={[{ label: "דף הבית", href: "/" }, { label: "חדשות" }]} />
 
       <div className="mx-auto max-w-7xl px-4 pb-20">
+        <section className="mb-12 rounded-2xl border border-border-glass bg-card/40 p-6 md:p-8">
+          <h2 className="font-heading text-2xl font-black text-text-primary md:text-3xl">
+            מה נחשב עדכון חשוב בעולם הקזינו?
+          </h2>
+          <p className="mt-4 max-w-4xl leading-relaxed text-text-secondary">
+            חדשות קזינו חשובות הן עדכונים שמשפיעים על החלטה של שחקנים: שינויי בונוס,
+            תנאי משיכה, שיטות תשלום, משחקים חדשים, כללי רגולציה או מידע על מפעיל.
+            אנחנו מתמקדים במידע שעוזר לבדוק אתר לפני הרשמה ולא בכותרות פרסומיות בלבד.
+            כל ידיעה מיובאת כוללת קישור למקור המקורי כדי שתוכלו לבדוק את הפרטים המלאים.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-xl border border-border-glass bg-background/40 p-5">
+              <h3 className="font-heading text-lg font-bold text-text-primary">בונוסים ותנאים</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                שינוי בדרישות הימור או תקרת משיכה יכול להפוך הצעה טובה להצעה בעייתית.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border-glass bg-background/40 p-5">
+              <h3 className="font-heading text-lg font-bold text-text-primary">תשלומים ומשיכות</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                זמני טיפול, עמלות ואימות זהות משפיעים ישירות על חוויית השחקן.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border-glass bg-background/40 p-5">
+              <h3 className="font-heading text-lg font-bold text-text-primary">משחק אחראי</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                כל עדכון נבחן גם לפי שקיפות, כלים להגבלת משחק וסיכון לשחקנים חדשים.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main Content - Articles Grid */}
           <div className="lg:col-span-2">
@@ -113,7 +135,7 @@ export default async function NewsPage() {
                           : "עכשיו"}
                       </time>
                       <span>•</span>
-                      <span>👁️ {viewsCount(post._id)} צפיות</span>
+                      <span>{post.sourceName ? `מקור: ${post.sourceName}` : "מערכת Ask Gamblers"}</span>
                     </div>
 
                     <h3 className="font-heading text-lg font-black text-text-primary group-hover:text-accent transition-colors line-clamp-2">
@@ -149,8 +171,8 @@ export default async function NewsPage() {
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
                 בחדשות הקזינו תמצאו את העדכונים העדכנית ביותר מעולם ההימורים
-                האונליין. מטיפים לשחקנים, דרך כללים משפטיים, ועד להערכות
-                אתרים חדשים.
+                האונליין. אנחנו מסכמים מקורות ציבוריים, מוסיפים הקשר לשחקנים
+                ישראלים, ומפנים תמיד למקור המקורי.
               </p>
             </div>
 
