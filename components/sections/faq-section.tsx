@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 interface FAQItem {
   question: string;
   answer: string;
@@ -31,35 +27,21 @@ const faqData: FAQItem[] = [
 ];
 
 function FAQItem({ item, index }: { item: FAQItem; index: number }) {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <div
-      className="animate-fade-in border border-border-glass rounded-xl overflow-hidden bg-card-light/30"
+    <details
+      className="group animate-fade-in overflow-hidden rounded-xl border border-border-glass bg-card-light/30"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-5 text-right hover:bg-card-light/50 transition-colors"
-        aria-expanded={isOpen}
-      >
+      <summary className="flex w-full cursor-pointer list-none items-center justify-between p-5 text-right transition-colors hover:bg-card-light/50 [&::-webkit-details-marker]:hidden">
         <span className="font-heading font-bold text-text-primary pr-4">{item.question}</span>
-        <span
-          className="text-accent flex-shrink-0 transition-transform duration-200"
-          style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-        >
+        <span className="flex-shrink-0 text-accent transition-transform duration-200 group-open:rotate-180">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </span>
-      </button>
-      <div
-        className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: isOpen ? '2000px' : '0', opacity: isOpen ? 1 : 0 }}
-      >
-        <p className="px-5 pb-5 text-text-secondary leading-relaxed">{item.answer}</p>
-      </div>
-    </div>
+      </summary>
+      <p className="px-5 pb-5 text-text-secondary leading-relaxed">{item.answer}</p>
+    </details>
   );
 }
 

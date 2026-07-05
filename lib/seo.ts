@@ -3,6 +3,7 @@ import { SOCIAL_PROFILE_URLS } from "@/lib/social-links";
 const SITE_NAME = "Ask Gamblers";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 const SITE_DESCRIPTION = "Ask Gamblers ישראל הוא מדריך עברי לבדיקת קזינו אונליין, בונוסים, תשלומים ומשחק אחראי לשחקנים ישראלים.";
+const LOGO_URL = `${SITE_URL}/ask-gamblers-logo.svg`;
 
 export interface ArticlePost {
   title: string;
@@ -86,8 +87,8 @@ export function generateArticleSchema(post: ArticlePost) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.svg`,
-        width: 600,
+        url: LOGO_URL,
+        width: 360,
         height: 120,
       },
     },
@@ -119,9 +120,9 @@ export function generateOrganizationSchema() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/og-image.png`,
-      width: 1200,
-      height: 630,
+      url: LOGO_URL,
+      width: 360,
+      height: 120,
     },
     description: SITE_DESCRIPTION,
     inLanguage: "he-IL",

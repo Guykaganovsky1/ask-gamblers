@@ -1,5 +1,3 @@
-"use client";
-
 const CASINO_ICONS: Record<string, React.ReactNode> = {
   dice: (
     <svg viewBox="0 0 64 64" className="w-full h-full">

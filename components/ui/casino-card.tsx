@@ -1,6 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
 import Image from "next/image";
 import { StarRating } from "./star-rating";
 import { Button } from "./button";
@@ -39,15 +36,10 @@ function cleanBonusText(value: string) {
 export function CasinoCard({
   name, slug, logo, rating, description, bonusTitle, bonusAmount, index = 0,
 }: CasinoCardProps) {
-  const { ref, isInView } = useInViewOnce(0.1);
   const delayClass = index === 0 ? "animate-slide-up" : `animate-slide-up-delay-${Math.min(index, 3)}`;
-  const shouldAnimate = isInView || index < 4;
 
   return (
-    <div
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className={`group h-full ${shouldAnimate ? delayClass : "opacity-0"}`}
-    >
+    <div className={`group h-full ${delayClass}`}>
       <div className="relative h-full overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 

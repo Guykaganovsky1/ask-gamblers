@@ -1,7 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
-
 const paymentMethods = [
   {
     name: "כרטיסי אשראי",
@@ -38,8 +34,6 @@ const paymentMethods = [
 ];
 
 export function PaymentMethodsSection() {
-  const { ref, isInView } = useInViewOnce(0.1);
-
   return (
     <section className="mx-auto max-w-7xl px-4 py-24">
       <div className="flex items-center gap-2 mb-6">
@@ -54,7 +48,7 @@ export function PaymentMethodsSection() {
         עבור שחקנים ישראלים, כולל זמני עיבוד ועמלות:
       </p>
 
-      <div ref={ref as React.RefObject<HTMLDivElement>} className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {paymentMethods.map((method, index) => (
           <div
             key={method.name}
@@ -62,7 +56,7 @@ export function PaymentMethodsSection() {
               method.recommended 
                 ? 'border-accent/50 bg-accent/5' 
                 : 'border-border-glass bg-card-light/30'
-            } ${isInView ? "animate-slide-up" : "opacity-0"}`}
+            } animate-slide-up`}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             {method.recommended && (

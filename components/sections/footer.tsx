@@ -210,6 +210,7 @@ export async function Footer() {
                     <div className="pt-2 border-t border-accent/10">
                       <Link
                         href={`/go/${casino.slug.current}`}
+                        prefetch={false}
                         rel="nofollow sponsored"
                         className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-white font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95 text-center"
                       >
@@ -230,7 +231,7 @@ export async function Footer() {
 
         <div className="grid gap-8 md:grid-cols-[1.2fr_2fr]">
           <div>
-            <Link href="/" className="font-heading text-xl font-black text-accent">
+            <Link href="/" prefetch={false} className="font-heading text-xl font-black text-accent">
               Ask Gamblers
             </Link>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-text-muted">
@@ -245,6 +246,7 @@ export async function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={false}
                     className="text-sm text-text-muted transition-colors hover:text-accent"
                   >
                     {link.label}
@@ -259,6 +261,7 @@ export async function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={false}
                     className="text-sm text-text-muted transition-colors hover:text-accent"
                   >
                     {link.label}
@@ -273,6 +276,7 @@ export async function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={false}
                     className="text-sm text-text-muted transition-colors hover:text-accent"
                   >
                     {link.label}

@@ -1,11 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import React from "react";
+import type { ReactNode } from "react";
 
 interface ButtonProps {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: "primary" | "outline";
   rel?: string;
   className?: string;
@@ -20,7 +18,7 @@ export function Button({ href, children, variant = "primary", rel, className = "
 
   return (
     <div className="button-scale relative">
-      <Link href={href} rel={rel} className={`relative ${base} ${variants[variant]} ${className} overflow-hidden`}>
+      <Link href={href} rel={rel} prefetch={false} className={`relative ${base} ${variants[variant]} ${className} overflow-hidden`}>
         {variant === "primary" && <div className="bonus-button-shine" />}
         <span className="relative z-10">{children}</span>
       </Link>

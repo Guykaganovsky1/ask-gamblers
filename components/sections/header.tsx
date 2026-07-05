@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { MobileMenu } from "./mobile-menu";
 import { LuxuryLogo } from "@/components/ui/luxury-logo";
+
+const MobileMenu = dynamic(() => import("./mobile-menu").then((mod) => mod.MobileMenu), {
+  ssr: false,
+  loading: () => null,
+});
 
 const NAV_LINKS = [
   { href: "/", label: "דף הבית", highlight: true },
@@ -44,6 +49,7 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    prefetch={false}
                     className="mx-1 rounded-lg px-5 py-2 font-heading text-sm font-bold text-white transition-transform hover:scale-[1.02]"
                     style={{
                       background: "linear-gradient(135deg, #5B21B6 0%, #7C3AED 50%, #9333EA 100%)",
@@ -59,6 +65,7 @@ export function Header() {
                 <Link
                   key={link.href + link.label}
                   href={link.href}
+                  prefetch={false}
                   className={`relative rounded-lg px-4 py-2 font-heading text-sm font-semibold transition-all ${
                     isActive
                       ? "text-purple-300"
@@ -97,7 +104,7 @@ export function Header() {
           </button>
         </div>
       </header>
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={NAV_LINKS} />
+      {mobileOpen ? <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={NAV_LINKS} /> : null}
     </>
   );
 }

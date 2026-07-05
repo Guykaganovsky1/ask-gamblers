@@ -1,7 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
-
 interface StarRatingProps {
   rating: number;
   size?: "sm" | "md" | "lg";
@@ -9,14 +5,13 @@ interface StarRatingProps {
 
 export function StarRating({ rating, size = "md" }: StarRatingProps) {
   const sizes = { sm: "w-4 h-4", md: "w-5 h-5", lg: "w-6 h-6" };
-  const { ref, isInView } = useInViewOnce(0.1);
 
   return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className="flex gap-1" dir="ltr">
+    <div className="flex gap-1" dir="ltr">
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={`${sizes[size]} ${star <= rating ? "text-accent" : "text-text-muted/30"} ${isInView ? "animate-star-pop" : "opacity-0"}`}
+          className={`${sizes[size]} animate-star-pop ${star <= rating ? "text-accent" : "text-text-muted/30"}`}
           style={{ animationDelay: `${star * 0.1}s` }}
           fill="currentColor"
           viewBox="0 0 20 20"

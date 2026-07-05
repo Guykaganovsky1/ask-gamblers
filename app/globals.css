@@ -28,9 +28,9 @@
   --color-border-card: rgba(168, 85, 247, 0.15);
 
   /* Typography - Consistent RTL System */
-  --font-heading: var(--font-heebo);
-  --font-body: var(--font-assistant);
-  --font-mono: var(--font-inter);
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Noto Sans Hebrew", sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Noto Sans Hebrew", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Line Heights - For readability */
   --line-height-tight: 1.1;

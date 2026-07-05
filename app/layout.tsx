@@ -1,30 +1,6 @@
 import type { Metadata } from "next";
-import { Heebo, Assistant, Inter } from "next/font/google";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/seo";
 import "./globals.css";
-
-const heebo = Heebo({
-  subsets: ["hebrew", "latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-heebo",
-  display: "swap",
-  preload: true,
-});
-
-const assistant = Assistant({
-  subsets: ["hebrew", "latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-assistant",
-  display: "swap",
-  preload: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -93,7 +69,9 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <head>
-        <link rel="preload" as="image" href="/images/hero-bg.webp" fetchPriority="high" type="image/webp" />
+        <link rel="preload" as="image" href="/images/hero-bg-mobile.webp" fetchPriority="high" type="image/webp" media="(max-width: 767px)" />
+        <link rel="preload" as="image" href="/images/hero-bg-tablet.webp" fetchPriority="high" type="image/webp" media="(min-width: 768px) and (max-width: 1279px)" />
+        <link rel="preload" as="image" href="/images/hero-bg-desktop.webp" fetchPriority="high" type="image/webp" media="(min-width: 1280px)" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -102,7 +80,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#9333EA" />
       </head>
       <body
-        className={`${heebo.variable} ${assistant.variable} ${inter.variable} font-assistant bg-[#0B0E14] text-[#F5F5F5] antialiased`}
+        className="font-body bg-[#0B0E14] text-[#F5F5F5] antialiased"
       >
         <script
           type="application/ld+json"

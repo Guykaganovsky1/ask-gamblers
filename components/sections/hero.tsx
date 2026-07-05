@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export function Hero() {
   return (
@@ -10,15 +9,20 @@ export function Hero() {
         background: 'linear-gradient(135deg, #0B0E14 0%, #1a1a2e 50%, #16213e 100%)',
       }}
     >
-      <Image
-        src="/images/hero-bg.webp"
-        alt="השוואת קזינו אונליין ובתי קזינו בישראל"
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        className="absolute inset-0 object-cover opacity-100"
-      />
+      <picture className="absolute inset-0 block">
+        <source media="(min-width: 1280px)" srcSet="/images/hero-bg-desktop.webp" type="image/webp" />
+        <source media="(min-width: 768px)" srcSet="/images/hero-bg-tablet.webp" type="image/webp" />
+        <img
+          src="/images/hero-bg-mobile.webp"
+          alt=""
+          width={780}
+          height={439}
+          className="h-full w-full object-cover object-[35%_center] md:object-center"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
       
       <div className="absolute inset-0 bg-gradient-to-l from-background/95 via-background/70 to-transparent" />
 
@@ -44,12 +48,14 @@ export function Hero() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               href="/casinos"
+              prefetch={false}
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-white font-bold text-center hover:bg-accent/90 transition-colors"
             >
               השוואת בתי קזינו בישראל ←
             </Link>
             <Link
               href="/blog"
+              prefetch={false}
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg border border-accent text-accent font-bold text-center hover:bg-accent/10 transition-colors "
             >
               מדריכי קזינו אונליין

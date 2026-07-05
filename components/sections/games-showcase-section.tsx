@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 // Game icons as SVG components
@@ -164,7 +162,7 @@ export function GamesShowcaseSection() {
               className="animate-slide-up group relative game-card-hover"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <Link href={game.href}>
+              <Link href={game.href} prefetch={false}>
                 {/* Animated border */}
                 <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-emerald-500 opacity-0 group-hover:opacity-100 blur transition-all duration-500 animate-pulse" />
 
@@ -204,6 +202,7 @@ export function GamesShowcaseSection() {
         >
           <Link
             href="/games"
+            prefetch={false}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-emerald-500 text-white font-heading font-bold text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.5)] hover:scale-105 group"
           >
             <span>קדימה, בואו לשחק!</span>

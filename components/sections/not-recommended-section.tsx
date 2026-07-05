@@ -1,7 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
-
 const notRecommendedCasinos = [
   {
     name: "Casinoin",
@@ -53,8 +49,6 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function NotRecommendedSection() {
-  const { ref, isInView } = useInViewOnce(0.1);
-
   return (
     <section className="mx-auto max-w-7xl px-4 py-24">
       <div className="flex items-center gap-2 mb-10">
@@ -70,11 +64,11 @@ export function NotRecommendedSection() {
         ותנאי בונוסים מבלבלים.
       </p>
 
-      <div ref={ref as React.RefObject<HTMLDivElement>} className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {notRecommendedCasinos.map((casino, index) => (
           <div
             key={casino.name}
-            className={`border border-red-500/30 rounded-xl bg-red-500/5 p-6 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+            className="animate-slide-up rounded-xl border border-red-500/30 bg-red-500/5 p-6"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div className="flex items-center justify-between mb-4">
@@ -97,7 +91,7 @@ export function NotRecommendedSection() {
       </div>
 
       <div
-        className={`mt-8 p-6 rounded-xl bg-emerald/10 border border-emerald/30 ${isInView ? "animate-fade-in" : "opacity-0"}`}
+        className="mt-8 animate-fade-in rounded-xl border border-emerald/30 bg-emerald/10 p-6"
         style={{ animationDelay: "0.4s" }}
       >
         <div className="flex items-start gap-4">

@@ -1,6 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
 import Link from "next/link";
 import { CasinoIcon } from "./casino-icons";
 
@@ -31,7 +28,6 @@ interface CategoryCardProps {
 }
 
 export function CategoryCard({ name, slug, description, icon, casinoCount, postCount, index = 0 }: CategoryCardProps) {
-  const { ref, isInView } = useInViewOnce(0.1);
   const iconSlugs = ["slots", "poker", "blackjack", "sports", "baccarat", "video-poker"];
   const iconSlug = icon || iconSlugs[index % iconSlugs.length];
   const displayName = cleanCategoryCopy(name);
@@ -39,14 +35,14 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
   
   return (
     <div
-      ref={ref as React.RefObject<HTMLDivElement>}
-      className={`relative h-64 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+      className="relative h-64 animate-slide-up"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
 
       <Link
         href={`/categories/${encodeCategorySlug(slug.current)}`}
+        prefetch={false}
         className="group relative flex h-full flex-col items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
       >
         <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">

@@ -7,9 +7,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-  const logoData = await readFile(
-    path.join(process.cwd(), "public/Ask_Gamblers_Logo.png")
-  );
+  const logoData = await readFile(path.join(process.cwd(), "public/ask-gamblers-logo.svg"), "utf8");
+  const logoSrc = `data:image/svg+xml;base64,${Buffer.from(logoData).toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -26,11 +25,11 @@ export default async function Image() {
       >
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={logoData.buffer as unknown as string}
-            width={420}
-            height={315}
+            src={logoSrc}
+            alt="Ask Gamblers"
+            width={540}
+            height={180}
             style={{ objectFit: "contain" }}
           />
         </div>

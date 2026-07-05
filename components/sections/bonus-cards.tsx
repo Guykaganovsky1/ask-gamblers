@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 type BonusType = "cashback" | "bonusdeposit" | "bonusfree" | "spinswelcome" | "bonus";
 
 interface Bonus {
@@ -37,22 +33,13 @@ const FILTERS: { label: string; key: "all" | BonusType }[] = [
 ];
 
 export function BonusCards() {
-  const [active, setActive] = useState<"all" | BonusType>("all");
-
-  const filtered = active === "all" ? BONUSES : BONUSES.filter((b) => b.type === active);
-
   return (
     <>
       <div className="mb-10 flex flex-wrap gap-2" dir="rtl">
         {FILTERS.map(({ label, key }) => (
-          <button
+          <span
             key={key}
-            onClick={() => setActive(key)}
-            className={`rounded-full border px-5 py-1.5 text-sm font-semibold transition-all duration-200 ${
-              active === key
-                ? "border-accent bg-accent text-white shadow-lg shadow-accent/30"
-                : "border-border-glass bg-card/40 text-text-muted hover:border-accent/60 hover:text-accent"
-            }`}
+            className="rounded-full border border-border-glass bg-card/40 px-5 py-1.5 text-sm font-semibold text-text-muted"
           >
             {label}
             {key !== "all" && (
@@ -60,12 +47,12 @@ export function BonusCards() {
                 ({BONUSES.filter((b) => b.type === key).length})
               </span>
             )}
-          </button>
+          </span>
         ))}
       </div>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((bonus, i) => (
+        {BONUSES.map((bonus, i) => (
           <div
             key={bonus.name}
             className="group relative h-full animate-slide-up"
@@ -82,20 +69,14 @@ export function BonusCards() {
                 </h3>
                 <p className="text-xs text-text-muted">{bonus.desc}</p>
               </div>
-              <button className="relative w-full bg-accent hover:bg-accent/80 text-white font-bold py-2 rounded-lg shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all overflow-hidden">
+              <span className="relative block w-full overflow-hidden rounded-lg bg-accent py-2 font-bold text-white shadow-lg">
                 <div className="bonus-button-shine" />
                 <span className="relative z-10">קבל בונוס</span>
-              </button>
+              </span>
             </div>
           </div>
         ))}
       </div>
-
-      {filtered.length === 0 && (
-        <div className="py-24 text-center text-text-muted">
-          לא נמצאו בונוסים בקטגוריה זו
-        </div>
-      )}
     </>
   );
 }

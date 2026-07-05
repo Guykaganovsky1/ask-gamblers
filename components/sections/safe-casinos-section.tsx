@@ -1,7 +1,3 @@
-"use client";
-
-import { useInViewOnce } from "@/lib/animations";
-
 const safetyChecks = [
   {
     icon: "📜",
@@ -36,14 +32,9 @@ const safetyChecks = [
 ];
 
 export function SafeCasinosSection() {
-  const { ref, isInView } = useInViewOnce(0.1);
-
   return (
     <section className="mx-auto max-w-7xl px-4 py-12">
-      <div
-        ref={ref as React.RefObject<HTMLDivElement>}
-        className={`bg-gradient-to-br from-emerald/10 to-emerald/5 border border-emerald/30 rounded-2xl p-8 md:p-10 ${isInView ? "animate-fade-in" : "opacity-0"}`}
-      >
+      <div className="animate-fade-in rounded-2xl border border-emerald/30 bg-gradient-to-br from-emerald/10 to-emerald/5 p-8 md:p-10">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-3 bg-emerald/20 rounded-xl">
             <svg className="w-8 h-8 text-emerald" fill="currentColor" viewBox="0 0 20 20">
@@ -64,7 +55,7 @@ export function SafeCasinosSection() {
           {safetyChecks.map((check, index) => (
             <div
               key={check.title}
-              className={`text-center p-4 rounded-xl bg-card/50 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+              className="animate-slide-up rounded-xl bg-card/50 p-4 text-center"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="text-3xl mb-2">{check.icon}</div>
