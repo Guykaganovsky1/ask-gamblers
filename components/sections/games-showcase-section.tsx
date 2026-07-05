@@ -118,19 +118,18 @@ const games = [
 export function GamesShowcaseSection() {
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Animated background */}
+      {/* Decorative background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[#101722] to-background">
-        {/* Animated gradient orbs */}
-        <div className="animate-orb-1 absolute top-20 right-20 w-96 h-96 bg-amber-600/16 rounded-full blur-3xl" />
-        <div className="animate-orb-2 absolute bottom-20 left-20 w-96 h-96 bg-emerald-700/16 rounded-full blur-3xl" />
-        <div className="animate-orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-amber-600/16 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-700/16 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Flowing lines */}
+      {/* Decorative lines */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="animate-scan-ltr-8 absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/45 to-transparent" />
-        <div className="animate-scan-rtl-10 absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
-        <div className="animate-scan-ltr-12 absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/45 to-transparent" />
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4">
@@ -144,9 +143,9 @@ export function GamesShowcaseSection() {
             <span className="text-sm font-bold text-accent-light">מדריך משחקים</span>
           </div>
 
-          <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-light to-emerald-200 mb-6">
+          <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-accent-light to-emerald-200 mb-6">
             הכירו את סוגי המשחקים לפני שמתחילים
-          </h2>
+          </h3>
 
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-secondary leading-relaxed">
             גלו סוגי משחקים שונים — סלוטים, רולטה חיה, קלפים ועוד.
@@ -163,11 +162,11 @@ export function GamesShowcaseSection() {
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <Link href={game.href} prefetch={false}>
-                {/* Animated border */}
-                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon opacity-0 group-hover:opacity-100 blur transition-all duration-500 animate-pulse" />
+                {/* Hover border */}
+                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon opacity-0 group-hover:opacity-100 blur transition-opacity duration-300" />
 
                 {/* Card */}
-                <div className="relative h-44 md:h-52 rounded-2xl bg-gradient-to-br from-card-light to-[#0D121C] border border-white/10 overflow-hidden flex flex-col items-center justify-center gap-3 p-4 transition-all duration-300 group-hover:border-transparent">
+                <div className="relative h-44 md:h-52 rounded-2xl bg-gradient-to-br from-card-light to-[#0D121C] border border-white/10 overflow-hidden flex flex-col items-center justify-center gap-3 p-4 transition-colors duration-300 group-hover:border-transparent">
                   {/* Glow effect on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-t ${game.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
 
@@ -184,7 +183,6 @@ export function GamesShowcaseSection() {
                   {/* Players badge */}
                   <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                     <span className="text-xs text-emerald-400 font-medium">{game.players} משחקים</span>
@@ -203,10 +201,10 @@ export function GamesShowcaseSection() {
           <Link
             href="/games"
             prefetch={false}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#8A6A1F] via-accent to-emerald-neon text-background font-heading font-bold text-lg transition-all duration-300 hover:shadow-[0_0_34px_rgba(200,162,74,0.34)] hover:scale-105 group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#8A6A1F] via-accent to-emerald-neon text-background font-heading font-bold text-lg transition-transform duration-300 hover:scale-105 group"
           >
             <span>קדימה, בואו לשחק!</span>
-            <span className="animate-bounce-x">🎰</span>
+            <span>🎰</span>
           </Link>
         </div>
       </div>

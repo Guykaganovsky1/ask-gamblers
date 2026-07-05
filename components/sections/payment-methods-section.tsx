@@ -38,9 +38,9 @@ export function PaymentMethodsSection() {
     <section className="mx-auto max-w-7xl px-4 py-24">
       <div className="flex items-center gap-2 mb-6">
         <div className="w-1 h-8 bg-accent rounded" />
-        <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
+        <h3 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
           שיטות תשלום מומלצות לשחקנים ישראלים
-        </h2>
+        </h3>
       </div>
 
       <p className="text-text-secondary mb-10 max-w-3xl leading-relaxed">

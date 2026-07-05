@@ -42,9 +42,9 @@ export function SafeCasinosSection() {
             </svg>
           </div>
           <div>
-            <h2 className="font-heading text-xl md:text-2xl font-bold text-text-primary">
+            <h3 className="font-heading text-xl md:text-2xl font-bold text-text-primary">
               מה אנחנו בודקים לפני שמציגים קזינו
-            </h2>
+            </h3>
             <p className="text-text-secondary text-sm mt-1">
               רשימת בדיקות בסיסית להשוואה לפני הרשמה
             </p>

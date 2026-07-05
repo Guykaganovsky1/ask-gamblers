@@ -40,9 +40,9 @@ export function PlayerRoadmapSection() {
         >
           מרגישים אבודים?
         </span>
-        <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
+        <h3 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
           מפת הדרכים לשחקן הישראלי
-        </h2>
+        </h3>
         <p className="text-text-secondary max-w-2xl mx-auto leading-relaxed">
           עולם הקזינו אונליין יכול להיות מבלבל. הנה 5 הדברים שחייבים לבדוק לפני שבוחרים קזינו:
         </p>

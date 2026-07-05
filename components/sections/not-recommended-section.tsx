@@ -53,9 +53,9 @@ export function NotRecommendedSection() {
     <section className="mx-auto max-w-7xl px-4 py-24">
       <div className="flex items-center gap-2 mb-10">
         <div className="w-1 h-8 bg-red-500 rounded" />
-        <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
+        <h3 className="font-heading text-2xl md:text-3xl font-black text-text-primary">
           קזינו שאיננו ממליצים עליהם — שקיפות מלאה
-        </h2>
+        </h3>
       </div>
 
       <p className="text-text-secondary mb-8 max-w-3xl leading-relaxed">

@@ -20,7 +20,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 export const metadata: Metadata = {
   title: "קזינו אונליין בישראל 2026 | השוואת ביקורות בונוסים ותשלומים",
   description:
-    "השוואת קזינו אונליין ובתי קזינו בישראל 2026: ביקורות, בונוסים, משחקים, שיטות תשלום, רישוי ומשחק אחראי לפני הרשמה.",
+    "השוואת קזינו אונליין ובתי קזינו בישראל 2026: ביקורות מפורטות, בונוסים, שיטות תשלום, רישוי, זמני משיכה וכללי משחק אחראי שיעזרו לבדוק תנאים לפני הרשמה והפקדה.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: SITE_URL,
     languages: {
@@ -154,7 +158,7 @@ async function HomeContent() {
       <SafeCasinosSection />
 
       {casinos.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
+        <section className="render-defer mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.casinos.heading}</SectionHeading>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {casinos.map((casino, i) => (
@@ -169,14 +173,20 @@ async function HomeContent() {
         </section>
       )}
 
-      <NotRecommendedSection />
+      <div className="render-defer">
+        <NotRecommendedSection />
+      </div>
 
-      <PlayerRoadmapSection />
+      <div className="render-defer">
+        <PlayerRoadmapSection />
+      </div>
 
-      <PaymentMethodsSection />
+      <div className="render-defer">
+        <PaymentMethodsSection />
+      </div>
 
       {categories.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
+        <section className="render-defer mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.categories.heading}</SectionHeading>
           <div className="mt-12 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {categories.slice(0, 6).map((cat, i) => (
@@ -194,20 +204,22 @@ async function HomeContent() {
         </section>
       )}
 
-      <GamesShowcaseSection />
+      <div className="render-defer">
+        <GamesShowcaseSection />
+      </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-24">
+      <section className="render-defer mx-auto max-w-7xl px-4 py-24">
         <div className="mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
+          <h3 className="font-heading text-3xl md:text-4xl font-black text-text-primary mb-4">
             בונוסים למכונות מזל: מה לבדוק
-          </h2>
+          </h3>
           <div className="w-16 h-1 bg-accent rounded-full" />
         </div>
         <BonusCards />
       </section>
 
       {posts.length > 0 && (
-        <section className="mx-auto max-w-7xl px-4 py-24">
+        <section className="render-defer mx-auto max-w-7xl px-4 py-24">
           <SectionHeading>{SECTION_COPY.blog.heading}</SectionHeading>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
@@ -220,13 +232,15 @@ async function HomeContent() {
         </section>
       )}
 
-      <FAQSection />
+      <div className="render-defer">
+        <FAQSection />
+      </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-24">
+      <section className="render-defer mx-auto max-w-7xl px-4 py-24">
         <div className="bg-gradient-to-br from-card-light to-card border border-border-glass rounded-2xl p-8 md:p-12 text-center">
-          <h2 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
+          <h3 className="font-heading text-2xl md:text-3xl font-black text-text-primary mb-4">
             רוצים להשוות לפני הרשמה?
-          </h2>
+          </h3>
           <p className="text-text-secondary max-w-2xl mx-auto mb-8 leading-relaxed">
             אנחנו בודקים רישיון, שיטות תשלום, בונוסים, תמיכה, חוויית משתמש וכלי משחק אחראי — כדי שתוכלו להשוות בצורה מסודרת לפני החלטה.
           </p>

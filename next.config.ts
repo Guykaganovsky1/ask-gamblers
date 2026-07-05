@@ -1,5 +1,17 @@
 import type { NextConfig } from "next";
 
+const immutableStaticAssetHeaders = [
+  { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+  { key: "CDN-Cache-Control", value: "public, max-age=31536000, immutable" },
+  { key: "Vercel-CDN-Cache-Control", value: "public, max-age=31536000, immutable" },
+];
+
+const shortStaticAssetHeaders = [
+  { key: "Cache-Control", value: "public, max-age=86400" },
+  { key: "CDN-Cache-Control", value: "public, max-age=604800" },
+  { key: "Vercel-CDN-Cache-Control", value: "public, max-age=604800" },
+];
+
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
@@ -31,7 +43,7 @@ const nextConfig: NextConfig = {
     ];
     const noIndexHeaders = [
       ...securityHeaders,
-      { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+      { key: "X-Robots-Tag", value: "noindex, noarchive" },
     ];
 
     return [
@@ -57,39 +69,34 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/_next/static/:path*",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-        ],
+        headers: immutableStaticAssetHeaders,
       },
       {
         source: "/images/:path*",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" },
-        ],
+        headers: immutableStaticAssetHeaders,
+      },
+      {
+        source: "/ask-gamblers-logo.svg",
+        headers: immutableStaticAssetHeaders,
       },
       {
         source: "/favicon-:size(\\d+x\\d+).png",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=86400" },
-        ],
+        headers: shortStaticAssetHeaders,
       },
       {
         source: "/apple-touch-icon.png",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=86400" },
-        ],
+        headers: shortStaticAssetHeaders,
       },
       {
         source: "/site.webmanifest.json",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=86400" },
-        ],
+        headers: shortStaticAssetHeaders,
       },
     ];
   },
 
   images: {
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       {
         protocol: "https",

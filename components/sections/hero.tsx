@@ -14,7 +14,7 @@ export function Hero() {
         <source media="(min-width: 768px)" srcSet="/images/hero-bg-tablet.webp" type="image/webp" />
         <img
           src="/images/hero-bg-mobile.webp"
-          alt=""
+          alt="רקע קזינו אונליין של Ask Gamblers"
           width={780}
           height={439}
           className="h-full w-full object-cover object-[35%_center] md:object-center"

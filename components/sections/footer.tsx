@@ -75,57 +75,6 @@ export async function Footer() {
         {/* Top Rated Casinos - Premium Showcase */}
         {casinos.length > 0 && (
           <div className="mb-16 pb-12 border-b border-border-glass/20">
-            <style>{`
-              @keyframes cardGlow {
-                0%, 100% {
-                  box-shadow: 0 8px 24px rgba(200, 162, 74, 0.16);
-                  border-color: rgba(200, 162, 74, 0.22);
-                }
-                50% {
-                  box-shadow: 0 12px 36px rgba(200, 162, 74, 0.26);
-                  border-color: rgba(200, 162, 74, 0.36);
-                }
-              }
-
-              @keyframes slideIn {
-                from {
-                  opacity: 0;
-                  transform: translateY(12px);
-                }
-                to {
-                  opacity: 1;
-                  transform: translateY(0);
-                }
-              }
-
-              .casino-card {
-                animation: slideIn 0.6s ease-out forwards;
-              }
-
-              .casino-card:nth-child(1) { animation-delay: 0.05s; }
-              .casino-card:nth-child(2) { animation-delay: 0.1s; }
-              .casino-card:nth-child(3) { animation-delay: 0.15s; }
-              .casino-card:nth-child(4) { animation-delay: 0.2s; }
-              .casino-card:nth-child(5) { animation-delay: 0.25s; }
-              .casino-card:nth-child(6) { animation-delay: 0.3s; }
-
-              .premium-badge {
-                position: absolute;
-                top: 1px;
-                right: 12px;
-                background: linear-gradient(135deg, #D4AF37, #F4E4C1);
-                color: #0A0A0F;
-                font-size: 12px;
-                font-weight: 900;
-                padding: 5px 12px;
-                border-radius: 6px;
-                text-transform: uppercase;
-                letter-spacing: 0.8px;
-                box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
-                z-index: 20;
-              }
-            `}</style>
-
             {/* Section Header */}
             <div className="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="flex items-center gap-4">
@@ -154,7 +103,7 @@ export async function Footer() {
               {casinos.slice(0, 8).map((casino, i) => (
                 <div
                   key={casino._id}
-                  className="casino-card group relative overflow-hidden rounded-2xl border border-accent/20 bg-gradient-to-br from-card/60 to-card/20 p-5 backdrop-blur-sm hover:from-card/80 hover:to-card/40 transition-all duration-500 hover:shadow-2xl hover:border-accent/40"
+                  className="footer-casino-card group relative overflow-hidden rounded-2xl border border-accent/20 bg-gradient-to-br from-card/60 to-card/20 p-5 transition-colors duration-300 hover:from-card/80 hover:to-card/40 hover:border-accent/40"
                 >
                   {/* Accent Glow Background */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -162,7 +111,7 @@ export async function Footer() {
                   </div>
 
                   {/* Badge */}
-                  {i === 0 && <div className="premium-badge">⭐ דירוג גבוה</div>}
+                  {i === 0 && <div className="footer-premium-badge">⭐ דירוג גבוה</div>}
 
                   {/* Content */}
                   <div className="relative z-10 flex flex-col h-full gap-4">
@@ -212,17 +161,12 @@ export async function Footer() {
                         href={`/go/${casino.slug.current}`}
                         prefetch={false}
                         rel="nofollow sponsored"
-                        className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-background font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95 text-center"
+                        className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-background font-bold text-sm rounded-lg transition-transform duration-300 transform group-hover:scale-105 active:scale-95 text-center"
                       >
                         בדוק עכשיו
                       </Link>
                     </div>
                   </div>
-
-                  {/* Hover Border Animation */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
-                    animation: 'cardGlow 3s ease-in-out infinite'
-                  }} />
                 </div>
               ))}
             </div>
@@ -310,7 +254,7 @@ export async function Footer() {
             הימורים עלולים לגרום להתמכרות. שחק באחריות. מותר מגיל 18+ בלבד.
             האתר מכיל קישורי שותפים.
           </p>
-          <p className="mt-4">&copy; {new Date().getFullYear()} Ask Gamblers. כל הזכויות שמורות.</p>
+          <p className="mt-4">&copy; 2024-2026 Ask Gamblers. כל הזכויות שמורות.</p>
         </div>
       </div>
     </footer>

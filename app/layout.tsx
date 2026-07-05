@@ -7,7 +7,11 @@ const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATIO
 
 export const metadata: Metadata = {
   title: "קזינו אונליין בישראל 2026 | ביקורות בונוסים ותשלומים",
-  description: "Ask Gamblers מציג השוואת קזינו אונליין בישראל 2026 עם ביקורות, בונוסים, משחקים, תשלומים, רישוי ושיקולי משחק אחראי לפני הרשמה.",
+  description: "Ask Gamblers מציג השוואת קזינו אונליין בישראל 2026 עם ביקורות מפורטות, בונוסים, שיטות תשלום, רישוי, זמני משיכה וכללי משחק אחראי לבדיקה לפני הרשמה והפקדה.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   keywords: [
     "קזינו אונליין",
     "קזינו בישראל",
