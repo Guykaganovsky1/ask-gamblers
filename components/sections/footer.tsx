@@ -78,12 +78,12 @@ export async function Footer() {
             <style>{`
               @keyframes cardGlow {
                 0%, 100% {
-                  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.15);
-                  border-color: rgba(168, 85, 247, 0.2);
+                  box-shadow: 0 8px 24px rgba(200, 162, 74, 0.16);
+                  border-color: rgba(200, 162, 74, 0.22);
                 }
                 50% {
-                  box-shadow: 0 12px 36px rgba(168, 85, 247, 0.25);
-                  border-color: rgba(168, 85, 247, 0.35);
+                  box-shadow: 0 12px 36px rgba(200, 162, 74, 0.26);
+                  border-color: rgba(200, 162, 74, 0.36);
                 }
               }
 

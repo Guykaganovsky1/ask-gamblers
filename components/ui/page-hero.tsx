@@ -27,7 +27,7 @@ export function PageHero({ title, subtitle, badge }: PageHeroProps) {
       />
       <div
         className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse 70% 110% at 50% 50%, rgba(139,92,246,0.14) 0%, transparent 65%)" }}
+        style={{ background: "radial-gradient(ellipse 70% 110% at 50% 50%, rgba(200,162,74,0.12) 0%, transparent 65%)" }}
       />
 
       <svg

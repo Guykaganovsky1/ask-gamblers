@@ -375,7 +375,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: -1px;
   border-radius: 50px;
-  border: 1px solid rgba(168, 85, 247, 0.4);
+  border: 1px solid rgba(15, 143, 95, 0.38);
   animation: waPulse 2.5s ease-out infinite;
   pointer-events: none;
   will-change: transform, opacity;
