@@ -60,7 +60,7 @@ export function PaymentMethodsSection() {
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             {method.recommended && (
-              <span className="absolute -top-3 right-4 px-3 py-1 bg-accent text-white text-xs font-bold rounded-full">
+              <span className="absolute -top-3 right-4 px-3 py-1 bg-accent text-background text-xs font-bold rounded-full">
                 נפוץ
               </span>
             )}

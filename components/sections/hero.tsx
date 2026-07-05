@@ -49,7 +49,7 @@ export function Hero() {
             <Link
               href="/casinos"
               prefetch={false}
-              className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-white font-bold text-center hover:bg-accent/90 transition-colors"
+              className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-background font-bold text-center hover:bg-accent/90 transition-colors"
             >
               השוואת בתי קזינו בישראל ←
             </Link>

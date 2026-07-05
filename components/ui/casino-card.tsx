@@ -40,7 +40,7 @@ export function CasinoCard({
 
   return (
     <div className={`group h-full ${delayClass}`}>
-      <div className="relative h-full overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
+      <div className="relative h-full overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_34px_rgba(200,162,74,0.26)]">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         <div className="relative z-10 flex h-full flex-col gap-5 p-6">

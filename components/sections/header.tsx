@@ -31,9 +31,9 @@ export function Header() {
       <header
         className="sticky top-0 z-50"
         style={{
-          background: "linear-gradient(180deg, rgba(11,14,20,0.98) 0%, rgba(15,10,25,0.97) 100%)",
+          background: "linear-gradient(180deg, rgba(11,14,20,0.98) 0%, rgba(13,18,28,0.97) 100%)",
           backdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(168,85,247,0.15)",
+          borderBottom: "1px solid rgba(200,162,74,0.18)",
         }}
       >
         <div className="flex w-full items-center justify-between px-6 py-3" dir="ltr">
@@ -52,8 +52,9 @@ export function Header() {
                     prefetch={false}
                     className="mx-1 rounded-lg px-5 py-2 font-heading text-sm font-bold text-white transition-transform hover:scale-[1.02]"
                     style={{
-                      background: "linear-gradient(135deg, #5B21B6 0%, #7C3AED 50%, #9333EA 100%)",
-                      border: "1px solid rgba(192,132,252,0.6)",
+                      background: "linear-gradient(135deg, #8A6A1F 0%, #C8A24A 55%, #E6C66C 100%)",
+                      border: "1px solid rgba(240,217,139,0.65)",
+                      color: "#0B0E14",
                     }}
                   >
                     {link.label}
@@ -68,12 +69,12 @@ export function Header() {
                   prefetch={false}
                   className={`relative rounded-lg px-4 py-2 font-heading text-sm font-semibold transition-all ${
                     isActive
-                      ? "text-purple-300"
-                      : "text-text-muted hover:text-purple-200"
+                      ? "text-accent-light"
+                      : "text-text-muted hover:text-accent-light"
                   }`}
                   style={isActive ? {
-                    background: "rgba(168,85,247,0.12)",
-                    border: "1px solid rgba(168,85,247,0.25)",
+                    background: "rgba(200,162,74,0.10)",
+                    border: "1px solid rgba(200,162,74,0.24)",
                   } : undefined}
                 >
                   {"badge" in link && link.badge && (
@@ -98,9 +99,9 @@ export function Header() {
             className="flex flex-col gap-[5px] p-2 lg:hidden"
             aria-label="תפריט"
           >
-            <span className="block h-[2px] w-6 rounded-full bg-text-secondary transition-colors hover:bg-purple-400" />
-            <span className="block h-[2px] w-6 rounded-full bg-text-secondary transition-colors hover:bg-purple-400" />
-            <span className="block h-[2px] w-4 rounded-full bg-text-secondary transition-colors hover:bg-purple-400" />
+            <span className="block h-[2px] w-6 rounded-full bg-text-secondary transition-colors hover:bg-accent-light" />
+            <span className="block h-[2px] w-6 rounded-full bg-text-secondary transition-colors hover:bg-accent-light" />
+            <span className="block h-[2px] w-4 rounded-full bg-text-secondary transition-colors hover:bg-accent-light" />
           </button>
         </div>
       </header>

@@ -29,7 +29,7 @@ export function SoftwareProviderCard({
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
 
-      <div className="group relative flex h-full flex-col items-center justify-center gap-6 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)] cursor-default">
+      <div className="group relative flex h-full flex-col items-center justify-center gap-6 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_34px_rgba(200,162,74,0.28)] cursor-default">
         <div className="relative h-24 w-32">
           {logo ? (
             <Image
@@ -39,7 +39,7 @@ export function SoftwareProviderCard({
               className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-br from-purple-900 to-purple-700 text-center">
+            <div className="flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-br from-amber-900 to-stone-900 text-center">
               <span className="text-sm font-bold text-white">{name.slice(0, 2).toUpperCase()}</span>
             </div>
           )}
@@ -53,7 +53,7 @@ export function SoftwareProviderCard({
           {description}
         </p>
 
-        <button className="button-scale rounded-lg bg-accent hover:bg-accent/80 px-6 py-2 font-heading font-bold text-sm text-white transition-all duration-200 shadow-lg hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+        <button className="button-scale rounded-lg bg-accent hover:bg-accent/80 px-6 py-2 font-heading font-bold text-sm text-background transition-all duration-200 shadow-lg hover:shadow-[0_0_20px_rgba(200,162,74,0.32)]">
           צפו במשחקים
         </button>
       </div>

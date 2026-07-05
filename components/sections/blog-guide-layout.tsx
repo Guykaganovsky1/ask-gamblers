@@ -109,7 +109,7 @@ export function BlogGuideLayout({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {featuredCasinos.slice(0, 4).map((casino) => (
                   <Link key={casino._id} href={`/go/${casino.slug.current}`} rel="nofollow sponsored" className="block">
-                    <div className="w-full px-4 py-2 bg-accent hover:bg-accent/90 text-white font-bold rounded-lg transition-colors text-center text-sm">
+                    <div className="w-full px-4 py-2 bg-accent hover:bg-accent/90 text-background font-bold rounded-lg transition-colors text-center text-sm">
                       {casino.name} - {cleanBonusText(casino.bonusAmount || "בונוס בכפוף לתנאים")}
                     </div>
                   </Link>

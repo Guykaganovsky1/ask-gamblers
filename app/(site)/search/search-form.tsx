@@ -32,7 +32,7 @@ export function SearchForm({ initialQuery = "" }: SearchFormProps) {
         />
         <button
           type="submit"
-          className="shrink-0 rounded-xl bg-accent px-6 py-4 font-bold text-white hover:bg-accent-dark transition-colors"
+          className="shrink-0 rounded-xl bg-accent px-6 py-4 font-bold text-background hover:bg-accent/90 transition-colors"
         >
           חיפוש
         </button>

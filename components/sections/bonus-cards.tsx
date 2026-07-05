@@ -12,13 +12,13 @@ const BONUSES: Bonus[] = [
   { emoji: "💎", name: "Diamond",   desc: "100% בונוס הפקדה",      bg: "bg-slate-700",   type: "bonusdeposit" },
   { emoji: "🏆", name: "Golden",    desc: "+50 ספינים בהצטרפות",   bg: "bg-yellow-400",  type: "spinswelcome" },
   { emoji: "⚡", name: "Lucky",     desc: "עד $500 בונוס",          bg: "bg-black",       type: "bonusdeposit" },
-  { emoji: "🎰", name: "Monte",     desc: "+200 ספינים חינם",       bg: "bg-purple-900",  type: "spinswelcome" },
+  { emoji: "🎰", name: "Monte",     desc: "+200 ספינים חינם",       bg: "bg-stone-900",  type: "spinswelcome" },
   { emoji: "🎯", name: "Play",      desc: "+100% בונוס ראשון",      bg: "bg-slate-800",   type: "bonus" },
   { emoji: "👑", name: "Pharaoh",   desc: "ספינים ללא הפקדה",       bg: "bg-red-500",     type: "bonusfree" },
   { emoji: "💰", name: "CashKing",  desc: "15% קאשבק שבועי",        bg: "bg-emerald-800", type: "cashback" },
   { emoji: "🎁", name: "FreePlay",  desc: "₪50 ללא הפקדה",          bg: "bg-indigo-700",  type: "bonusfree" },
   { emoji: "🔄", name: "Refund",    desc: "10% קאשבק על הפסדים",   bg: "bg-teal-800",    type: "cashback" },
-  { emoji: "🌟", name: "Welcome",   desc: "+300% בונוס ברוכים הבאים", bg: "bg-violet-800", type: "bonus" },
+  { emoji: "🌟", name: "Welcome",   desc: "+300% בונוס ברוכים הבאים", bg: "bg-amber-900", type: "bonus" },
   { emoji: "🎡", name: "SpinFest",  desc: "100 ספינים בהרשמה",      bg: "bg-pink-800",    type: "spinswelcome" },
   { emoji: "💳", name: "Reload",    desc: "50% בונוס על הפקדה חוזרת", bg: "bg-blue-900",  type: "bonusdeposit" },
 ];
@@ -59,7 +59,7 @@ export function BonusCards() {
             style={{ animationDelay: `${i * 0.05}s` }}
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-accent-light to-emerald-neon p-1" />
-            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]">
+            <div className="group relative flex h-full flex-col items-center justify-center gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_34px_rgba(200,162,74,0.28)]">
               <div className={`h-24 w-32 ${bonus.bg} rounded-lg flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300`}>
                 {bonus.emoji}
               </div>
@@ -69,7 +69,7 @@ export function BonusCards() {
                 </h3>
                 <p className="text-xs text-text-muted">{bonus.desc}</p>
               </div>
-              <span className="relative block w-full overflow-hidden rounded-lg bg-accent py-2 font-bold text-white shadow-lg">
+              <span className="relative block w-full overflow-hidden rounded-lg bg-accent py-2 font-bold text-background shadow-lg">
                 <div className="bonus-button-shine" />
                 <span className="relative z-10">קבל בונוס</span>
               </span>

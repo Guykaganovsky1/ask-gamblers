@@ -119,7 +119,7 @@ export default async function NewsPage() {
                     )}
                     {/* Category Tag */}
                     {post.categories && post.categories[0] && (
-                      <div className="absolute top-4 right-4 inline-flex items-center gap-2 bg-accent/90 text-white px-3 py-1 rounded-lg text-xs font-bold">
+                      <div className="absolute top-4 right-4 inline-flex items-center gap-2 bg-accent/90 text-background px-3 py-1 rounded-lg text-xs font-bold">
                         <span className="w-2 h-2 bg-white rounded-full" />
                         {post.categories[0].name}
                       </div>

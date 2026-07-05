@@ -27,7 +27,7 @@ export function BonusCard({
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`flex flex-col h-full rounded-2xl overflow-hidden border border-border-glass bg-card hover:shadow-[0_0_30px_rgba(168,85,247,0.25)] transition-all duration-300 ${isInView ? "animate-slide-up" : "opacity-0"}`}
+      className={`flex flex-col h-full rounded-2xl overflow-hidden border border-border-glass bg-card hover:shadow-[0_0_30px_rgba(200,162,74,0.24)] transition-all duration-300 ${isInView ? "animate-slide-up" : "opacity-0"}`}
       style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div className={`${color} h-32 flex items-center justify-center text-6xl`}>

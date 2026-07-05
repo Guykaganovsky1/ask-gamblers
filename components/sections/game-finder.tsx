@@ -54,7 +54,7 @@ export function GameFinder() {
         >
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-accent-light to-emerald-neon p-[1px]" />
 
-          <div className="relative flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_36px_rgba(168,85,247,0.3)]">
+          <div className="relative flex flex-col gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_32px_rgba(200,162,74,0.28)]">
 
             {game.tag && (
               <span className="absolute top-4 left-4 rounded-full bg-accent/20 border border-accent/30 px-2.5 py-0.5 text-[10px] font-bold text-accent tracking-wide">
@@ -75,7 +75,7 @@ export function GameFinder() {
               </p>
             </div>
 
-            <button className="mt-2 w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+            <button className="mt-2 w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-background border border-accent/30 hover:border-accent py-2.5 text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,162,74,0.32)]">
               קראו מה לבדוק
             </button>
           </div>

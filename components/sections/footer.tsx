@@ -173,7 +173,7 @@ export async function Footer() {
                           'bg-gradient-to-br from-yellow-400 to-yellow-500',
                           'bg-gradient-to-br from-blue-500 to-blue-600',
                           'bg-gradient-to-br from-teal-500 to-teal-600',
-                          'bg-gradient-to-br from-purple-600 to-purple-700',
+                          'bg-gradient-to-br from-amber-700 to-amber-800',
                           'bg-gradient-to-br from-gray-700 to-gray-800',
                           'bg-gradient-to-br from-red-500 to-red-600',
                           'bg-gradient-to-br from-red-600 to-red-700',
@@ -212,7 +212,7 @@ export async function Footer() {
                         href={`/go/${casino.slug.current}`}
                         prefetch={false}
                         rel="nofollow sponsored"
-                        className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-white font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95 text-center"
+                        className="block w-full py-2 px-3 bg-accent/90 hover:bg-accent text-background font-bold text-sm rounded-lg transition-all duration-300 transform group-hover:scale-105 active:scale-95 text-center"
                       >
                         בדוק עכשיו
                       </Link>

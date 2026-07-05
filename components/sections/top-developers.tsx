@@ -111,7 +111,7 @@ export function TopDevelopers() {
             onClick={() => setActive(key)}
             className={`rounded-full border px-5 py-1.5 text-sm font-semibold transition-all duration-200 ${
               active === key
-                ? "border-accent bg-accent text-white shadow-lg shadow-accent/30"
+                ? "border-accent bg-accent text-background shadow-lg shadow-accent/30"
                 : "border-border-glass bg-card/40 text-text-muted hover:border-accent/60 hover:text-accent"
             }`}
           >
@@ -134,7 +134,7 @@ export function TopDevelopers() {
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent via-accent-light to-emerald-neon p-[1px]" />
 
-            <div className="relative flex flex-col gap-5 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_36px_rgba(168,85,247,0.3)]">
+            <div className="relative flex flex-col gap-5 rounded-2xl bg-gradient-to-br from-card-light to-card p-6 h-full backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_32px_rgba(200,162,74,0.28)]">
 
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 border border-accent/20 text-2xl transition-transform duration-300 group-hover:scale-110">
@@ -168,7 +168,7 @@ export function TopDevelopers() {
 
               <Link
                 href={game.href}
-                className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent/30 hover:border-accent py-2.5 text-center text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
+                className="w-full rounded-lg bg-accent/10 hover:bg-accent text-accent hover:text-background border border-accent/30 hover:border-accent py-2.5 text-center text-sm font-bold transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,162,74,0.32)]"
               >
                 קראו מדריך
               </Link>

@@ -29,22 +29,22 @@ export default function NotFound() {
         `}</style>
 
         <g transform="translate(200, 220)" className="nf-c1">
-          <rect x="-22" y="-32" width="44" height="62" rx="6" fill="rgba(12,8,25,0.9)" stroke="rgba(168,85,247,0.6)" strokeWidth="2" />
+          <rect x="-22" y="-32" width="44" height="62" rx="6" fill="rgba(13,18,28,0.9)" stroke="rgba(200,162,74,0.6)" strokeWidth="2" />
           <text x="0" y="-6" textAnchor="middle" fontSize="26" fill="#e2e8f0" dominantBaseline="middle">♠</text>
         </g>
         <g transform="translate(1240, 300)" className="nf-c2">
-          <rect x="-22" y="-32" width="44" height="62" rx="6" fill="rgba(12,8,25,0.9)" stroke="rgba(168,85,247,0.5)" strokeWidth="2" />
+          <rect x="-22" y="-32" width="44" height="62" rx="6" fill="rgba(13,18,28,0.9)" stroke="rgba(200,162,74,0.5)" strokeWidth="2" />
           <text x="0" y="-6" textAnchor="middle" fontSize="26" fill="#ef4444" dominantBaseline="middle">♥</text>
         </g>
         <g transform="translate(1100, 150)" className="nf-c1">
-          <rect x="-24" y="-24" width="48" height="48" rx="8" fill="rgba(230,226,248,0.85)" stroke="rgba(168,85,247,0.4)" strokeWidth="1.5" />
+          <rect x="-24" y="-24" width="48" height="48" rx="8" fill="rgba(245,241,232,0.85)" stroke="rgba(200,162,74,0.4)" strokeWidth="1.5" />
           {[[-9,-9],[9,-9],[0,0],[-9,9],[9,9]].map(([dx,dy],i) => (
             <circle key={i} cx={dx} cy={dy} r="4" fill="#1a1a2e" />
           ))}
         </g>
         <g transform="translate(340, 420)" className="nf-c2">
-          <circle r="20" fill="#7c3aed" opacity="0.6" />
-          <circle r="20" fill="none" stroke="rgba(196,170,255,0.7)" strokeWidth="2" strokeDasharray="5 3" />
+          <circle r="20" fill="#C8A24A" opacity="0.6" />
+          <circle r="20" fill="none" stroke="rgba(240,217,139,0.7)" strokeWidth="2" strokeDasharray="5 3" />
         </g>
       </svg>
 
@@ -52,10 +52,10 @@ export default function NotFound() {
         <div
           className="font-heading text-[120px] md:text-[180px] font-black leading-none"
           style={{
-            background: "linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%)",
+            background: "linear-gradient(135deg, #8A6A1F 0%, #C8A24A 50%, #F0D98B 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            filter: "drop-shadow(0 0 40px rgba(168,85,247,0.5))",
+            filter: "drop-shadow(0 0 34px rgba(200,162,74,0.35))",
           }}
         >
           404
@@ -78,9 +78,10 @@ export default function NotFound() {
             href="/"
             className="relative overflow-hidden rounded-xl px-8 py-3 font-heading text-sm font-bold text-white transition-transform duration-150 hover:-translate-y-0.5"
             style={{
-              background: "linear-gradient(135deg, #5B21B6 0%, #7C3AED 50%, #9333EA 100%)",
-              border: "1px solid rgba(192,132,252,0.5)",
-              boxShadow: "0 0 20px rgba(168,85,247,0.3)",
+              background: "linear-gradient(135deg, #8A6A1F 0%, #C8A24A 55%, #E6C66C 100%)",
+              border: "1px solid rgba(240,217,139,0.55)",
+              boxShadow: "0 0 20px rgba(200,162,74,0.24)",
+              color: "#0B0E14",
             }}
           >
             חזור לדף הבית

@@ -340,7 +340,7 @@ export default async function BlogPostPage({ params }: Props) {
             {/* Category Badge */}
             {post.categories && post.categories.length > 0 && (
               <div className="mb-4">
-                <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-sm font-bold text-white">
+                <span className="inline-block rounded-full bg-accent px-4 py-1.5 text-sm font-bold text-background">
                   {post.categories[0].name}
                 </span>
               </div>

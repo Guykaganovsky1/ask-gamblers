@@ -27,7 +27,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
       <nav
         aria-label="breadcrumb"
         className="w-full border-b border-accent/10"
-        style={{ background: "rgba(168,85,247,0.04)" }}
+        style={{ background: "rgba(200,162,74,0.05)" }}
       >
         <ol
           className="mx-auto flex max-w-7xl items-center gap-1.5 px-4 py-2.5 text-xs"

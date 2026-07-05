@@ -43,7 +43,7 @@ export function CategoryCard({ name, slug, description, icon, casinoCount, postC
       <Link
         href={`/categories/${encodeCategorySlug(slug.current)}`}
         prefetch={false}
-        className="group relative flex h-full flex-col items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
+        className="group relative flex h-full flex-col items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-card-light to-card px-6 py-8 text-center backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_34px_rgba(200,162,74,0.28)]"
       >
         <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
           <CasinoIcon slug={iconSlug} className="w-20 h-20" />

@@ -49,7 +49,7 @@ export function CasinoFilter({ casinos }: Props) {
             onClick={() => setActive(key)}
             className={`rounded-full border px-5 py-1.5 text-sm font-semibold transition-all duration-200 ${
               active === key
-                ? "border-accent bg-accent text-white shadow-lg shadow-accent/30"
+                ? "border-accent bg-accent text-background shadow-lg shadow-accent/30"
                 : "border-border-glass bg-card/40 text-text-muted hover:border-accent/60 hover:text-accent"
             }`}
           >

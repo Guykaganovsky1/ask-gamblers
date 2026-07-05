@@ -97,13 +97,13 @@ export function PageHero({ title, subtitle, badge }: PageHeroProps) {
             key={i} x={x} y={y}
             textAnchor="middle" dominantBaseline="middle"
             fontSize={8 + (i % 3) * 3}
-            fill="rgba(168,85,247,0.9)"
+            fill="rgba(200,162,74,0.9)"
             className="ph-spark"
             style={{ animation: `phTwinkle ${dur}s ease-in-out infinite ${delay}s` }}
           >✦</text>
         ))}
 
-        <line x1="0" y1="298" x2="1440" y2="298" stroke="rgba(168,85,247,0.10)" strokeWidth="1"/>
+        <line x1="0" y1="298" x2="1440" y2="298" stroke="rgba(200,162,74,0.12)" strokeWidth="1"/>
       </svg>
 
       {/* Text overlay */}
@@ -115,7 +115,7 @@ export function PageHero({ title, subtitle, badge }: PageHeroProps) {
         )}
         <h1
           className="font-heading text-4xl md:text-5xl font-black text-text-primary"
-          style={{ textShadow: "0 0 40px rgba(139,92,246,0.45)" }}
+          style={{ textShadow: "0 0 34px rgba(200,162,74,0.28)" }}
         >
           {title}
         </h1>

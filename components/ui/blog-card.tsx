@@ -18,7 +18,7 @@ export function BlogCard({ title, slug, featuredImage, publishedAt, author, inde
       className="group h-full animate-slide-up-blog"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <Link href={`/blog/${slug.current}`} prefetch={false} className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]">
+      <Link href={`/blog/${slug.current}`} prefetch={false} className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-card bg-gradient-to-br from-card-light to-card backdrop-blur-md transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_34px_rgba(200,162,74,0.26)]">
         {featuredImage ? (
           <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-accent/10 to-accent/5">
             <Image

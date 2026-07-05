@@ -77,7 +77,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest.json" />
-        <meta name="theme-color" content="#9333EA" />
+        <meta name="theme-color" content="#0B0E14" />
       </head>
       <body
         className="font-body bg-[#0B0E14] text-[#F5F5F5] antialiased"
