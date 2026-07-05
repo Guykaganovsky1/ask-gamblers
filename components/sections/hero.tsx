@@ -12,7 +12,7 @@ export function Hero() {
     >
       <Image
         src="/images/hero-bg.webp"
-        alt="בתי קזינו מובילים בישראל - Ask Gamblers"
+        alt="השוואת קזינו אונליין ובתי קזינו בישראל"
         fill
         priority
         fetchPriority="high"
@@ -46,13 +46,13 @@ export function Hero() {
               href="/casinos"
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg bg-accent text-white font-bold text-center hover:bg-accent/90 transition-colors"
             >
-              גלה את בתי הקזינו המובילים ←
+              השוואת בתי קזינו בישראל ←
             </Link>
             <Link
               href="/blog"
               className="w-full sm:flex-1 text-base py-3 px-6 rounded-lg border border-accent text-accent font-bold text-center hover:bg-accent/10 transition-colors "
             >
-              קרא ביקורות מלאות
+              מדריכי קזינו אונליין
             </Link>
           </div>
 

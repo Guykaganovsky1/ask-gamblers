@@ -30,8 +30,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il"
 const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
-  title: "קזינו אונליין בישראל | ביקורות ובונוסים",
-  description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים, משחקים, שיטת דירוג ושיקולי משחק אחראי לפני הרשמה.",
+  title: "קזינו אונליין בישראל 2026 | ביקורות בונוסים ותשלומים",
+  description: "Ask Gamblers מציג השוואת קזינו אונליין בישראל 2026 עם ביקורות, בונוסים, משחקים, תשלומים, רישוי ושיקולי משחק אחראי לפני הרשמה.",
   keywords: [
     "קזינו אונליין",
     "קזינו בישראל",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     "online casino israel"
   ],
   openGraph: {
-    title: "קזינו אונליין בישראל | ביקורות ובונוסים",
-    description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים, משחקים, שיטת דירוג ושיקולי משחק אחראי לפני הרשמה.",
+    title: "קזינו אונליין בישראל 2026 | ביקורות בונוסים ותשלומים",
+    description: "Ask Gamblers מציג השוואת קזינו אונליין בישראל 2026 עם ביקורות, בונוסים, משחקים, תשלומים, רישוי ושיקולי משחק אחראי לפני הרשמה.",
     url: SITE_URL,
     siteName: "Ask Gamblers",
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/opengraph-image`,
         width: 1200,
         height: 630,
-          alt: "Ask Gamblers - מדריך קזינו אונליין בישראל 2026",
+        alt: "Ask Gamblers - השוואת קזינו אונליין בישראל 2026",
       },
     ],
     locale: "he_IL",
@@ -63,8 +63,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "קזינו אונליין בישראל | ביקורות ובונוסים",
-    description: "מדריך Ask Gamblers לקזינו אונליין בישראל: ביקורות, בונוסים, תשלומים ושיקולי משחק אחראי.",
+    title: "קזינו אונליין בישראל 2026 | ביקורות בונוסים ותשלומים",
+    description: "השוואת קזינו אונליין בישראל 2026 עם ביקורות, בונוסים, משחקים, תשלומים ורישוי.",
     images: [`${SITE_URL}/opengraph-image`],
   },
   ...(GOOGLE_SITE_VERIFICATION
