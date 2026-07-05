@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FooterShine } from "@/components/ui/footer-shine";
+import { SOCIAL_LINKS } from "@/lib/social-links";
 import { client } from "@/sanity/lib/client";
 import { CASINOS_QUERY } from "@/sanity/lib/queries";
 import { Casino } from "@/sanity/lib/types";
@@ -236,7 +237,7 @@ export async function Footer() {
               מדריך עברי לבדיקת קזינו אונליין, בונוסים, תשלומים ומשחק אחראי לשחקנים ישראלים.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <nav aria-label="ניווט ראשי">
               <h4 className="font-heading text-sm font-bold text-text-primary">ניווט</h4>
               <div className="mt-3 grid gap-2">
@@ -279,6 +280,25 @@ export async function Footer() {
                 ))}
               </div>
             </nav>
+            {SOCIAL_LINKS.length > 0 && (
+              <nav aria-label="רשתות חברתיות">
+                <h4 className="font-heading text-sm font-bold text-text-primary">רשתות חברתיות</h4>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {SOCIAL_LINKS.map((link) => (
+                    <a
+                      key={link.key}
+                      href={link.href}
+                      target="_blank"
+                      rel="me noopener noreferrer"
+                      aria-label={link.ariaLabel}
+                      className="flex h-9 min-w-9 items-center justify-center rounded-full border border-border-glass bg-background/40 px-3 text-sm font-bold text-text-primary transition-colors hover:border-accent hover:text-accent"
+                    >
+                      {link.shortLabel}
+                    </a>
+                  ))}
+                </div>
+              </nav>
+            )}
           </div>
         </div>
         <div className="mt-8 border-t border-border-glass pt-8 text-center text-xs text-text-muted">

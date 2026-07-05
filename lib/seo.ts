@@ -1,3 +1,5 @@
+import { SOCIAL_PROFILE_URLS } from "@/lib/social-links";
+
 const SITE_NAME = "Ask Gamblers";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://askgamblers.co.il";
 const SITE_DESCRIPTION = "Ask Gamblers ישראל הוא מדריך עברי לבדיקת קזינו אונליין, בונוסים, תשלומים ומשחק אחראי לשחקנים ישראלים.";
@@ -144,6 +146,7 @@ export function generateOrganizationSchema() {
       availableLanguage: ["Hebrew", "English"],
     },
     sameAs: [
+      ...SOCIAL_PROFILE_URLS,
       "https://wa.me/972509200920"
     ]
   };

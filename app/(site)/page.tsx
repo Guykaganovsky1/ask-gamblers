@@ -23,6 +23,11 @@ export const metadata: Metadata = {
     "השוואת קזינו אונליין ובתי קזינו בישראל 2026: ביקורות, בונוסים, משחקים, שיטות תשלום, רישוי ומשחק אחראי לפני הרשמה.",
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      "he-IL": SITE_URL,
+      he: SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
   openGraph: {
     title: "קזינו אונליין בישראל 2026 | השוואת ביקורות בונוסים ותשלומים",
