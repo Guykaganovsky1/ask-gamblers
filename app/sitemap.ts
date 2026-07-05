@@ -22,14 +22,30 @@ function isAsciiSlug(value: string) {
   return /^[a-z0-9-]+$/.test(value);
 }
 
+const CANONICAL_CATEGORY_SLUG_BY_NAME: Record<string, string> = {
+  "הימורי ספורט": "sports",
+  "רולטה": "roulette",
+  "פוקר": "poker",
+};
+
+const CANONICAL_CATEGORY_SLUG_BY_SLUG: Record<string, string> = {
+  "הימורי ספורט": "sports",
+  "רולטה": "roulette",
+  "פוקר": "poker",
+};
+
+function canonicalCategorySlug(category: CategorySitemapItem) {
+  return CANONICAL_CATEGORY_SLUG_BY_NAME[category.name || ""] || CANONICAL_CATEGORY_SLUG_BY_SLUG[category.slug.current] || category.slug.current;
+}
+
 function dedupeCategories(categories: CategorySitemapItem[]) {
   const seen = new Set<string>();
 
   return [...categories]
     .filter((category) => category?.slug?.current)
-    .sort((a, b) => Number(!isAsciiSlug(a.slug.current)) - Number(!isAsciiSlug(b.slug.current)))
+    .sort((a, b) => Number(!isAsciiSlug(canonicalCategorySlug(a))) - Number(!isAsciiSlug(canonicalCategorySlug(b))))
     .filter((category) => {
-      const key = (category.name || category.slug.current).trim().toLocaleLowerCase("he-IL");
+      const key = canonicalCategorySlug(category).trim().toLocaleLowerCase("he-IL");
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -83,7 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const categoryPages = dedupeCategories(categories || []).map((c) => ({
-    url: `${BASE_URL}/categories/${encodePathSegment(c.slug.current)}`,
+    url: `${BASE_URL}/categories/${encodePathSegment(canonicalCategorySlug(c))}`,
     lastModified: new Date(c._updatedAt),
     changeFrequency: "weekly" as const,
     priority: 0.5,
