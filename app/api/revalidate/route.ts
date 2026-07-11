@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
         break;
       case "post":
         revalidatePath("/blog");
+        revalidatePath("/news");
         revalidatePath(`/blog/${body?.slug?.current}`);
         revalidatePath("/");
         break;

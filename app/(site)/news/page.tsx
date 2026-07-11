@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
-import { POSTS_QUERY, NEWS_POSTS_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
+import { NEWS_POSTS_QUERY, FEATURED_CASINOS_QUERY } from "@/sanity/lib/queries";
 import { BlogPost, Casino } from "@/sanity/lib/types";
 import { urlFor } from "@/sanity/lib/image";
 import { formatDate } from "@/lib/utils";
@@ -32,13 +32,12 @@ export const metadata: Metadata = {
 
 async function getNewsData() {
   try {
-    const [newsPosts, fallbackPosts, casinos] = await Promise.all([
+    const [newsPosts, casinos] = await Promise.all([
       client.fetch<BlogPost[]>(NEWS_POSTS_QUERY),
-      client.fetch<BlogPost[]>(POSTS_QUERY),
       client.fetch<Casino[]>(FEATURED_CASINOS_QUERY),
     ]);
     return {
-      posts: newsPosts?.length ? newsPosts : fallbackPosts ?? [],
+      posts: newsPosts ?? [],
       casinos: casinos ?? [],
     };
   } catch {
@@ -97,7 +96,7 @@ export default async function NewsPage() {
           {/* Main Content - Articles Grid */}
           <div className="lg:col-span-2">
             <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-              {posts.map((post) => (
+              {posts.length > 0 ? posts.map((post) => (
                 <article
                   key={post._id}
                   className="group flex flex-col rounded-2xl overflow-hidden bg-card/40 border border-border-glass/30 hover:border-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-accent/10"
@@ -157,7 +156,18 @@ export default async function NewsPage() {
                     </Link>
                   </div>
                 </article>
-              ))}
+              )) : (
+                <div className="md:col-span-2 rounded-2xl border border-border-glass bg-card/40 p-8 text-text-muted">
+                  <h2 className="font-heading text-2xl font-black text-text-primary">
+                    אין כרגע ידיעות RSS מיובאות
+                  </h2>
+                  <p className="mt-4 leading-relaxed">
+                    עמוד החדשות מציג רק ידיעות שיובאו ממקורות RSS ציבוריים עם
+                    קישור למקור המקורי. הייבוא היומי מוסיף ידיעה רלוונטית אחת
+                    כאשר נמצא עדכון מתאים.
+                  </p>
+                </div>
+              )}
             </div>
 
           </div>
@@ -170,7 +180,7 @@ export default async function NewsPage() {
                 אודות חדשות קזינו
               </h3>
               <p className="text-sm text-text-muted leading-relaxed">
-                בחדשות הקזינו תמצאו את העדכונים העדכנית ביותר מעולם ההימורים
+                בחדשות הקזינו תמצאו את העדכונים העדכניים ביותר מעולם ההימורים
                 האונליין. אנחנו מסכמים מקורות ציבוריים, מוסיפים הקשר לשחקנים
                 ישראלים, ומפנים תמיד למקור המקורי.
               </p>

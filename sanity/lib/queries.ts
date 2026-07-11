@@ -62,8 +62,9 @@ export const CASINO_BY_SLUG_QUERY = groq`
 `;
 
 // Blog post queries
+// Excludes RSS-imported news (sourceUrl set) so /blog shows only editorial posts.
 export const POSTS_QUERY = groq`
-  *[_type == "post"] | order(publishedAt desc) {
+  *[_type == "post" && !defined(sourceUrl)] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -95,7 +96,7 @@ export const NEWS_POSTS_QUERY = groq`
 `;
 
 export const LATEST_POSTS_QUERY = groq`
-  *[_type == "post"] | order(publishedAt desc) [0...3] {
+  *[_type == "post" && !defined(sourceUrl)] | order(publishedAt desc) [0...3] {
     _id,
     title,
     slug,
