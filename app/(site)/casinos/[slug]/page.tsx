@@ -122,6 +122,15 @@ export default async function CasinoReviewPage({ params }: Props) {
             {casino.reviewedBy && <span>בודק: {casino.reviewedBy.name}</span>}
           </div>
         )}
+        <div className="max-w-lg rounded-lg border border-border-glass bg-background/35 px-4 py-3 text-xs leading-relaxed text-text-muted">
+          <p>
+            הציון הוא סיכום בדיקה משוקלל של שישה קריטריונים: רישוי ובטיחות, תנאי
+            בונוס, תשלומים ומשיכות, חוויית משחק, תמיכה ומשחק אחראי.
+          </p>
+          <Link href="/review-methodology" className="mt-1 inline-block font-bold text-accent hover:text-accent-light">
+            איך נקבע הציון? →
+          </Link>
+        </div>
       </div>
 
       {casino.bonusAmount && (
@@ -135,9 +144,19 @@ export default async function CasinoReviewPage({ params }: Props) {
           )}
           <div className="mt-6">
             <Button href={`/go/${casino.slug.current}`} rel="nofollow sponsored">
-              קבל בונוס
+              בדקו תנאי בונוס
             </Button>
           </div>
+          <p className="mt-4 text-[11px] leading-relaxed text-text-muted/80">
+            {casino.lastCheckedAt
+              ? `הנתונים מבוססים על ההצעה שמפרסם המפעיל, נכון ל-${formatHebrewDate(casino.lastCheckedAt)}. `
+              : "הנתונים מבוססים על ההצעה שמפרסם המפעיל. "}
+            לאימות התנאים המלאים בדקו את{" "}
+            <a href={`/go/${casino.slug.current}`} rel="nofollow sponsored" className="text-accent hover:text-accent-light">
+              האתר הרשמי של {casino.name}
+            </a>
+            .
+          </p>
         </div>
       )}
 
@@ -187,6 +206,15 @@ export default async function CasinoReviewPage({ params }: Props) {
               </div>
             ))}
           </div>
+          <p className="mt-5 text-[11px] leading-relaxed text-text-muted/80">
+            נתוני המשיכה, הרישוי והתשלומים נאספו מהמידע שמפרסם המפעיל
+            {casino.lastCheckedAt ? ` ונבדקו לאחרונה ב-${formatHebrewDate(casino.lastCheckedAt)}` : ""}.
+            זמני משיכה בפועל עשויים להשתנות לפי שיטת התשלום ותהליך האימות — לאימות בדקו את{" "}
+            <a href={`/go/${casino.slug.current}`} rel="nofollow sponsored" className="text-accent hover:text-accent-light">
+              האתר הרשמי של {casino.name}
+            </a>
+            .
+          </p>
         </section>
       )}
 
