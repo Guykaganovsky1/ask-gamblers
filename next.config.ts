@@ -13,7 +13,6 @@ const shortStaticAssetHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   poweredByHeader: false,
 
   turbopack: {
